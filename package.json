@@ -1,0 +1,28 @@
+{
+    "private": true,
+    "name": "@lwc/playground",
+    "version": "7.2.0",
+    "type": "module",
+    "description": "Playground project to experiment with LWC.",
+    "scripts": {
+        "dev": "rollup -c --watch",
+        "build": "NODE_ENV=production rollup -c"
+    },
+    "devDependencies": {
+        "@lwc/rollup-plugin": "7.2.0",
+        "@rollup/plugin-replace": "^5.0.7",
+        "lwc": "7.2.0",
+        "rollup": "^4.19.0",
+        "rollup-plugin-livereload": "^2.0.5",
+        "rollup-plugin-serve": "^3.0.0"
+    },
+    "nx": {
+        "targets": {
+            "build": {
+                "outputs": [
+                    "{projectRoot}/dist"
+                ]
+            }
+        }
+    }
+}
