@@ -1,0 +1,55 @@
+<template>
+    <lightning-modal-header label={i18n.modalTitle}>
+    </lightning-modal-header>
+    <lightning-modal-body class="modal_headerless">
+        <div part="modal-body">
+            <template iterator:it={rulesWithData}>
+                <lightning-primitive-column-sorter
+                    key={it.value.key}
+                    index={it.index}
+                    rule={it.value}
+                    columns={processedColumns}
+                    first-rule={it.first}
+                    last-rule={it.last}
+                    ondelete={handleDeleteRule}
+                    onselection={handleSelectionChange}
+                    onmoveup={handleRuleMovement}
+                    onmovedown={handleRuleMovement}>
+                </lightning-primitive-column-sorter>
+            </template>
+            <div part="columnadder">
+                <lightning-button
+                    variant="base"
+                    label={i18n.addRule}
+                    icon-name="utility:add"
+                    onclick={handleAddRule}
+                    disabled={isAddRuleButtonDisabled}
+                    class="slds-m-left_x-small">
+                </lightning-button>
+                <div style={ruleLimitTextStyle}>{ruleLimitText}</div>
+            </div>
+        </div>
+    </lightning-modal-body>
+    <lightning-modal-footer class="slds-modal__footer_directional">
+        <lightning-button
+            class="slds-button"
+            variant="neutral"
+            label={i18n.clearButton}
+            onclick={clearRules}
+            disabled={isClearButtonDisabled}
+        ></lightning-button>
+        <lightning-button
+            class="slds-button"
+            variant="neutral"
+            label={i18n.cancelButton}
+            onclick={cancelRules}
+        ></lightning-button>
+        <lightning-button
+            class="slds-button"
+            variant="brand"
+            label={i18n.applyButton}
+            onclick={applyRules}
+            disabled={isApplyButtonDisabled}
+        ></lightning-button>
+    </lightning-modal-footer>
+</template>

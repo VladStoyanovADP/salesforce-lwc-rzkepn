@@ -1,0 +1,1 @@
+export default 'Add a sort column';

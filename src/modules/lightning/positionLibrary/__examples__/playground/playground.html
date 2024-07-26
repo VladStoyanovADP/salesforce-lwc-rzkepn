@@ -1,0 +1,122 @@
+<template>
+    <!-- Container -->
+    <div class={computedContainerClass}>
+        <p class="container-text">Container</p>
+
+        <template if:true={isUseShadowRootContainer}>
+            <positionLibrary-playground-shadow-scroll>
+                <positionLibrary-components
+                    component={selectedComponent}
+                    class={computedComponentClass}
+                ></positionLibrary-components>
+            </positionLibrary-playground-shadow-scroll>
+        </template>
+
+        <template if:false={isUseShadowRootContainer}>
+            <positionLibrary-components
+                component={selectedComponent}
+                class={computedComponentClass}
+            ></positionLibrary-components>
+        </template>
+
+        <template if:true={isContainerScroll}>
+            <div class="container-placeholder"></div>
+        </template>
+    </div>
+
+    <!-- Config panel -->
+    <div class={computedConfigClass}>
+        <div class="slds-text-heading_medium slds-m-bottom_x-small">
+            Configuration
+        </div>
+
+        <div class="slds-grid slds-gutters_small">
+            <div class="slds-col slds-size_1-of-5">
+                <lightning-combobox
+                    name="components"
+                    label="Select a component"
+                    placeholder="Please select"
+                    value={selectedComponent}
+                    options={componentOptions}
+                    onchange={handleComponentSelector}
+                >
+                </lightning-combobox>
+            </div>
+            <div class="slds-col slds-size_2-of-5">
+                <lightning-slider
+                    label="Container Width(px)"
+                    step="50"
+                    min="100"
+                    max="500"
+                    value={containerWidth}
+                    onchange={handleWidthSlider}
+                ></lightning-slider>
+                <lightning-slider
+                    label="Container Height(px)"
+                    step="50"
+                    min="100"
+                    max="500"
+                    value={containerHeight}
+                    onchange={handleHeightSlider}
+                ></lightning-slider>
+            </div>
+            <div class="slds-col slds-size_1-of-5">
+                <lightning-combobox
+                    name="containerPosition"
+                    label="Container Position"
+                    placeholder="Please select"
+                    value={containerPosition}
+                    options={positionOptions}
+                    onchange={handleContainerPosition}
+                >
+                </lightning-combobox>
+                <lightning-combobox
+                    name="componentPosition"
+                    label="Component Position"
+                    placeholder="Please select"
+                    value={componentPosition}
+                    options={positionOptions}
+                    onchange={handleComponentPosition}
+                >
+                </lightning-combobox>
+            </div>
+            <div class="slds-col slds-size_1-of-5">
+                <lightning-input
+                    type="toggle"
+                    name="container scrollbar"
+                    label="Container Scrollbar"
+                    message-toggle-active="Enabled"
+                    message-toggle-inactive="Disabled"
+                    checked={isContainerScroll}
+                    onchange={handleContainerScroll}
+                    disabled={isContainerScrollDisabled}
+                ></lightning-input>
+                <lightning-input
+                    type="toggle"
+                    name="viewport scrollbar"
+                    label="Viewport Scrollbar"
+                    message-toggle-active="Enabled"
+                    message-toggle-inactive="Disabled"
+                    checked={isViewportScroll}
+                    onchange={handleViewportScroll}
+                    class="slds-m-top_medium"
+                ></lightning-input>
+                <lightning-input
+                    type="toggle"
+                    name="ShadowRoot Container"
+                    label="ShadowRoot Container"
+                    message-toggle-active="Enabled"
+                    message-toggle-inactive="Disabled"
+                    checked={isUseShadowRootContainer}
+                    onchange={handleShadowContainer}
+                    class="slds-m-top_medium"
+                ></lightning-input>
+            </div>
+        </div>
+    </div>
+
+    <!-- Placeholder to enable scrollbar of viewport -->
+    <template if:true={isViewportScroll}>
+        <div class="viewport-placeholder"></div>
+    </template>
+</template>

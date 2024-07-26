@@ -1,0 +1,1 @@
+export default 'Sorted by: {0}';

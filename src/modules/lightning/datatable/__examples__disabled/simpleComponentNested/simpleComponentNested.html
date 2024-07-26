@@ -1,0 +1,9 @@
+<template>
+    <!-- We don't need to set data-navigation on this div as we are not traversing a shadowroot -->
+    <div>
+        <!-- Since this component needs to be navigable we set data-navigation to enable navigation. -->
+        <!-- As it is navigable we also need to set the tabindex=0 so that from a dom structure perspective it shows as navgiable. -->
+        <lightning-button variant="base" label="Base" title="Looks like a link" class="slds-m-left_x-small" data-navigation="enable" tabindex={internalTabIndex}></lightning-button>
+        <lightning-button label="Neutral" title="Non-primary action" class="slds-m-left_x-small" data-navigation="enable" tabindex={internalTabIndex}></lightning-button>
+    </div>
+</template>

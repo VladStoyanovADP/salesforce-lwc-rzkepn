@@ -1,0 +1,1 @@
+export default 'Press Control + F6 to navigate to the next toast notification or focusable region.';

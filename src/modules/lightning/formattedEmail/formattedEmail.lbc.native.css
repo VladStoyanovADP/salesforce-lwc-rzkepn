@@ -1,0 +1,7 @@
+@import 'lightning/sldsCommon';
+@import 'lightning/sldsUtilsVisibility';
+
+:host([data-render-mode="shadow"]) lightning-primitive-icon {
+    vertical-align: middle;
+}
+

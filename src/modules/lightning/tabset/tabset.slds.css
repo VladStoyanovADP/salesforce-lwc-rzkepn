@@ -1,0 +1,13 @@
+
+  :host([data-render-mode="shadow"]) .slds-vertical-tabs {
+      display: flex;
+      overflow: hidden;
+      border: var(--slds-g-sizing-border-1) solid var(--slds-g-color-border-base-1, --slds-g-color-border-1);
+      border-radius: var(--slds-g-spacing-1);
+  }
+  :host([data-render-mode="shadow"]) .slds-tabs_default .slds-tabs_default__header {
+    font-weight: var(--sds-g-font-weight-bold, bold);
+  }
+  :host([data-render-mode="shadow"]) .slds-tabs_default .slds-tabs_default__header:not(.slds-assistive-text) {
+    font-size: var(--sds-g-font-scale-neg-2, 0.625rem);
+  }

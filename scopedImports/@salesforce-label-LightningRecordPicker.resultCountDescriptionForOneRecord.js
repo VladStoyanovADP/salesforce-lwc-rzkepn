@@ -1,0 +1,1 @@
+export default '1 result found for "{0}"';

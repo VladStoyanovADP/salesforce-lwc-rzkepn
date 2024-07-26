@@ -1,0 +1,15 @@
+<template>
+    <span
+        style={iconBgColorStyle}
+        part="boundary">
+        <lightning-primitive-icon exportparts="icon"
+            icon-name={_iconName}
+            size={size}
+            variant={variant}
+            src={_src}
+        ></lightning-primitive-icon>
+        <template if:true={alternativeText}>
+            <span class="slds-assistive-text">{alternativeText}</span>
+        </template>
+    </span>
+</template>

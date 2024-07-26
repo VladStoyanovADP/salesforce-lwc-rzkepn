@@ -1,0 +1,34 @@
+@import 'lightning/sldsCommon';
+
+[part="header"] {
+    padding: var(--slds-g-sizing-3) var(--slds-g-sizing-3) var(--slds-g-sizing-3) 0;
+    font-weight: bold;
+}
+
+[part="sorting-config"] {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    gap: var(--slds-g-sizing-4);
+}
+
+.slds-box {
+    padding: var(--slds-g-sizing-4);
+    display: flex; align-items: center; justify-content: space-between;
+}
+
+lightning-combobox {
+    width: 40%;
+}
+
+.slds-has-error {
+    margin-top: 1.25rem;
+}
+
+[part="sorting-config"]:has(lightning-combobox[invalid]) {
+    margin-top: -1rem;
+}
+
+[part="sorting-config"]:has(lightning-combobox[invalid]) + lightning-button-icon {
+    margin-top: -1rem;
+}

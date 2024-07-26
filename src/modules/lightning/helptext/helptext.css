@@ -1,0 +1,8 @@
+@import './helptext.lbc.native.css';
+
+/* TODO: check if this style can be removed once W-14915319 is closed */
+/* Styles required for Multi-Column Sorting Modal in datatable */
+:host(.modal_header)  .slds-form-element__icon {
+    padding-top: unset;
+    padding-left: var(--slds-g-sizing-2);
+}

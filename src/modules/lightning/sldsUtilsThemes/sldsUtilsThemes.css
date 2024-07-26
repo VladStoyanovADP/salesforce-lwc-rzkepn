@@ -1,0 +1,344 @@
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved
+Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+/**
+ *
+ * TODO: all the .slds-button--neutral related lines are commented out because unused by LBC.
+ * They are related to some legacy usage of the theme utilities with the link variant of the button neutral.
+ * The SLDS _themes.css uses the old BEM syntax and there may be a bug with part of the code that uses the new one.
+ * Also, the documentation on the SLDS site doesn't show any relevant examples
+ * (https://www.lightningdesignsystem.com/utilities/themes/)
+ *
+ * In addition, in the Native Shadow world, this construct may not work as expected with nested shadows.
+ * At the moment it doesn't make sense to include them in here, but keeping them commented out for discussion if needed
+ *
+ */
+
+/* .slds-theme {} */
+
+/**
+ * The interactive-dialog-base components should be styled in both synthetic and
+ * native shadow, so we include an additional selector specific to these components
+ */
+
+:host([data-render-mode="shadow"]) .slds-theme_default,
+:host([data-interactive-dialog]) .slds-theme_default {
+    background-color: var(--slds-g-color-neutral-base-100, #fff);
+    color: var(--slds-g-color-neutral-base-10, #181818);
+}
+
+:host([data-render-mode="shadow"]) .slds-theme_shade,
+:host([data-interactive-dialog]) .slds-theme_shade {
+    background-color: var(--slds-g-color-neutral-base-95, #f3f3f3);
+}
+
+:host([data-render-mode="shadow"]) .slds-theme_inverse,
+:host([data-interactive-dialog]) .slds-theme_inverse {
+    color: var(--slds-g-color-neutral-base-100, #fff);
+    background-color: var(--slds-g-color-brand-base-10, #001639);
+    border-color: var(--slds-g-color-brand-base-10, #001639);
+}
+
+/* .slds-theme_inverse a:not(.slds-button--neutral) {
+    color: var(--slds-g-color-neutral-base-100, #fff);
+    text-decoration: underline;
+}
+
+.slds-theme_inverse a:not(.slds-button--neutral):link,
+.slds-theme_inverse a:not(.slds-button--neutral):visited {
+    color: var(--slds-g-color-neutral-base-100, #fff);
+}
+
+.slds-theme_inverse a:not(.slds-button--neutral):hover,
+.slds-theme_inverse a:not(.slds-button--neutral):focus {
+    text-decoration: none;
+}
+
+.slds-theme_inverse a:not(.slds-button--neutral):active {
+    color: var(--slds-g-color-neutral-100-opacity-50, rgb(255 255 255 / 50%));
+}
+
+.slds-theme_inverse a:not(.slds-button--neutral)[disabled] {
+    color: var(--slds-g-color-neutral-100-opacity-10, rgb(255 255 255 / 15%));
+} */
+
+:host([data-render-mode="shadow"]) .slds-theme_alt-inverse,
+:host([data-interactive-dialog]) .slds-theme_alt-inverse {
+    color: var(--slds-g-color-neutral-base-100, #fff);
+    background-color: var(--slds-g-color-brand-base-20, #032d60);
+    border-color: var(--slds-g-color-brand-base-20, #032d60);
+}
+
+/* .slds-theme_alt-inverse a:not(.slds-button--neutral) {
+    color: var(--slds-g-color-neutral-base-100, #fff);
+    text-decoration: underline;
+}
+
+.slds-theme_alt-inverse a:not(.slds-button--neutral):link,
+.slds-theme_alt-inverse a:not(.slds-button--neutral):visited {
+    color: var(--slds-g-color-neutral-base-100, #fff);
+}
+
+.slds-theme_alt-inverse a:not(.slds-button--neutral):hover,
+.slds-theme_alt-inverse a:not(.slds-button--neutral):focus {
+    text-decoration: none;
+}
+
+.slds-theme_alt-inverse a:not(.slds-button--neutral):active {
+    color: var(--slds-g-color-neutral-100-opacity-50, rgb(255 255 255 / 50%));
+}
+
+.slds-theme_alt-inverse a:not(.slds-button--neutral)[disabled] {
+    color: var(--slds-g-color-neutral-100-opacity-10, rgb(255 255 255 / 15%));
+} */
+
+:host([data-render-mode="shadow"]) .slds-theme_success,
+:host([data-interactive-dialog]) .slds-theme_success {
+    color: var(--slds-g-color-neutral-base-100, #fff);
+    background-color: var(--slds-g-color-success-base-50, #2e844a);
+
+    --slds-g-link-color: var(--slds-g-color-neutral-base-100, #fff);
+    --slds-g-link-color-active: var(--slds-g-color-neutral-100-opacity-50, rgb(255 255 255 / 50%));
+    --slds-g-link-color-hover: var(--slds-g-color-neutral-base-100, #fff);
+    --_slds-g-font-decoration: underline;
+    --_slds-g-font-decoration-hover: none;
+}
+
+/* .slds-theme_success a:not(.slds-button--neutral) {
+    color: var(--slds-g-color-neutral-base-100, #fff);
+    text-decoration: underline;
+}
+
+.slds-theme_success a:not(.slds-button--neutral):link,
+.slds-theme_success a:not(.slds-button--neutral):visited {
+    color: var(--slds-g-color-neutral-base-100, #fff);
+}
+
+.slds-theme_success a:not(.slds-button--neutral):hover,
+.slds-theme_success a:not(.slds-button--neutral):focus {
+    text-decoration: none;
+}
+
+.slds-theme_success a:not(.slds-button--neutral):active {
+    color: var(--slds-g-color-neutral-100-opacity-50, rgb(255 255 255 / 50%));
+}
+
+.slds-theme_success a:not(.slds-button--neutral)[disabled] {
+    color: var(--slds-g-color-neutral-100-opacity-10, rgb(255 255 255 / 15%));
+} */
+
+:host([data-render-mode="shadow"]) .slds-theme_info,
+:host([data-interactive-dialog]) .slds-theme_info {
+    color: var(--slds-g-color-neutral-base-100, #fff);
+    background-color: var(--slds-g-color-neutral-base-50, #747474);
+
+    --slds-g-link-color: var(--slds-g-color-neutral-base-100, #fff);
+    --slds-g-link-color-active: var(--slds-g-color-neutral-100-opacity-50, rgb(255 255 255 / 50%));
+    --slds-g-link-color-hover: var(--slds-g-color-neutral-base-100, #fff);
+    --_slds-g-font-decoration: underline;
+    --_slds-g-font-decoration-hover: none;
+}
+
+/* .slds-theme_info a:not(.slds-button--neutral) {
+    color: var(--slds-g-color-neutral-base-100, #fff);
+    text-decoration: underline;
+}
+
+.slds-theme_info a:not(.slds-button--neutral):link,
+.slds-theme_info a:not(.slds-button--neutral):visited {
+    color: var(--slds-g-color-neutral-base-100, #fff);
+}
+
+.slds-theme_info a:not(.slds-button--neutral):hover,
+.slds-theme_info a:not(.slds-button--neutral):focus {
+    text-decoration: none;
+}
+
+.slds-theme_info a:not(.slds-button--neutral):active {
+    color: var(--slds-g-color-neutral-100-opacity-50, rgb(255 255 255 / 50%));
+}
+
+.slds-theme_info a:not(.slds-button--neutral)[disabled] {
+    color: var(--slds-g-color-neutral-100-opacity-10, rgb(255 255 255 / 15%));
+} */
+
+:host([data-render-mode="shadow"]) .slds-theme_warning,
+:host([data-interactive-dialog]) .slds-theme_warning {
+    background-color: var(--slds-g-color-warning-base-60, #fe9339);
+    color: var(--slds-g-color-neutral-base-10, #181818);
+
+    --slds-g-link-color: var(--slds-g-color-neutral-base-10, #181818);
+    --slds-g-link-color-active: var(--slds-g-color-neutral-base-30, #514f4d);
+    --slds-g-link-color-hover: var(--slds-g-color-neutral-base-10, #181818);
+    --_slds-g-font-decoration: underline;
+    --_slds-g-font-decoration-hover: none;
+    --_slds-g-shadow: 0 0 3px var(--slds--g-color-neutral-base-30, #514f4d);
+    --_slds-g-style-border: solid;
+    --_slds-g-sizing-border: var(--sds-g-sizing-border-1);
+    --_slds-g-color-border: var(--slds-g-color-neutral-base-30, #514f4d);
+    --_slds-g-color-outline: transparent;
+}
+
+/**
+ * TODO: Unsure why .slds-theme_warning involves more css for links and buttons
+ * It seems to be related to legacy implementation.
+ * However, the color contrast doesn't seem to be compliant.
+ * In addition, we may not want to have the same implementation in Native Shadow.
+ * For the time being it's better to keep these selectors disabled, and have the
+ * warning theme to have similar behavior as the other ones.
+ *
+ */
+
+/* .slds-theme_warning a {
+    color: var(--slds-g-color-neutral-base-10, #181818);
+    text-decoration: underline;
+}
+
+.slds-theme_warning a:link,
+.slds-theme_warning a:visited {
+    color: var(--slds-g-color-neutral-base-10, #181818);
+}
+
+.slds-theme_warning a:hover,
+.slds-theme_warning a:focus {
+    text-decoration: none;
+}
+
+.slds-theme_warning a:focus {
+    box-shadow: 0 0 3px var(--slds-g-color-neutral-base-30, #514f4d);
+    border: 1px solid var(--slds-g-color-neutral-base-30, #514f4d);
+}
+
+.slds-theme_warning a:active {
+    color: var(--slds-g-color-neutral-base-30, #514f4d);
+}
+
+.slds-theme_warning a[disabled] {
+    color: var(--slds-g-color-neutral-base-30, #514f4d);
+}
+*/
+
+:host([data-render-mode="shadow"]) .slds-theme_warning ::part(button) {
+    color: var(--slds-g-color-on-warning-1);
+    text-decoration: underline;
+
+    --slds-c-icon-color-foreground: var(--slds-g-color-on-warning-1);
+}
+
+:host([data-render-mode="shadow"]) .slds-theme_warning ::part(button):hover {
+    color: color-mix(in oklab, currentColor, transparent 25%);
+
+    --slds-c-icon-color-foreground: color-mix(in oklab, var(--slds-g-color-on-warning-1), transparent 25%);
+}
+
+:host([data-render-mode="shadow"])  .slds-theme_warning ::part(button):focus {
+    color: var(--slds-g-color-neutral-base-30, #514f4d);
+    box-shadow: 0 0 3px var(--slds-g-color-neutral-base-30, #514f4d);
+    border: 1px solid var(--slds-g-color-neutral-base-30, #514f4d);
+}
+
+:host([data-render-mode="shadow"])  .slds-theme_warning ::part(button):active {
+    color: var(--slds-g-color-neutral-base-50, #706e6b);
+}
+
+:host([data-render-mode="shadow"]) .slds-theme_warning ::part(boundary) {
+    --slds-c-icon-color-foreground: var(--slds-g-color-neutral-base-30, #514f4d);
+}
+
+:host([data-render-mode="shadow"]) .slds-theme_error,
+:host([data-interactive-dialog]) .slds-theme_error {
+    color: var(--slds-g-color-neutral-base-100, #fff);
+    background-color: var(--slds-g-color-error-base-40, #ea001e);
+
+    --slds-g-link-color: var(--slds-g-color-neutral-base-100, #fff);
+    --slds-g-link-color-active: var(--slds-g-color-neutral-100-opacity-50, rgb(255 255 255 / 50%));
+    --slds-g-link-color-hover: var(--slds-g-color-neutral-base-100, #fff);
+    --_slds-g-font-decoration: underline;
+    --_slds-g-font-decoration-hover: none;
+}
+
+/* .slds-theme_error a:not(.slds-button--neutral) {
+    color: var(--slds-g-color-neutral-base-100, #fff);
+    text-decoration: underline;
+}
+
+.slds-theme_error a:not(.slds-button--neutral):link,
+.slds-theme_error a:not(.slds-button--neutral):visited {
+    color: var(--slds-g-color-neutral-base-100, #fff);
+}
+
+.slds-theme_error a:not(.slds-button--neutral):hover,
+.slds-theme_error a:not(.slds-button--neutral):focus {
+    text-decoration: none;
+}
+
+.slds-theme_error a:not(.slds-button--neutral):active {
+    color: var(--slds-g-color-neutral-100-opacity-50, rgb(255 255 255 / 50%));
+}
+
+.slds-theme_error a:not(.slds-button--neutral)[disabled] {
+    color: var(--slds-g-color-neutral-100-opacity-10, rgb(255 255 255 / 15%));
+} */
+
+:host([data-render-mode="shadow"]) .slds-theme_offline,
+:host([data-interactive-dialog]) .slds-theme_offline {
+    color: var(--slds-g-color-neutral-base-100, #fff);
+    background-color: var(--slds-g-color-neutral-base-30, #444);
+}
+
+/* .slds-theme_offline a:not(.slds-button--neutral) {
+    color: var(--slds-g-color-neutral-base-100, #fff);
+    text-decoration: underline;
+}
+
+.slds-theme_offline a:not(.slds-button--neutral):link,
+.slds-theme_offline a:not(.slds-button--neutral):visited {
+    color: var(--slds-g-color-neutral-base-100, #fff);
+}
+
+.slds-theme_offline a:not(.slds-button--neutral):hover,
+.slds-theme_offline a:not(.slds-button--neutral):focus {
+    text-decoration: none;
+}
+
+.slds-theme_offline a:not(.slds-button--neutral):active {
+    color: var(--slds-g-color-neutral-100-opacity-50, rgb(255 255 255 / 50%));
+}
+
+.slds-theme_offline a:not(.slds-button--neutral)[disabled] {
+    color: var(--slds-g-color-neutral-100-opacity-10, rgb(255 255 255 / 15%));
+} */
+
+:host([data-render-mode="shadow"]) .slds-theme_alert-texture,
+:host([data-interactive-dialog]) .slds-theme_alert-texture {
+    background-image: linear-gradient(45deg, rgb(0 0 0 / 2.5%) 25%, transparent 25%, transparent 50%, rgb(0 0 0 / 2.5%) 50%, rgb(0 0 0 / 2.5%) 75%, transparent 75%, transparent);
+    background-size: 64px 64px;
+}
+
+:host([data-render-mode="shadow"]) .slds-theme_inverse-text,
+:host([data-interactive-dialog]) .slds-theme_inverse-text {
+    color: var(--slds-g-color-neutral-base-100, #fff);
+}
+
+/* .slds-theme_inverse-text a:not(.slds-button--neutral) {
+    color: var(--slds-g-color-neutral-base-100, #fff);
+    text-decoration: underline;
+}
+
+.slds-theme_inverse-text a:not(.slds-button--neutral):link,
+.slds-theme_inverse-text a:not(.slds-button--neutral):visited {
+    color: var(--slds-g-color-neutral-base-100, #fff);
+}
+
+.slds-theme_inverse-text a:not(.slds-button--neutral):hover,
+.slds-theme_inverse-text a:not(.slds-button--neutral):focus {
+    text-decoration: none;
+}
+
+.slds-theme_inverse-text a:not(.slds-button--neutral):active {
+    color: var(--slds-g-color-neutral-100-opacity-50, rgb(255 255 255 / 50%));
+}
+
+.slds-theme_inverse-text a:not(.slds-button--neutral)[disabled] {
+    color: var(--slds-g-color-neutral-100-opacity-10, rgb(255 255 255 / 15%));
+} */

@@ -1,0 +1,1 @@
+export default 'Select a column or delete this sort item.';

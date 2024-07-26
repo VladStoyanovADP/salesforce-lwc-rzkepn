@@ -1,0 +1,5 @@
+@import 'lightning/sldsCommon';
+
+:host([data-render-mode="shadow"]) lightning-modal-footer lightning-button:not(:first-child) {
+    margin-left: var(--sds-g-spacing-2, 0.5rem);
+}

@@ -1,0 +1,148 @@
+
+/* Copyright (c) 2015-present, Salesforce, Inc. All rights reserved
+  Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+  /**
+   * Note: .slds-dropdown__item class used to be on the host element. Moved to
+   * new containing element to prevent duplicate styles in mixed-mode.
+   */
+
+  /**
+   * Menu Item
+   */
+
+  :host([data-render-mode="shadow"]) a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--slds-g-spacing-2);
+    position: relative;
+    padding: var(--slds-g-spacing-2) var(--slds-g-spacing-3);
+    color: var(--slds-g-color-on-surface-3);
+    line-height: var(--slds-g-font-lineheight-4);
+    font-weight: var(--slds-g-font-weight-4);
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  :host([data-render-mode="shadow"]) a:hover,:host([data-render-mode="shadow"]) 
+  a:focus {
+    outline: 0;
+    text-decoration: none;
+    background-color: var(--slds-g-color-surface-container-2);
+    color: var(--slds-g-color-on-surface-3);
+  }
+
+  :host([data-render-mode="shadow"]) a:active {
+    text-decoration: none;
+    background-color: var(--slds-g-color-surface-container-2);
+    color: var(--slds-g-color-on-surface-3);
+  }
+
+  :host([data-render-mode="shadow"]) a[aria-disabled='true'] {
+    color: var(--slds-g-color-disabled-2);
+    cursor: default;
+
+    /* Reassignment - lightning-icon */
+    --slds-c-icon-color-foreground-default: var(--slds-g-color-disabled-2);
+    --slds-c-icon-boundary-spacing-inlineend: 25px;
+  }
+
+  /* TODO: bring in PostCSS fix and see if it fixes output CSS */
+
+  :host([data-render-mode="shadow"]) a[aria-disabled='true']:hover,:host([data-render-mode="shadow"]) 
+  a:host([data-render-mode="shadow"]) [aria-disabled='true']:focus {
+    background-color: transparent;
+  }
+
+  /**
+   * Note: these styles were originally on the "a" element above, but flex
+   * context was lost because the truncate span was added, so we hijack the
+   * span to get the layout control that we want. Display: flex on both the
+   * "a" and "span" is intended, add prefix and suffix icons to see the
+   * generated markup and it'll make sense.
+   */
+
+  :host([data-render-mode="shadow"]) .slds-truncate {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--slds-g-spacing-2);
+  }
+
+  /**
+   * State - Error
+   *
+   * @TODO: currently not supported by LBC
+   */
+
+  :host([data-render-mode="shadow"].slds-has-error) a {
+    background: var(--slds-g-color-error-container-1);
+  }
+
+  /**
+   * State - Success
+   *
+   * @TODO: currently not supported by LBC
+   */
+
+  :host([data-render-mode="shadow"].slds-has-success) a {
+    background: var(--slds-g-color-success-container-1);
+  }
+
+  :host([data-render-mode="shadow"].slds-has-error) a,:host([data-render-mode="shadow"].slds-has-success) a {
+    color: var(--slds-g-color-on-success-1);
+  }
+
+  /**
+   * State - Warning
+   *
+   * @TODO: currently not supported by LBC
+   */
+
+  :host([data-render-mode="shadow"].slds-has-warning) a {
+    background: var(--slds-g-color-warning-container-1);
+  }
+
+  :host([data-render-mode="shadow"].slds-has-warning) .slds-indicator_unread {
+    background-color: currentcolor;
+  }
+
+  :host([data-render-mode="shadow"].slds-has-warning) .slds-indicator_unsaved {
+    color: currentcolor;
+  }
+
+  :host([data-render-mode="shadow"].slds-has-error) a:hover,:host([data-render-mode="shadow"].slds-has-error) a:focus,:host([data-render-mode="shadow"].slds-has-success) a:hover,:host([data-render-mode="shadow"].slds-has-success) a:focus,:host([data-render-mode="shadow"].slds-has-warning) a:hover,:host([data-render-mode="shadow"].slds-has-warning) a:focus {
+    text-decoration: underline;
+  }
+
+  /**
+   * State - Selected
+   *
+   * We scope to aria-checked so we don't accidentally toggle prefix icons
+   * which are a separate API.
+   */
+
+  :host([data-render-mode="shadow"]) [aria-checked='false'] lightning-primitive-icon::part(icon) {
+    opacity: 0;
+  }
+
+  :host([data-render-mode="shadow"]) [aria-checked='true'] lightning-primitive-icon::part(icon) {
+    opacity: 1;
+  }
+
+  /**
+   * Status Indicator
+   *
+   * @TODO: Look into viability of refactoring into utility
+   */
+
+  :host([data-render-mode="shadow"]) .slds-indicator_unsaved,:host([data-render-mode="shadow"]) 
+  .slds-indicator--unsaved {
+    color: var(--slds-g-color-accent-2);
+    align-self: center;
+    position: relative;
+
+    /* Unsaved indicator does not have gap spacing, everything else does */
+    margin-inline-end: calc(var(--slds-g-spacing-2) * -1);
+  }

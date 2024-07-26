@@ -1,0 +1,8 @@
+
+  /* due to native shadow, css rule isn't applied
+     .slds-form-element_compound .slds-form-element__row
+       .slds-form-element__label { padding: 0 }
+  */
+  :host([data-render-mode="shadow"]) [part~='label'] {
+    padding-block-start: 0;
+  }

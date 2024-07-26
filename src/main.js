@@ -1,5 +1,6 @@
 import { createElement } from 'lwc';
-import App from 'x/app';
+import '@lwc/synthetic-shadow';
+import App from 'lightning/app';
 
-const elm = createElement('x-app', { is: App });
+const elm = createElement('lightning-app', { is: App });
 document.body.appendChild(elm);

@@ -1,0 +1,9 @@
+<template>
+    <div lwc:ref="child" class="slds-th__action slds-th__action_form slds-cell-fixed" style={columnStyles}>
+        <lightning-button-menu alternative-text="Show menu" internal-datatable-actions-menu icon-name="utility:threedots" variant="border-filled" menu-alignment="right" icon-size="x-small" tooltip={i18n.sortingMenuTooltip} onselect={handleSortingMenuSelection}>
+            <lightning-menu-item value="MultiColumnSorting" label={i18n.sortingMenuMultiColumnSort}></lightning-menu-item>
+            <lightning-menu-item value="ReorderRow" label={i18n.sortingMenuRows}></lightning-menu-item>
+            <lightning-menu-item value="ReorderColumn" label={i18n.sortingMenuColumns}></lightning-menu-item>
+        </lightning-button-menu>
+    </div>
+</template>

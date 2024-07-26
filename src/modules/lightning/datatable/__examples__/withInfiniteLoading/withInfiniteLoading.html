@@ -1,0 +1,14 @@
+<template>
+    <p>Total Rows: {data.length}</p>
+    <div style="height: 300px;">
+        <lightning-datatable
+            key-field="id"
+            data={data}
+            columns={columns}
+            enable-infinite-loading
+            onloadmore={handleLoadMore}
+            load-more-offset={loadMoreOffset}>
+        </lightning-datatable>
+    </div>
+    <p>{loadMoreStatus}</p>
+</template>

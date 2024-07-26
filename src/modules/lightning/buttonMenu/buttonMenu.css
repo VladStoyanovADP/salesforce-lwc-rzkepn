@@ -1,0 +1,6 @@
+@import './buttonMenu.lbc.native.css';
+
+.fix-slds-button_icon-border-filled {
+    height: unset;
+    line-height: var(--slds-c-button-line-height, var(--sds-c-button-line-height, 1.875rem));
+}

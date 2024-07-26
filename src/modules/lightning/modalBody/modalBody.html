@@ -1,0 +1,15 @@
+<template>
+    <div
+        id="modal-content"
+        class={modalBodyCssClasses}
+        part="modal-body"
+        data-content-container
+        onprivatescrollablecontainer={handleScrollableContainerRepositionEvent}
+        onfocusin={handleModalBodyFocusin}
+    >
+        <slot
+            data-default-slot
+            onslotchange={handleDefaultSlotChange}
+        ></slot>
+    </div>
+</template>

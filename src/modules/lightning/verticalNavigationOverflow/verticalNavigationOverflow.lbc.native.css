@@ -1,0 +1,5 @@
+@import 'lightning/sldsCommon';
+@import 'lightning/sldsUtilsVisibility';
+@import './vertical-navigation-section.slds.css';
+@import './button.slds.css';
+@import './vertical-navigation-item.slds.css';

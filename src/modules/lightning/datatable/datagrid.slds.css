@@ -1,0 +1,187 @@
+
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved
+Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+/**
+  *
+  * TODO: converted all exposed styling hooks to local pseudo-private variables.
+  * Need to remove all of those and replace with --slds-g values, since we are not exposing anything.
+  * Ok to keep any local var as needed
+  * (This is related to the native shadow work)
+  *
+  */
+
+:focus-visible {
+  outline: 0;
+}
+
+:host([data-render-mode="shadow"]) [part='datagrid-wrapper'] {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+:host([data-render-mode="shadow"]) [part='datagrid'] {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  height: 100%;
+  background-color: var(--_slds-c-datagrid-color-background);
+}
+
+:host([data-render-mode="shadow"]) [part='datagrid-header'] {
+  color: var(--_slds-c-datagrid-header-text-color, #514f4d);
+  background-color: var(--_slds-c-datagrid-header-color-background,
+      var(--_slds-c-datagrid-color-background, #fafaf9));
+  border-top: 1px solid var(--_slds-c-datagrid-header-color-border, #babfc7);
+  width: 100%;
+
+  --_slds-c-datagrid-row-color-border: var(--_slds-c-datagrid-header-color-border, #babfc7);
+}
+
+:host([data-render-mode="shadow"]) [fixed-header='true'] [part='datagrid-header'] {
+  position: sticky;
+  top: 0;
+  min-height: 2rem;
+  z-index: 1;
+}
+
+/* Cells */
+
+:host([data-render-mode="shadow"]) [part='cell'] {
+  position: relative;
+  display: flex;
+  width: var(--_slds-c-datagrid-cell-sizing, 150px);
+  height: 100%;
+  padding-inline: var(--_slds-c-datagrid-cell-spacing-inline, 0.5rem);
+  padding-block: var(--_slds-c-datagrid-cell-spacing-block, 0.25rem);
+  background-color: var(--_slds-c-datagrid-cell-color-background, var(--_slds-c-datagrid-color-background));
+  border: var(--_slds-c-datagrid-cell-sizing-border, 1px) solid var(--_slds-c-datagrid-cell-color-border, transparent);
+  white-space: nowrap;
+  align-items: center;
+}
+
+:host([data-render-mode="shadow"]) [part='cell']:hover {
+  --_slds-c-datagrid-cell-color-background: var(--_slds-c-datagrid-cell-color-background-hover);
+}
+
+:host([data-render-mode="shadow"]) [part='cell'][aria-selected='true'] {
+  --_slds-c-datagrid-cell-color-border: var(--_slds-c-datagrid-cell-color-border-focus,
+      var(--slds-g-color-brand-base-contrast-3));
+}
+
+:host([data-render-mode="shadow"]) [part='cell']:focus-within {
+  --_slds-c-datagrid-cell-color-border: var(--_slds-c-datagrid-cell-color-border-focus,
+      var(--slds-g-color-brand-base-contrast-3));
+}
+
+/* Column Header Cells */
+
+:host([data-render-mode="shadow"]) [role='columnheader'] {
+  font-weight: 700;
+  border-right: 1px solid var(--_slds-c-datagrid-headercell-color-border, #babfc7);
+}
+
+:host([data-render-mode="shadow"]) [role='columnheader'][aria-sort]:hover {
+  background-color: var(--_slds-c-datagrid-headercell-color-background-hover, white);
+}
+
+:host([data-render-mode="shadow"]) [role='columnheader'][aria-selected='true'] {
+  border-right-color: var(--_slds-c-datagrid-headercell-color-border-focus,
+      var(--slds-g-color-brand-base-contrast-3));
+}
+
+:host([data-render-mode="shadow"]) [role='columnheader']:focus-within {
+  border-right-color: var(--_slds-c-datagrid-headercell-color-border-focus,
+      var(--slds-g-color-brand-base-contrast-3));
+  box-shadow: var(--_slds-c-datagrid-headercell-color-border-focus, var(--slds-g-color-brand-base-contrast-3)) -3px 0 0 0 inset;
+}
+
+/* Rows */
+
+:host([data-render-mode="shadow"]) [role~='row'] {
+  display: flex;
+  border-bottom: var(--_slds-c-datagrid-row-sizing-border, 1px) solid var(--_slds-c-datagrid-row-color-border, #dde2eb);
+}
+
+:host([data-render-mode="shadow"]) [role~='row'][aria-selected='true'] {
+  background-color: var(--_slds-c-datagrid-row-color-background-selected, #f3f2f2);
+}
+
+/* Text value in cells */
+
+:host([data-render-mode="shadow"]) [part='value'] {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+
+/* Column sorting */
+
+[data-sort] {
+  border: none;
+  background: transparent;
+  display: inline-flex;
+  min-width: 0;
+  flex: 1 1 0%;
+}
+
+[data-sort]::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+[data-sort] [part='value'] {
+  width: auto;
+}
+
+[data-resize-handle]:hover,:host([data-render-mode="shadow"]) 
+[type='range']:focus~[data-resize-handle] {
+  opacity: 1;
+}
+
+[data-resize-handle] {
+  width: 0.75rem;
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  bottom: -1px;
+  cursor: col-resize;
+  opacity: 0;
+}
+
+[data-resize-handle]::before {
+  content: '';
+  width: 1px;
+  height: 100vh;
+  background-color: var(--_slds-c-datagrid-resize-color-background, var(--slds-g-color-brand-base-contrast-2));
+  position: absolute;
+  top: 0;
+  right: -1px;
+}
+
+[data-resize-handle]::after {
+  content: '';
+  width: 4px;
+  height: 100%;
+  background-color: var(--_slds-c-datagrid-resize-color-background, var(--slds-g-color-brand-base-contrast-2));
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+:host([data-render-mode="shadow"]) [part='datagrid-body'] [role~='row']:hover {
+  background-color: var(--_slds-c-datagrid-row-color-background-hover, #f3f2f2);
+}
+
+/* Action Mode */
+
+:host([data-render-mode="shadow"]) [aria-readonly='true'] {
+  --_slds-c-datagrid-cell-color-background-hover: inherit;
+}
+
+:host([data-render-mode="shadow"]) [aria-readonly='false'] {
+  --_slds-c-datagrid-cell-color-background-hover: #fff;
+}

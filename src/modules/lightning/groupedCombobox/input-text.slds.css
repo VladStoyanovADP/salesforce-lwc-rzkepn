@@ -1,0 +1,506 @@
+/*******************************************
+* Imported dependency from @salesforce-ux/sds-primitives/src/sds/inputText/inputText.css
+*******************************************/
+/**
+ * Input container
+ * ---
+ * The Input Control Container holds the `start` and `end` slot contents, as well as the input control itself
+ */
+:host([data-render-mode="shadow"]) [part~='input-container'] {
+  display: flex;
+  align-items: center;
+  gap: var(--sds-c-inputtext-spacing-gap, var(--sds-s-input-spacing-gap));
+  min-height: var(--sds-c-inputtext-sizing-height, var(--sds-s-input-sizing-height));
+  padding-inline-start: var(
+    --sds-c-inputtext-spacing-inlinestart,
+    var(--sds-c-inputtext-spacing-inline, var(--sds-s-input-spacing))
+  );
+  padding-inline-end: var(
+    --sds-c-inputtext-spacing-inlineend,
+    var(--sds-c-inputtext-spacing-inline, var(--sds-s-input-spacing))
+  );
+  padding-block-start: var(
+    --sds-c-inputtext-spacing-blockstart,
+    var(--sds-c-inputtext-spacing-block, var(--sds-s-input-spacing))
+  );
+  padding-block-end: var(
+    --sds-c-inputtext-spacing-blockend,
+    var(--sds-c-inputtext-spacing-block, var(--sds-s-input-spacing))
+  );
+  background: var(--sds-c-inputtext-color-background, var(--sds-s-input-color-background));
+  border-block-start: var(
+      --sds-c-inputtext-sizing-border-blockstart,
+      var(--sds-c-inputtext-sizing-border, var(--sds-g-sizing-border-1, 1px))
+    )
+    solid
+    var(
+      --sds-c-inputtext-color-border-blockstart,
+      var(--sds-c-inputtext-color-border, var(--sds-s-input-color-border, currentColor))
+    );
+  border-inline-start: var(
+      --sds-c-inputtext-sizing-border-inlinestart,
+      var(--sds-c-inputtext-sizing-border, var(--sds-g-sizing-border-1, 1px))
+    )
+    solid
+    var(
+      --sds-c-inputtext-color-border-inlinestart,
+      var(--sds-c-inputtext-color-border, var(--sds-s-input-color-border, currentColor))
+    );
+  border-inline-end: var(
+      --sds-c-inputtext-sizing-border-inlineend,
+      var(--sds-c-inputtext-sizing-border, var(--sds-g-sizing-border-1, 1px))
+    )
+    solid
+    var(
+      --sds-c-inputtext-color-border-inlineend,
+      var(--sds-c-inputtext-color-border, var(--sds-s-input-color-border, currentColor))
+    );
+  border-block-end: var(
+      --sds-c-inputtext-sizing-border-blockend,
+      var(--sds-c-inputtext-sizing-border, var(--sds-g-sizing-border-1, 1px))
+    )
+    solid
+    var(
+      --sds-c-inputtext-color-border-blockend,
+      var(--sds-c-inputtext-color-border, var(--sds-s-input-color-border, currentColor))
+    );
+  border-radius: var(--sds-c-inputtext-radius-border, var(--sds-s-input-radius-border));
+  box-shadow: var(--sds-c-inputtext-shadow, var(--sds-s-input-shadow));
+}
+/**
+ * Input Control
+ * ---
+ * The input control is the actual input element
+ * We normalize the input since styles are being hoisted to the input-container element
+ */
+:host([data-render-mode="shadow"]) [part~='input'] {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  font-size: var(--sds-c-inputtext-font-size, var(--sds-s-input-font-size));
+  color: var(--sds-c-inputtext-text-color, var(--sds-s-input-text-color));
+  line-height: 1;
+  border: none;
+  background: transparent;
+}
+/**
+ * Actively typing in text input
+ * ---
+ * The active attribute gets applied the oninput event to inidicate the user inputting text
+ * This is a workaround for the lack of a :active-within selector in CSS
+ */
+:host([data-render-mode="shadow"][active]) [part~='input-container'] {
+  --sds-c-inputtext-color-background: var(
+    --sds-c-inputtext-color-background-active,
+    var(--sds-s-input-color-background-active)
+  );
+  --sds-c-inputtext-color-border: var(
+    --sds-c-inputtext-color-border-active,
+    var(--sds-s-input-color-border-active)
+  );
+  --sds-c-inputtext-shadow: var(--sds-c-inputtext-shadow-active, var(--sds-s-input-shadow-active));
+}
+/**
+ * Placeholder text
+ */
+:host([data-render-mode="shadow"]) [part~='input']::placeholder {
+  color: var(--sds-c-inputtext-text-color-placeholder, var(--sds-s-input-text-color-placeholder));
+  font-style: var(--sds-c-inputtext-font-style-placeholder, var(--sds-s-input-font-style-placeholder));
+}
+/**
+ * Input container when it receives focus-within
+ * ---
+ * Fallback order: focus > base
+ */
+:host([data-render-mode="shadow"]) [part~='input-container']:focus-within {
+  --sds-c-inputtext-color-border: var(
+    --sds-c-inputtext-color-border-focus,
+    var(--sds-s-input-color-border-focus, revert)
+  );
+  --sds-c-inputtext-shadow: var(--sds-c-inputtext-shadow-focus, var(--sds-s-input-shadow-focus));
+  --sds-c-inputtext-color-background: var(
+    --sds-c-inputtext-color-background-focus,
+    var(--sds-s-input-color-background-focus, revert)
+  );
+  --sds-c-inputtext-text-color: var(
+    --sds-c-inputtext-text-color-focus,
+    var(--sds-s-input-text-color-focus, revert)
+  );
+}
+/**
+ * Remove the default focus outline since we are hoisting those styles to the input-container using focus-within
+ */
+:host([data-render-mode="shadow"]) [part~='input']:focus {
+  outline: none;
+}
+/**
+ * Label Container
+ * ---
+ * The container for the label and its adjacent slots, label-start and label-end
+ */
+:host([data-render-mode="shadow"]) [part='label-container'] {
+  display: inline-flex;
+  align-items: center;
+
+  /* Need to tweak stylelint to merge new shared groups into existing set, label is not available */
+  gap: var(--sds-c-inputtext-label-spacing-gap, var(--sds-s-label-spacing-gap));
+  padding-inline-start: var(
+    --sds-c-inputtext-label-spacing-inlinestart,
+    var(--sds-c-inputtext-label-spacing-inline, var(--sds-s-label-spacing))
+  );
+  padding-inline-end: var(
+    --sds-c-inputtext-label-spacing-inlineend,
+    var(--sds-c-inputtext-label-spacing-inline, var(--sds-s-label-spacing))
+  );
+  padding-block-start: var(
+    --sds-c-inputtext-label-spacing-blockstart,
+    var(--sds-c-inputtext-label-spacing-block, var(--sds-s-label-spacing))
+  );
+  padding-block-end: var(
+    --sds-c-inputtext-label-spacing-blockend,
+    var(--sds-c-inputtext-label-spacing-block, var(--sds-s-label-spacing))
+  );
+  color: var(--sds-c-inputtext-label-color, var(--sds-s-label-color));
+}
+:host([data-render-mode="shadow"]) [part='label'] {
+  font-size: var(--sds-c-inputtext-label-font-size, var(--sds-s-label-font-size));
+  font-weight: var(--sds-c-inputtext-label-font-weight, var(--sds-s-label-font-weight));
+}
+/**
+ * Help text
+ * ---
+ * "visible" gets added when the slotchange confirms there are children
+ * This prevents box-model customizations from being applied, in the case of no children
+ */
+:host([data-render-mode="shadow"]) [part='help-text visible'] {
+  /* Need to tweak stylelint to merge new shared groups into existing set, helptext is not available */
+  font-size: var(--sds-c-inputtext-helptext-font-size, var(--sds-s-helptext-font-size));
+  color: var(--sds-c-inputtext-helptext-text-color, var(--sds-s-helptext-text-color));
+  padding-inline-start: var(
+    --sds-c-inputtext-helptext-spacing-inlinestart,
+    var(--sds-c-inputtext-helptext-spacing-inline, var(--sds-s-helptext-spacing))
+  );
+  padding-inline-end: var(
+    --sds-c-inputtext-helptext-spacing-inlineend,
+    var(--sds-c-inputtext-helptext-spacing-inline, var(--sds-s-helptext-spacing))
+  );
+  padding-block-start: var(
+    --sds-c-inputtext-helptext-spacing-blockstart,
+    var(--sds-c-inputtext-helptext-spacing-block, var(--sds-s-helptext-spacing))
+  );
+  padding-block-end: var(
+    --sds-c-inputtext-helptext-spacing-blockend,
+    var(--sds-c-inputtext-helptext-spacing-block, var(--sds-s-helptext-spacing))
+  );
+}
+/**
+ * Disabled state
+ */
+:host([data-render-mode="shadow"][disabled]) {
+  --sds-c-inputtext-color-background: var(
+    --sds-c-inputtext-color-background-disabled,
+    var(--sds-s-input-color-background-disabled)
+  );
+  --sds-c-inputtext-color-border: var(
+    --sds-c-inputtext-color-border-disabled,
+    var(--sds-s-input-color-border-disabled)
+  );
+}
+/**
+ * If told, the label will be hidden from view
+ */
+:host([data-render-mode="shadow"][label-hidden]) [part='label-container'] {
+  position: absolute !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  text-transform: none !important;
+  white-space: nowrap !important;
+}
+/**
+   * Input Text
+   */
+:host([data-render-mode="shadow"]) [part='input-text'] {
+        /* Host reassignments to composed slds-icon */
+        --slds-c-icon-color-foreground: var(
+            --slds-c-inputtext-icon-color-foreground,
+            var(--slds-g-color-on-surface-1)
+        );
+        --slds-c-icon-sizing: var(--slds-c-inputtext-icon-sizing, 14px);
+        --sds-c-inputtext-sizing-height: var(
+            --slds-c-inputtext-sizing-height,
+            var(--slds-g-sizing-9)
+        );
+        --sds-c-inputtext-color-background: var(
+            --slds-c-inputtext-color-background,
+            var(--slds-g-color-surface-container-1)
+        );
+        --sds-c-inputtext-color-background-focus: var(
+            --slds-c-inputtext-color-background-focus,
+            var(--slds-g-color-surface-container-1)
+        );
+        --sds-c-inputtext-text-color: var(--slds-c-inputtext-text-color);
+        --sds-c-inputtext-font-size: var(
+            --slds-c-inputtext-font-size,
+            var(--slds-g-font-scale-neg-2)
+        );
+        --sds-c-inputtext-text-color-placeholder: var(
+            --slds-c-inputtext-text-color-placeholder,
+            var(--slds-g-color-on-surface-1)
+        );
+        --sds-c-inputtext-color-border: var(
+            --slds-c-inputtext-color-border,
+            var(--slds-g-color-border-2)
+        );
+        --sds-c-inputtext-sizing-border: var(--slds-c-inputtext-sizing-border);
+        --sds-c-inputtext-radius-border: var(
+            --slds-c-inputtext-radius-border,
+            var(--slds-g-radius-border-2)
+        );
+
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+/**
+   * Input Container
+   */
+:host([data-render-mode="shadow"]) [part='input-container'] {
+        flex: 1 0 100%;
+        align-items: stretch;
+    }
+:host([data-render-mode="shadow"]) [part='input-container'][type='range'] {
+        border: none;
+        display: inline-block;
+    }
+:host([data-render-mode="shadow"]) [part='input-container'] .slds-input__icon:not(button) {
+            pointer-events: none;
+    }
+:host([data-render-mode="shadow"]) [part='input'][type='range'] {
+        min-height: calc(1.875rem + (1px * 2));
+        margin: 0;
+    }
+:host([data-render-mode="shadow"]) [part='input-container'][type='range']:focus-within,:host([data-render-mode="shadow"]) 
+    [part='input-container'][type='range']:active {
+        --sds-c-inputtext-color-border: var(--slds-g-color-border-accent-1);
+        --sds-c-inputtext-shadow: 0 0 3px var(--slds-g-color-accent-2);
+        --sds-c-inputtext-color-background: var(--slds-g-color-surface-container-1);
+
+        outline: 0;
+        border-width: var(--sds-c-inputtext-sizing-border, var(--slds-g-sizing-border-1));
+        border-color: var(--sds-c-inputtext-color-border, var(--slds-g-color-border-2));
+    }
+/**
+   * Input
+   */
+:host([data-render-mode="shadow"]) [part='input'] {
+        padding-inline-start: var(
+            --slds-c-inputtext-spacing-inlinestart,
+            var(--slds-g-spacing-3));
+        padding-inline-end: var(
+            --slds-c-inputtext-spacing-inlineend,
+            var(--slds-g-spacing-4));
+        height: unset;
+        font-family: var(--slds-g-font-family);
+    }
+/**
+   * Focus / active State
+   */
+:host(:not([disabled])) [part="input-container"]:focus-within,
+   :host(:not([disabled])) [part="input-container"]:active {
+      --sds-c-inputtext-color-border: var(--slds-g-color-border-accent-1);
+      --sds-c-inputtext-shadow: 0 0 var(--slds-g-sizing-border-3) var(--slds-g-color-accent-2);
+      --sds-c-inputtext-color-background: var(--slds-g-color-surface-container-1);
+
+      outline: 0;
+    }
+/**
+   * Read Only State
+   */
+:host([data-render-mode="shadow"][readonly]) [part='input-text'] {
+        --sds-c-inputtext-spacing-inline-start-readonly: 0;
+        --sds-c-inputtext-color-border-focus: transparent;
+        --slds-c-inputtext-color-border: transparent;
+        --slds-c-inputtext-color-background: transparent;
+        --slds-c-inputtext-color-background-focus: transparent;
+    }
+:host([data-render-mode="shadow"][readonly]) [part="input-container"]:focus-within,:host([data-render-mode="shadow"][readonly]) [part="input-container"]:active {
+       --sds-c-inputtext-color-border: var(--slds-g-color-disabled-container-2);
+       --sds-c-inputtext-shadow: 0 0 var(--slds-g-sizing-border-3) var(--slds-g-color-accent-2);
+       --sds-c-inputtext-color-background: transparent;
+
+       outline: 0;
+     }
+/**
+   * Invalid State
+   *
+   * Does not use --sds-c-inputtext-color-border-invalid due to this hook being
+   * tied to :host([aria-invalid]) which this subsystem does not use. Instead, it
+   * uses :host([invalid]).
+   */
+:host([data-render-mode="shadow"][invalid]) [part='input-text'] {
+        --sds-c-inputtext-shadow: 0 0 0 var(--slds-g-sizing-border-1) inset
+            var(--slds-g-color-error-1);
+        --slds-c-inputtext-color-border: var(--slds-g-color-border-error-1);
+        --slds-c-icon-color-foreground: var(--slds-g-color-error-1);
+    }
+/**
+   * Invalid State - Focus
+   *
+   * The following styling hooks are included in SDS and need to be reassigned
+   * here to prevent a bug with the focus state border and box-shadow
+   */
+:host([data-render-mode="shadow"][invalid]) [part='input-container']:focus-within {
+      --sds-c-inputtext-shadow:
+        var(--slds-g-color-error-base-50) 0 0 0 var(--slds-g-sizing-border-1) inset,
+        0 0 var(--slds-g-sizing-border-3) var(--slds-g-color-border-error-1);
+      --sds-c-inputtext-color-border: var(--slds-g-color-error-1);
+    }
+/**
+   * Disabled State
+   *
+   * Both parts form the visible form control.
+   */
+:host([data-render-mode="shadow"][disabled]) [part='input-container'],:host([data-render-mode="shadow"][disabled]) [part='input'] {
+        cursor: not-allowed;
+        --sds-c-inputtext-color-background: var(--slds-s-input-color-background-disabled, var(--slds-g-color-disabled-container-1));
+        --sds-c-inputtext-color-border: var(--slds-g-color-border-disabled-1);
+        --sds-c-inputtext-text-color: var(--slds-g-color-on-disabled-2);
+    }
+/**
+   * Label
+   *
+   * Add [part='input-text'] to increase specificity and
+   * avoid collisions with other components using [part='label'] (e.g. slds-input-checkbox)
+   */
+:host([data-render-mode="shadow"]) [part='input-text'] [part='label'] {
+        padding-block-start: var(--slds-g-spacing-1);
+        padding-inline-end: var(--slds-g-spacing-2);
+        color: var(
+            --slds-c-inputtext-label-color,
+            var(--slds-g-color-on-surface-2)
+        );
+        font-size: var(
+            --slds-c-inputtext-label-font-size,
+            var(--slds-g-font-scale-neg-3)
+        );
+        margin-block-end: var(--slds-g-sizing-1);
+
+        /* We inline flex to control the spacing between elements and not have to rely on whitespace characters */
+        display: inline-flex;
+    }
+/**
+   * Start
+   *
+   * Only expects an SLDS icon. We assign the SLDS Icon Styling Hook here
+   * so we don't add spacing to other icons composed in the component, e.g.,
+   * the icon in the inline help text.
+   */
+:host([data-render-mode="shadow"]) [part='start'] {
+        --slds-c-icon-spacing-inlineend: var(--slds-g-spacing-2);
+    }
+/**
+   * Label Inline Variant
+   *
+   * Note: all the 33% values you see are remnants of legacy SLDS. We need to
+   * keep this implementation intact so visual output is the same when used
+   * in a form that has non-shadow components. Attempting to refactor to a
+   * modern solution like flex is proving tricky due to the presence of the
+   * optional inline-help and the input needing to have exactly 33% of spacing
+   * from the inline-start.
+   *
+   * Ref: https://github.com/salesforce-ux/design-system-internal/blob/240-winter-23/ui/components/form-element/horizontal/_index.scss#L63
+   */
+@media (width >= 48em) {
+        :host([data-render-mode="shadow"][variant='label-inline']) [part='input-text'] {
+            display: block;
+        }
+
+        :host([data-render-mode="shadow"][variant='label-inline']) [part='label'] {
+            float: left;
+
+            /* TODO: Get rid of these magic numbers */
+            max-width: calc(33% - 1.125rem);
+            padding-block-start: var(--slds-g-spacing-1);
+        }
+
+        :host([data-render-mode="shadow"][variant='label-inline']) [part='input-container'] {
+            margin-inline-start: 33%;
+        }
+
+        :host([data-render-mode="shadow"][variant='label-inline']) [part='inline-help'] {
+            float: left;
+            padding-block-start: var(--slds-g-spacing-1);
+        }
+    }
+:host([data-render-mode="shadow"]) input[type="search"] + lightning-primitive-icon::part(icon) {
+        left: var(--slds-g-spacing-3);
+        fill: var(--slds-g-color-on-surface-1);
+    }
+:host([data-render-mode="shadow"]) .slds-input-has-icon .slds-button_icon {
+        background-color: transparent;
+    }
+:host([data-render-mode="shadow"]) .slds-input-has-icon .slds-button_icon:focus,:host([data-render-mode="shadow"]) 
+    .slds-input-has-icon .slds-button_icon:hover {
+        --slds-c-icon-color-foreground: var(--slds-g-color-accent-4);
+    }
+:host([data-render-mode="shadow"]) .slds-input-has-icon .slds-input__icon {
+        width: 0.875rem;
+        height: 0.875rem;
+        position: absolute;
+        top: 50%;
+        margin-top: -0.4375rem;
+        line-height: 1;
+        border: 0;
+        z-index: 2;
+    }
+/**
+   * Has Icon Left
+   */
+:host([data-render-mode="shadow"]) .slds-input-has-icon_left {
+        --slds-c-inputtext-spacing-inlinestart: var(--slds-g-spacing-6);
+    }
+:host([data-render-mode="shadow"]) .slds-input-has-icon_left .slds-input__icon,:host([data-render-mode="shadow"]) 
+    .slds-input-has-icon_left-right .slds-input__icon_left {
+        inset-inline-start: var(--slds-g-spacing-3);
+    }
+/**
+   * Has Icon Right
+   */
+:host([data-render-mode="shadow"]) .slds-input-has-icon_right {
+        --slds-c-inputtext-spacing-inlineend: var(--slds-g-spacing-6);
+    }
+:host([data-render-mode="shadow"]) .slds-input-has-icon_right .slds-input__icon,:host([data-render-mode="shadow"]) 
+    .slds-input-has-icon_left-right .slds-input__icon_right {
+        inset-inline-end: var(--slds-g-spacing-3);
+    }
+/**
+   * Has Icon Left & Right
+   */
+:host([data-render-mode="shadow"]) .slds-input-has-icon_left-right {
+        --slds-c-inputtext-spacing-inlinestart: var(--slds-g-spacing-6);
+        --slds-c-inputtext-spacing-inlineend: var(--slds-g-spacing-6);
+    }
+/**
+ * A temporarily baked-in utility class until SLDS gets a proper utility package.
+ *
+ * This is a hybrid patch between synthetic and native shadow. The ideal final
+ * outcome is the removal of this class and replacing the class with the SLDS
+ * utility package solution.
+ */
+:host([data-render-mode="shadow"]) .slds-assistive-text {
+    position: absolute !important;
+    margin: -1px !important;
+    border: 0 !important;
+    padding: 0 !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+    text-transform: none !important;
+    white-space: nowrap !important;
+  }

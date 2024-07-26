@@ -11,6 +11,7 @@
     "devDependencies": {
         "@lwc/rollup-plugin": "7.2.0",
         "@rollup/plugin-replace": "^5.0.7",
+        "@salesforce-ux/design-system": "^2.24.5",
         "lwc": "7.2.0",
         "rollup": "^4.19.0",
         "rollup-plugin-livereload": "^2.0.5",
@@ -24,5 +25,8 @@
                 ]
             }
         }
+    },
+    "dependencies": {
+        "@lwc/synthetic-shadow": "^7.2.0"
     }
 }

@@ -1,0 +1,12 @@
+<template>
+    <div
+        class={footerCssClasses}
+        part="modal-footer"
+        onfocusin={handleModalFooterFocusin}
+    >
+        <slot
+            data-footer-slot
+            onslotchange={handleDefaultSlotChange}
+        ></slot>
+    </div>
+</template>

@@ -1,0 +1,47 @@
+<template>
+    <template if:false={hasExternalLabel}>
+        <label class={computedLabelClass}>
+            <template if:true={required}>
+                <abbr class="slds-required" title={i18n.required}>*</abbr>
+            </template>
+            {label}
+        </label>
+        <lightning-helptext if:true={fieldLevelHelp} content={fieldLevelHelp} alternative-text={helptextAlternativeText}></lightning-helptext>
+    </template>
+    <div class="slds-form-element__control">
+        <lightning-base-combobox
+            part="input-container"
+            aria-disabled={ariaDisabled}
+            onready={handleReady}
+            autocomplete={autocomplete}
+            accesskey={accessKey}
+            dropdown-height="small"
+            name={name}
+            variant="lookup"
+            placeholder={placeholder}
+            disabled={disabled}
+            readonly={readOnly}
+            required={required}
+            items={items}
+            input-text={displayValue}
+            input-icon-name="utility:clock"
+            input-label={comboboxLabel}
+            input-controls-element={ariaControlsElement}
+            input-details-elements={ariaDetailsElements}
+            input-labelled-by-element={ariaLabelledByElement}
+            dropdown-alignment="auto"
+            ontextchange={handleInputChange}
+            ontextinput={handleTextInput}
+            ondropdownopenrequest={handleDropdownOpenRequest}
+            onfocus={handleFocus}
+            onblur={handleBlur}
+            onselect={handleTimeSelect}
+            data-aria-invalid={computedAriaInvalid}
+            root-aria-node={rootAriaNode}
+            input-described-by-elements={ariaDescribedByElements}
+            aria-error-message-elements={ariaErrorMessageElements}
+        >
+        </lightning-base-combobox>
+    </div>
+    <div id="error-message" data-error-message class={computedClass} aria-live="polite">{_errorMessage}</div>
+</template>

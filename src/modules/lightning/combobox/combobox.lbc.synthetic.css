@@ -1,0 +1,28 @@
+:host {
+    display: block;
+}
+
+/**
+     This is adding the red border around the combobox input when there's an error
+     Should be removed once SLDS has added support for this (@W-9240038)
+*/
+:host.slds-has-error {
+    --slds-c-input-color-border: var(--slds-g-color-error-base-40, #ea001e);
+    --slds-c-input-shadow: var(--slds-g-color-error-base-40, #ea001e) 0 0 0 1px inset;
+    --slds-c-input-color-background: var(--slds-c-input-color-background, var(--sds-c-input-color-background, var(--slds-g-color-neutral-base-100, #fff)));
+    --slds-c-input-text-color: var(--slds-c-input-text-color, var(--sds-c-input-text-color, var(--slds-g-color-neutral-base-10, #747474)));
+}
+
+/* TODO W-12674349: remove after assistive text util is added */
+.slds-assistive-text {
+    position: absolute !important;
+    margin: -1px !important;
+    border: 0 !important;
+    padding: 0 !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+    text-transform: none !important;
+    white-space: nowrap !important;
+  }

@@ -1,0 +1,51 @@
+
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved
+  Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+  /* :host::part(button-icon-stateful), */
+
+  :host([data-render-mode="shadow"]) [part='button-icon-stateful'] {
+    display: inline-flex;
+  }
+
+  /* Override default button-icon styles */
+
+  :host([data-render-mode="shadow"]) [part~='button-icon'] {
+    --slds-c-button-neutral-color-border: var(--slds-g-color-border-2);
+    --slds-c-button-neutral-color-border-hover: var(--slds-g-color-border-2);
+    --slds-c-button-neutral-color-border-focus: var(--slds-g-color-border-2);
+    --slds-c-button-neutral-color-border-active: var(--slds-g-color-border-2);
+  }
+
+  /* Selected + Variants */
+
+  :host([data-render-mode="shadow"][selected]) [part~='button-icon'] {
+    --slds-c-buttonicon-color-foreground: var(--slds-g-color-on-accent-1);
+    --slds-c-buttonicon-color-foreground-hover: var(--slds-g-color-on-accent-1);
+    --slds-c-buttonicon-color-foreground-focus: var(--slds-g-color-on-accent-1);
+    --slds-c-buttonicon-color-foreground-active: var(--slds-g-color-on-accent-1);
+
+    --slds-c-button-neutral-color-background: var(--slds-g-color-accent-container-1);
+    --slds-c-button-neutral-color-background-hover: 
+      var(--slds-g-color-accent-container-3);
+    --slds-c-button-neutral-color-background-focus: var(--slds-g-color-accent-container-3);
+    --slds-c-button-neutral-color-background-active:
+      var(--slds-g-color-accent-container-3);
+
+    --slds-c-button-neutral-color-border: 
+      var(--slds-g-color-border-accent-1);
+    --slds-c-button-neutral-color-border-hover: 
+      var(--slds-g-color-border-accent-3);
+    --slds-c-button-neutral-color-border-focus:
+      var(--slds-g-color-border-accent-3);
+    --slds-c-button-neutral-color-border-active:
+      var(--slds-g-color-border-accent-3);
+  }
+
+  /* Selected + Disabled + Variants */
+
+  :host([data-render-mode="shadow"][selected][disabled]) [part~='button-icon'] {
+    --sds-c-button-color-background-disabled: var(--slds-g-color-disabled-container-2);
+    --sds-c-button-color-border-disabled: var(--slds-g-color-border-disabled-1);
+    --slds-c-icon-color-foreground: var(--slds-g-color-on-disabled-2);
+  }

@@ -1,0 +1,109 @@
+<template>
+    <lightning-modal-header label={heading}>
+        <p>Utilize <a href="https://www.lightningdesignsystem.com/components/form-element/#Compound" target="_blank">SLDS form element compound variant</a> and <a href="https://www.lightningdesignsystem.com/utilities/sizing/" target="_blank">sizing utils</a></p>
+    </lightning-modal-header>
+    <lightning-modal-body>
+        <div class="slds-form" role="list">
+            <fieldset class="slds-form-element slds-form-element_compound slds-form-element_address">
+                <legend class="slds-form-element__legend slds-form-element__label">Billing Address</legend>
+                <div class="slds-form-element__control">
+                    <div class="slds-form-element__row">
+                        <div class="slds-size_1-of-1">
+                            <lightning-textarea
+                                id="form-element-id-01"
+                                label="Street"
+                                value=""
+                                placeholder="Placeholder text…"
+                                required
+                            ></lightning-textarea>
+                        </div>
+                    </div>
+                    <div class="slds-form-element__row">
+                        <div class="slds-size_4-of-6">
+                            <lightning-input
+                                label="City"
+                                value=""
+                                placeholder="enter your city"
+                            ></lightning-input>
+                        </div>
+                        <div class="slds-size_2-of-6">
+                            <lightning-input
+                                label="Province"
+                                value=""
+                                placeholder="enter your province"
+                            ></lightning-input>
+                        </div>
+                    </div>
+                    <div class="slds-form-element__row">
+                        <div class="slds-size_4-of-6">
+                            <lightning-input
+                                label="Postal Code"
+                                value=""
+                                placeholder="enter your postal code"
+                            ></lightning-input>
+                        </div>
+                        <div class="slds-size_2-of-6">
+                            <lightning-input
+                                label="Country"
+                                value=""
+                                placeholder="enter your country"
+                            ></lightning-input>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </lightning-modal-body>
+    <lightning-modal-footer>
+        <div id="all-footer">
+            <template for:each={options} for:item="option">
+                <template if:true={option.triggerCancel}>
+                    <lightning-button
+                        key={option.id}
+                        label={option.label}
+                        class="slds-button"
+                        data-focus={option.focusName}
+                        variant={option.variant}
+                        onclick={handleButtonCancel}
+                        data-id={option.id}
+                        disabled={disableClose}
+                    ></lightning-button>
+                </template>
+                <template if:true={option.triggerSecondModal}>
+                    <lightning-button
+                        key={option.id}
+                        label={option.label}
+                        class="slds-button"
+                        data-focus={option.focusName}
+                        variant={option.variant}
+                        onclick={handleButtonOpenSecondModal}
+                        data-id={option.id}
+                    ></lightning-button>
+                </template>
+                <template if:true={option.toggleDisableClose}>
+                    <lightning-button
+                        key={option.id}
+                        label={computedDisableCloseLabel}
+                        class="slds-button"
+                        data-focus={option.focusName}
+                        variant={option.variant}
+                        onclick={handleButtonToggleDisableButton}
+                        data-id={option.id}
+                    ></lightning-button>
+                </template>
+                <template if:true={option.triggerSubmit}>
+                    <lightning-button
+                        key={option.id}
+                        label={option.label}
+                        class="slds-button"
+                        data-focus={option.focusName}
+                        variant={option.variant}
+                        onclick={handleButtonSubmit}
+                        data-id={option.id}
+                        disabled={disableClose}
+                    ></lightning-button>
+                </template>
+            </template>
+        </div>
+    </lightning-modal-footer>
+</template>

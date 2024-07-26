@@ -1,0 +1,1 @@
+export default 'Enter at least 2 characters.';

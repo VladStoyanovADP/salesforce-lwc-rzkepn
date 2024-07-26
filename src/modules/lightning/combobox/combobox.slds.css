@@ -1,0 +1,12 @@
+
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved
+  Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+  /**
+   * Invalid State
+   */
+
+  :host([data-render-mode="shadow"][invalid]) [part='combobox'] {
+    --slds-c-inputtext-color-border: var(--slds-g-color-error-base-50);
+    --slds-c-inputtext-sizing-border: var(--slds-g-sizing-border-1);
+  }

@@ -1,0 +1,52 @@
+<template>
+    <article class={computedWrapperClassNames} aria-label={label} part="card">
+        <template if:true={computedHidden}>
+        <div class="slds-card__header slds-grid">
+            <header class="slds-media slds-media_center slds-has-flexi-truncate" part="header">
+                <template if:true={hasIcon}>
+                    <div class="slds-media__figure" part="icon">
+                        <lightning-icon icon-name={iconName} size="small"></lightning-icon>
+                    </div>
+                </template>
+                <div class="slds-media__body" part="title">
+                    <template if:true={_hasTitle}>
+                        <h2 aria-level={_privateHeadingAriaLevel} class="slds-card__header-title">
+                            <span class="slds-truncate">
+                                <template if:true={hasStringTitle}>
+                                    {title}
+                                </template>
+                                <template if:false={hasStringTitle}>
+                                    <slot name="title"></slot>
+                                </template>
+                            </span>
+                        </h2>
+                    </template>
+                    <!-- This dummy placeholder slot is required because
+                        a slot's presence is verified by assignedElements count
+                        and not whether the slot itself is present or not -->
+                    <template if:false={_hasTitle}>
+                        <slot name="title" class="slds-hide"></slot>
+                    </template>
+                </div>
+                <div class="slds-no-flex" part="actions">
+                    <slot name="actions"></slot>
+                </div>
+            </header>
+        </div>
+        </template>
+        <div class="slds-card__body" part="body">
+            <slot></slot>
+        </div>
+        <template if:true={_showFooter}>
+            <div class="slds-card__footer" part="footer">
+                <slot name="footer"></slot>
+            </div>
+        </template>
+        <!-- This dummy placeholder slot is required because
+            a slot's presence is verified by assignedElements count
+            and not whether the slot itself is present or not -->
+        <template if:false={_showFooter}>
+            <slot name="footer" class="slds-hide"></slot>
+        </template>
+    </article>
+</template>

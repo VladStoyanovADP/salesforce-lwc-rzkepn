@@ -1,0 +1,13 @@
+
+  :host([data-render-mode="shadow"]) .slds-combobox-group {
+    display: flex;
+    flex-direction: row;
+  }
+
+  :host([data-render-mode="shadow"]) .slds-combobox_object-switcher {
+    flex-shrink: 0;
+  }
+
+  :host([data-render-mode="shadow"]) .slds-combobox-addon_end {
+    flex: 1 1 auto;
+  }

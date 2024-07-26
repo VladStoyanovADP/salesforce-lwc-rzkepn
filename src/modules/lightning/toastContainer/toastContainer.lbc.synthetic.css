@@ -1,0 +1,38 @@
+.top,
+:host([data-render-mode="shadow"]) .top {
+    top: 0;
+    bottom: unset;
+}
+
+.bottom,
+:host([data-render-mode="shadow"]) .bottom {
+    bottom: 0;
+    top: unset;
+}
+
+.left,
+:host([data-render-mode="shadow"]) .left {
+    left: 0;
+    right: auto;
+}
+
+.right,
+:host([data-render-mode="shadow"]) .right {
+    left: auto;
+    right: 0;
+}
+
+.center,
+:host([data-render-mode="shadow"]) .center {
+    transform: translate(50%);
+    right: 50%;
+}
+
+@media (max-width: 30rem) {
+    .center,
+    :host([data-render-mode="shadow"]) .center {
+        transform: none;
+        right: 0;
+        left: 0;
+    }
+}

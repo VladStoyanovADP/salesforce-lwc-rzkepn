@@ -1,0 +1,30 @@
+<template>
+    <span lwc:ref="columnHeader" id="column-group-header" class="slds-assistive-text" data-column-header>
+        {computedColumnHeaderLabel}
+    </span>
+    <!-- Header Content -->
+    <div lwc:ref="child" class="slds-th__action slds-th__action_form slds-cell-fixed" style={columnStyles}>
+        <template if:true={showCheckbox}>
+            <span class="slds-checkbox">
+                <!-- Selectable Checkbox -->
+                <input
+                    lwc:ref="selectAll"
+                    type="checkbox"
+                    class="datatable-select-all"
+                    name={computedOptionName}
+                    id="lgt-dt-header-factory-id"
+                    onclick={handleSelectAllRows}
+                    tabindex={internalTabIndex}
+                    data-navigation="enable"
+                    disabled={def.isBulkSelectionDisabled}>
+
+                <label class="slds-checkbox__label" for="lgt-dt-header-factory-id">
+                    <span class="slds-checkbox_faux"></span>
+                    <span class="slds-form-element__label slds-assistive-text">
+                        {i18n.selectAll}
+                    </span>
+                </label>
+            </span>
+        </template>
+    </div>
+</template>

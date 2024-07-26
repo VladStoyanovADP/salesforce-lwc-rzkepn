@@ -1,0 +1,47 @@
+<template>
+    <div class={computedWrapperClass} part="listbox pill-container">
+        <template if:true={_showMore}>
+            <span class="slds-listbox-toggle" aria-hidden="true"><button part="button" class="slds-button" tabindex="-1" onclick={handleMoreClick}>{computedPillCountMoreLabel}</button></span>
+        </template>
+        <ul
+            class={computedListboxClass}
+            aria-label={label}
+            onclick={handleClick}
+            onkeydown={handleKeyDown}
+            part="listbox"
+        >
+            <template for:each={pillViewModels} for:item="pillViewModel" for:index="index">
+                <!--
+                W-14952967: Temporarily adding slds-truncate so pills truncate on small form factors.
+                -->
+                <li key={pillViewModel.pill.item.label} class="slds-listbox-item slds-truncate">
+                    <lightning-pill label={pillViewModel.pill.item.label}
+                                    onclick={handlePillClick}
+                                    name={index}
+                                    href={pillViewModel.pill.item.href}
+                                    onremove={handleRemove}
+                                    onblur={handlePillBlur}
+                                    onfocus={handlePillFocus}
+                                    variant={pillViewModel.pill.variant}
+                                    class="slds-truncate">
+                        <template if:true={pillViewModel.pill.isIcon}>
+                            <lightning-icon
+                                class="slds-icon_container"
+                                icon-name={pillViewModel.pill.item.iconName}
+                                alternative-text={pillViewModel.pill.item.alternativeText}>
+                            </lightning-icon>
+                        </template>
+                        <template if:true={pillViewModel.pill.isAvatar}>
+                            <lightning-avatar src={pillViewModel.pill.item.src}
+                                            fallback-icon-name={pillViewModel.pill.item.fallbackIconName}
+                                            variant={pillViewModel.pill.item.variant}
+                                            size="x-small"
+                                            alternative-text={pillViewModel.pill.item.alternativeText}>
+                            </lightning-avatar>
+                        </template>
+                    </lightning-pill>
+                </li>
+            </template>
+        </ul>
+    </div>
+</template>

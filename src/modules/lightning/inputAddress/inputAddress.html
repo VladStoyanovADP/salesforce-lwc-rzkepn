@@ -1,0 +1,120 @@
+<template>
+    <fieldset
+        class={computedFieldsetClass}
+        part="input-address"
+    >
+        <legend class={computedLegendClass}>
+            <template if:true={addressLabelRequired}>
+                <abbr class="slds-required" title={i18n.required}>*</abbr>
+            </template>
+            {addressLabel}
+        </legend>
+        <lightning-helptext
+            if:true={fieldLevelHelp}
+            content={fieldLevelHelp}
+            alternative-text={helptextAlternativeText}
+        ></lightning-helptext>
+        <div class="slds-form-element__control">
+            <div class="slds-form-element__group">
+                <template if:true={showDedicatedLookupAddressField}>
+                    <div class="slds-form-element__row slds-grow">
+                        <lightning-lookup-address
+                            class="slds-form-element slds-size_6-of-6"
+                            onchange={handleAddress}
+                            placeholder={addressLookupPlaceholder}
+                            label={addressLookupLabel}
+                            disabled={disabled}
+                        ></lightning-lookup-address>
+                    </div>
+                    <span
+                        class="slds-assistive-text"
+                        role="status"
+                    >
+                        {_messageOnAddressUpdate}
+                    </span>
+                </template>
+                <template for:each={domFieldsMeta} for:item="row" for:index="index">
+                    <div class="slds-form-element__row" key={row.name}>
+                        <template for:each={row} for:item="field">
+                            <template if:true={field.isLookupAddress}>
+                                <lightning-lookup-address
+                                    always-render
+                                    key={field.name}
+                                    data-field={field.name}
+                                    class={field.classnames}
+                                    label={field.label}
+                                    name={field.name}
+                                    autocomplete={field.autocomplete}
+                                    input-text={field.value}
+                                    placeholder={field.placeholder}
+                                    required={field.required}
+                                    disabled={field.disabled}
+                                    onfocus={handleFocus}
+                                    onblur={handleBlur}
+                                    onchange={handleAddress}
+                                ></lightning-lookup-address>
+                            </template>
+                            <template if:true={field.isInput}>
+                                <lightning-input
+                                    key={field.name}
+                                    data-field={field.name}
+                                    class={field.classnames}
+                                    label={field.label}
+                                    name={field.name}
+                                    autocomplete={field.autocomplete}
+                                    value={field.value}
+                                    maxlength={field.maxlength}
+                                    placeholder={field.placeholder}
+                                    required={field.required}
+                                    disabled={field.disabled}
+                                    readonly={readOnly}
+                                    onfocus={handleFocus}
+                                    onblur={handleBlur}
+                                    onchange={handleChange}
+                                ></lightning-input>
+                            </template>
+                            <template if:true={field.isTextArea}>
+                                <lightning-textarea
+                                    key={field.name}
+                                    data-field={field.name}
+                                    class={field.classnames}
+                                    name={field.name}
+                                    label={field.label}
+                                    value={field.value}
+                                    autocomplete={field.autocomplete}
+                                    maxlength={field.maxlength}
+                                    placeholder={field.placeholder}
+                                    required={field.required}
+                                    disabled={field.disabled}
+                                    readonly={readOnly}
+                                    onfocus={handleFocus}
+                                    onblur={handleBlur}
+                                    onchange={handleChange}
+                                ></lightning-textarea>
+                            </template>
+                            <template if:true={field.isPicklist}>
+                                <lightning-picklist
+                                    key={field.name}
+                                    suppress-none-option={field.suppressNoneOption}
+                                    data-field={field.name}
+                                    class={field.classnames}
+                                    name={field.name}
+                                    label={field.label}
+                                    autocomplete={field.autocomplete}
+                                    options={field.options}
+                                    value={field.value}
+                                    placeholder={field.placeholder}
+                                    required={field.required}
+                                    disabled={field.disabled}
+                                    onfocus={handleFocus}
+                                    onblur={handleBlur}
+                                    onchange={handleChange}
+                                ></lightning-picklist>
+                            </template>
+                        </template>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </fieldset>
+</template>

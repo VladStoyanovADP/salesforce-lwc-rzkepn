@@ -1,0 +1,18 @@
+<template>
+    <div class={computedBaseStepClass}
+            data-label={label}
+            onmouseenter={handleMouseEnter}
+            onmouseleave={handleMouseLeave}
+            onfocus={handleFocus}
+            onblur={handleBlur}
+            tabindex="0">
+        <template if:true={hasIcon}>
+            <lightning-primitive-icon
+                    icon-name={baseIconName}
+                    svg-class="slds-icon"
+                    size="xx-small"
+                    variant="bare"></lightning-primitive-icon>
+        </template>
+        <span if:true={assistiveText} class="slds-assistive-text">{assistiveText}</span>
+    </div>
+</template>

@@ -1,0 +1,37 @@
+<template>
+    <div class="slds-form-element__control">
+        <label class="slds-checkbox_toggle slds-grid" for="checkbox-toggle" part="checkbox-toggle">
+            <template if:true={required}>
+                <abbr class="slds-required" title={labelRequired}>*</abbr>
+            </template>
+            <span class={computedLabelClass}>{label}</span>
+            <input
+                type="checkbox"
+                id="checkbox-toggle"
+                part="checkbox"
+                accesskey={accessKey}
+                aria-label={ariaLabel}
+                aria-keyshortcuts={ariaKeyShortcuts}
+                aria-disabled={ariaDisabled}
+                aria-roledescription={ariaRoleDescription}
+                aria-invalid={ariaInvalid}
+                disabled={disabled}
+                name={name}
+                onblur={handleBlur}
+                onchange={handleChange}
+                onfocus={handleFocus}
+                onclick={handleClick}
+                readonly={readOnly}
+                required={required}
+            >
+            <span id="toggle-description" data-toggle-description  class="slds-checkbox_faux_container">
+                <span class="slds-checkbox_faux" part="indicator"></span>
+                <span class="slds-checkbox_on">{messageToggleActive}</span>
+                <span class="slds-checkbox_off">{messageToggleInactive}</span>
+            </span>
+        </label>
+    </div>
+    <template if:true={_helpMessage}>
+        <div id="help-message" class="slds-form-element__help" data-help-message part="help-text" role="status">{_helpMessage}</div>
+    </template>
+</template>

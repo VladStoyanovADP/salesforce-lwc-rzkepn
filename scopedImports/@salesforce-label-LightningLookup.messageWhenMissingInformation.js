@@ -1,0 +1,1 @@
+export default 'Review this lookup configuration. Your Salesforce admin can help with this.';

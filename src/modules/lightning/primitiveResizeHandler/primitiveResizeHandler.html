@@ -1,0 +1,35 @@
+<template>
+    <template if:true={showA11yLabel}>
+        <span class="slds-assistive-text" aria-live="polite">{resizerLabel} {value}</span>
+    </template>
+    <!--
+        set input tabindex to -1 to make sure input doesn't
+        get initial focus when first tabbing into datatable
+        JS in primitiveDatatableCell will focus input when appropriate
+    -->
+    <input lwc:ref="input"
+           type="range"
+           value={value}
+           min={minWidth}
+           max={maxWidth}
+           aria-label={resizerLabel}
+           aria-valuenow={value}
+           aria-valuemin={minWidth}
+           aria-valuemax={maxWidth}
+           class="slds-resizable__input slds-assistive-text"
+           onkeydown={handleKeydown}
+           tabindex="-1"
+    >
+    <span lwc:ref="resizeHandle"
+          class="slds-resizable__handle"
+          data-is-last-col={isLastCol}
+          onmousedown={onMouseDown}
+          ontouchstart={onTouchStart}
+          ontouchmove={onTouchMove}
+          ontouchend={onTouchEnd}
+          ontouchcancel={onTouchEnd}
+          onclick={onClick}
+          style="will-change: transform;">
+        <span class="slds-resizable__divider" data-is-last-col={isLastCol}></span>
+    </span>
+</template>

@@ -1,0 +1,108 @@
+
+  :host([data-render-mode="shadow"]) {
+          /**
+          * Remap to SLDS blueprint hooks for parity
+          * https://www.lightningdesignsystem.com/components/modals/#Styling-Hooks-Overview
+          */
+
+          /* stylelint-disable */
+          --slds-c-textarea-spacing-blockstart: var(--slds-c-textarea-spacing-block-start);
+          --slds-c-textarea-spacing-blockend: var(--slds-c-textarea-spacing-block-end);
+          --slds-c-textarea-spacing-inlinestart: var(--slds-c-textarea-spacing-inline-start);
+          --slds-c-textarea-spacing-inlineend: var(--slds-c-textarea-spacing-inline-end);
+          /* stylelint-enable */
+  }
+
+    /* sldsCommon.css file comments indicate intentionally
+        not adding textarea selector to that file due to
+        style leaks in synthetic shadow mode.
+        adding here instead
+    */
+
+    :host([data-render-mode="shadow"]) textarea {
+        color: inherit;
+        font: inherit;
+        margin: 0;
+    }
+
+    :host([data-render-mode="shadow"]) .slds-textarea {
+       /* stylelint-disable sds-stylelint-plugin/styling-hooks-pattern */
+        appearance: none;
+        min-height: var(--slds-c-textarea-sizing-min-height);
+        width: 100%;
+        padding-block-start: var(--slds-c-textarea-spacing-blockstart, var(--slds-g-spacing-2));
+        padding-inline-end: var(--slds-c-textarea-spacing-inlineend, var(--slds-g-spacing-3));
+        padding-block-end: var(--slds-c-textarea-spacing-blockend, var(--slds-g-spacing-2));
+        padding-inline-start: var(--slds-c-textarea-spacing-inlinestart, var(--slds-g-spacing-3));
+        background-color: var(--slds-c-textarea-color-background, var(--slds-g-color-neutral-base-100, var(--slds-g-color-neutral-base-100)));
+        color: var(--slds-c-textarea-text-color);
+        border: var(--slds-g-sizing-border-1) solid var(--slds-c-textarea-color-border, var(--slds-g-color-border-base-4, var(--slds-g-color-border-base-1)));
+        border-radius: var(--slds-c-textarea-radius-border, var(--slds-g-radius-border-2));
+        box-shadow: var(--slds-c-textarea-shadow);
+        resize: vertical;
+        transition: border 0.1s linear, background-color 0.1s linear;
+
+        /* stylelint-enable sds-stylelint-plugin/styling-hooks-pattern */
+    }
+
+    :host([data-render-mode="shadow"]) .slds-textarea:required {
+        --slds-c-textarea-shadow: none;
+    }
+
+    :host([data-render-mode="shadow"]) .slds-textarea:focus,:host([data-render-mode="shadow"]) 
+    .slds-textarea:active {
+        outline: 0;
+        color: var(--slds-c-textarea-text-color-focus);
+        background-color: var(--slds-c-textarea-color-background-focus, var(--slds-g-color-neutral-base-100, var(--slds-g-color-neutral-base-100)));
+        border-color: var(--slds-c-textarea-color-border-focus, var(--slds-g-color-brand-base-60, var(--slds-g-color-brand-base-60)));
+        box-shadow: var(--slds-c-textarea-shadow-focus, 0 0 var(--slds-g-sizing-border-3) var(--slds-g-color-brand-base-50));
+    }
+
+    :host([data-render-mode="shadow"]) .slds-textarea[disabled],:host([data-render-mode="shadow"]) 
+    .slds-textarea.slds-is-disabled {
+        background-color: var(--slds-g-color-disabled-container-2);
+        border-color: var(--slds-g-color-border-disabled-2);
+        color: inherit;
+        cursor: not-allowed;
+        user-select: none;
+    }
+
+    :host([data-render-mode="shadow"]) .slds-textarea[disabled]:focus,:host([data-render-mode="shadow"]) 
+    .slds-textarea[disabled]:active,:host([data-render-mode="shadow"]) 
+    .slds-textarea.slds-is-disabled:focus,:host([data-render-mode="shadow"]) 
+    .slds-textarea.slds-is-disabled:active {
+        box-shadow: none;
+    }
+
+    /* replace .slds-has-error with invalid */
+
+    :host([data-render-mode="shadow"][invalid]) .slds-textarea {
+        --slds-c-textarea-color-background: var(--slds-g-color-neutral-base-100, var(--slds-g-color-neutral-base-100));
+        --slds-c-textarea-color-border: var(--slds-g-color-error-base-40, var(--slds-g-color-error-base-50));
+        --slds-c-textarea-shadow: var(--slds-g-color-error-base-40, var(--slds-g-color-error-base-50)) 0 0 0 var(--slds-g-sizing-border-1) inset;
+
+        background-clip: padding-box;
+    }
+
+    /* replace .slds-has-error with invalid */
+
+    :host([data-render-mode="shadow"][invalid]) .slds-textarea:focus,:host([data-render-mode="shadow"][invalid]) .slds-textarea:active {
+        --slds-c-textarea-text-color-focus: var(--slds-c-textarea-text-color-error-focus);
+        --slds-c-textarea-color-background-focus: var(--slds-c-textarea-color-background-error-focus, var(--slds-g-color-neutral-base-100, var(--slds-g-color-neutral-base-100)));
+        --slds-c-textarea-shadow-focus: var(--slds-g-color-error-base-40, var(--slds-g-color-error-base-50)) 0 0 0 var(--slds-g-sizing-border-1) inset, 0 0 var(--slds-g-sizing-border-3) var(--slds-g-color-brand-base-50);
+    }
+
+    /* TODO W-12674349: remove after name-value-list utils are added */
+
+    :host([data-render-mode="shadow"]) .slds-assistive-text {
+      position: absolute !important;
+      margin: -1px !important;
+      border: 0 !important;
+      padding: 0 !important;
+      width: 1px !important;
+      height: 1px !important;
+      overflow: hidden !important;
+      clip: rect(0 0 0 0) !important;
+      text-transform: none !important;
+      white-space: nowrap !important;
+  }

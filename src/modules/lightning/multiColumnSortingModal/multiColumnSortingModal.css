@@ -1,0 +1,14 @@
+@import 'lightning/sldsCommon';
+@import 'lightning/sldsUtilsHyphenation';
+
+[part="columnadder"] {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+
+[part="modal-body"] {
+    height: 19rem;
+}

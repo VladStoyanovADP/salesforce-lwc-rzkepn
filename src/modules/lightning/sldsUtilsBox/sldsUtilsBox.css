@@ -1,0 +1,25 @@
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved
+Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+:host([data-render-mode='shadow']) .slds-box,
+:host([data-render-mode='shadow']) ::slotted(.slds-box) {
+    padding: var(--slds-g-spacing-4, 1rem);
+    border-radius: var(--slds-g-spacing-1, 0.25rem);
+    border: var(--slds-g-sizing-border-1, 1px) solid
+        var(--slds-g-color-border-base-1, #e5e5e5);
+}
+
+:host([data-render-mode='shadow']) .slds-box_xx-small,
+:host([data-render-mode='shadow']) ::slotted(.slds-box_xx-small) {
+    padding: var(--slds-g-spacing-1, 0.25rem);
+}
+
+:host([data-render-mode='shadow']) .slds-box_x-small,
+:host([data-render-mode='shadow']) ::slotted(.slds-box_x-small) {
+    padding: var(--slds-g-spacing-2, 0.5rem);
+}
+
+:host([data-render-mode='shadow']) .slds-box_small,
+:host([data-render-mode='shadow']) ::slotted(.slds-box_small) {
+    padding: var(--slds-g-spacing-3, 0.75rem);
+}

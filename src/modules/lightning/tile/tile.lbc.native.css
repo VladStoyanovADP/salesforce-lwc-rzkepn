@@ -1,0 +1,4 @@
+@import 'lightning/sldsCommon';
+@import 'lightning/sldsUtilsGrid';
+@import 'lightning/sldsMediaObject';
+@import './tile.slds.css';

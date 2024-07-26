@@ -1,0 +1,18 @@
+
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved
+  Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+  :host([data-render-mode="shadow"]) [part='breadcrumb'] {
+    display: block;
+    padding-block-start: 0;
+    padding-inline-end: var(--slds-c-breadcrumb-spacing-inlineend, var(--slds-g-spacing-2));
+    padding-block-end: 0;
+    padding-inline-start: var(--slds-c-breadcrumb-spacing-inlinestart, var(--slds-g-spacing-2));
+    color: var(--slds-g-color-brand-base-50, var(--slds-g-color-accent-2));
+  }
+
+  :host([data-render-mode="shadow"]) [part='breadcrumb']:hover,:host([data-render-mode="shadow"]) 
+  [part='breadcrumb']:focus {
+    text-decoration: none;
+    color: var(--slds-g-color-brand-base-30, var(--slds-g-color-accent-4));
+  }

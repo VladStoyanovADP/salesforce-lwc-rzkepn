@@ -1,0 +1,30 @@
+
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved
+Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+  :host([data-render-mode="shadow"]) [part='color-picker'] {
+    position: relative;
+  }
+
+  :host([data-render-mode="shadow"]) [part='input-text'] > *:first-child {
+    margin-inline-end: var(--slds-g-spacing-1);
+  }
+
+  :host([data-render-mode="shadow"]) [part='input-container'] {
+    flex: 0 0 6rem;
+    margin-inline-end: var(--slds-g-spacing-2);
+  }
+
+  /**
+   * Label Inline Variant
+   */
+
+  @media (width >= 48em) {
+    :host([data-render-mode="shadow"][variant='label-inline']) [part='input-text'] {
+      display: flex;
+    }
+
+    :host([data-render-mode="shadow"][variant='label-inline']) [part='input-container'] {
+      margin-inline-start: 0%
+    }
+  }

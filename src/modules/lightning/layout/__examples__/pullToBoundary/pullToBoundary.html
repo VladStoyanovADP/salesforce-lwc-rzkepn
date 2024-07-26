@@ -1,0 +1,19 @@
+<template>
+        <p>The <code>pull-to-boundary</code> attribute pulls the items to each side of the container. Element 1 and 4 display without padding on their outer edges and go all the way to the edges of the container.</p>
+    <div class="c-container">
+        <lightning-layout pull-to-boundary="medium">
+            <lightning-layout-item flexibility="auto" padding="horizontal-medium">
+                <div class="custom-box">1</div>
+            </lightning-layout-item>
+            <lightning-layout-item flexibility="auto" padding="horizontal-medium">
+                <div class="custom-box">2</div>
+            </lightning-layout-item>
+            <lightning-layout-item flexibility="auto" padding="horizontal-medium">
+                <div class="custom-box">3</div>
+            </lightning-layout-item>
+            <lightning-layout-item flexibility="auto" padding="horizontal-medium">
+                <div class="custom-box">4</div>
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+</template>

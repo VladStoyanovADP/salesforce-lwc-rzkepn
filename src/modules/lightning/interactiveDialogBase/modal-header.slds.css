@@ -1,0 +1,76 @@
+
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved
+  Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+  /* stylelint-disable sds-stylelint-plugin/styling-hooks-deprecated */
+
+  /* stylelint-disable sds-stylelint-plugin/styling-hooks-pattern */
+
+  :host([data-render-mode="shadow"]) .slds-modal__header {
+    /**
+     * Remap to SLDS blueprint hooks for parity
+     * https://www.lightningdesignsystem.com/components/modals/#Styling-Hooks-Overview
+     */
+    --slds-c-modal-header-color-background: var(--slds-c-modalheader-color-background);
+    --slds-c-modal-header-text-color: var(--slds-c-modalheader-text-color);
+    --slds-c-modal-header-spacing-block-start: var(--slds-c-modalheader-spacing-block-start);
+    --slds-c-modal-header-spacing-inline-end: var(--slds-c-modalheader-spacing-inline-end);
+    --slds-c-modal-header-spacing-block-end: var(--slds-c-modalheader-spacing-block-end);
+    --slds-c-modal-header-spacing-inline-start: var(--slds-c-modalheader-spacing-inline-start);
+
+    --slds-c-modal-heading-font-size: var(--slds-c-modalheader-heading-font-size);
+    --slds-c-modal-heading-font-weight: var(--slds-c-modalheader-heading-font-weight);
+    --slds-c-modal-heading-font-lineheight: var(--slds-c-modalheader-heading-font-lineheight);
+
+    position: relative;
+    border-start-end-radius: var(--slds-c-modalheader-radius-border, var(--slds-g-radius-border-2));
+    border-start-start-radius: var(--slds-c-modalheader-radius-border, var(--slds-g-radius-border-2));
+    border-block-end-width: var(--slds-c-modalheader-sizing-border, var(--slds-g-sizing-border-2));
+    border-block-end-style: solid;
+    border-block-end-color: var(--slds-c-modalheader-color-border, var(--slds-g-color-border-1));
+    background-color: var(--slds-c-modalheader-color-background, var(--slds-g-color-surface-container-1));
+    color: var(--slds-c-modalheader-text-color);
+    flex-shrink: 0;
+    padding-block-start: var(--slds-c-modalheader-spacing-block-start, var(--slds-g-spacing-4));
+    padding-inline-end: var(--slds-c-modalheader-spacing-inline-end, var(--slds-g-spacing-4));
+    padding-block-end: var(--slds-c-modalheader-spacing-block-end, var(--slds-g-spacing-4));
+    padding-inline-start: var(--slds-c-modalheader-spacing-inline-start, var(--slds-g-spacing-4));
+    text-align: center;
+    /* stylelint-enable sds-stylelint-plugin/styling-hooks-deprecated */
+
+    /* stylelint-enable sds-stylelint-plugin/styling-hooks-pattern */
+  }
+
+  :host([data-render-mode="shadow"]) .slds-modal__title {
+    font-weight: var(--slds-c-modalheader-heading-font-weight);
+    font-size: var(--slds-c-modalheader-heading-font-size, 1.25rem);
+    line-height: var(--slds-c-modalheader-heading-font-lineheight, var(--slds-g-font-lineheight-2));
+  }
+
+  /* Sizes: Full */
+
+  /* Original SLDS implementation was desktop-first. This is now mobile-first for <=480px  */
+
+  @media (width <= 30em) {
+    :host([data-render-mode="shadow"][data-size='full']) [part='modal-header'] {
+      grid-area: header;
+      border-start-start-radius: 0;
+      border-start-end-radius: 0;
+    }
+
+    /**
+     * INTERNAL USE ONLY - SUBJECT TO CHANGE AND REMOVAL
+     *
+     * SLDS Blueprint <> LBC Parity Patch
+     *
+     * SLDS blueprints and LBC implementation are not 1:1. This patch is needed to
+     * account for the differences introduced in the LBC implementation. Location
+     * of this code would ideally live within the LBC component CSS module but
+     * synthetic shadow and how LBC deconstructs the modal into individual components
+     * makes this not feasible. Not ideal, but this is the best solution for now.
+     * Selectors are scoped to lightning-* to avoid any potential outside conflicts.
+     */
+    :host([data-render-mode="shadow"][data-size='full']) {
+      display: contents;
+    }
+  }

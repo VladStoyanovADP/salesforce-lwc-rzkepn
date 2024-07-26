@@ -1,0 +1,140 @@
+
+/* Copyright (c) 2015-present, Salesforce, Inc. All rights reserved
+Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+    /* SELECT */
+
+    :host([data-render-mode="shadow"]) [part='select'] {
+      height: calc(var(--slds-c-select-input-sizing-height, 1.875rem) + (var(--slds-g-sizing-border-1) * 2));
+      width: 100%;
+      border: var(--slds-g-sizing-border-1) solid var(--slds-c-select-color-border, var(--slds-g-color-border-1));
+      border-radius: var(--slds-c-select-radius-border, var(--slds-g-radius-border-2));
+      background-color: var(--slds-c-select-color-background,
+      var(--slds-g-color-surface-container-1));
+      color: var(--slds-c-select-text-color, currentcolor, var(--slds-g-color-on-surface-1));
+      box-shadow: var(--slds-c-select-shadow);
+      transition: border 0.1s linear, background-color 0.1s linear;
+    }
+
+    :host([data-render-mode="shadow"]) [part='select'][required] {
+      box-shadow: none; /* @legacy: This is ported over from SLDS but not clear why this design decision is made.  */
+    }
+
+    :host([data-render-mode="shadow"]) [part='select']:focus,:host([data-render-mode="shadow"]) 
+    [part='select']:active {
+      outline: 0;
+      border-color: var(--slds-c-select-color-border-focus, var(--slds-g-color-border-2));
+      background-color: var(--slds-c-select-color-background-focus, var(--slds-g-color-surface-container-1));
+      color: var(--slds-c-select-text-color-focus);
+      box-shadow: var(--slds-c-select-shadow-focus, 0 0 3px var(--slds-g-color-accent-2));
+    }
+
+    :host([data-render-mode="shadow"]) [part='select'][disabled] {
+      background-color: var(--slds-g-color-disabled-container-1);
+      border-color: var(--slds-g-color-border-disabled-1);
+      color: var(--slds-g-color-on-disabled-1);
+      cursor: not-allowed;
+      user-select: none;
+      opacity: 1;
+    }
+
+    :host([data-render-mode="shadow"]) [part='select'][disabled]:focus,:host([data-render-mode="shadow"]) 
+    [part='select'][disabled]:active {
+      box-shadow: none;
+    }
+
+    :host([data-render-mode="shadow"]) [part='select'][size],:host([data-render-mode="shadow"]) 
+    [part='select'][multiple] {
+      min-height: calc(var(--slds-c-select-input-sizing-height) + (var(--slds-g-sizing-border-1) * 2));
+      height: inherit;
+    }
+
+    :host([data-render-mode="shadow"]) [part='select'][size] option,:host([data-render-mode="shadow"]) 
+    [part='select'][multiple] option {
+      padding: var(--slds-g-spacing-2);
+    }
+
+    :host([data-render-mode="shadow"]) .slds-select_container {
+      position: relative;
+      color: var(--slds-c-select-container-color);
+    }
+
+    :host([data-render-mode="shadow"]) .slds-select_container [part="select"] {
+      /* stylelint-disable property-no-vendor-prefix */
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      /* stylelint-enable property-no-vendor-prefix */
+      padding: 0 var(--slds-g-spacing-5) 0 var(--slds-g-spacing-2);
+    }
+
+    :host([data-render-mode="shadow"]) .slds-select_container [part="select"]::-ms-expand {
+      display: none;
+    }
+
+    :host([data-render-mode="shadow"]) .slds-select_container::before,:host([data-render-mode="shadow"]) 
+    .slds-select_container::after {
+      position: absolute;
+      content: '';
+      display: block;
+      right: var(--slds-g-spacing-2);
+      width: 0;
+      height: 0;
+      border-left: 3px solid transparent;
+      border-right: 3px solid transparent;
+      pointer-events: none;
+    }
+
+    :host([data-render-mode="shadow"]) .slds-select_container::before {
+      border-bottom: 5px solid currentcolor;
+      top: calc((var(--slds-g-sizing-8) / 2) - 6px);
+    }
+
+    :host([data-render-mode="shadow"]) .slds-select_container::after {
+      border-top: 5px solid currentcolor;
+      bottom: calc((var(--slds-g-sizing-8) / 2) - 6px);
+    }
+
+    :host([data-render-mode="shadow"][multiple]) .slds-select_container::before,:host([data-render-mode="shadow"][multiple]) .slds-select_container::after {
+      display: none;
+    }
+
+    :host([data-render-mode="shadow"][invalid]) [part="select"] {
+      border-color: var(--slds-g-color-error-base-50);
+      box-shadow: var(--slds-g-color-error-base-50) 0 0 0 var(--slds-g-sizing-border-1) inset;
+      background-clip: padding-box;
+    }
+
+    :host([data-render-mode="shadow"][invalid]) [part="select"]:focus,:host([data-render-mode="shadow"][invalid]) [part="select"]:active {
+      box-shadow: var(--slds-g-color-error-1) 0 0 0 var(--slds-g-sizing-border-1) inset, 0 0 3px var(--slds-g-color-border-error-1);
+    }
+
+    /* LABEL */
+
+    /* Styling Specifically for select label */
+
+    :host([data-render-mode="shadow"]) [part="select-label"] {
+      padding-inline-end: var(--slds-g-spacing-2);
+      color: var(--slds-c-select-label-color, var(--slds-g-color-on-surface-2));
+      font-size: var(--slds-c-select-label-font-size, var(--slds-g-font-scale-neg-3));
+
+      /* We inline flex to control the spacing between elements and not have to rely on whitespace characters */
+      display: inline-flex;
+
+      /* TODO: Add global hook once SLDS creates a new spacing hook that equals the value needed here */
+      column-gap: 0.125rem;
+    }
+
+    /* ASSISTIVE TEXT */
+
+    :host([data-render-mode="shadow"]) .slds-assistive-text {
+      position: absolute !important;
+      margin: -1px !important;
+      border: 0 !important;
+      padding: 0 !important;
+      width: 1px !important;
+      height: 1px !important;
+      overflow: hidden !important;
+      clip: rect(0 0 0 0) !important;
+      text-transform: none !important;
+      white-space: nowrap !important;
+    }

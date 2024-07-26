@@ -1,0 +1,18 @@
+/* Modal close button */
+
+/* Required for autofocus to work correctly:
+   - child elements of modal appear 'visibility: hidden' at
+     the moment that they are being reviewed for eligibility
+     for focus in focus.js at isElementVisible()
+*/
+.fix-slds-modal,
+:host([data-render-mode="shadow"]) .fix-slds-modal {
+    visibility: visible;
+    z-index: unset;
+}
+
+/* Required for z-index */
+.fix-slds-backdrop,
+:host([data-render-mode="shadow"]) .fix-slds-backdrop {
+    z-index: unset;
+}

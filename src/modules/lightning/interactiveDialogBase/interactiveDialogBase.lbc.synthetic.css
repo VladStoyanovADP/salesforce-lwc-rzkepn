@@ -1,0 +1,20 @@
+/* Required for autofocus to work correctly:
+   - child elements of modal appear 'visibility: hidden' at
+     the moment that they are being reviewed for eligibility
+     for focus in focus.js at isElementVisible()
+*/
+.fix-slds-modal {
+    visibility: visible;
+    z-index: unset;
+}
+
+/* Required for z-index */
+.fix-slds-backdrop {
+    z-index: unset;
+}
+
+/* Recreate Font Styling in Lightning Out */
+.slds-modal_prompt {
+    font-size: 0.8125rem;
+    line-height: 1.5;
+}

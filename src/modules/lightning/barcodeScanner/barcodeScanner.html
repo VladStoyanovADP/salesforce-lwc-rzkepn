@@ -1,0 +1,39 @@
+<template>
+    <template if:true={_scannerAvailable}>
+        <button
+                class={computedButtonClass}
+                title={computedEnabledTitle}
+                type="button"
+                ontouchstart={scan}
+                onmousedown={onmousedown}
+                onclick={scan}>
+            <template if:true={enabledIconSrcAvailable}>
+                <img
+                    aria-hidden="true"
+                    src={enabledIconSrc}
+                    focusable="false"/>
+            </template>
+            <template if:false={enabledIconSrcAvailable}>
+                <lightning-icon size={computedSize} icon-name="action:scan_enabled">
+                </lightning-icon>
+            </template>
+        </button>
+    </template>
+    <template if:false={_scannerAvailable}>
+        <button
+                class={computedButtonClass}
+                title={computedDisabledTitle}
+                type="button">
+            <template if:true={disabledIconSrcAvailable}>
+                <img
+                    aria-hidden="true"
+                    src={disabledIconSrc}
+                    focusable="false"/>
+            </template>
+            <template if:false={disabledIconSrcAvailable}>
+                <lightning-icon size={computedSize} icon-name="action:scan_disabled">
+                </lightning-icon>
+            </template>
+        </button>
+    </template>
+</template>

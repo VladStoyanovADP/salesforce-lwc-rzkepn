@@ -1,0 +1,1 @@
+export default 'This form contains dependent fields.';

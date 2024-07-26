@@ -1,0 +1,10 @@
+<template>
+    <lightning-button label="Toggle" onclick={handleToggle}></lightning-button>
+    <lightning-stacked-tabset>
+        <lightning-stacked-tab label="One"></lightning-stacked-tab>
+        <lightning-stacked-tab label="Two"></lightning-stacked-tab>
+        <template if:true={show}>
+            <lightning-stacked-tab label="Three"></lightning-stacked-tab>
+        </template>
+    </lightning-stacked-tabset>
+</template>

@@ -1,0 +1,17 @@
+<template>
+    <div style="padding: 0 10px;">
+        <span class="slds-pill slds-pill_link">
+            <span class="slds-pill__icon_container">
+                <span class="slds-icon_container slds-icon-standard-account" title="Account">
+                    <lightning-icon class="slds-icon" icon-name="standard:account" alternative-text="Account" title="Account"></lightning-icon>
+                </span>
+            </span>
+            <a href="javascript:void(0);" class="slds-pill__action" title="Full pill label verbiage mirrored here"
+                tabindex={internalTabIndex}>
+                <span class="slds-pill__label">Pill Label</span>
+            </a>
+            <lightning-button-icon data-navigation="enable" tabindex={internalTabIndex} class="slds-button slds-button_icon slds-button_icon slds-pill__remove" icon-name="utility:close" size="x-small" alternative-text="close"
+                title="close" variant="bare"></lightning-button-icon>
+        </span>
+    </div>
+</template>

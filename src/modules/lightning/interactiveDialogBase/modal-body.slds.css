@@ -1,0 +1,60 @@
+
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved
+  Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+  :host([data-render-mode="shadow"]) .slds-modal__content_headless {
+    border-start-end-radius: var(--slds-c-modalbody-radius-border, var(--slds-g-radius-border-2));
+    border-start-start-radius: var(--slds-c-modalbody-radius-border, var(--slds-g-radius-border-2));
+  }
+
+  :host([data-render-mode="shadow"]) .slds-modal__content {
+    /**
+     * Remap to SLDS blueprint hooks for parity
+     * https://www.lightningdesignsystem.com/components/modals/#Styling-Hooks-Overview
+     */
+    --slds-c-modal-content-color-background: var(--slds-c-modalbody-color-background);
+    --slds-c-modal-content-text-color: var(--slds-c-modalbody-text-color);
+
+    background-color: var(--slds-c-modalbody-color-background, var(--slds-g-color-surface-container-1));
+    color: var(--slds-c-modalbody-text-color);
+    overflow: hidden;
+    overflow-y: auto;
+  }
+
+  :host([data-render-mode="shadow"]) .slds-modal__content_footless {
+    border-bottom-right-radius: var(--slds-c-modalbody-radius-border, var(--slds-g-radius-border-2));
+    border-bottom-left-radius: var(--slds-c-modalbody-radius-border, var(--slds-g-radius-border-2));
+    box-shadow: var(--slds-c-modalbody-shadow, var(--slds-g-shadow-2));
+  }
+
+  /* Sizes: Full */
+
+  /* Original SLDS implementation was desktop-first. This is now mobile-first for <=480px  */
+
+  @media (width <= 30em) {
+    :host([data-render-mode="shadow"][data-size='full']) [part='modal-body'] {
+      grid-area: content;
+    }
+
+    :host([data-render-mode="shadow"][data-size='full'][data-variant-footless]) [part='modal-body'] {
+      border-end-end-radius: 0;
+      border-end-start-radius: 0;
+      box-shadow: none;
+    }
+
+    /**
+     * INTERNAL USE ONLY - SUBJECT TO CHANGE AND REMOVAL
+     *
+     * SLDS Blueprint <> LBC Parity Patch
+     *
+     * SLDS blueprints and LBC implementation are not 1:1. This patch is needed to
+     * account for the differences introduced in the LBC implementation. Location
+     * of this code would ideally live within the LBC component CSS module but
+     * synthetic shadow and how LBC deconstructs the modal into individual components
+     * makes this not feasible. Not ideal, but this is the best solution for now.
+     * Selectors are scoped to lightning-* to avoid any potential outside conflicts.
+     */
+    :host([data-render-mode="shadow"][data-size='full']) {
+      display: contents;
+    }
+  }

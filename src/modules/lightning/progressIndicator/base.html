@@ -1,0 +1,8 @@
+<template>
+    <div class={computedWrapperClass}>
+        <ol class="slds-progress__list" onstepfocus={handleStepFocus}>
+            <slot onslotchange={handleSlotChange}></slot>
+        </ol>
+        <lightning-progress-bar value={privateProgressValue} size="small"></lightning-progress-bar>
+    </div>
+</template>

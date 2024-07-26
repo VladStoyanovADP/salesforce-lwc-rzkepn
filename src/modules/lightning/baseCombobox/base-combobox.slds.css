@@ -1,0 +1,235 @@
+
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved
+  Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+  /**
+   * Combobox
+   */
+
+  :host([data-render-mode="shadow"]) .slds-combobox {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+  }
+
+  /**
+   * Combobox Container
+   */
+
+  :host([data-render-mode="shadow"]) .slds-combobox_container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  /**
+   * Faux Input
+   */
+
+  :host([data-render-mode="shadow"]) .slds-input_faux {
+    padding-block-start: 0;
+    padding-block-end: 0;
+    padding-inline-start: var(--slds-g-spacing-3);
+    padding-inline-end: var(--slds-g-spacing-4);
+    width: 100%;
+    line-height: 1.875rem;
+    /* stylelint-disable sds-stylelint-plugin/styling-hooks-pattern */
+    border: var(--slds-c-inputtext-sizing-border, var(--slds-g-sizing-border-1)) solid
+      var(--slds-c-inputtext-color-border, var(--slds-s-input-color-border));
+    border-radius: var(--slds-c-inputtext-radius, var(--slds-g-radius-border-2));
+    background-color: var(--slds-c-inputtext-color-background, var(--slds-g-color-surface-container-1));
+    color: var(--slds-c-inputtext-text-color);
+    /* stylelint-enable sds-stylelint-plugin/styling-hooks-pattern */
+    transition: border 0.1s linear, background-color 0.1s linear;
+    display: inline-flex;
+    flex: 1 1 auto;
+    text-align: left;
+  }
+
+  :host([data-render-mode="shadow"][invalid]) .slds-input_faux {
+    box-shadow: 0 0 0 1px inset var(--slds-g-color-error-1);
+  }
+
+  :host([data-render-mode="shadow"]) .slds-input_faux:not(.slds-combobox__input-value) {
+    --slds-c-inputtext-text-color: var(--slds-g-color-on-surface-1);
+  }
+
+  :host([data-render-mode="shadow"]) .slds-input_faux.slds-is-disabled {
+    background-color: var(--slds-g-color-disabled-container-1);
+    border-color: var(--slds-g-color-border-1);
+    color: var(--slds-g-color-on-surface-1);
+    cursor: not-allowed;
+    user-select: none;
+  }
+
+  :host([data-render-mode="shadow"]) .slds-input_faux.slds-is-disabled:focus,:host([data-render-mode="shadow"]) 
+  .slds-input_faux.slds-is-disabled:active {
+    box-shadow: none;
+  }
+
+  :host([data-render-mode="shadow"]) .slds-input_faux > span::before {
+    content: '';
+    display: inline-block;
+  }
+
+  /**
+   * Combobox Focus State: When rendering `button` instead of `input`
+   */
+
+  :host([data-render-mode="shadow"]) .slds-input_faux:focus-within {
+    border-color: var(--slds-g-color-brand-base-60);
+    box-shadow: 0 0 var(--slds-g-sizing-border-3) var(--slds-g-color-accent-1);
+  }
+
+  /**
+   * Has Icon
+   */
+
+  :host([data-render-mode="shadow"]) .slds-input-has-icon {
+    position: relative;
+  }
+
+  :host([data-render-mode="shadow"]) .slds-input-has-icon .slds-input__icon {
+    --slds-c-icon-sizing: 0.875rem;
+    --slds-c-icon-color-foreground-default: var(--slds-g-color-on-surface-1);
+
+    position: absolute;
+    inset-block-start: 50%;
+    margin-top: calc((0.875rem * 0.5) * -1);
+    line-height: 1;
+    border: 0;
+    z-index: 2;
+  }
+
+  :host([data-render-mode="shadow"]) .slds-input-has-icon .slds-input__icon:not(button) {
+    pointer-events: none;
+  }
+
+  /* Icon Left */
+
+  :host([data-render-mode="shadow"]) .slds-input-has-icon_left .slds-input__icon {
+    inset-inline-start: var(--slds-g-spacing-3);
+  }
+
+  :host([data-render-mode="shadow"]) .slds-input-has-icon_left .slds-input_faux {
+    padding-inline-start: var(--slds-g-spacing-6);
+  }
+
+  /* Icon Right */
+
+  :host([data-render-mode="shadow"]) .slds-input-has-icon_right .slds-input__icon {
+    inset-inline-end: var(--slds-g-spacing-3);
+  }
+
+  :host([data-render-mode="shadow"]) .slds-input-has-icon_right .slds-input_faux {
+    padding-inline-end: var(--slds-g-spacing-6);
+  }
+
+  /**
+   * Has Icon Group
+   */
+
+  :host([data-render-mode="shadow"]) .slds-input__icon-group {
+    position: absolute;
+    height: var(--slds-g-sizing-5);
+
+    /* Subtle difference in height between light/native, we adjust here */
+    margin-block-start: calc(var(--slds-g-spacing-2) * -1 - 1px);
+  }
+
+  :host([data-render-mode="shadow"]) .slds-input__icon-group_right {
+    inset-inline-end: 0;
+    inset-block-start: 50%;
+  }
+
+  :host([data-render-mode="shadow"]) .slds-input__icon-group_right .slds-input__icon_right {
+    inset-inline-end: var(--slds-g-spacing-2);
+  }
+
+  :host([data-render-mode="shadow"]) .slds-input__icon-group_right .slds-input__spinner {
+    inset-inline-end: var(--slds-g-spacing-5);
+    inset-inline-start: auto;
+  }
+
+  :host([data-render-mode="shadow"]) .slds-p-top_medium {
+    padding-top: var(--slds-g-spacing-4);
+  }
+
+  :host([data-render-mode="shadow"]) .slds-p-bottom_medium {
+    padding-bottom: var(--slds-g-spacing-4);
+  }
+
+  :host([data-render-mode="shadow"]) .slds-spinner_inline {
+    position: relative;
+  }
+
+  /*
+    Grouped combobox data filter styles
+  */
+
+  :host([data-render-mode="shadow"][data-filter]) button.slds-combobox__input {
+    width: 7.5rem;
+    transition: width 80ms linear;
+
+  }
+
+  :host([data-render-mode="shadow"][data-filter]) button.slds-combobox__input:focus {
+    width: 10rem;
+  }
+
+  :host([data-render-mode="shadow"][data-filter]) .slds-truncate {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: var(--slds-g-spacing-3);
+    color: var(--slds-g-color-on-surface-1);
+  }
+
+  :host([data-render-mode="shadow"][data-filter-on]) [part="input-container"] {
+    border-start-end-radius: var(--slds-g-sizing-border-4);
+    border-end-end-radius: var(--slds-g-sizing-border-4);
+    border-start-start-radius: 0;
+    border-end-start-radius: 0;
+  }
+
+  :host([data-render-mode="shadow"][data-filter]) .slds-combobox__input {
+    border-start-end-radius: 0;
+    border-end-end-radius: 0;
+    border-start-start-radius: var(--slds-g-sizing-border-4);
+    border-end-start-radius: var(--slds-g-sizing-border-4);
+  }
+
+  /*
+    combobox with input-pill styles
+  */
+
+  :host([data-render-mode="shadow"][data-input-pill]) [part="input"] {
+    box-shadow: 0 0 0 var(--slds-g-sizing-border-2) var(--slds-g-color-surface-container-1) inset, 0 0 0 var(--slds-g-sizing-border-3) var(--slds-g-color-border-base-1, var(--slds-g-color-on-accent-1)) inset;
+    /* stylelint-disable sds-stylelint-plugin/styling-hooks-pattern */
+    border-radius: var(--slds-c-inputtext-radius, var(--slds-g-radius-border-2));
+  }
+
+  :host([data-render-mode="shadow"][data-input-pill]) .slds-combobox__input-entity-icon {
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-start: calc(var(--slds-g-spacing-1) + var(--slds-g-sizing-border-1));
+    z-index: 2;
+    transform: translateY(-50%)
+  }
+
+  :host([data-render-mode="shadow"][data-input-pill]) .slds-input__icon-group_right {
+    inset-inline-end: calc(var(--slds-g-spacing-1) + var(--slds-g-sizing-border-1));
+
+  }
+
+  :host([data-render-mode="shadow"][data-input-pill]) .slds-button_icon {
+    color: var(--slds-g-color-neutral-base-50, var(--slds-g-color-on-surface-1));
+  }
+
+  :host([data-render-mode="shadow"][data-input-pill]) [part="input-container"]:focus-within {
+    --sds-c-inputtext-color-border:
+      var(--slds-g-color-brand-base-60);
+    --sds-c-inputtext-shadow: none;
+  }

@@ -1,0 +1,113 @@
+
+    /* progress-ring */
+    :host([data-render-mode="shadow"]) .slds-progress-ring {
+        position: relative;
+        display: inline-block;
+        height: 1.5rem;
+        width: 1.5rem;
+        border-radius: 1.5rem;
+        background: var(--slds-g-color-border-base-1, var(--slds-g-color-surface-container-3));
+    }
+    :host([data-render-mode="shadow"]) .slds-progress-ring .slds-icon_container {
+        line-height: 0;
+    }
+    /* progress-ring_progress */
+    :host([data-render-mode="shadow"]) .slds-progress-ring__progress {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        transform: scale(-1, 1) rotate(-90deg);
+    }
+    :host([data-render-mode="shadow"]) .slds-progress-ring__progress svg {
+        width: 100%;
+    }
+    /* progress-ring_path */
+    :host([data-render-mode="shadow"]) .slds-progress-ring__path {
+        fill: var(--slds-g-color-success-1);
+    }
+    /* progress-ring_progress-head */
+    :host([data-render-mode="shadow"]) .slds-progress-ring__progress-head {
+        position: absolute;
+        height: calc(100% + 0.375rem);
+        width: calc(100% + 0.375rem);
+        top: -0.1875rem;
+        left: -0.1875rem;
+        transform: scale(-1, 1) rotate(-90deg);
+    }
+    /* progress-ring_content */
+    :host([data-render-mode="shadow"]) .slds-progress-ring__content {
+        position: absolute;
+        top: 0.1875rem;
+        right: 0.1875rem;
+        bottom: 0.1875rem;
+        left: 0.1875rem;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        border-radius: 1.5rem;
+        background: var(--slds-g-color-surface-container-1);
+    }
+    :host([data-render-mode="shadow"]) .slds-progress-ring__content .slds-icon {
+        width: 0.75rem;
+    }
+    /* variant = warning */
+    :host([data-render-mode="shadow"]) .slds-progress-ring_warning .slds-progress-ring__content {
+        background: var(--slds-g-color-surface-container-1);
+    }
+    :host([data-render-mode="shadow"]) .slds-progress-ring_warning .slds-icon,:host([data-render-mode="shadow"]) 
+    .slds-progress-ring_warning .slds-icon svg,:host([data-render-mode="shadow"]) 
+    .slds-progress-ring_warning .slds-progress-ring__path {
+        fill: var(--slds-g-color-warning-1);
+    }
+    /* variant = expired */
+    :host([data-render-mode="shadow"]) .slds-progress-ring_expired .slds-progress-ring__content {
+        background: var(--slds-g-color-surface-container-1);
+    }
+    :host([data-render-mode="shadow"]) .slds-progress-ring_expired .slds-icon,:host([data-render-mode="shadow"]) 
+    .slds-progress-ring_expired .slds-icon svg,:host([data-render-mode="shadow"]) 
+    .slds-progress-ring_expired .slds-progress-ring__path {
+        fill: var(--slds-g-color-error-1);
+    }
+    /* variant = complete */
+    :host([data-render-mode="shadow"]) .slds-progress-ring_complete .slds-icon,:host([data-render-mode="shadow"]) 
+    .slds-progress-ring_complete .slds-icon svg {
+        fill: var(--slds-g-color-on-success-1);
+    }
+    :host([data-render-mode="shadow"]) .slds-progress-ring_complete .slds-progress-ring__path {
+        fill: var(--slds-g-color-success-1);
+    }
+    :host([data-render-mode="shadow"]) .slds-progress-ring_complete .slds-progress-ring__content {
+        background: var(--slds-g-color-success-container-2);
+    }
+    /* size = large */
+    :host([data-render-mode="shadow"]) .slds-progress-ring_large {
+        height: 2rem;
+        width: 2rem;
+    }
+    :host([data-render-mode="shadow"]) .slds-progress-ring_large .slds-icon {
+        width: 1rem;
+    }
+    /* variant = active-step */
+    :host([data-render-mode="shadow"]) .slds-progress-ring_active-step .slds-progress-ring__path {
+        fill: var(--slds-g-color-accent-1);
+    }
+    /* additional classes */
+    /* TODO W-12674349: remove after name-value-list utils are added */
+    :host([data-render-mode="shadow"]) .slds-assistive-text {
+        position: absolute !important;
+        margin: -1px !important;
+        border: 0 !important;
+        padding: 0 !important;
+        width: 1px !important;
+        height: 1px !important;
+        overflow: hidden !important;
+        clip: rect(0 0 0 0) !important;
+        text-transform: none !important;
+        white-space: nowrap !important;
+    }

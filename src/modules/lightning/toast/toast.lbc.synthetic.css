@@ -1,0 +1,58 @@
+.fix-notify_toast_animation,
+:host([data-render-mode="shadow"]) .fix-notify_toast_animation {
+    animation-name: fadeIn;
+    animation-duration: 0.4s;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.fix-notify_toast_animation.closing,
+:host([data-render-mode="shadow"]) .fix-notify_toast_animation.closing {
+    animation-name: fadeOut;
+    animation-duration: 0.4s;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/* TODO: change the following classes to the actual SLDS classes once W-12084169 is completed. */
+.fix-slds-notify--mobile,
+:host([data-render-mode="shadow"]) .fix-slds-notify--mobile {
+    padding: 0.5rem 1rem 0.75rem;
+    min-width: 90%;
+    width: 90%;
+}
+
+.fix-slds-notify--mobile.slds-notify_toast h2,
+:host([data-render-mode="shadow"]) .fix-slds-notify--mobile.slds-notify_toast h2 {
+    font-size: 0.8125rem;
+    font-weight: 300;
+}
+
+/* for screen smaller than 480px */
+.fix-slds-notify--mobile .slds-notify__close,
+:host([data-render-mode="shadow"]) .fix-slds-notify--mobile .slds-notify__close {
+    top: 0.5rem;
+}
+
+/* for mobile device */
+.fix-slds-notify--mobile .slds-notify__close.fix-slds-notify--mobile__close,
+:host([data-render-mode="shadow"]) .fix-slds-notify--mobile .slds-notify__close.fix-slds-notify--mobile__close {
+    top: -0.25rem;
+    right: -0.15rem;
+}

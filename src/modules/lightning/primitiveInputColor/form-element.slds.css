@@ -1,0 +1,319 @@
+
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved
+  Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+/**
+ * sldsFormElementUtils.css and form-element.css have many similarities
+ * however, they are used for very different use cases, and this is why
+ * they both exist, separate of each other. the 2 files are not 1:1.
+ *
+ * form-element.css is used for inclusion by LBC engineers (internal)
+ * in many of our lightning-input components, and is written with
+ * part attributes in mind. Some unneeded form element blueprint sections
+ * are not included in form-element.css, but could be added as needed later
+ *
+ * sldsFormElementUtils.css is used by customers (external) to get the
+ * specific layout styles that are provided by the form element blueprint
+ * https://www.lightningdesignsystem.com/components/form-element/
+ * there are no part attribute rules in this file
+ * the main use case of this utility is LightningModal for styling
+ * form layout for Form Element variants: Stacked, Horizontal, Compound
+ * sldsFormElementUtils.css is imported by customers via LWC CSS files:
+ * @import 'lightning/sldsFormElementUtils';
+ *
+ * **NOTE:** If you are updating this file, also check sldsFormElementUtils.css
+ * for any needed updates to keep these files in sync
+ */
+
+/* TODO: Swap with utility classes */
+
+:host([data-render-mode="shadow"]) fieldset {
+      border: 0;
+      margin: 0;
+      padding: 0;
+    }
+
+/* FORM ELEMENT: BASE */
+
+:host([data-render-mode="shadow"]) .slds-form-element {
+        position: relative;
+        min-width: 0;
+    }
+
+:host([data-render-mode="shadow"]) .slds-form-element__label {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        hyphens: auto;
+        display: inline-block;
+        color: var(--slds-g-color-on-surface-2);
+        font-size: var(--slds-g-font-scale-neg-3);
+        padding-inline-end: var(--slds-g-spacing-2);
+        padding-block-start: var(--slds-g-spacing-1);
+        margin-block-end: calc(var(--slds-g-spacing-1) / 2);
+    }
+
+:host([data-render-mode="shadow"]) .slds-form-element__label:empty {
+        margin: 0;
+    }
+
+:host([data-render-mode="shadow"]) .slds-form-element__control {
+        clear: left; /* NOTE: Ideally we want left to be inline-start but browser support is not ready for that value. We need to figure out better RTL support */
+        position: relative;
+    }
+
+:host([data-render-mode="shadow"]) .slds-form-element__control .slds-radio {
+      display: block;
+    }
+
+:host([data-render-mode="shadow"]) .slds-form-element__icon {
+        display: inline-block;
+        position: relative;
+        padding-block-start: var(--slds-g-spacing-1);
+        vertical-align: top;
+        line-height: var(--slds-g-font-lineheight-1);
+        z-index: 1;
+    }
+
+:host([data-render-mode="shadow"]) .slds-form-element__icon .slds-button_icon {
+        position: relative;
+    }
+
+:host([data-render-mode="shadow"]) .slds-form-element__help,:host([data-render-mode="shadow"]) 
+    .slds-form-element__helper {
+        font-size: var(--slds-g-font-scale-neg-3);
+        margin-block-start: calc(var(--slds-g-spacing-1) / 2);
+        display: block;
+    }
+
+:host([data-render-mode="shadow"]) .slds-form-element_edit .slds-form-element__static {
+        width: calc(100% - var(--slds-g-sizing-7));
+    }
+
+:host([data-render-mode="shadow"]) .slds-form-element_readonly {
+        flex-basis: 0%;
+        border-bottom: var(--slds-g-sizing-border-1) solid var(--slds-g-color-border-1);
+        margin-block-end: 0;
+    }
+
+:host([data-render-mode="shadow"]) .slds-form-element_readonly .slds-form-element__control {
+        padding-block-start: calc(var(--slds-g-spacing-1) / 2);
+        padding-block-end: calc(var(--slds-g-spacing-1) / 2);
+    }
+
+:host([data-render-mode="shadow"]) .slds-form-element_readonly .slds-form-element__label {
+        margin-block-end: 0;
+    }
+
+:host([data-render-mode="shadow"]) .slds-form-element__legend {
+        font-weight: var(--slds-g-font-weight-7);
+        float: left;
+    }
+
+:host([data-render-mode="shadow"]) .slds-form-element__addon {
+        display: inline-block;
+        margin-block-start: 0;
+        margin-block-end: 0;
+        margin-inline-start: var(--slds-g-spacing-2);
+        margin-inline-end: var(--slds-g-spacing-2);
+        align-self: center;
+    }
+
+:host([data-render-mode="shadow"]) .slds-form-element__static {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        word-break: break-word;
+        display: inline-block;
+        font-size: var(--slds-g-font-scale-neg-1);
+        font-weight: var(--slds-g-font-weight-4);
+        color: var(--slds-g-color-neutral-base-10);
+        width: 100%;
+    }
+
+:host([data-render-mode="shadow"]) .slds-form-element__static.slds-text-longform *:last-child {
+        margin-block-end: 0;
+    }
+
+:host([data-render-mode="shadow"]) .slds-form-element__static:empty {
+        min-height: calc(var(--slds-g-sizing-6) + 1px);
+        vertical-align: bottom;
+    }
+
+:host([data-render-mode="shadow"]) .slds-form-element__static--edit {
+        width: calc(100% - var(--slds-g-sizing-7));
+    }
+
+:host([data-render-mode="shadow"]) .slds-required {
+        color: var(--slds-g-color-error-base-50);
+        margin-block-start: 0;
+        margin-block-end: 0;
+        margin-inline-start: calc(var(--slds-g-spacing-1) / 2);
+        margin-inline-end: calc(var(--slds-g-spacing-1) / 2);
+    }
+
+:host([data-render-mode="shadow"]) .slds-has-error .slds-form-element__help {
+        color: var(--slds-g-color-error-1);
+    }
+
+:host([data-render-mode="shadow"][invalid]) .slds-form-element__help {
+        color: var(--slds-g-color-error-1);
+    }
+
+/* --------------------------------------- */
+
+/* FORM ELEMENT: STACKED */
+
+:host([data-render-mode="shadow"][variant='label-stacked']) {
+        display: block;
+    }
+
+/* TODO: Using `:not` is currently not working, and it could break the build because of issues with the dist script */
+
+/* :host([variant='label-stacked']):not(.slds-form-element_readonly) {
+        margin-block-end: var(--slds-g-spacing-2);
+    }
+
+    :host([variant='label-stacked']):not(.slds-is-editing) {
+        padding: 0 var(--slds-g-spacing-1);
+    } */
+
+/* :host([variant='label-stacked']):not([class*="slds-size"]) {
+          width: 100%;
+          flex-basis: 100%;
+    } */
+
+:host([data-render-mode="shadow"][variant='label-stacked']) .slds-form-element {
+        padding: 0;
+        margin-block-end: 0;
+    }
+
+:host([data-render-mode="shadow"][variant='label-stacked']) .slds-form-element__label,:host([data-render-mode="shadow"][variant='label-stacked']) .slds-form-element__control {
+        /* @W-14518344 The following line still exists in SLDS-internal
+           but it was removed here because it was causing the input 
+           component to not display it's bottom border
+        border-bottom: 0; Remove border when using legacy version of slds-form-element */
+        padding-inline-start: 0;
+    }
+
+:host([data-render-mode="shadow"][variant='label-stacked']) .slds-form-element__control {
+        width: 100%;
+        flex-basis: 100%;
+        clear: left;
+    }
+
+:host([data-render-mode="shadow"][variant='label-stacked']) .slds-form-element__icon {
+        float: none;
+        padding-block-start: var(--slds-g-spacing-1);
+    }
+
+/* --------------------------------------- */
+
+/* FORM ELEMENT: INLINE */
+
+:host([data-render-mode="shadow"][variant='label-inline']) {
+        display: block;
+    }
+
+/*
+    we have to combine with slds class here to avoid duplication
+    of this rule in child elements who import this stylesheet
+    in lighting-input this slds class is synonymous with the variant
+    */
+
+:host([data-render-mode="shadow"][variant='label-inline'].slds-form-element_horizontal) {
+        padding: var(--slds-g-spacing-1);
+        margin-block-end: var(--slds-g-spacing-2);
+    }
+
+/* TODO: Using `:not` is currently not working, and it could break the build because of issues with the dist script */
+
+/* :host([variant='label-inline']):not(.slds-form-element_readonly) {
+        margin-block-end: var(--slds-g-spacing-2);
+    }
+
+    :host([variant='label-inline']):not([class*="slds-size"]) {
+        width: 100%;
+        flex-basis: 100%;
+    }
+
+    :host([variant='label-inline']:not(.slds-is-editing)) {
+        padding: var(--slds-g-spacing-1);
+    } */
+
+:host([data-render-mode="shadow"][variant='label-inline']).slds-is-edited {
+        padding-block-start: var(--slds-g-sizing-6)
+    }
+
+@media (width >= 48em) {
+        :host([data-render-mode="shadow"][variant='label-inline']) .slds-form-element__label {
+          float: left;
+          max-width: calc(33% - var(--slds-g-sizing-6)); /* Removing icon width for when the help-text icon is present */
+          flex-basis: calc(33% - var(--slds-g-sizing-6)); /* Some form element controls are set to display:flex */
+          flex-grow: 1; /* For IE and Safari which didn't auto expand to the available space */
+          margin-block-end: 0;
+          position: relative;
+          z-index: 1;
+        }
+
+        :host([data-render-mode="shadow"][variant='label-inline']) lightning-helptext {
+          float: left;
+        }
+
+        :host([data-render-mode="shadow"][variant='label-inline']) .slds-form-element__control {
+          margin-inline-start: 33%;
+          clear: none; /* Reset clear: left when switching to horizontal form layout */
+        }
+
+        :host([data-render-mode="shadow"][variant='label-inline']) .slds-form-element__control .slds-form-element__control {
+          padding-inline-start: 0; /* Remove left padding on nested form controls, due to issues related to lightning-form components */
+        }
+
+        :host([data-render-mode="shadow"][variant='label-inline']) .slds-dueling-list__column .slds-form-element__label {
+            width: auto;
+            max-width: 100%;
+            flex-basis: auto;
+            float: none;
+            position: relative;
+            padding-inline-start: 0;
+            margin-block-end: 0;
+        }
+
+        :host([data-render-mode="shadow"][variant='label-inline']) .slds-form-element__help {
+          margin-inline-start: 33%;
+        }
+
+        :host([data-render-mode="shadow"][variant='label-inline']) .slds-dueling-list {
+            clear: none;
+        }
+    }
+
+/* --------------------------------------- */
+
+/* FORM ELEMENT: COMPOUND */
+
+:host([data-render-mode="shadow"]) .slds-form-element_compound .slds-form-element__row {
+      display: flex;
+      margin-bottom: var(--slds-g-spacing-1);
+      margin-left: calc(var(--slds-g-spacing-1) * -1);
+      margin-right: calc(var(--slds-g-spacing-1) * -1);
+    }
+
+:host([data-render-mode="shadow"]) .slds-form-element_compound .slds-form-element__row .slds-form-element__label {
+      padding-top: 0;
+    }
+
+:host([data-render-mode="shadow"]) .slds-form-element_compound .slds-form-element {
+      padding-left: var(--slds-g-spacing-1);
+      padding-right: var(--slds-g-spacing-1);
+    }
+
+:host([data-render-mode="shadow"]) .slds-form-element_address .slds-form-element__row {
+      align-items: flex-end;
+    }
+
+/* --------------------------------------- */
+
+/* FORM ELEMENT: HIDDEN */
+
+:host([data-render-mode="shadow"][variant='label-hidden']) .slds-form-element__label {
+      display: none
+  }

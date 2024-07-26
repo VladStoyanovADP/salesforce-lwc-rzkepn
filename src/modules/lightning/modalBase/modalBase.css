@@ -1,0 +1,6 @@
+@import './modalBase.lbc.synthetic.css';
+@import './modalBase.lbc.native.css';
+
+div[data-slot] {
+    display: contents;
+}

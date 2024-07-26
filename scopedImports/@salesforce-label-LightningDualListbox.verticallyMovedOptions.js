@@ -1,0 +1,1 @@
+export default '{0} moved to position {1}';

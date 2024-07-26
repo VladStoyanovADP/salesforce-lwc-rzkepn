@@ -1,0 +1,365 @@
+
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved
+Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+  /* re-assign current slds hooks using deprecated naming conventions */
+
+  :host([data-render-mode="shadow"]) {
+    /* stylelint-disable */
+    --slds-c-tabs-item-spacing-blockend: var(--slds-c-tabbar-standard-spacing-block-end);
+    --slds-c-tabs-item-spacing-blockstart: var(--slds-c-tabbar-standard-spacing-block-start);
+    --slds-c-tabs-item-spacing-inlineend: var(--slds-c-tabbar-standard-spacing-inline-end);
+    --slds-c-tabs-item-spacing-inlinestart: var(--slds-c-tabbar-standard-spacing-inline-start);
+    /* stylelint-enable */
+  }
+
+  /* SHARED TAB BAR STYLING */
+
+  /* Host reassignments to composed tabs for parity with SLDS blueprint
+    https://www.lightningdesignsystem.com/components/tabs/#Styling-Hooks-Overview */
+
+  :host([data-render-mode="shadow"]) [part='tab-bar'] {
+    /* stylelint-disable sds-stylelint-plugin/styling-hooks-pattern */
+    --_slds-c-tabbar-standard-font-lineheight: 2.5rem;
+    --_slds-c-tabbar-standard-sizing-height: 2.5rem;
+    --_slds-c-tabbar-scoped-font-lineheight: 2.5rem;
+    --_slds-c-tabbar-scoped-sizing-height: 2.5rem;
+    --_slds-c-tabbar-vertical-sizing-width: 12rem;
+    /* stylelint-enable sds-stylelint-plugin/styling-hooks-pattern */
+
+     /* Color */
+     --slds-c-tabs-item-color-border-active: var(--slds-c-tabbar-standard-color-border-active);
+     --slds-c-tabs-item-color-border-hover: var(--slds-c-tabbar-standard-color-border-hover);
+     --slds-c-tabs-item-text-color: var(--slds-c-tabbar-standard-text-color);
+     --slds-c-tabs-item-text-color-active: var(--slds-c-tabbar-standard-text-color-active);
+     --slds-c-tabs-list-color-border: var(--slds-c-tabbar-standard-color-border);
+
+    /* Sizing */
+    /* stylelint-disable sds-stylelint-plugin/styling-hooks-pattern */
+    --slds-c-tabs-item-sizing-height: var(--slds-c-tabbar-standard-sizing-height, var(--_slds-c-tabbar-standard-sizing-height));
+    /* stylelint-enable sds-stylelint-plugin/styling-hooks-pattern */
+    --slds-c-tabs-list-sizing-border: var(--slds-c-tabbar-standard-sizing-border);
+
+    /* Text */
+    /* stylelint-disable sds-stylelint-plugin/styling-hooks-pattern */
+    --slds-c-tabs-item-line-height: var(--slds-c-tabbar-standard-font-lineheight, var(--_slds-c-tabbar-standard-font-lineheight));
+    /* stylelint-enable sds-stylelint-plugin/styling-hooks-pattern */
+  }
+
+  :host([data-render-mode="shadow"]) [part='tab-item'] .slds-tabs_default__link:hover {
+    color: currentcolor;
+  }
+
+  :host([data-render-mode="shadow"][variant='standard']) [part='tab-bar'],:host([data-render-mode="shadow"][variant='scoped']) [part='tab-bar'] {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  /* SHARED TAB HEADER STYLING */
+
+  :host([data-render-mode="shadow"][variant='standard']) [part~='tab-item'],:host([data-render-mode="shadow"][variant='scoped']) [part~='tab-item'] {
+    position: relative;
+  }
+
+  /* SHARED TAB STYLING */
+
+  :host([data-render-mode="shadow"]) [role='tab'] {
+    text-decoration: none;
+    cursor: pointer;
+    color: currentcolor;
+  }
+
+  :host([data-render-mode="shadow"]) [role='tab']:hover {
+    --_slds-g-font-decoration-hover: none;
+  }
+
+  :host([data-render-mode="shadow"]) .slds-is-active [role='tab']:focus {
+    text-decoration: underline;
+  }
+
+  :host([data-render-mode="shadow"][variant='standard']) .slds-is-active [role='tab'],:host([data-render-mode="shadow"][variant='scoped']) .slds-is-active [role='tab'],:host([data-render-mode="shadow"][variant='vertical']) .slds-is-active [role='tab'] {
+    font-weight: var(--slds-g-font-weight-7);
+  }
+
+  /* Overflow styles for horizontal tab variants */
+
+  :host([data-render-mode="shadow"][variant='standard']) [role='tab'],:host([data-render-mode="shadow"][variant='scoped']) [role='tab'] {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* SHARED OVERFLOW BUTTON MENU */
+
+  :host([data-render-mode="shadow"]) [part~='tab-overflow'] {
+    display: inline-flex;
+
+    /* Background Color */
+    --slds-c-buttonicon-color-background: transparent;
+    --slds-c-buttonicon-color-background-hover: transparent;
+    --slds-c-buttonicon-color-background-focus: transparent;
+    --slds-c-buttonicon-color-background-active: transparent;
+
+    /* Spacing */
+    --slds-c-buttonicon-spacing-block: 0;
+    --sds-c-button-spacing-inlinestart: var(--slds-g-spacing-4);
+    --sds-c-button-spacing-inlineend: var(--slds-g-spacing-4);
+    --sds-c-button-sizing-height: 100%;
+
+    /* Border Color */
+    --slds-c-buttonicon-color-border: transparent;
+    --slds-c-buttonicon-color-border-active: transparent;
+    --slds-c-buttonicon-color-border-hover: transparent;
+    --slds-c-buttonicon-color-border-focus: transparent;
+
+    /* Shadow */
+    --slds-c-buttonicon-shadow: none;
+    --slds-c-buttonicon-shadow-focus: none;
+  }
+
+  /* STANDARD TAB BAR STYLING */
+
+  /* Line under standard tabs */
+
+  :host([data-render-mode="shadow"][variant='standard']) [part='tab-bar'] {
+    border-block-end-width: var(--slds-c-tabbar-standard-sizing-border, var(--slds-g-sizing-border-1));
+    border-block-end-style: solid;
+    border-block-end-color: var(--slds-c-tabbar-standard-color-border, var(--slds-g-color-border-base-4, var(--slds-g-color-border-1)));
+  }
+
+  /* STANDARD TAB HEADER STYLING */
+
+  :host([data-render-mode="shadow"][variant='standard']) [part~='tab-item'] {
+    color: var(--slds-c-tabbar-standard-text-color, var(--slds-g-color-on-surface-2));
+    padding-block-start: var(--slds-c-tabbar-standard-spacing-blockstart, var(--slds-c-tabbar-standard-spacing-block, 0));
+    padding-inline-start: var(--slds-c-tabbar-standard-spacing-inlinestart, var(--slds-c-tabbar-standard-spacing-inline, var(--slds-g-spacing-3)));
+    padding-inline-end: var(--slds-c-tabbar-standard-spacing-inlineend, var(--slds-c-tabbar-standard-spacing-inline, var(--slds-g-spacing-3)));
+    padding-block-end: var(--slds-c-tabbar-standard-spacing-blockend, var(--slds-c-tabbar-standard-spacing-block, 0));
+    margin-block-end: calc(var(--slds-c-tabbar-standard-sizing-border, var(--slds-g-sizing-border-1)) * -1);
+  }
+
+  :host([data-render-mode="shadow"][variant='standard']) [part~='tab-item'].slds-is-active,:host([data-render-mode="shadow"][variant='standard']) [part~='tab-item'].slds-is-active:hover {
+    --slds-c-tabbar-standard-text-color: var(--slds-c-tabbar-standard-text-color-active, var(--slds-g-color-on-surface-3));
+  }
+
+  :host([data-render-mode="shadow"][variant='standard']) [part~='tab-item']:hover {
+    color: var(--slds-c-tabbar-standard-text-color-hover, var(--slds-c-tabbar-standard-text-color, var(--slds-g-color-on-surface-2)));
+  }
+
+  :host([data-render-mode="shadow"][variant='standard']) [part~='tab-item']::after {
+    display: block;
+    content: '';
+    inset-block-end: 0;
+    inset-inline-start: 0;
+    inset-inline-end: 0;
+    height: 0;
+    position: absolute;
+  }
+
+  /* Blue line under active tab */
+
+  :host([data-render-mode="shadow"][variant='standard']) [part~='tab-item'].slds-is-active::after {
+    background-color: var(--slds-c-tabbar-standard-color-border-active, var(--slds-g-color-accent-1));
+    height: calc(var(--slds-c-tabbar-standard-sizing-border, var(--slds-g-sizing-border-1)) + 2px);
+  }
+
+  /* Blue line under tab when hovering */
+
+  :host([data-render-mode="shadow"][variant='standard']) [part~='tab-item']:hover::after,:host([data-render-mode="shadow"][variant='standard']) [part~='tab-item'].slds-is-active:hover::after {
+    height: calc(var(--slds-c-tabbar-standard-sizing-border, var(--slds-g-sizing-border-1)) + 1px);
+    background-color: var(--slds-c-tabbar-standard-color-border-hover, var(--slds-g-color-accent-1));
+  }
+
+  /* STANDARD TAB LINK STYLING */
+
+  :host([data-render-mode="shadow"][variant='standard']) [role='tab'] {
+    display: block;
+    /* stylelint-disable sds-stylelint-plugin/styling-hooks-pattern */
+    height: var(--slds-c-tabbar-standard-sizing-height, var(--_slds-c-tabbar-standard-sizing-height));
+    line-height: var(--slds-c-tabbar-standard-font-lineheight, var(--_slds-c-tabbar-standard-font-lineheight));
+    /* stylelint-enable sds-stylelint-plugin/styling-hooks-pattern */
+    border: 0;
+  }
+
+  /* STANDARD TAB OVERFLOW STYLING */
+
+  :host([data-render-mode="shadow"][variant='standard']) [part~='tab-overflow'] {
+    /* stylelint-disable sds-stylelint-plugin/styling-hooks-pattern */
+    line-height: var(--slds-c-standard-font-lineheight, var(--_slds-c-tabbar-standard-sizing-height));
+    /* stylelint-enable sds-stylelint-plugin/styling-hooks-pattern */
+    --slds-c-buttonicon-spacing-inline: 0;
+
+    /* Text Color */
+    --slds-c-button-neutral-text-color: var(--slds-c-tabbar-standard-text-color, var(--slds-g-color-on-surface-2));
+    --slds-c-button-neutral-text-color-hover: var(--slds-c-tabbar-standard-text-color-hover, var(--slds-g-color-on-surface-2));
+    --slds-c-button-neutral-text-color-focus: var(--slds-c-tabbar-standard-text-color-focus, var(--slds-g-color-on-surface-2));
+    --slds-c-button-neutral-text-color-active: var(--slds-c-tabbar-standard-text-color-active, var(--slds-g-color-on-surface-2));
+
+    /* Icon Color */
+    --slds-c-buttonicon-color-foreground: var(--slds-c-tabbar-standard-text-color, var(--slds-g-color-on-surface-2));
+    --slds-c-buttonicon-color-foreground-hover: var(--slds-c-tabbar-standard-text-color-hover, var(--slds-g-color-on-surface-2));
+    --slds-c-buttonicon-color-foreground-focus: var(--slds-c-tabbar-standard-text-color-focus, var(--slds-g-color-on-surface-2));
+    --slds-c-buttonicon-color-foreground-active: var(--slds-c-tabbar-standard-text-color-active, var(--slds-g-color-on-surface-2));
+  }
+
+  :host([data-render-mode="shadow"][variant='standard']) [part~='tab-overflow'] lightning-button-menu:focus {
+    --sds-c-button-font-decoration: underline;
+  }
+
+  /* SCOPED TAB BAR STYLING */
+
+  :host([data-render-mode="shadow"][variant='scoped']) [part='tab-bar'] {
+    background-color: var(--slds-c-tabbar-scoped-color-background, var(--slds-g-color-surface-container-2));
+    border: var(--slds-g-sizing-border-1) solid var(--slds-c-tabbar-scoped-color-border, var(--slds-g-color-border-base-4, var(--slds-g-color-border-1)));
+    border-end-end-radius: 0;
+    border-end-start-radius: 0;
+    border-start-end-radius: var(--slds-c-tabbar-scoped-radius-border, var(--slds-g-radius-border-2));
+    border-start-start-radius: var(--slds-c-tabbar-scoped-radius-border, var(--slds-g-radius-border-2));
+  }
+
+  /* SCOPED TAB HEADER STYLING */
+
+  /* Covers border under active tab, since background is not transparent */
+
+  :host([data-render-mode="shadow"][variant='scoped']) [part~='tab-item'] {
+    margin-block-end: calc(var(--slds-g-sizing-border-1) * -1);
+    color: var(--slds-c-tabbar-scoped-text-color, var(--slds-g-color-on-surface-2));
+  }
+
+  :host([data-render-mode="shadow"][variant='scoped']) [part~='tab-item'].slds-is-active {
+    --slds-c-tabbar-scoped-text-color: var(--slds-c-tabbar-scoped-text-color-active, var(--slds-g-color-on-surface-3));
+  }
+
+  /* Ensures that borders for tabs overlap */
+
+  :host([data-render-mode="shadow"][variant='scoped']) [part~='tab-item'] + [part~='tab-item'] {
+    margin-inline-start: calc(var(--slds-g-sizing-border-1) * -1);
+  }
+
+  /* SCOPED TAB LINK STYLING */
+
+  :host([data-render-mode="shadow"][variant='scoped']) [role='tab'] {
+    /* stylelint-disable sds-stylelint-plugin/styling-hooks-pattern */
+    height: var(--slds-c-tabbar-scoped-sizing-height, var(--_slds-c-tabbar-scoped-sizing-height));
+    line-height: var(--slds-c-tabbar-scoped-sizing-height, var(--_slds-c-tabbar-scoped-sizing-height));
+    /* stylelint-enable sds-stylelint-plugin/styling-hooks-pattern */
+    padding-block-start: var(--slds-c-tabbar-scoped-spacing-blockstart, var(--slds-c-tabbar-scoped-spacing-block, 0));
+    padding-inline-start: var(--slds-c-tabbar-scoped-spacing-inlinestart, var(--slds-c-tabbar-scoped-spacing-inline, var(--slds-g-spacing-4)));
+    padding-inline-end: var(--slds-c-tabbar-scoped-spacing-inlineend, var(--slds-c-tabbar-scoped-spacing-inline, var(--slds-g-spacing-4)));
+    padding-block-end: var(--slds-c-tabbar-scoped-spacing-blockend, var(--slds-c-tabbar-scoped-spacing-block, 0));
+    color: currentcolor;
+    background-clip: padding-box;
+    border: 0;
+    border-inline-start: var(--slds-g-sizing-border-1) solid transparent;
+    border-inline-end: var(--slds-g-sizing-border-1) solid transparent;
+    border-radius: 0;
+    display: block;
+  }
+
+  :host([data-render-mode="shadow"][variant='scoped']) [part='tab-item']:first-child [role='tab'] {
+    border-left: 0;
+  }
+
+  :host([data-render-mode="shadow"][variant='scoped']) [role='tab']:hover {
+    border-color: var(--slds-c-tabbar-scoped-color-border-hover, var(--slds-g-color-border-base-4, var(--slds-g-color-border-1)));
+    background-color: var(--slds-c-tabbar-scoped-color-background-hover, transparent);
+  }
+
+  :host([data-render-mode="shadow"][variant='scoped']) .slds-is-active [role='tab'] {
+    background-color: var(--slds-c-tabbar-scoped-color-background-active, var(--slds-g-color-surface-container-1));
+    border-color: var(--slds-c-tabbar-scoped-color-border-active, var(--slds-g-color-border-base-4, var(--slds-g-color-border-1)));
+  }
+
+  /* SCOPED TAB OVERFLOW STYLING */
+
+  :host([data-render-mode="shadow"][variant='scoped']) [part~='tab-overflow'] {
+    /* stylelint-disable sds-stylelint-plugin/styling-hooks-pattern */
+    line-height: var(--slds-c-tabbar-scoped-sizing-height, var(--_slds-c-tabbar-scoped-sizing-height));
+    /* stylelint-enable sds-stylelint-plugin/styling-hooks-pattern */
+    --slds-c-buttonicon-spacing-inline: var(--slds-g-spacing-4);
+
+    /* Text Color */
+    --slds-c-button-neutral-text-color: var(--slds-c-tabbar-scoped-text-color, var(--slds-g-color-on-surface-2));
+    --slds-c-button-neutral-text-color-hover: var(--slds-c-tabbar-scoped-text-color, var(--slds-g-color-on-surface-2));
+    --slds-c-button-neutral-text-color-focus: var(--slds-c-tabbar-scoped-text-color, var(--slds-g-color-on-surface-2));
+    --slds-c-button-neutral-text-color-active: var(--slds-c-tabbar-scoped-text-color, var(--slds-g-color-on-surface-2));
+
+    /* Icon Color */
+    --slds-c-buttonicon-color-foreground: var(--slds-c-tabbar-scoped-text-color, var(--slds-g-color-on-surface-2));
+    --slds-c-buttonicon-color-foreground-hover: var(--slds-c-tabbar-scoped-text-color, var(--slds-g-color-on-surface-2));
+    --slds-c-buttonicon-color-foreground-focus: var(--slds-c-tabbar-scoped-text-color, var(--slds-g-color-on-surface-2));
+    --slds-c-buttonicon-color-foreground-active: var(--slds-c-tabbar-scoped-text-color, var(--slds-g-color-on-surface-2));
+  }
+
+  /* VERTICAL TAB BAR STYLING */
+
+  :host([data-render-mode="shadow"][variant='vertical']) [part='tab-bar'] {
+    background: var(--slds-c-tabbar-vertical-color-background, var(--slds-g-color-surface-container-2));
+    border-inline-end: var(--slds-g-sizing-border-1) solid var(--slds-c-tabbar-vertical-color-border, var(--slds-g-color-border-base-1, var(--slds-g-color-border-1)));
+    /* stylelint-disable sds-stylelint-plugin/styling-hooks-pattern */
+    width: var(--slds-c-tabbar-vertical-sizing-width, var(--_slds-c-tabbar-vertical-sizing-width));
+    /* stylelint-enable sds-stylelint-plugin/styling-hooks-pattern */
+  }
+
+  /* VERTICAL TAB HEADER STYLING */
+
+  :host([data-render-mode="shadow"][variant='vertical']) [part='tab-item'] {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    border-block-end: var(--slds-g-sizing-border-1) solid var(--slds-c-tabbar-vertical-color-border, var(--slds-g-color-border-base-1, var(--slds-g-color-border-1)));
+    color: var(--slds-c-tabbar-vertical-text-color, currentcolor);
+  }
+
+  :host([data-render-mode="shadow"][variant='vertical']) [part='tab-item']:last-child {
+    margin-block-end: calc(var(--slds-g-sizing-border-1) * -1);
+  }
+
+  /* Covers border next to active tab, since background is not transparent */
+
+  :host([data-render-mode="shadow"][variant='vertical']) [part='tab-item'].slds-is-active {
+    margin-inline-end: calc(var(--slds-g-sizing-border-1) * -1);
+    background: var(--slds-c-tabbar-vertical-color-background-active, var(--slds-g-color-surface-container-1));
+    color: var(--slds-c-tabbar-vertical-text-color-active, var(--slds-g-color-accent-2));
+  }
+
+  /* VERTICAL TAB LINK STYLING */
+
+  :host([data-render-mode="shadow"][variant='vertical']) [role='tab'] {
+    display: flex;
+    flex: 1 1 0%;
+    align-items: center;
+    min-width: 0;
+    padding-block-start: var(--slds-c-tabbar-vertical-spacing-blockstart, var(--slds-c-tabbar-vertical-spacing-block, var(--slds-g-spacing-3)));
+    padding-inline-start: var(--slds-c-tabbar-vertical-spacing-inlinestart, var(--slds-c-tabbar-vertical-spacing-inline, var(--slds-g-spacing-3)));
+    padding-inline-end: var(--slds-c-tabbar-vertical-spacing-inlineend, var(--slds-c-tabbar-vertical-spacing-inline, var(--slds-g-spacing-3)));
+    padding-block-end: var(--slds-c-tabbar-vertical-spacing-blockend, var(--slds-c-tabbar-vertical-spacing-block, var(--slds-g-spacing-3)));
+    
+    /* stylelint-disable-next-line sds-stylelint-plugin/styling-hooks-pattern */
+    color: var(--slds-s-navigation-color);
+  }
+
+  :host([data-render-mode="shadow"][variant='vertical']) .slds-is-active [role='tab'] {
+    
+    /* stylelint-disable-next-line sds-stylelint-plugin/styling-hooks-pattern */
+    color: var(--slds-s-navigation-color-active);
+  }
+
+  :host([data-render-mode="shadow"][variant='vertical']) [role='tab']:hover {
+    background: var(--slds-c-tabbar-vertical-color-background-hover, var(--slds-g-color-surface-container-3));
+    color: var(--slds-c-tabbar-vertical-text-color-hover, var(--slds-g-color-on-surface-3));
+  }
+
+  /* Active tab should still use active colors on hover */
+
+  :host([data-render-mode="shadow"][variant='vertical']) .slds-is-active [role='tab']:hover {
+    background: var(--slds-c-tabbar-vertical-color-background-active, var(--slds-g-color-surface-container-1));
+
+    /* stylelint-disable-next-line sds-stylelint-plugin/styling-hooks-pattern */
+    color: var(--slds-c-tabbar-vertical-text-color-hover, var(--slds-s-navigation-color-hover, var(--slds-g-color-neutral-base-20)));
+  }
+
+  :host([data-render-mode="shadow"][variant='scoped']) .slds-is-active [role='tab']:focus,:host([data-render-mode="shadow"][variant='vertical']) .slds-is-active [role='tab']:focus {
+    box-shadow: var(--slds-g-shadow-6, 0 0 3px #0176d3);
+  }

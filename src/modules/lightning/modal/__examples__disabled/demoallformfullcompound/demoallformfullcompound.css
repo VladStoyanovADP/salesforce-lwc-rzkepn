@@ -1,0 +1,7 @@
+/* imports for Native Shadow support */
+/* supports common HTML elements */
+@import 'lightning/sldsCommon';
+/* supports form elements and form layout */
+@import 'lightning/sldsFormElementUtils';
+/* supports grid based column sizing for layouts */
+@import 'lightning/sldsUtilsSizing';

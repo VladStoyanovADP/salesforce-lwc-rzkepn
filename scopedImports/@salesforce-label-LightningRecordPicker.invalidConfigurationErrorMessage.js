@@ -1,0 +1,1 @@
+export default 'This field can\'t load because of a configuration problem. Ask your Salesforce admin for help.';

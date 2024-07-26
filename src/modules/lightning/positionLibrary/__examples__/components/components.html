@@ -1,0 +1,41 @@
+<template>
+    <template if:true={isHelpText}>
+        <lightning-helptext
+            content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vel orci porta non pulvinar neque."
+        ></lightning-helptext>
+    </template>
+
+    <template if:true={isButtonMenu}>
+        <lightning-button-menu alternative-text="Show menu">
+            <lightning-menu-item
+                value="MenuItemOne"
+                label="Menu Item One"
+            ></lightning-menu-item>
+            <lightning-menu-item
+                value="MenuItemTwo"
+                label="Menu Item Two"
+            ></lightning-menu-item>
+            <lightning-menu-item
+                value="MenuItemThree"
+                label="Menu Item Three"
+            ></lightning-menu-item>
+            <lightning-menu-item
+                value="MenuItemFour"
+                label="Menu Item Four"
+            ></lightning-menu-item>
+        </lightning-button-menu>
+    </template>
+
+    <template if:true={isComboBox}>
+        <lightning-combobox
+            name="progress"
+            label="Status"
+            placeholder="Select Progress"
+            options={comboBoxOptions}
+        ></lightning-combobox>
+    </template>
+
+    <template if:true={isDatePicker}>
+        <lightning-datepicker label="Select a date"></lightning-datepicker>
+    </template>
+</template>

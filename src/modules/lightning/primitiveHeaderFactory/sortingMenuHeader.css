@@ -1,0 +1,5 @@
+@import 'lightning/sldsCommon';
+
+.slds-th__action {
+    justify-content: center;
+}

@@ -1,0 +1,13 @@
+<template>
+    <lightning-button
+        label="Trigger error"
+        class="triggerError"
+        onclick={triggerError}>
+    </lightning-button>
+    <lightning-datatable
+        key-field="id"
+        data={data}
+        columns={columns}
+        errors={errors}>
+    </lightning-datatable>
+</template>

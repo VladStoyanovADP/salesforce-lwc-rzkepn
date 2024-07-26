@@ -1,0 +1,65 @@
+<template>
+    <div class="slds-form" tabindex="-1">
+        <fieldset class="slds-form-element slds-form-element_compound">
+            <template if:false={hasExternalLabel}>
+                <legend class={computedLabelClass}>
+                    {label}
+                </legend>
+                <lightning-helptext if:true={fieldLevelHelp} content={fieldLevelHelp} alternative-text={helptextAlternativeText}></lightning-helptext>
+            </template>
+            <div class="slds-form-element__control">
+                <div class="slds-form-element__group">
+                    <div class="slds-form-element__row">
+                        <lightning-datepicker
+                            data-aria-invalid={computedDateAriaInvalid}
+                            class="slds-form-element"
+                            autocomplete={autocomplete}
+                            accesskey={dateAccessKey}
+                            min={dateMin}
+                            max={dateMax}
+                            label={i18n.date}
+                            name={name}
+                            placeholder={placeholder}
+                            readonly={readOnly}
+                            disabled={disabled}
+                            date-style={dateStyle}
+                            required={required}
+                            onfocus={handleDatepickerFocus}
+                            onblur={handleDatepickerBlur}
+                            onchange={handleDateChange}
+                            aria-error-message-element={errorMessageElement}
+                            aria-disabled={ariaDisabled}
+                            variant={childVariant}
+                            root-aria-node={rootAriaNode}
+                        >
+                        </lightning-datepicker>
+
+                        <lightning-timepicker
+                            data-aria-invalid={computedTimeAriaInvalid}
+                            class="slds-form-element"
+                            autocomplete={autocomplete}
+                            accesskey={timeAccessKey}
+                            label={i18n.time}
+                            name={name}
+                            time-style={timeStyle}
+                            placeholder={placeholder}
+                            readonly={readOnly}
+                            required={required}
+                            disabled={disabled}
+                            onfocus={handleTimepickerFocus}
+                            onblur={handleTimepickerBlur}
+                            onchange={handleTimeChange}
+                            aria-error-message-element={errorMessageElement}
+                            aria-disabled={ariaDisabled}
+                            variant={childVariant}
+                            root-aria-node={rootAriaNode}
+                        >
+                        </lightning-timepicker>
+                    </div>
+                </div>
+            </div>
+            <div data-error-message id="errormessage" class={computedClass} aria-live="polite">{customErrorMessage}</div>
+
+        </fieldset>
+    </div>
+</template>

@@ -1,0 +1,623 @@
+
+/**
+ * @Note: Static fallbacks are in place until SLDS adopts SDS. Without static
+ *        fallbacks, styles will regress due to invalid CSS variables from
+ *        missing SLDS shared and globals.
+ *
+ *        Additionally, LBC are currently relying on 'part' attributes to
+ *        receive styling. Authoring styles that rely on slots is not recommended.
+ */
+
+  :host([data-render-mode="shadow"]) [part~='overlay'] {
+    /* stylelint-disable */
+    --slds-c-tooltip-sizing-width-max: var(--slds-c-tooltip-sizing-max-width);
+    --slds-c-tooltip-position-zindex: var(--slds-c-popover-position-zindex);
+    /* stylelint-enable */
+
+    background-color: var(--slds-c-tooltip-color-background, #032d60);
+    color: var(--slds-c-tooltip-text-color, #fff);
+    border-radius: 0.25rem;
+    border-width: 0;
+    box-shadow: 0 2px 3px 0 rgb(0 0 0 / 16%);
+    padding-inline-start: 0.75rem;
+    padding-inline-end: 0.75rem;
+    padding-block-start: 0.5rem;
+    padding-block-end: 0.5rem;
+    z-index: var(--slds-c-tooltip-position-zindex);
+
+    /**
+     * Opinion of subsystem, not supported in base SDS component
+     */
+    font-size: var(--slds-c-tooltip-font-size, 0.75rem);
+    max-width: var(--slds-c-tooltip-sizing-width-max, 20rem);
+    position: relative;
+  }
+
+  /**
+ * P R I V A T E
+ *
+ * The following styling is implemented by classes within the shadow DOM.
+ * They're expected to be private to the component and not for external use.
+ */
+
+  /**
+  * LBC does not expose an API to configure the placement of the nubbin.
+  * The placement is generated dynamically internally. Since the current
+  * implementation is internal and private, we'll recreate it as-is and
+  * not make modifications until we do our due diligence about a better
+  * path forward.
+  */
+
+  :host([data-render-mode="shadow"]) [part~='overlay']::after {
+  box-shadow: -1px -1px 0 0 rgba(0, 0, 0, 16%);
+  z-index: -1;
+}
+
+  /**
+ * Nubbin positioning
+ */
+
+  /* stylelint-disable */
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_top::before {
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  transform: rotate(45deg);
+  content: '';
+  background-color: inherit;
+  left: 50%;
+  top: -0.5rem;
+  margin-left: -0.5rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_top::after {
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  transform: rotate(45deg);
+  content: '';
+  background-color: inherit;
+  left: 50%;
+  top: -0.5rem;
+  margin-left: -0.5rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_top-left::before,:host([data-render-mode="shadow"]) 
+.slds-nubbin_top-left-corner::before {
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  transform: rotate(45deg);
+  content: '';
+  background-color: inherit;
+  left: 50%;
+  top: -0.5rem;
+  margin-left: -0.5rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_top-left::after,:host([data-render-mode="shadow"]) 
+.slds-nubbin_top-left-corner::after {
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  transform: rotate(45deg);
+  content: '';
+  background-color: inherit;
+  left: 50%;
+  top: -0.5rem;
+  margin-left: -0.5rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_top-left::before,:host([data-render-mode="shadow"]) 
+.slds-nubbin_top-left::after,:host([data-render-mode="shadow"]) 
+.slds-nubbin_top-left-corner::before,:host([data-render-mode="shadow"]) 
+.slds-nubbin_top-left-corner::after {
+  left: 1.5rem;
+  top: -0.5rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_top-right::before,:host([data-render-mode="shadow"]) 
+.slds-nubbin_top-right-corner::before {
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  transform: rotate(45deg);
+  content: '';
+  background-color: inherit;
+  left: 50%;
+  top: -0.5rem;
+  margin-left: -0.5rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_top-right::after,:host([data-render-mode="shadow"]) 
+.slds-nubbin_top-right-corner::after {
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  transform: rotate(45deg);
+  content: '';
+  background-color: inherit;
+  left: 50%;
+  top: -0.5rem;
+  margin-left: -0.5rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_top-right::before,:host([data-render-mode="shadow"]) 
+.slds-nubbin_top-right::after,:host([data-render-mode="shadow"]) 
+.slds-nubbin_top-right-corner::before,:host([data-render-mode="shadow"]) 
+.slds-nubbin_top-right-corner::after {
+  left: auto;
+  right: 1.5rem;
+  top: -0.5rem;
+  margin-right: -0.5rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_bottom::before {
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  transform: rotate(45deg);
+  content: '';
+  background-color: inherit;
+  left: 50%;
+  bottom: -0.5rem;
+  margin-left: -0.5rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_bottom::after {
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  transform: rotate(45deg);
+  content: '';
+  background-color: inherit;
+  left: 50%;
+  bottom: -0.5rem;
+  margin-left: -0.5rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_bottom::after {
+  box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 16%);
+  z-index: -1;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_bottom-left::before,:host([data-render-mode="shadow"]) 
+.slds-nubbin_bottom-left-corner::before {
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  transform: rotate(45deg);
+  content: '';
+  background-color: inherit;
+  left: 50%;
+  bottom: -0.5rem;
+  margin-left: -0.5rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_bottom-left::after,:host([data-render-mode="shadow"]) 
+.slds-nubbin_bottom-left-corner::after {
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  transform: rotate(45deg);
+  content: '';
+  background-color: inherit;
+  left: 50%;
+  bottom: -0.5rem;
+  margin-left: -0.5rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_bottom-left::after,:host([data-render-mode="shadow"]) 
+.slds-nubbin_bottom-left-corner::after {
+  box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 16%);
+  z-index: -1;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_bottom-left::before,:host([data-render-mode="shadow"]) 
+.slds-nubbin_bottom-left::after,:host([data-render-mode="shadow"]) 
+.slds-nubbin_bottom-left-corner::before,:host([data-render-mode="shadow"]) 
+.slds-nubbin_bottom-left-corner::after {
+  left: 1.5rem;
+  top: 100%;
+  margin-top: -0.5rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_bottom-right::before,:host([data-render-mode="shadow"]) 
+.slds-nubbin_bottom-right-corner::before {
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  transform: rotate(45deg);
+  content: '';
+  background-color: inherit;
+  left: 50%;
+  bottom: -0.5rem;
+  margin-left: -0.5rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_bottom-right::after,:host([data-render-mode="shadow"]) 
+.slds-nubbin_bottom-right-corner::after {
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  transform: rotate(45deg);
+  content: '';
+  background-color: inherit;
+  left: 50%;
+  bottom: -0.5rem;
+  margin-left: -0.5rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_bottom-right::after,:host([data-render-mode="shadow"]) 
+.slds-nubbin_bottom-right-corner::after {
+  box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 16%);
+  z-index: -1;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_bottom-right::before,:host([data-render-mode="shadow"]) 
+.slds-nubbin_bottom-right::after,:host([data-render-mode="shadow"]) 
+.slds-nubbin_bottom-right-corner::before,:host([data-render-mode="shadow"]) 
+.slds-nubbin_bottom-right-corner::after {
+  left: auto;
+  right: 1.5rem;
+  top: 100%;
+  margin-top: -0.5rem;
+  margin-right: -0.5rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_left::before {
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  transform: rotate(45deg);
+  content: '';
+  background-color: inherit;
+  top: 50%;
+  left: -0.5rem;
+  margin-top: -0.5rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_left::after {
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  transform: rotate(45deg);
+  content: '';
+  background-color: inherit;
+  top: 50%;
+  left: -0.5rem;
+  margin-top: -0.5rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_left::after {
+  box-shadow: -1px 1px 2px 0 rgba(0, 0, 0, 16%);
+  z-index: -1;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_left-top::before,:host([data-render-mode="shadow"]) 
+.slds-nubbin_left-top-corner::before {
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  transform: rotate(45deg);
+  content: '';
+  background-color: inherit;
+  top: 50%;
+  left: -0.5rem;
+  margin-top: -0.5rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_left-top::after,:host([data-render-mode="shadow"]) 
+.slds-nubbin_left-top-corner::after {
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  transform: rotate(45deg);
+  content: '';
+  background-color: inherit;
+  top: 50%;
+  left: -0.5rem;
+  margin-top: -0.5rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_left-top::after,:host([data-render-mode="shadow"]) 
+.slds-nubbin_left-top-corner::after {
+  box-shadow: -1px 1px 2px 0 rgba(0, 0, 0, 16%);
+  z-index: -1;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_left-top::before,:host([data-render-mode="shadow"]) 
+.slds-nubbin_left-top::after,:host([data-render-mode="shadow"]) 
+.slds-nubbin_left-top-corner::before,:host([data-render-mode="shadow"]) 
+.slds-nubbin_left-top-corner::after {
+  top: 1.5rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_left-bottom::before,:host([data-render-mode="shadow"]) 
+.slds-nubbin_left-bottom-corner::before {
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  transform: rotate(45deg);
+  content: '';
+  background-color: inherit;
+  top: 50%;
+  left: -0.5rem;
+  margin-top: -0.5rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_left-bottom::after,:host([data-render-mode="shadow"]) 
+.slds-nubbin_left-bottom-corner::after {
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  transform: rotate(45deg);
+  content: '';
+  background-color: inherit;
+  top: 50%;
+  left: -0.5rem;
+  margin-top: -0.5rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_left-bottom::before,:host([data-render-mode="shadow"]) 
+.slds-nubbin_left-bottom-corner::before {
+  margin-bottom: -1px;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_left-bottom::after,:host([data-render-mode="shadow"]) 
+.slds-nubbin_left-bottom-corner::after {
+  box-shadow: -1px 2px 3px 0 rgba(0, 0, 0, 16%);
+  z-index: -1;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_left-bottom::before,:host([data-render-mode="shadow"]) 
+.slds-nubbin_left-bottom::after,:host([data-render-mode="shadow"]) 
+.slds-nubbin_left-bottom-corner::before,:host([data-render-mode="shadow"]) 
+.slds-nubbin_left-bottom-corner::after {
+  top: auto;
+  bottom: 1rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_right::before {
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  transform: rotate(45deg);
+  content: '';
+  background-color: inherit;
+  top: 50%;
+  right: -0.5rem;
+  margin-top: -0.5rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_right::after {
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  transform: rotate(45deg);
+  content: '';
+  background-color: inherit;
+  top: 50%;
+  right: -0.5rem;
+  margin-top: -0.5rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_right::after {
+  box-shadow: 1px -1px 2px 0 rgba(0, 0, 0, 16%);
+  z-index: -1;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_right-top::before,:host([data-render-mode="shadow"]) 
+.slds-nubbin_right-top-corner::before {
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  transform: rotate(45deg);
+  content: '';
+  background-color: inherit;
+  top: 50%;
+  right: -0.5rem;
+  margin-top: -0.5rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_right-top::after,:host([data-render-mode="shadow"]) 
+.slds-nubbin_right-top-corner::after {
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  transform: rotate(45deg);
+  content: '';
+  background-color: inherit;
+  top: 50%;
+  right: -0.5rem;
+  margin-top: -0.5rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_right-top::after,:host([data-render-mode="shadow"]) 
+.slds-nubbin_right-top-corner::after {
+  box-shadow: 1px -1px 2px 0 rgba(0, 0, 0, 16%);
+  z-index: -1;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_right-top::before,:host([data-render-mode="shadow"]) 
+.slds-nubbin_right-top::after,:host([data-render-mode="shadow"]) 
+.slds-nubbin_right-top-corner::before,:host([data-render-mode="shadow"]) 
+.slds-nubbin_right-top-corner::after {
+  top: 1.5rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_right-bottom::before,:host([data-render-mode="shadow"]) 
+.slds-nubbin_right-bottom-corner::before {
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  transform: rotate(45deg);
+  content: '';
+  background-color: inherit;
+  top: 50%;
+  right: -0.5rem;
+  margin-top: -0.5rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_right-bottom::after,:host([data-render-mode="shadow"]) 
+.slds-nubbin_right-bottom-corner::after {
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  transform: rotate(45deg);
+  content: '';
+  background-color: inherit;
+  top: 50%;
+  right: -0.5rem;
+  margin-top: -0.5rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_right-bottom::before,:host([data-render-mode="shadow"]) 
+.slds-nubbin_right-bottom-corner::before {
+  margin-bottom: -1px;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_right-bottom::after,:host([data-render-mode="shadow"]) 
+.slds-nubbin_right-bottom-corner::after {
+  box-shadow: 2px -1px 3px 0 rgba(0, 0, 0, 16%);
+  z-index: -1;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_right-bottom::before,:host([data-render-mode="shadow"]) 
+.slds-nubbin_right-bottom::after,:host([data-render-mode="shadow"]) 
+.slds-nubbin_right-bottom-corner::before,:host([data-render-mode="shadow"]) 
+.slds-nubbin_right-bottom-corner::after {
+  top: auto;
+  bottom: 1rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_top-left-corner {
+  border-radius: 0.125rem 0.25rem 0.25rem 0.25rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_top-left-corner::before,:host([data-render-mode="shadow"]) 
+.slds-nubbin_top-left-corner::after {
+  left: 0.75rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_bottom-left-corner {
+  border-radius: 0.25rem 0.25rem 0.25rem 0.125rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_bottom-left-corner::before,:host([data-render-mode="shadow"]) 
+.slds-nubbin_bottom-left-corner::after {
+  left: 0.75rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_top-right-corner {
+  border-radius: 0.25rem 0.125rem 0.25rem 0.25rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_top-right-corner::before,:host([data-render-mode="shadow"]) 
+.slds-nubbin_top-right-corner::after {
+  right: 0.75rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_bottom-right-corner {
+  border-radius: 0.25rem 0.25rem 0.125rem 0.25rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_bottom-right-corner::before,:host([data-render-mode="shadow"]) 
+.slds-nubbin_bottom-right-corner::after {
+  right: 0.75rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_left-top-corner {
+  border-radius: 0.125rem 0.25rem 0.25rem 0.25rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_left-top-corner::before,:host([data-render-mode="shadow"]) 
+.slds-nubbin_left-top-corner::after {
+  top: 0.75rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_right-top-corner {
+  border-radius: 0.25rem 0.125rem 0.25rem 0.25rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_right-top-corner::before,:host([data-render-mode="shadow"]) 
+.slds-nubbin_right-top-corner::after {
+  top: 0.75rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_left-bottom-corner {
+  border-radius: 0.25rem 0.25rem 0.25rem 0.125rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_left-bottom-corner::before,:host([data-render-mode="shadow"]) 
+.slds-nubbin_left-bottom-corner::after {
+  bottom: 0.25rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_right-bottom-corner {
+  border-radius: 0.25rem 0.25rem 0.125rem 0.25rem;
+}
+
+  :host([data-render-mode="shadow"]) .slds-nubbin_right-bottom-corner::before,:host([data-render-mode="shadow"]) 
+.slds-nubbin_right-bottom-corner::after {
+  bottom: 0.25rem;
+}
+
+  /**
+ * Animation Utilities
+ *
+ * @TODO: refactor into utilities package once it is available
+ *
+ * https://github.com/salesforce-ux/product-subsystem/issues/44
+ */
+
+  :host([data-render-mode="shadow"]) .slds-rise-from-ground {
+  visibility: visible;
+  opacity: 1;
+  transform: translate(0%, 0%);
+  transition: opacity 0.1s linear, visibility 0.1s linear, transform 0.1s linear;
+  will-change: transform;
+}
+
+  :host([data-render-mode="shadow"]) .slds-fall-into-ground {
+  visibility: hidden;
+  opacity: 0;
+  transform: translate(0%, 0%);
+  transition: opacity 0.1s linear, visibility 0.1s linear, transform 0.1s linear;
+  will-change: transform;
+}
+
+  :host([data-render-mode="shadow"]) .slds-slide-from-bottom-to-top {
+  transform: translateY(10%);
+  will-change: transform;
+}
+
+  :host([data-render-mode="shadow"]) .slds-slide-from-top-to-bottom {
+  transform: translateY(-10%);
+  will-change: transform;
+}
+
+  :host([data-render-mode="shadow"]) .slds-slide-from-right-to-left {
+  transform: translateX(5%);
+  will-change: transform;
+}
+
+  :host([data-render-mode="shadow"]) .slds-slide-from-left-to-right {
+  transform: translateX(-5%);
+  will-change: transform;
+}
+
+  /**
+ * Visibility Utilities
+ *
+ * @TODO: refactor into utilities package once it is available
+ *
+ * https://github.com/salesforce-ux/product-subsystem/issues/44
+ */
+
+  :host([data-render-mode="shadow"]) .slds-hide {
+  display: none;
+}
+
+  /* stylelint-enable */

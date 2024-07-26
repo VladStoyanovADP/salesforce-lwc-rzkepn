@@ -1,0 +1,35 @@
+
+  /* re-assign current slds hooks using deprecated naming conventions */
+  :host([data-render-mode="shadow"]) {
+    /* stylelint-disable */
+    --slds-c-pill-container-color-background: var(--slds-c-pillcontainer-color-background);
+    --slds-c-pill-container-spacing-blockend: var(--slds-c-pillcontainer-spacing-block-end);
+    --slds-c-pill-container-spacing-blockstart: var(--slds-c-pillcontainer-spacing-block-start);
+    --slds-c-pill-container-spacing-inlineend: var(--slds-c-pillcontainer-spacing-inline-end);
+    --slds-c-pill-container-spacing-inlinestart: var(--slds-c-pillcontainer-spacing-inline-start);
+    --slds-c-pill-sizing-border: var(--slds-c-pillcontainer-sizing-border);
+    --slds-c-pill-color-border: var(--slds-c-pillcontainer-color-border);
+    --slds-c-pill-radius-border: var(--slds-c-pillcontainer-radius-border);
+    /* stylelint-enable */
+  }
+  /* When single-line attribute is present */
+  :host([data-render-mode="shadow"][single-line]) .slds-listbox_horizontal {
+    flex-wrap: nowrap;
+  }
+  :host([data-render-mode="shadow"]) .slds-pill_container {
+    display: flex;
+    min-height: calc(calc((var(--slds-g-sizing-1) * 3) + var(--slds-g-sizing-7)) + 2px);
+    padding-block-start: var(--slds-c-pillcontainer-spacing-blockstart, calc(var(--slds-g-spacing-1) / 2));
+    padding-inline-end: var(--slds-c-pillcontainer-spacing-inlineend, calc(var(--slds-g-spacing-1) / 2));
+    padding-block-end: var(--slds-c-pillcontainer-spacing-blockend, calc(var(--slds-g-spacing-1) / 2));
+    padding-inline-start: var(--slds-c-pillcontainer-spacing-inlinestart, calc(var(--slds-g-spacing-1) / 2));
+    border-width: var(--slds-c-pillcontainer-sizing-border, var(--slds-g-sizing-border-1));
+    border-style: solid;
+    border-color: var(--slds-c-pillcontainer-color-border, var(--slds-g-color-border-1));
+    border-radius: var(--slds-c-pillcontainer-radius-border, var(--slds-g-radius-border-2));
+    background-color: var(--slds-c-pillcontainer-color-background, var(--slds-g-color-surface-container-1));
+  }
+  :host([data-render-mode="shadow"]) .slds-pill_container .slds-listbox_inline {
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+  }

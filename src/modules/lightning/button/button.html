@@ -1,0 +1,33 @@
+<template>
+    <button class={computedButtonClass}
+            disabled={disabled}
+            aria-disabled={disabled}
+            name={name}
+            accesskey={accessKey}
+            title={title}
+            type={normalizedType}
+            value={value}
+            onfocus={handleButtonFocus}
+            onblur={handleButtonBlur}
+            onclick={handleButtonClick}
+            aria-atomic={computedAriaAtomic}
+            aria-busy={computedAriaBusy}
+            aria-label={ariaLabel}
+            aria-expanded={computedAriaExpanded}
+            aria-haspopup={computedAriaHasPopup}
+            aria-live={computedAriaLive}
+            aria-pressed={computedAriaPressed}
+            aria-relevant={computedAriaRelevant}
+            part="button"
+            tabindex={tabIndex}>
+        <template if:true={showIconLeft}>
+            <lightning-primitive-icon part="start" icon-name={iconName} svg-class={computedIconClass} variant="bare"></lightning-primitive-icon>
+        </template>
+
+        {label}
+
+        <template if:true={showIconRight}>
+            <lightning-primitive-icon part="end" icon-name={iconName} svg-class={computedIconClass} variant="bare"></lightning-primitive-icon>
+        </template>
+    </button>
+</template>

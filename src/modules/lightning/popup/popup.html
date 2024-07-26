@@ -1,0 +1,16 @@
+<template>
+    <template if:true={_visible}>
+        <section aria-describedby={ariaDescribedBy}
+                 aria-label={_ariaLabel}
+                 aria-labelledby={ariaLabelledBy}
+                 onfocusout={_handleFocusOut}
+                 onfocusin={_handleFocusIn}
+                 role="dialog" onkeydown={_handlePopoverKeydown}>
+            <!-- tabindex is set to 0 so that focus is not lost, and close on click out functionality works
+              without needing to attach global listeners -->
+            <lightning-focus-trap data-focus-trap tabindex="0">
+                <slot></slot>
+            </lightning-focus-trap>
+        </section>
+    </template>
+</template>

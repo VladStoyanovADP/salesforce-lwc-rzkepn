@@ -1,0 +1,381 @@
+/*******************************************
+* Imported dependency from @salesforce-ux/sds-primitives/src/sds/inputCheckbox/inputCheckbox.css
+*******************************************/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/**
+ * Parent container of input-checkbox
+ */
+:host([data-render-mode="shadow"]) [part~='input-checkbox'] {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sds-c-inputcheckbox-spacing-gap, var(--sds-s-input-spacing-gap));
+}
+/**
+ * The visual container of the checkbox indicator
+ */
+:host([data-render-mode="shadow"]) [part='checkbox'] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: var(--sds-c-inputcheckbox-color-background, var(--sds-s-input-color-background));
+  box-shadow: var(--sds-c-inputcheckbox-shadow);
+  width: var(--sds-c-inputcheckbox-sizing, 1rem);
+  height: var(--sds-c-inputcheckbox-sizing, 1rem);
+  border: var(--sds-c-inputcheckbox-sizing-border, var(--sds-s-input-sizing-border, 1px)) solid
+    var(--sds-c-inputcheckbox-color-border, var(--sds-s-input-color-border, currentColor));
+  border-radius: var(--sds-c-inputcheckbox-radius-border);
+}
+/**
+ * Focus state
+ */
+:host([data-render-mode="shadow"]) [part='checkbox']:has(:focus) {
+  --sds-c-inputcheckbox-shadow: var(
+    --sds-c-inputcheckbox-shadow-focus,
+    var(--sds-s-input-shadow-focus, revert)
+  );
+  --sds-c-inputcheckbox-color-background: var(
+    --sds-c-inputcheckbox-color-background-focus,
+    var(--sds-s-input-color-background-focus, revert)
+  );
+  --sds-c-inputcheckbox-color-border: var(
+    --sds-c-inputcheckbox-color-border-focus,
+    var(--sds-s-input-color-border-focus, revert)
+  );
+}
+/**
+ * Checked state
+ */
+:host([data-render-mode="shadow"]) [part='checkbox']:has(:checked) {
+  --sds-c-inputcheckbox-shadow: var(--sds-c-inputcheckbox-shadow-checked, revert);
+  --sds-c-inputcheckbox-color-background: var(--sds-c-inputcheckbox-color-background-checked, revert);
+  --sds-c-inputcheckbox-color-border: var(--sds-c-inputcheckbox-color-border-checked, revert);
+}
+/**
+ * Indeterminate state
+ */
+:host([data-render-mode="shadow"]) [part='checkbox']:has(:indeterminate) {
+  --sds-c-inputcheckbox-shadow: var(--sds-c-inputcheckbox-shadow-indeterminate, revert);
+  --sds-c-inputcheckbox-color-background: var(--sds-c-inputcheckbox-color-background-indeterminate, revert);
+  --sds-c-inputcheckbox-color-border: var(--sds-c-inputcheckbox-color-border-indeterminate, revert);
+}
+/**
+ * The checked mark
+ */
+:host([data-render-mode="shadow"]) [part='mark'] {
+  display: inline-flex;
+  opacity: 0;
+  color: var(--sds-c-inputcheckbox-mark-color-foreground, var(--sds-s-mark-color-foreground));
+  background-color: var(--sds-c-inputcheckbox-mark-color-background, var(--sds-s-mark-color-background));
+  width: var(--sds-c-inputcheckbox-mark-sizing, var(--sds-s-mark-sizing, 1em));
+  height: var(--sds-c-inputcheckbox-mark-sizing, var(--sds-s-mark-sizing, 1em));
+}
+/**
+ * When the label or checkbox is clicked, a checked state is applied to the host element
+ */
+:host([data-render-mode="shadow"]) [part='checkbox']:has(:checked) [part='mark'] {
+  opacity: 1;
+
+  --sds-c-inputcheckbox-mark-color-background: var(
+    --sds-c-inputcheckbox-mark-color-background-checked,
+    var(--sds-s-mark-color-background-checked, revert)
+  );
+}
+/**
+ * Indicator, Indeterminate state
+ */
+:host([data-render-mode="shadow"]) [part='checkbox']:has(:indeterminate) [part='mark'] {
+  --sds-c-inputcheckbox-mark-color-foreground: var(
+    --sds-c-inputcheckbox-mark-color-foreground-indeterminate,
+    revert
+  );
+  --sds-c-inputcheckbox-mark-color-background: var(
+    --sds-c-inputcheckbox-mark-color-background-indeterminate,
+    revert
+  );
+}
+/**
+ * The label of the checkbox
+ */
+:host([data-render-mode="shadow"]) [part~='label'] {
+  color: var(--sds-c-inputcheckbox-label-color, var(--sds-s-label-color));
+  font-size: var(--sds-c-inputcheckbox-label-font-size, var(--sds-s-label-font-size));
+}
+/**
+ * If told, the label will be hidden from view
+ */
+:host([data-render-mode="shadow"][label-hidden]) [part~='label'] {
+  position: absolute !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  text-transform: none !important;
+  white-space: nowrap !important;
+}
+/**
+ * Help text
+ * ---
+ * "visible" gets added when the slotchange confirms there are children
+ * This prevents box-model customizations from being applied, in the case of no children
+ */
+:host([data-render-mode="shadow"]) [part='help-text visible'] {
+  font-size: var(--sds-c-inputcheckbox-helptext-font-size, var(--sds-s-helptext-font-size));
+  color: var(--sds-c-inputcheckbox-helptext-text-color, var(--sds-s-helptext-color));
+  padding-inline-start: var(
+    --sds-c-inputcheckbox-helptext-spacing-inlinestart,
+    var(--sds-c-inputcheckbox-helptext-spacing-inline, var(--sds-s-helptext-spacing))
+  );
+  padding-inline-end: var(
+    --sds-c-inputcheckbox-helptext-spacing-inlineend,
+    var(--sds-c-inputcheckbox-helptext-spacing-inline, var(--sds-s-helptext-spacing))
+  );
+  padding-block-start: var(
+    --sds-c-inputcheckbox-helptext-spacing-blockstart,
+    var(--sds-c-inputcheckbox-helptext-spacing-block, var(--sds-s-helptext-spacing))
+  );
+  padding-block-end: var(
+    --sds-c-inputcheckbox-helptext-spacing-blockend,
+    var(--sds-c-inputcheckbox-helptext-spacing-block, var(--sds-s-helptext-spacing))
+  );
+}
+/**
+ * HTML checkbox element, hidden from view
+ * No part is exposed because it should not be altered by an outside factor
+ */
+:host([data-render-mode="shadow"]) input[type='checkbox'] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  z-index: 1;
+  opacity: 0;
+}
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved
+  Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+/**
+     * Base
+     */
+:host([data-render-mode="shadow"]) [part='input-checkbox'] {
+    /**
+      * Remap to SLDS blueprint hooks for parity
+      * https://www.lightningdesignsystem.com/components/checkbox/#Styling-Hooks-Overview
+      */
+    /* stylelint-disable sds-stylelint-plugin/styling-hooks-pattern */
+    --_slds-c-inputcheckbox-shadow: var(--slds-c-checkbox-shadow);
+    --_slds-c-inputcheckbox-shadow-focus: var(--slds-c-checkbox-shadow-focus);
+    --_slds-c-inputcheckbox-color-background: var(--slds-c-checkbox-color-background);
+    --_slds-c-inputcheckbox-color-background-checked: var(--slds-c-checkbox-color-background-checked);
+    --_slds-c-inputcheckbox-color-border: var(--slds-c-checkbox-color-border);
+    --_slds-c-inputcheckbox-color-border-checked: var(--slds-c-checkbox-color-border-checked);
+    --_slds-c-inputcheckbox-color-border-focus: var(--slds-c-checkbox-color-border-focus);
+    --_slds-c-inputcheckbox-mark-color-foreground: var(--slds-c-checkbox-mark-color-foreground);
+    --_slds-c-inputcheckbox-radius-border: var(--slds-c-checkbox-radius-border);
+    /* stylelint-enable sds-stylelint-plugin/styling-hooks-pattern */
+
+    /* We need 'flex' instead of SDS's 'inline-flex' for the responsive label-inline variant */
+    display: flex;
+  }
+/**
+     * Label Container
+     */
+:host([data-render-mode="shadow"]) [part='label-container'] {
+    display: block;
+
+    /* Accounts for help-text in same row as label */
+    padding-inline-end: var(--slds-g-spacing-1);
+  }
+/**
+     * Label
+     *
+     * Add [part='input-checkbox'] to increase specificity and
+     * avoid collisions with other components using [part='label'] (e.g. slds-input-text)
+     */
+:host([data-render-mode="shadow"]) [part='input-checkbox'] [part='label'] {
+    color: var(--_slds-c-inputcheckbox-label-color, var(--slds-g-color-on-surface-2));
+    font-size: var(--slds-g-font-scale-neg-2);
+    margin-block-end: 0;
+    padding-block-start: calc(var(--slds-g-spacing-1) / 2);
+    padding-inline-start: var(--slds-g-spacing-2);
+  }
+/**
+     * Checkbox
+     *
+     * Hidden from view, see Indicator for visual faux checkbox.
+     */
+:host([data-render-mode="shadow"]) [part='checkbox'] {
+    width: 1px;
+    height: 1px;
+    border: 0;
+    clip: rect(0 0 0 0);
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    pointer-events: auto;
+  }
+/**
+     * Checkbox Indicator
+     *
+     * ┌────────────────────┐  ┌─────────────────────┐
+     * │      sds-icon      │  │   Faux via <span>   │
+     * └────────────────────┘  └─────────────────────┘
+     *           ▲                        ▲
+     * ┌────────────────────┐  ┌─────────────────────┐
+     * │ sds-input-checkbox │  │ slds-input-checkbox │
+     * └────────────────────┘  └─────────────────────┘
+     *
+     * sds-input-checkbox uses sds-icon for its visual checkbox indicator. SLDS
+     * + LBC uses a styled <span>. Due to this divergence, we require custom CSS.
+     */
+:host([data-render-mode="shadow"]) [part='indicator'] {
+    display: inline-block;
+    position: relative;
+    width: 1rem;
+    height: 1rem;
+    border-radius: var(--_slds-c-inputcheckbox-radius-border, var(--slds-g-radius-border-1));
+    border: var(--_slds-c-inputcheckbox-sizing-border, var(--slds-g-sizing-border-1)) solid
+      var(--_slds-c-inputcheckbox-color-border, var(--slds-g-color-border-2));
+    background-color: var(--_slds-c-inputcheckbox-color-background, var(--slds-g-color-surface-container-1));
+    box-shadow: var(--_slds-c-inputcheckbox-shadow);
+    transition: border 0.1s linear, background-color 0.1s linear;
+    vertical-align: middle;
+  }
+/**
+     * Checked
+     */
+:host([data-render-mode="shadow"][checked]) [part='indicator']::after {
+    content: '';
+    height: calc(1rem / 4);
+    width: calc(1rem / 2);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0) rotate(-45deg);
+    border-bottom: 2px solid
+      var(--_slds-c-inputcheckbox-mark-color-foreground, var(--slds-g-color-border-accent-2));
+    border-left: 2px solid var(--_slds-c-inputcheckbox-mark-color-foreground, var(--slds-g-color-border-accent-2));
+  }
+:host([data-render-mode="shadow"][checked]) [part='indicator'] {
+    --_slds-c-inputcheckbox-color-background: var(--_slds-c-inputcheckbox-color-background-checked);
+    --_slds-c-inputcheckbox-color-border: var(--_slds-c-inputcheckbox-color-border-checked);
+  }
+/**
+     * Disabled
+     */
+:host([data-render-mode="shadow"][disabled]) [part='indicator'] {
+    --_slds-c-inputcheckbox-color-background: var(
+      --_slds-c-inputcheckbox-color-background-disabled,
+      var(--slds-g-color-disabled-container-2)
+    );
+    --_slds-c-inputcheckbox-color-border: var(--_slds-c-inputcheckbox-color-border-disabled, var(--slds-g-color-border-disabled-1));
+    --_slds-c-inputcheckbox-mark-color-foreground: var(
+      --_slds-c-inputcheckbox-mark-color-foreground-disabled,
+      var(--slds-g-color-on-disabled-2)
+    );
+  }
+/**
+     * Focused
+     */
+:host(:not([disabled])) input:focus-within + .slds-checkbox__label [part='indicator'] {
+    --_slds-c-inputcheckbox-color-background: var(--_slds-c-inputcheckbox-color-background-focus);
+    --_slds-c-inputcheckbox-color-border: var(
+      --_slds-c-inputcheckbox-color-border-focus,
+      var(--slds-g-color-accent-2)
+    );
+    --_slds-c-inputcheckbox-shadow: var(
+      --_slds-c-inputcheckbox-shadow-focus,
+      0 0 3px var(--slds-g-color-accent-2)
+    );
+  }
+/**
+     * Invalid
+     */
+:host([data-render-mode="shadow"][invalid]) [part='indicator'] {
+    --_slds-c-inputcheckbox-sizing-border: var(
+      --_slds-c-inputcheckbox-sizing-border-invalid,
+      var(--slds-g-sizing-border-2)
+    );
+    --_slds-c-inputcheckbox-color-border: var(
+      --_slds-c-inputcheckbox-color-border-invalid,
+      var(--slds-g-color-border-error-1)
+    );
+    --_slds-c-inputcheckbox-mark-color-foreground: var(
+      --_slds-c-inputcheckbox-mark-color-foreground-invalid,
+      var(--slds-g-color-error-1)
+    );
+  }
+:host([data-render-mode="shadow"][invalid]) [part='help-text'] {
+    color: var(--_slds-c-inputcheckbox-helptext-color-invalid, var(--slds-g-color-error-1));
+  }
+/**
+     * Label Inline Variant
+     *
+     * @TODO: Remove magic number for MQ
+     */
+@media (width >= 48em) {
+    :host([data-render-mode="shadow"][variant='label-inline']) [part='label-container'] {
+      float: left;
+
+      /* TODO: Get rid of these magic numbers */
+      max-width: calc(33% - 1.125rem);
+      padding-block-start: var(--slds-g-spacing-1);
+      padding-inline-start: var(--slds-g-spacing-1);
+    }
+
+    :host([data-render-mode="shadow"][variant='label-inline']) [part='input-checkbox'] {
+      display: block;
+      margin-inline-start: 33%;
+      padding-block: var(--slds-g-spacing-1);
+      margin-block-end: var(--slds-g-spacing-2);
+    }
+
+    :host([data-render-mode="shadow"][variant='label-inline']) [part='inline-help'] {
+      float: left;
+      padding-block-start: var(--slds-g-spacing-1);
+    }
+
+    :host([data-render-mode="shadow"][variant='label-inline']) [part='indicator'] {
+      /* @TODO: add change to SDS, removes line-height from display inline */
+      display: block;
+    }
+  }
+/**
+     * Standalone Checkbox
+     *
+     * label-inline & label-stacked uses the "standalone" checkbox that lives outside the label
+     */
+:host([data-render-mode="shadow"][variant='label-inline']) [part='checkbox'],:host([data-render-mode="shadow"][variant='label-stacked']) [part='checkbox'] {
+    width: 1rem;
+    height: 1rem;
+    margin: 0;
+    clip: auto;
+    opacity: 0;
+    z-index: 1;
+  }
+/**
+   * A temporarily baked-in utility class until SLDS gets a proper utility package.
+   *
+   * This is a hybrid patch between synthetic and native shadow. The ideal final
+   * outcome is the removal of this class and replacing the class with the SLDS
+   * utility package solution.
+   */
+:host([data-render-mode="shadow"]) .slds-assistive-text {
+  position: absolute !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  text-transform: none !important;
+  white-space: nowrap !important;
+}

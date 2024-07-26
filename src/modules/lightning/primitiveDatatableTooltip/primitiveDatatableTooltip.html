@@ -1,0 +1,18 @@
+<template>
+    <button
+        lwc:ref="trigger"
+        data-trigger="true"
+        class={computedButtonClass}
+        onmouseover={handleMouseOver}
+        onmouseout={handleMouseOut}
+        onclick={handleClick}
+        tabindex={internalTabIndex}
+    >
+        <lightning-primitive-icon
+            icon-name={computedHeaderIconName}
+            variant={variant}
+            size={size}>
+        </lightning-primitive-icon>
+        <span if:true={alternativeText} class="slds-assistive-text">{alternativeText}</span>
+    </button>
+</template>

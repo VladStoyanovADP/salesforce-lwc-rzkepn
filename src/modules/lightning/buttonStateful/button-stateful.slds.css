@@ -1,0 +1,105 @@
+
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved
+  Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+  :host([data-render-mode="shadow"]) {
+    /* button text */
+    --slds-c-button-neutral-text-color: var(--slds-c-buttonstateful-text-color);
+    --slds-c-button-neutral-text-color-hover: var(--slds-c-buttonstateful-text-color-hover);
+    --slds-c-button-neutral-text-color-focus: var(--slds-c-buttonstateful-text-color-focus);
+    --slds-c-button-neutral-text-color-active: var(--slds-c-buttonstateful-text-color-active);
+
+    /* button background */
+    --slds-c-button-neutral-color-background: var(--slds-c-buttonstateful-color-background);
+    --slds-c-button-neutral-color-background-hover: var(--slds-c-buttonstateful-color-background-hover);
+    --slds-c-button-neutral-color-background-active: var(--slds-c-buttonstateful-color-background-active);
+    --slds-c-button-neutral-color-background-focus: var(--slds-c-buttonstateful-color-background-focus);
+
+    /* button border */
+    --slds-c-button-neutral-color-border: var(--slds-c-buttonstateful-color-border);
+    --slds-c-button-neutral-color-border-hover: var(--slds-c-buttonstateful-color-border-hover);
+    --slds-c-button-neutral-color-border-active: var(
+      --slds-c-buttonstateful-color-border-active,
+      transparent
+    );
+    --slds-c-button-neutral-color-border-focus: var(
+      --slds-c-buttonstateful-color-border-focus,
+      var(--slds-c-buttonstateful-color-border-hover, var(--slds-c-buttonstateful-color-border-hover))
+    );
+
+    /* button box shadow on focus */
+    --slds-c-button-neutral-shadow-focus: var(
+      --slds-c-buttonstateful-shadow-focus,
+      var(--slds-g-color-accent-2) 0 0 3px
+    );
+
+    /* Pressed/Selected State */
+    --sds-c-button-text-color-pressed: var(--slds-g-color-accent-2);
+    --sds-c-button-color-background-pressed: transparent;
+  }
+
+  /* Hover state when button is pressed/selected */
+
+  :host([data-render-mode="shadow"]) .slds-button_stateful:hover {
+    --sds-c-button-color-background-pressed: var(--slds-g-color-surface-container-2);
+    --sds-c-button-text-color-pressed: var(--slds-s-button-color-hover);
+    --sds-c-button-color-border-pressed: var(--slds-g-color-border-1);
+  }
+
+  :host([data-render-mode="shadow"]) .slds-is-selected-clicked {
+    --sds-c-button-color-background-pressed: var(--slds-g-color-surface-container-1);
+    --sds-c-button-text-color-pressed: var(--slds-g-color-accent-2);
+  }
+
+  :host([data-render-mode="shadow"]) .slds-is-selected-clicked:focus {
+    --sds-c-button-color-background-pressed: var(--slds-g-color-surface-container-2);
+    --sds-c-button-text-color-pressed: var(--slds-g-color-accent-3);
+    --sds-c-button-shadow-pressed: var(--slds-s-button-shadow-focus);
+  }
+
+  /* vertical alignment for icon and text */
+
+  :host([data-render-mode="shadow"]) .slds-text-not-selected,:host([data-render-mode="shadow"]) 
+  .slds-text-selected,:host([data-render-mode="shadow"]) 
+  .slds-text-selected-focus {
+    display: contents;
+  }
+
+  /* not selected: */
+
+  :host([data-render-mode="shadow"]) .slds-not-selected .slds-text-selected,:host([data-render-mode="shadow"]) 
+  .slds-not-selected .slds-text-selected-focus {
+    display: none;
+  }
+
+  /* selected focus */
+
+  :host([data-render-mode="shadow"]) .slds-is-selected-clicked .slds-text-not-selected,:host([data-render-mode="shadow"]) 
+  .slds-is-selected-clicked .slds-text-selected-focus {
+    display: none;
+  }
+
+  /* selected but not active */
+
+  :host([data-render-mode="shadow"]) .slds-is-selected .slds-text-not-selected,:host([data-render-mode="shadow"]) 
+  .slds-is-selected .slds-text-selected-focus {
+    display: none;
+  }
+
+  /* selected + hover/focus: remove selected text */
+
+  :host([data-render-mode="shadow"]) .slds-is-selected:hover .slds-text-selected,:host([data-render-mode="shadow"]) 
+  .slds-is-selected:focus .slds-text-selected {
+    display: none;
+  }
+
+  /* selected + hover: show hover/focus text */
+
+  :host([data-render-mode="shadow"]) .slds-is-selected:hover .slds-text-selected-focus,:host([data-render-mode="shadow"]) 
+  .slds-is-selected:focus .slds-text-selected-focus {
+    display: contents;
+  }
+
+  :host([data-render-mode="shadow"]) .slds-is-selected:not(:hover) {
+    border-color: transparent;
+  }

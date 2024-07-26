@@ -1,0 +1,64 @@
+
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved
+  Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+  :host([data-render-mode="shadow"]) [part="progress-bar"] {
+    /* stylelint-disable sds-stylelint-plugin/styling-hooks-pattern */
+    --_slds-c-progressbar-height: var(--slds-g-sizing-3); /* 0.5rem */
+  }
+
+  :host([data-render-mode="shadow"]) .slds-progress-bar {
+    appearance: none;
+    display: block;
+    width: 100%;
+    height: var(--_slds-c-progressbar-height);
+    background: var(--slds-g-color-neutral-base-80);
+    border: 0;
+    position: relative;
+}
+
+  :host([data-render-mode="shadow"]) .slds-progress-bar__value {
+  /* TODO: Need to update this var to `--slds-g-color-brand-base-50` once v2.22 is out */
+  background: var(--slds-g-color-accent-2, #1ab9ff);
+  display: block;
+  height: 100%;
+}
+
+  :host([data-render-mode="shadow"]) .slds-progress-bar_x-small {
+  height: calc(var(--_slds-c-progressbar-height) * 0.25); /* 0.125rem */
+}
+
+  :host([data-render-mode="shadow"]) .slds-progress-bar_small {
+  height: calc(var(--_slds-c-progressbar-height) * 0.5); /* 0.25rem */
+}
+
+  :host([data-render-mode="shadow"]) .slds-progress-bar_medium {
+  height: var(--_slds-c-progressbar-height); /* 0.5rem */
+}
+
+  :host([data-render-mode="shadow"]) .slds-progress-bar_large {
+  height: calc(var(--_slds-c-progressbar-height) * 1.5); /* 0.75rem */
+}
+
+  :host([data-render-mode="shadow"]) .slds-progress-bar_circular {
+  border-radius: var(--slds-g-radius-border-3);
+}
+
+  :host([data-render-mode="shadow"]) .slds-progress-bar_circular .slds-progress-bar__value {
+  border-radius: var(--slds-g-radius-border-3);
+}
+
+  /* TODO W-12674349: remove after name-value-list utils are added */
+
+  :host([data-render-mode="shadow"]) .slds-assistive-text {
+    position: absolute !important;
+    margin: -1px !important;
+    border: 0 !important;
+    padding: 0 !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+    text-transform: none !important;
+    white-space: nowrap !important;
+  }

@@ -1,0 +1,54 @@
+
+  /* Reassignments for parity with SLDS blueprint
+    https://www.lightningdesignsystem.com/components/tabs/#Styling-Hooks-Overview */
+
+
+  :host([data-render-mode="shadow"].slds-tabs_default__content) {
+    /* stylelint-disable */
+    --slds-c-tabs-panel-spacing-blockstart: var(--slds-c-tab-panel-spacing-block-start);
+    --slds-c-tabs-panel-spacing-blockend: var(--slds-c-tab-panel-spacing-block-end);
+    --slds-c-tabs-panel-spacing-inlineend: var(--slds-c-tab-panel-spacing-inline-end);
+    --slds-c-tabs-panel-spacing-inlinestart: var(--slds-c-tab-panel-spacing-inline-start);
+    /* stylelint-enable */
+
+    position: relative;
+    padding-block-start: var(--slds-c-tab-panel-spacing-blockstart, var(--slds-g-spacing-3));
+    padding-inline-end: var(--slds-c-tab-panel-spacing-inlineend, 0);
+    padding-block-end: var(--slds-c-tab-panel-spacing-blockend, var(--slds-g-spacing-3));
+    padding-inline-start: var(--slds-c-tab-panel-spacing-inlinestart, 0);
+  }
+
+
+  :host([data-render-mode="shadow"].slds-tabs_scoped__content) {
+    background-color: var(--slds-g-color-surface-container-1);
+    border: var(--slds-g-sizing-border-1) solid var(--slds-g-color-border-base-4, var(--slds-g-color-border-1));
+    border-block-start: 0;
+    border-start-start-radius: 0;
+    border-start-end-radius: 0;
+    border-end-end-radius: var(--slds-g-spacing-1);
+    border-end-start-radius: var(--slds-g-spacing-1);
+    padding: var(--slds-g-spacing-4);
+  }
+
+
+  :host([data-render-mode="shadow"].slds-vertical-tabs__content) {
+    flex: 1;
+    padding: var(--slds-g-spacing-4);
+    background: var(--slds-g-color-neutral-base-100, var(--slds-g-color-surface-container-1));
+  }
+
+
+  /* TODO W-12674349: Replace with Visibility Utility Classes when available */
+
+
+  :host([data-render-mode="shadow"].slds-show) {
+    display: block;
+  }
+
+
+  /* TODO W-12674349: Replace with Visibility Utility Classes when available */
+
+
+  :host([data-render-mode="shadow"].slds-hide) {
+    display: none !important
+  }

@@ -1,0 +1,14 @@
+:host {
+    display: block;
+}
+
+/* fix styles for last resizer, needed for div mode */
+.slds-resizable__handle[data-is-last-col='true'] {
+    width: 0.75rem;
+    right: 0;
+}
+
+.slds-resizable__divider[data-is-last-col='true']::before,
+.slds-resizable__divider[data-is-last-col='true']::after {
+    right: 0;
+}

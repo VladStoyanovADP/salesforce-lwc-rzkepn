@@ -1,0 +1,114 @@
+/* TODO: fix last row's bottom border */
+
+.slds-table_header-fixed [part='datagrid-header'] {
+    position: absolute;
+    top: 0;
+    min-height: var(--slds-g-sizing-9);
+    z-index: 1;
+}
+
+.table-header {
+    height: 0;
+}
+
+/* Cells */
+[part='cell'] {
+    position: relative;
+    padding-inline: var(--slds-g-sizing-3, 0.5rem);
+    padding-block: var(--slds-g-sizing-2, 0.25rem);
+    white-space: nowrap;
+    align-items: center;
+}
+
+/* cell focus border color */
+[role='gridcell']:focus,
+[role='rowheader']:focus {
+    box-shadow: var(--slds-g-shadow-6, var(--lwc-shadowButtonFocus, 0 0 3px #0176d3));
+    outline: none;
+}
+
+/* Column Header Cells */
+[role='columnheader'] {
+    outline: none;
+    color: #514f4d;
+    font-weight: 700;
+    line-height: normal;
+}
+
+/* Rows */
+
+/* Row borders */
+[data-row-key-value] {
+    border-top: var(--slds-g-sizing-border-1, 1px) solid var(--slds-g-color-border-1, #c9c9c9);
+}
+
+/* row border on hover */
+[data-row-key-value]:hover [role='gridcell']:not(.slds-has-focus),
+[data-row-key-value]:hover [role='rowheader']:not(.slds-has-focus) {
+    box-shadow: inset 0 var(--slds-g-sizing-border-1, 1px)
+            var(--slds-g-color-border-1, #c9c9c9),
+        inset 0 calc(var(--slds-g-sizing-border-1, 1px) * -1)
+            var(--slds-g-color-border-1, #c9c9c9);
+}
+
+.slds-table_header-fixed [data-row-key-value]:first-child {
+    border-top: 0;
+}
+
+[role='row'] {
+    /* Required for row numbers */
+    counter-increment: row-number;
+    display: flex;
+}
+
+/* Move column header row to left;
+   TODO: See if there a better way */
+[role='grid'] > [role='rowgroup']:nth-child(1) {
+    margin-left: -0.5rem;
+}
+
+/* TODO: Replace with styling hook */
+[role='row']:hover {
+    background-color: #f3f2f2;
+}
+/* TODO: Replace with styling hook */
+[role='row'].slds-is-selected {
+    background-color: #ecebea;
+}
+
+.slds-cell-edit:hover {
+    background-color: var(--slds-g-color-surface-container-1);
+}
+
+/* Avoid overwriting wrapping styles in inline mode */
+[part='cell'].slds-cell-wrap {
+    white-space: pre-line;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+/* Inline styles from formattedNumber.css and formattedPhone.css */
+div[role='grid'][data-render-mode-inline='true']
+    > div[role='rowgroup'][data-rowgroup-body]
+    > div[role='row']
+    > div[role='gridcell']
+    > span
+    > div
+    > span[data-inline-type='formatted-number']:dir(rtl),
+div[role='grid'][data-render-mode-inline='true']
+    > div[role='rowgroup'][data-rowgroup-body]
+    > div[role='row']
+    > div[role='gridcell']
+    > span
+    > div
+    > a[data-inline-type='formatted-phone']:dir(rtl) {
+    direction: ltr;
+    unicode-bidi: embed;
+}
+
+/* Spinner */
+
+[part="spinner"] {
+    padding: var(--slds-g-sizing-2, 0.25rem) var(--slds-g-sizing-3, 0.5rem);
+    border-top: var(--slds-g-sizing-border-1, 1px) solid var(--slds-g-color-border-1, #c9c9c9);
+}

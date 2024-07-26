@@ -1,0 +1,33 @@
+<template>
+    <lightning-button label="Click to show a popup" onclick={openPopup}></lightning-button>
+
+    <lightning-popup
+        aria-labelledby="popup-header"
+        aria-describedby="popup-body"
+        onautofocus={handleAutoFocus}
+        onalignmentupdate={handleAlignmentUpdate}>
+        <div class={popupClasses}>
+            <button onclick={closePopup}
+                class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close slds-button_icon-inverse">
+                <lightning-icon icon-name="utility:close" size="xx-small"></lightning-icon>
+            </button>
+
+            <header id="popup-header" class="slds-popover__header">Manage your channels</header>
+
+            <div id="popup-body" class="slds-popover__body">
+                <p class="slds-p-bottom_medium slds-p-top_medium">This is the content of the body</p>
+
+                <lightning-input type="email" label="Email Address" placeholder="Email Address"
+                                 variant="label-hidden"></lightning-input>
+            </div>
+            <footer class="slds-popover__footer">
+                <div class="slds-grid slds-grid_vertical-align-center">
+                    <span class="slds-text-title">Step 2 of 4</span>
+                    <button class="slds-button slds-button_success slds-col_bump-left">Setup Email</button>
+                    <button class="slds-button slds-button_brand slds-col_bump-left">Next</button>
+                </div>
+            </footer>
+        </div>
+    </lightning-popup>
+
+</template>

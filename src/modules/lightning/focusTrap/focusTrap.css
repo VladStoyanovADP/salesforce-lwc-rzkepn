@@ -1,0 +1,7 @@
+/* When inserted at the bottom of the page it will scroll the parent on focus */
+div[data-start],
+div[data-end] {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+}

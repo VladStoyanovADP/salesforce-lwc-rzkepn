@@ -1,0 +1,31 @@
+  <template>
+    <lightning-button-icon
+            icon-name="utility:price_book_entries"
+            class="slds-m-horizontal_small price-selector-icon"
+            variant="bare" size="medium" alternative-text="Pricing Options"
+            onclick={openPopup}
+            data-navigation="enable"
+            tabindex={internalTabIndex}
+    ></lightning-button-icon>
+
+    <!-- Since the only element that will appear on focus or blur of the custom cell is the button icon -->
+    <!-- We do not need to pass data-navigation here or tabindex since the popup will not exist on focus or blur -->
+    <!-- Which is where focus handling is handled by the datatable -->
+    <lightning-popup aria-describedby="popup-body" onkeydown={handleKeyDown}>
+        <div class="slds-popover slds-is-absolute slds-m-top_medium">
+            <header class="slds-popover__header price-selector-header slds-p-around_small">
+                <h2 class="slds-text-title_bold">Header</h2>
+            </header>
+            <div id="popup-body" class="slds-popover__body">
+                <div class="price-selector slds-p-horizontal_small">
+                    <lightning-radio-group options={priceOptions1}
+                                           type="radio">
+                    </lightning-radio-group>
+                </div>
+                <div class="price-selector-button slds-p-top_medium slds-p-bottom_xx-small">
+                        <lightning-button variant="brand" label={buttonLabel1} title={buttonLabel1} class="slds-m-left_x-small"  onclick={closePopup}></lightning-button>
+                </div>
+            </div>
+        </div>
+    </lightning-popup>
+</template>

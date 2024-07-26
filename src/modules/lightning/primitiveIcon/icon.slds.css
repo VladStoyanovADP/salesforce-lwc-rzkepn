@@ -1,0 +1,207 @@
+/*******************************************
+* Imported dependency from @salesforce-ux/sds-primitives/src/sds/icon/icon.css
+*******************************************/
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved
+  Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+:host([data-render-mode="shadow"]) {
+  /**
+     * Establish independent formatting context, we don't want ancestor rules affecting our layout.
+     * This assumes there will not be a direct, child inline-level element.
+     * See https://www.w3.org/TR/css-display-3/#establish-an-independent-formatting-context
+     */
+  display: inline-flex;
+}
+:host([data-render-mode="shadow"]) [part~='boundary'] {
+  padding-block-start: var(
+    --sds-c-icon-spacing-blockstart,
+    var(--sds-c-icon-spacing-block, var(--sds-c-icon-spacing, var(--sds-s-icon-spacing)))
+  );
+  padding-block-end: var(
+    --sds-c-icon-spacing-blockend,
+    var(--sds-c-icon-spacing-block, var(--sds-c-icon-spacing, var(--sds-s-icon-spacing)))
+  );
+  padding-inline-start: var(
+    --sds-c-icon-spacing-inlinestart,
+    var(--sds-c-icon-spacing-inline, var(--sds-c-icon-spacing, var(--sds-s-icon-spacing)))
+  );
+  padding-inline-end: var(
+    --sds-c-icon-spacing-inlineend,
+    var(--sds-c-icon-spacing-inline, var(--sds-c-icon-spacing, var(--sds-s-icon-spacing)))
+  );
+  border-radius: var(--sds-c-icon-radius-border, var(--sds-s-icon-radius-border));
+  border-width: var(--sds-c-icon-sizing-border, var(--sds-s-icon-sizing-border));
+  border-style: solid;
+
+  /* If undefined, border-color resolves to currentColor, so we need to explicitly set to transparent */
+  border-color: var(--sds-c-icon-color-border, var(--sds-s-icon-color-border, transparent));
+  background-color: var(--sds-c-icon-color-background, var(--sds-s-icon-color-background));
+}
+:host([data-render-mode="shadow"]) [part~='icon'] {
+  display: flex; /* See line #5 */
+  height: var(--sds-c-icon-sizing-height, var(--sds-c-icon-sizing, var(--sds-s-icon-sizing)));
+  width: var(--sds-c-icon-sizing-width, var(--sds-c-icon-sizing, var(--sds-s-icon-sizing)));
+  color: var(--sds-c-icon-color-foreground, var(--sds-s-icon-color-foreground));
+}
+/**
+   * Normalize svgs and control width/height with Styling Hooks
+   */
+:host([data-render-mode="shadow"]) svg {
+  width: 100%;
+  height: 100%;
+}
+/**
+ * @Note: Static fallbacks are in place until SLDS adopts SDS. Without static
+ *        fallbacks, styles will regress due to invalid CSS variables from
+ *        missing SLDS shared and globals.
+ *
+ *        Additionally, LBC are currently relying on 'part' attributes to
+ *        receive styling. Authoring styles that rely on slots is not recommended.
+ */
+:host([data-render-mode="shadow"][size='xxx-small']) {
+    --slds-c-icon-sizing: var(--slds-g-sizing-3);
+  }
+:host([data-render-mode="shadow"][size='xx-small']) {
+    --slds-c-icon-sizing: calc(var(--slds-g-sizing-1) + var(--slds-g-sizing-4));
+  }
+:host([data-render-mode="shadow"][size='x-small']) {
+    --slds-c-icon-sizing: var(--slds-g-sizing-5);
+  }
+:host([data-render-mode="shadow"][size='small']) {
+    --slds-c-icon-sizing: var(--slds-g-sizing-7);
+  }
+:host([data-render-mode="shadow"][size='large']) {
+    --slds-c-icon-sizing: var(--slds-g-sizing-10);
+  }
+:host([data-render-mode="shadow"][variant='warning']) {
+    --slds-c-icon-color-foreground: var(--slds-g-color-warning-1);
+  }
+:host([data-render-mode="shadow"][variant='success']) {
+    --slds-c-icon-color-foreground: var(--slds-g-color-success-1);
+  }
+:host([data-render-mode="shadow"][variant='error']) {
+    --slds-c-icon-color-foreground: var(--slds-g-color-error-1);
+  }
+:host([data-render-mode="shadow"][variant='light']) {
+    --slds-c-icon-color-foreground: var(--slds-g-color-neutral-base-70);
+  }
+:host([data-render-mode="shadow"]) [part='boundary'] {
+    /* --sds-c-icon-color-background: var(--slds-c-icon-color-background); */
+    --sds-c-icon-radius-border: var(--slds-c-icon-radius-border, var(--slds-g-radius-border-2));
+    --sds-c-icon-sizing-border: var(--slds-c-icon-sizing-border);
+    --sds-c-icon-color-border: var(--slds-c-icon-color-border);
+    --sds-c-icon-spacing-block-start: var(
+      --slds-c-icon-spacing-blockstart,
+      var(--slds-c-icon-spacing-block)
+    );
+    --sds-c-icon-spacing-block-end: var(--slds-c-icon-spacing-blockend, var(--slds-c-icon-spacing-block));
+    --sds-c-icon-spacing-inline-start: var(
+      --slds-c-icon-spacing-inlinestart,
+      var(--slds-c-icon-spacing-inline)
+    );
+    --sds-c-icon-spacing-inline-end: var(--slds-c-icon-spacing-inlineend, var(--slds-c-icon-spacing-inline));
+
+    /**
+     * There's a divergence in LBC that we have to support here: LBC splits their
+     * icon implementation into two components: lightning-icon and lightning-primitive-icon.
+     * slds-icon is consumed within both with no issues except that the presence of an
+     * additional custom element (primitive-icon) creates an unexpected inline-level
+     * element and breaks our formatting context. tl;dr, we have to reset the formatting
+     * context of the boundary or else we'll inherit line-height from an ancestor and
+     * get visual regressions.
+     *
+     * If lightning-icon is refactored into a single component, this line can be removed.
+     */
+    display: inline-flex;
+  }
+:host([data-render-mode="shadow"]) [part='icon'] {
+    --sds-c-icon-color-foreground: var(--slds-c-icon-color-foreground, var(--slds-g-color-on-accent-1));
+    --sds-c-icon-sizing-height: var(--slds-c-icon-sizing-height, var(--slds-c-icon-sizing, var(--slds-g-sizing-9)));
+    --sds-c-icon-sizing-width: var(--slds-c-icon-sizing-width, var(--slds-c-icon-sizing, var(--slds-g-sizing-9)));
+  }
+:host([data-render-mode="shadow"][icon-name*='action']) {
+    --slds-c-icon-spacing-block: var(--slds-g-sizing-3);
+    --slds-c-icon-spacing-inline: var(--slds-g-sizing-3);
+    --slds-c-icon-radius-border: calc(var(--slds-g-radius-border-circle) / 2);
+  }
+/**
+ * P R I V A T E
+ *
+ * The following styling is implemented by classes within the shadow DOM.
+ * They're expected to be private to the component and not for external use.
+ *
+ * See notes for each class for the rationale behind their inclusion.
+ */
+/**
+ * Utility icons traditionally added a class to change the default foreground
+ * color (white) to a grey. This was done implicitly whereas other color changes
+ * were done explicitly through the 'variant' attribute. So this is an outlier
+ * to the overall pattern. Leaving it as-is since an update would require an
+ * API change or more investigating.
+ *
+ * This is a hybrid patch between synthetic and native shadow. The ideal final
+ * outcome is the removal of this class and the default utility styling would
+ * be implemented through an attribute or some other class-less solution.
+ */
+:host([data-render-mode="shadow"]) .slds-icon-text-default {
+  /*! @css-var-fallback fill */
+  --slds-c-icon-color-foreground: var(
+    --slds-c-icon-color-foreground-default,
+    var(--sds-c-icon-color-foreground-default, var(
+      --slds-g-color-on-surface-1))
+  );
+}
+:host([data-render-mode="shadow"]) .slds-icon-text-default.slds-is-disabled {
+  fill: var(--slds-g-color-disabled-1);
+}
+/**
+ * A temporarily baked-in utility class until SLDS gets a proper utility package.
+ *
+ * This is a hybrid patch between synthetic and native shadow. The ideal final
+ * outcome is the removal of this class and replacing the class with the SLDS
+ * utility package solution.
+ */
+:host([data-render-mode="shadow"]) .slds-assistive-text {
+  position: absolute !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  text-transform: none !important;
+  white-space: nowrap !important;
+}
+/**
+ * For the initial alpha version, we're hardcoding in the various unique icon styles.
+ *
+ * Next version, we want to dynamically generate these from legacy SLDS with the
+ * following design pattern:
+ *
+ * [type="action"][icon-name="approval"] {
+ *   --sds-c-icon-color-background: var(--slds-c-icon-color-background, #111);
+ * }
+ */
+:host([data-render-mode="shadow"]) .slds-icon_disabled {
+  background-color: currentcolor;
+}
+:host([data-render-mode="shadow"]) .slds-input__icon {
+  --slds-c-icon-sizing: calc(var(--slds-g-sizing-1) + var(--slds-g-sizing-4));
+
+  position: absolute;
+  top: 50%;
+  margin-block-start: -0.4375rem;
+  line-height: var(--slds-g-font-lineheight-1);
+  border: 0;
+  z-index: 2;
+}
+:host([data-render-mode="shadow"][data-input-pill-search-primicon]) .slds-icon {
+  --sds-c-icon-sizing-height: 1.25rem;
+  --sds-c-icon-sizing-width: 1.25rem;
+}
+:host([data-render-mode="shadow"][data-input-pill-close-primicon]) [part="icon"] {
+  --sds-c-icon-color-foreground: none;
+}
+:host([data-render-mode="shadow"][data-input-pill-close-primicon]) [part="icon"]:hover {
+  --sds-c-icon-color-foreground: var(--slds-g-color-accent-4);
+}

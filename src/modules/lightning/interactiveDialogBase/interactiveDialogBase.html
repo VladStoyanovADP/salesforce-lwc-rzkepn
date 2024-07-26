@@ -1,0 +1,68 @@
+<template>
+    <div
+        class={modalBackdropCssClasses}
+        part="modal-backdrop"
+        role="presentation"
+        data-backdrop
+    ></div>
+    <lightning-focus-trap>
+        <section
+            role={role}
+            tabindex="-1"
+            aria-modal="true"
+            class={computedModalCssClasses}
+            part="modal"
+            aria-label={ariaLabel}
+            onkeydown={handleModalKeyDown}
+            onprivateclose={handlePrivateClose}
+            onprivatechildrender={handlePrivateChildRender}
+            data-modal
+        >
+            <template if:true={showAriaDescribedBy}>
+                <span
+                    id="modal-description"
+                    class="slds-assistive-text"
+                    data-aria-description
+                >{description}</span>
+            </template>
+            <div class="slds-modal__container">
+                <template if:true={showHeader}>
+                    <div class={computedModalHeaderCssClasses} part="modal-header">
+                        <h1
+                            class="slds-modal__title slds-hyphenate"
+                            id="prompt-heading-id"
+                            data-modal-heading
+                        >{label}</h1>
+                    </div>
+                </template>
+                <div
+                    class={computedModalContentCssClasses}
+                    part="modal-body"
+                    data-slot
+                    lwc:dom="manual"
+                >
+                </div>
+                <div class="slds-modal__footer slds-theme_default" part="modal-footer">
+                    <template if:false={hideCancel}>
+                        <button
+                            part="button"
+                            class="slds-button slds-button_neutral"
+                            onclick={handleCloseClick}
+                            data-cancel-button
+                        >
+                            {cancelText}
+                        </button>
+                    </template>
+                    <button
+                        part="button"
+                        class="slds-button slds-button_brand"
+                        onclick={handleOkClick}
+                        data-ok-button
+                    >
+                        {okText}
+                    </button>
+                </div>
+            </div>
+        </section>
+    </lightning-focus-trap>
+</template>

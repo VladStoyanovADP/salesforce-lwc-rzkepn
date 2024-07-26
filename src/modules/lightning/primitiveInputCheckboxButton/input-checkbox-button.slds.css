@@ -1,0 +1,124 @@
+
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved
+  Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+  /* Default State */
+
+  :host([data-render-mode="shadow"]) [part="faux-button"] {
+    width: var(--slds-g-sizing-9);
+    height: var(--slds-g-sizing-9);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--slds-g-radius-border-2);
+    border: var(--slds-g-sizing-border-1) solid var(--slds-c-inputcheckboxbutton-color-border, var(--slds-g-color-border-2));
+    background-color: var(--slds-c-inputcheckboxbutton-color-background, var(--slds-g-color-surface-container-1));
+    cursor: pointer;
+    position: relative;
+  }
+
+  :host([data-render-mode="shadow"]) [part="faux-button"]::before,:host([data-render-mode="shadow"]) 
+  [part="faux-button"]::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    height: calc(var(--slds-g-sizing-9) * 0.875 / 2);
+    width: calc(var(--slds-g-sizing-9) * 0.125 / 2);
+    margin: auto;
+    background-color: var(--slds-c-inputcheckboxbutton-mark-color-foreground, var(--slds-g-color-accent-2));
+  }
+
+  :host([data-render-mode="shadow"]) [part="faux-button"]::after {
+    height: calc(var(--slds-g-sizing-9) * 0.125 / 2);
+    width: calc(var(--slds-g-sizing-9) * 0.875 / 2);
+  }
+
+  :host([data-render-mode="shadow"]:focus-within) [part="faux-button"] {
+    box-shadow: 0 0 var(--slds-g-sizing-border-3) var(--slds-g-color-accent-2);
+    --slds-c-inputcheckboxbutton-color-border: var(--slds-g-color-border-accent-1);
+    --slds-c-inputcheckboxbutton-color-border-checked: var(--slds-g-color-border-accent-1);
+  }
+
+  :host([data-render-mode="shadow"]) [part="faux-button"]:hover {
+    --slds-c-inputcheckboxbutton-color-background: var(--slds-g-color-surface-container-2);
+    --slds-c-inputcheckboxbutton-color-background-checked: var(--slds-g-color-accent-container-2);
+  }
+
+  :host([data-render-mode="shadow"][disabled]) [part="faux-button"] {
+    cursor: default;
+    --slds-c-inputcheckboxbutton-color-border: var(--slds-g-color-border-disabled-1);
+    --slds-c-inputcheckboxbutton-color-background: var(--slds-g-color-disabled-container-1);
+    --slds-c-inputcheckboxbutton-mark-color-foreground: var(--slds-g-color-on-disabled-1);
+
+    /* Disabled checked */
+    --slds-c-inputcheckboxbutton-color-border-checked: var(--slds-g-color-border-disabled-1);
+    --slds-c-inputcheckboxbutton-color-background-checked: var(--slds-g-color-disabled-container-2);
+    --slds-c-inputcheckboxbutton-mark-color-foreground-checked: var(--slds-g-color-on-disabled-2);
+
+  }
+
+  /* Checked State */
+
+  :host([data-render-mode="shadow"][checked]) [part="faux-button"] {
+    --slds-c-inputcheckboxbutton-color-border: var(--slds-c-inputcheckboxbutton-color-border-checked, transparent);
+    --slds-c-inputcheckboxbutton-color-background: var(--slds-c-inputcheckboxbutton-color-background-checked, var(--slds-g-color-accent-container-2));
+    --slds-c-inputcheckboxbutton-mark-color-foreground: var(--slds-c-inputcheckboxbutton-mark-color-foreground-checked, var(--slds-g-color-on-accent-1));
+  }
+
+  :host([data-render-mode="shadow"][checked]) [part="faux-button"]::before {
+    left: calc(var(--slds-g-sizing-9) * 0.3125 / 2);
+    width: calc(var(--slds-g-sizing-9) * 0.125 / 2);
+    height: calc(var(--slds-g-sizing-9) / 2);
+    transform: rotate(40deg);
+  }
+
+  :host([data-render-mode="shadow"][checked]) [part="faux-button"]::after {
+    top: calc(var(--slds-g-sizing-9) * 0.3125 / 2);
+    left: calc(var(--slds-g-sizing-9) * -0.625 / 2);
+    width: calc(var(--slds-g-sizing-9) * 0.5625 / 2);
+    height: calc(var(--slds-g-sizing-9) * 0.125 / 2);
+    transform: rotate(40deg);
+  }
+
+  /**
+   * Help Text
+   *
+   * Note: not to be confused with lightning-helptext. This is for the text
+   *       that goes below the input.
+   */
+
+  :host([data-render-mode="shadow"]) [part='help-text'] {
+    font-size: var(--slds-g-font-scale-neg-3);
+
+    /* TODO: Add global hook once SLDS creates a new spacing hook that equals the value needed here */
+    padding-block-start: 0.125rem;
+  }
+
+  /**
+   * Help Text's Invalid State – Part container is unique to SLDS
+   */
+
+  :host([data-render-mode="shadow"][invalid]) [part='help-text'] {
+    color: var(--slds-g-color-error-base-50);
+  }
+
+  /**
+   * A temporarily baked-in utility class until SLDS gets a proper utility package.
+   *
+   * This is a hybrid patch between synthetic and native shadow. The ideal final
+   * outcome is the removal of this class and replacing the class with the SLDS
+   * utility package solution.
+   */
+
+  :host([data-render-mode="shadow"]) .slds-assistive-text {
+  position: absolute !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  text-transform: none !important;
+  white-space: nowrap !important;
+}

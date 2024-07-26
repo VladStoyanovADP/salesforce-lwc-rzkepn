@@ -1,0 +1,44 @@
+<template>
+    <lightning-breadcrumbs>
+        <lightning-breadcrumb
+            label="Account"
+            href="path/to/place/1"
+            onclick={handleNavigateToAccount}>
+        </lightning-breadcrumb>
+        <lightning-breadcrumb
+            label="Case"
+            href="path/to/place/2"
+            onclick={handleNavigateToCase}>
+        </lightning-breadcrumb>
+    </lightning-breadcrumbs>
+
+    <div class="container">
+        <div class="slds-hide account">
+            <lightning-card
+                variant="narrow"
+                icon-name="standard:account"
+                title="Account title">
+                <p class="slds-m-around_medium">Account details</p>
+                <div slot="actions">
+                    <lightning-button-icon icon-name="utility:down" alternative-text="Show actions"></lightning-button-icon>
+                </div>
+                <lightning-button value="account" label="Close" onclick={close}></lightning-button>
+            </lightning-card>
+
+        </div>
+
+        <div class="slds-hide case">
+            <lightning-card
+                variant="narrow"
+                icon-name="standard:case"
+                title="Case title">
+                <p class="slds-m-around_medium">Case details</p>
+                <div slot="actions">
+                    <lightning-button-icon icon-name="utility:down" alternative-text="Show actions"></lightning-button-icon>
+                </div>
+                <lightning-button value="case" label="Close" onclick={close}></lightning-button>
+            </lightning-card>
+        </div>
+    </div>
+
+</template>

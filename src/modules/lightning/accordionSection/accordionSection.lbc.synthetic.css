@@ -1,0 +1,14 @@
+:host {
+    display: list-item;
+}
+
+/* Note:
+   - Prevents double border on mixed/shadow mode:
+   This is added because we have 'slds-accordion__list-item' from the host and inside the component (within the shadow boundary). This will cause double border on mixed/shadow mode.
+   The code below will remove the border coming from the host and keep the border from shadow boundary.
+   - Added '!important' as a last resort as user agent style sheet will always win over our own styles.
+*/
+:host([data-render-mode="shadow"]) {
+    border: none !important;
+}
+

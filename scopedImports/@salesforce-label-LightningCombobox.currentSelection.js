@@ -1,0 +1,1 @@
+export default '{0} - Current selection: {1}';

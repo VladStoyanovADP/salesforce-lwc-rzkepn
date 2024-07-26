@@ -1,0 +1,61 @@
+<template>
+    <div part="header">
+        <template if:true={rule.disabledTrash}>
+            <abbr class="slds-required">*</abbr>
+        </template>
+        {rule.heading}
+    </div>
+    <div class="slds-box">
+        <div part="sorting-config">
+            <lightning-button-group>
+                <lightning-button-icon tooltip={i18n.moveUpTooltip} icon-name="utility:arrowup" onclick={handleMoveUp} disabled={isUpDisabled} variant="border-filled" alternative-text="Arrow Up"></lightning-button-icon>
+                <lightning-button-icon tooltip={i18n.moveDownTooltip} icon-name="utility:arrowdown" onclick={handleMoveDown} disabled={isDownDisabled} variant="border-filled" alternative-text="Arrow Down"></lightning-button-icon>
+            </lightning-button-group>
+            <lightning-combobox
+                lwc:ref="combobox"
+                name="column select"
+                disabled={rule.disableInputs}
+                placeholder={i18n.dropdownPlaceholder}
+                options={columns}
+                value={rule.selectedColumn}
+                onchange={handleColumnSelect}
+                variant="label-hidden"
+                label={i18n.dropdownPlaceholder}
+                required
+                message-when-value-missing={i18n.missingValueValidation}>
+            </lightning-combobox>
+            <fieldset role="radiogroup" part="input-radio-group">
+                <legend part="legend" class="slds-form-element__legend slds-form-element__label slds-assistive-text">
+                    Sorting Order
+                </legend>
+                <span class="slds-radio">
+                    <input type="radio"
+                    id="asc"
+                    disabled={rule.disableInputs}
+                    name={groupName}
+                    value="asc"
+                    checked={isAscendingChecked}
+                    onchange={handleOrderChange}/>
+                    <label class="slds-radio__label" for="asc">
+                        <span class="slds-radio_faux"></span>
+                        <span class="slds-form-element__label">{i18n.ascending}</span>
+                    </label>
+                </span>
+                <span class="slds-radio">
+                    <input type="radio"
+                    id="desc"
+                    disabled={rule.disableInputs}
+                    name={groupName}
+                    value="desc"
+                    checked={isDescendingChecked}
+                    onchange={handleOrderChange}/>
+                    <label class="slds-radio__label" for="desc">
+                        <span class="slds-radio_faux"></span>
+                        <span class="slds-form-element__label">{i18n.descending}</span>
+                    </label>
+                </span>
+            </fieldset>
+        </div>
+        <lightning-button-icon icon-name="utility:delete" variant="bare" disabled={rule.disabledTrash} onclick={handleDelete} alternative-text="Settings"></lightning-button-icon>
+    </div>
+</template>

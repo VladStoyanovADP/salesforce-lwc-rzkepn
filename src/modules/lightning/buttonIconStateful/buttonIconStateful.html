@@ -1,0 +1,24 @@
+<template>
+    <span part="button-icon-stateful">
+        <button class={computedButtonClass}
+                disabled={disabled}
+                name={name}
+                type="button"
+                role="button"
+                value={value}
+                title={computedTitle}
+                aria-pressed={computedAriaPressed}
+                aria-label={ariaLabel}
+                aria-expanded={computedAriaExpanded}
+                aria-live={computedAriaLive}
+                aria-atomic={computedAriaAtomic}
+                part="button button-icon">
+
+            <lightning-primitive-icon icon-name={iconName} svg-class="slds-button__icon" variant="bare"></lightning-primitive-icon>
+
+            <template if:true={alternativeText}>
+                <span class="slds-assistive-text">{alternativeText}</span>
+            </template>
+        </button>
+    </span>
+</template>

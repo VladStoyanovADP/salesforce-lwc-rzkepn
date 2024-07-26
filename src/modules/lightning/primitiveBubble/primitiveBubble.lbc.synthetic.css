@@ -1,0 +1,8 @@
+/* Fix for tooltip alignment issue, for details see: W-11677142
+ *
+ * fix-tooltip_alignment - the custom class that edits min-width
+ */
+
+.fix-popover_tooltip_alignment {
+    min-width: inherit;
+}

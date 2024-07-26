@@ -1,0 +1,8 @@
+<template>
+    <div class="slds-nav-vertical__section" onprivateoverflowregister={handleOverflowRegister} part="vertical-navigation-section">
+        <h2 id="vertical-navigation-section-heading" class="slds-nav-vertical__title" aria-level={_privateHeadingAriaLevel}>{label}</h2>
+        <div role="list" aria-describedby="vertical-navigation-section-heading">
+            <slot></slot>
+        </div>
+    </div>
+</template>

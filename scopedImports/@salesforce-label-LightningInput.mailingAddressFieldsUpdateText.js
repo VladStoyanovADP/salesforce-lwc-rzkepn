@@ -1,0 +1,1 @@
+export default 'Mailing Address updated for country {0}';

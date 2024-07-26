@@ -1,0 +1,181 @@
+
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved
+  Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+  /**
+   * Spacing amount between elements in button_icon versus standard button
+   * are different so we target button_icon specifically. display: flex
+   * comes from parent button styles.
+   */
+
+  :host([data-render-mode="shadow"]) [part~='button-icon'] {
+    gap: var(--slds-g-spacing-1);
+  }
+
+  /**
+   * Note: the remaining CSS in this file is required due to the hardcoded
+   * button-icon in lightning-button-menu's template which isn't refactorable
+   * at the time of this implementation. This CSS should be removed when the
+   * button-icon is refactored to use the component version.
+   *
+   * Refactoring to component version is important, until then this code is
+   * fragile because it is forked, changes to button-icon won't be reflected here.
+   */
+
+  :host([data-render-mode="shadow"]) .slds-button_icon-more {
+    --slds-c-buttonicon-color-background: var(--slds-g-color-surface-container-1);
+    --slds-c-buttonicon-color-background-hover: var(--slds-g-color-surface-container-1);
+    --slds-c-buttonicon-color-background-focus: var(--slds-g-color-surface-container-1);
+    --slds-c-buttonicon-color-background-active: var(--slds-g-color-surface-container-1);
+    --sds-c-button-spacing-inline: var(--slds-g-sizing-3);
+    --sds-c-button-spacing-block: var(--slds-g-sizing-3);
+    --sds-c-button-sizing-width: auto;
+  }
+
+  /**
+   * SLDS sizing of the "more" icon is inconsistent and potentially broken.
+   * Until fixed, we'll stick with a consistent size across all size variants.
+   */
+
+  :host([data-render-mode="shadow"]) .slds-button_icon-more lightning-primitive-icon:last-of-type {
+    --slds-c-icon-sizing: var(--slds-g-sizing-3);
+  }
+
+  /**
+   * Sizing hacks
+   */
+
+  :host([data-render-mode="shadow"]) .slds-button_icon-xx-small { 
+    --slds-c-icon-sizing: var(--slds-g-sizing-3);
+    --sds-c-button-sizing-height: var(--slds-g-sizing-5);
+    --sds-c-button-sizing-width: var(--slds-g-sizing-5);
+  }
+
+  :host([data-render-mode="shadow"]) .slds-button_icon-x-small {
+    --slds-c-icon-sizing: var(--slds-g-sizing-4);
+    --sds-c-button-sizing-height: var(--slds-g-sizing-6);
+    --sds-c-button-sizing-width: var(--slds-g-sizing-6);
+  }
+
+  :host([data-render-mode="shadow"]) .slds-button_icon-small {
+    --sds-c-button-sizing-height: var(--slds-g-sizing-7);
+    --sds-c-button-sizing-width: var(--slds-g-sizing-7);
+  }
+
+  :host([data-render-mode="shadow"]) .slds-button_icon-large {
+    --slds-c-icon-sizing: var(--slds-g-sizing-7);
+    --sds-c-button-sizing-height: var(--slds-g-sizing-10);
+    --sds-c-button-sizing-width: var(--slds-g-sizing-10);
+  }
+
+  /**
+  * Note: Styling below for bare and bare-inverse sizes 
+  * are not yet supported but should be used once 
+  * the fixes are in. Additional styles would need to 
+  * be added as well.
+  */
+
+  :host([data-render-mode="shadow"][variant='bare']) .slds-button_icon-x-small,:host([data-render-mode="shadow"][variant='bare-inverse']) .slds-button_icon-x-small {
+    --slds-c-icon-sizing: var(--slds-g-sizing-3);
+  }
+
+  :host([data-render-mode="shadow"][variant='bare']) .slds-button_icon-small,:host([data-render-mode="shadow"][variant='bare-inverse']) .slds-button_icon-small {
+    --slds-c-icon-sizing: var(--slds-g-sizing-4);
+  }
+
+  :host([data-render-mode="shadow"][variant='bare']) .slds-button_icon-large,:host([data-render-mode="shadow"][variant='bare-inverse']) .slds-button_icon-large {
+    --slds-c-icon-sizing: var(--slds-g-sizing-7);
+  }
+
+  /**
+   * Variant Hacks - Container
+   */
+
+  :host([data-render-mode="shadow"]) .slds-button_icon-container {
+    --slds-c-buttonicon-color-border: transparent;
+    --slds-c-buttonicon-color-border-hover: transparent;
+    --slds-c-buttonicon-color-border-focus: transparent;
+
+    /* Disabled */
+    --slds-c-buttonicon-color-border-disabled: transparent;
+  }
+
+  /**
+   * Variant Hacks - Border Filled
+   */
+
+  :host([data-render-mode="shadow"]) .slds-button_icon-border-filled {
+    --slds-c-buttonicon-color-background: var(--slds-g-color-surface-container-1);
+    --slds-c-buttonicon-color-background-hover: var(--slds-g-color-surface-container-1);
+    --slds-c-buttonicon-color-background-focus: var(--slds-g-color-surface-container-1);
+    --slds-c-buttonicon-color-background-active: var(--slds-g-color-surface-container-1);
+  }
+
+  /**
+   * Variant Hacks - Border Inverse
+   */
+
+  :host([data-render-mode="shadow"]) .slds-button_icon-border-inverse {
+    /* Border */
+    --slds-c-buttonicon-color-border: var(--slds-g-color-brand-base-100);
+    --slds-c-buttonicon-color-border-hover: var(--slds-g-color-brand-base-100);
+    --slds-c-buttonicon-color-border-focus: var(--slds-g-color-brand-base-100);
+    --slds-c-buttonicon-color-border-active: var(--slds-g-color-brand-base-100);
+
+    /* Shadow */
+    --slds-c-buttonicon-shadow-focus: 0 0 3px var(--slds-g-color-brand-base-100);
+
+    /* Icon */
+    --slds-c-buttonicon-color-foreground: var(--slds-g-color-brand-base-100);
+    --slds-c-buttonicon-color-foreground-hover: var(--slds-g-color-brand-base-95);
+    --slds-c-buttonicon-color-foreground-focus: var(--slds-g-color-brand-base-95);
+    --slds-c-buttonicon-color-foreground-active: var(--slds-g-color-brand-base-90);
+  }
+
+  :host([data-render-mode="shadow"]) .slds-button_icon-inverse {
+    /* Background */
+    --slds-c-buttonicon-color-background-active: transparent;
+
+    /* Border */
+    --slds-c-buttonicon-color-border: transparent;
+    --slds-c-buttonicon-color-border-hover: transparent;
+    --slds-c-buttonicon-color-border-focus: var(--slds-g-color-brand-base-100);
+
+    /* Spacing */
+    --slds-c-buttonicon-spacing-inline: 0;
+    --slds-c-buttonicon-spacing-block: 0;
+
+    /* Shadow */
+    --slds-c-buttonicon-shadow-focus: 0 0 3px var(--slds-g-color-brand-base-100);
+
+    /* Icon */
+    --slds-c-buttonicon-color-foreground: var(--slds-g-color-brand-base-100);
+    --slds-c-buttonicon-color-foreground-hover: var(--slds-g-color-brand-base-95);
+    --slds-c-buttonicon-color-foreground-focus: var(--slds-g-color-brand-base-95);
+    --slds-c-buttonicon-color-foreground-active: var(--slds-g-color-brand-base-95);
+
+    /* Disabled */
+    --slds-c-buttonicon-color-border-disabled: transparent;
+  }
+
+  /**
+   * Variant Hacks - Bare
+   */
+
+  :host([data-render-mode="shadow"]) .slds-button_icon-bare {
+    --slds-c-buttonicon-color-border: transparent;
+    --slds-c-buttonicon-color-border-hover: transparent;
+    --slds-c-buttonicon-color-border-focus: transparent;
+    --slds-c-buttonicon-color-border-active: transparent;
+    --slds-c-buttonicon-spacing-inline: 0;
+    --slds-c-buttonicon-spacing-block: 0;
+
+    /* Disabled */
+    --slds-c-buttonicon-color-border-disabled: transparent;
+  }
+
+  :host([data-render-mode="shadow"]) [part~='button-icon'][label] {
+    --sds-c-button-sizing-height: auto;
+    --sds-c-button-sizing-width: auto;
+  }
+

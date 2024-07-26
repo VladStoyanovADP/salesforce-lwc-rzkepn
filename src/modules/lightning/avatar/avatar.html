@@ -1,0 +1,24 @@
+<template>
+    <span class={computedClass} part="avatar">
+        <img
+            if:true={_src}
+            src={_src}
+            onerror={handleImageError}
+            alt={alternativeText}
+            title={alternativeText}
+        >
+        <abbr
+            if:true={showInitials}
+            class={computedInitialsClass}
+            title={alternativeText}
+            style={computedInitialsStyle}
+        >{initials}</abbr>
+        <lightning-icon
+            if:true={showIcon}
+            icon-name={fallbackIconName}
+            alternative-text={alternativeText}
+            title={alternativeText}
+            exportparts="icon"
+        ></lightning-icon>
+    </span>
+</template>

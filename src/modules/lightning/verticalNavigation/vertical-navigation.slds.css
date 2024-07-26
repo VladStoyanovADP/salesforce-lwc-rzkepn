@@ -1,0 +1,18 @@
+
+:host([data-render-mode="shadow"]) [part='vertical-navigation'] {
+  position: relative;
+}
+
+:host([data-render-mode="shadow"]) .slds-nav-vertical_compact {
+  --slds-c-verticalnavigationitem-spacing-blockstart: var(--slds-g-spacing-1);
+  --slds-c-verticalnavigationitem-spacing-blockend: var(--slds-g-spacing-1);
+  --slds-c-verticalnavigationitem-spacing-inlinestart: var(--slds-g-spacing-5);
+  --slds-c-verticalnavigationsection-spacing-blockstart: var(--slds-g-spacing-1);
+  --slds-c-verticalnavigationsection-spacing-blockend: var(--slds-g-spacing-1);
+  --slds-c-verticalnavigationsection-spacing-inlinestart: var(--slds-g-spacing-5);
+}
+
+:host([data-render-mode="shadow"]) .slds-nav-vertical_shade {
+  --slds-c-verticalnavigationitem-color: var(--slds-g-color-neutral-base-100);
+  --slds-c-verticalnavigationitem-border-color: var(--slds-g-color-neutral-base-90);
+}

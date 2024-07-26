@@ -1,0 +1,30 @@
+<template>
+    <template if:true={showPlainText}>
+        <template for:each={addressLines} for:item="line">
+            <div key={line} class="slds-truncate">
+                {line}
+            </div>
+        </template>
+        <template if:true={showStaticMap}>
+            <lightning-static-map street={street} city={city} province={province} postal-code={postalCode}
+                country={country} latitude={latitude} longitude={longitude}
+            ></lightning-static-map>
+        </template>
+    </template>
+
+    <template if:true={showMapLink}>
+        <a aria-label={mapQuery} href={mapUrl}
+            tabindex={internalTabIndex} target="_blank" rel="noopener">
+            <template for:each={addressLines} for:item="line">
+                <div key={line} class="slds-truncate">
+                    {line}
+                </div>
+            </template>
+            <template if:true={showStaticMap}>
+                <lightning-static-map street={street} city={city} province={province} postal-code={postalCode}
+                    country={country} latitude={latitude} longitude={longitude}
+                ></lightning-static-map>
+            </template>
+        </a>
+    </template>
+</template>

@@ -1,0 +1,28 @@
+<template>
+    <div class="slds-accordion__list-item">
+        <section class={computedSectionClasses} part="accordion-section">
+            <div class="slds-accordion__summary">
+                <h2 aria-level={_privateHeadingAriaLevel} onkeydown={handleKeyDown} class="slds-accordion__summary-heading">
+                    <button 
+                        class="section-control slds-button slds-button_reset slds-accordion__summary-action"
+                        type="button"
+                        aria-expanded={computedAriaExpanded}
+                        aria-controls='lgt-accordion-section'
+                        onclick={handleSelectSection}
+                        part="button">
+                        <lightning-primitive-icon
+                            icon-name={accordionTitleIcon}
+                            svg-class="slds-button__icon slds-button__icon_left"
+                            size="x-small">
+                        </lightning-primitive-icon>
+                        <span class="slds-accordion__summary-content" title={label}>{label}</span>
+                    </button>
+                </h2>
+                <slot name="actions"></slot>
+            </div>
+            <div id='lgt-accordion-section' hidden={computedHidden} aria-hidden={computedAriaHidden} class="slds-accordion__content">
+                <slot></slot>
+            </div>
+        </section>
+    </div>
+</template>

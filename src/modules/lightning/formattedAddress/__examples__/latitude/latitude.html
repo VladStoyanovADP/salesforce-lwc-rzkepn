@@ -1,0 +1,18 @@
+<template>
+    <div class="slds-m-vertical_medium">
+        <h1 class="slds-text-heading_small">Formatted Address with Coordinates</h1>
+        <p class="slds-text-body_regular">This component formats an address, and automatically links it to Google Maps
+            using latitude and longitude coordinates for faster map rendering.
+        </p>
+    </div>
+
+    <lightning-formatted-address
+        street="121 Spear St."
+        city="San Francisco"
+        country="US"
+        province="CA"
+        postal-code="94105"
+        latitude="37.792179"
+        longitude="-122.392735"
+    ></lightning-formatted-address>
+</template>

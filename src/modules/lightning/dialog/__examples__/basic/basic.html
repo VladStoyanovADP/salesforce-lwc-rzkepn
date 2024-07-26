@@ -1,0 +1,22 @@
+<template>
+    <lightning-dialog header="Create Contact" onclose={handleDialogClose} oncancel={handleDialogCancel}>
+        <lightning-input-name label="Contact Name"></lightning-input-name>
+        <div slot="footer">
+            <button class="slds-button slds-button_brand" onclick={handleCancel}>Cancel</button>
+            <button class="slds-button slds-button_brand" onclick={handleSave}>Save</button>
+        </div>
+    </lightning-dialog>
+
+    <template if:true={enteredName}>
+        Entered Name: {enteredName}
+    </template>
+
+    <div>
+        <lightning-button-icon
+            label="Create Contact"
+            icon-name="utility:add"
+            onclick={openCreateContactDialog}>
+        </lightning-button-icon>
+    </div>
+
+</template>

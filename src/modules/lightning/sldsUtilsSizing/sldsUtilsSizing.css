@@ -1,0 +1,1402 @@
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved
+Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+/**
+ * Notes:
+ * - Some of the selectors available in SLDS were not included here, because they are unused in LBC
+ * - :host() is needed for `layout` and `layout-item` because classes are applied to the host element.
+ */
+
+/* Size + Order */
+
+:host([data-render-mode='shadow']) .slds-size_xxx-small,
+:host([data-render-mode='shadow'].slds-size_xxx-small) {
+    width: 3rem;
+}
+
+:host([data-render-mode='shadow']) .slds-size_xx-small,
+:host([data-render-mode='shadow'].slds-size_xx-small) {
+    width: 6rem;
+}
+
+:host([data-render-mode='shadow']) .slds-size_x-small,
+:host([data-render-mode='shadow'].slds-size_x-small) {
+    width: 12rem;
+}
+
+:host([data-render-mode='shadow']) .slds-size_small,
+:host([data-render-mode='shadow'].slds-size_small) {
+    width: 15rem;
+}
+
+:host([data-render-mode='shadow']) .slds-size_medium,
+:host([data-render-mode='shadow'].slds-size_medium) {
+    width: 20rem;
+}
+
+:host([data-render-mode='shadow']) .slds-size_large,
+:host([data-render-mode='shadow'].slds-size_large) {
+    width: 25rem;
+}
+
+:host([data-render-mode='shadow']) .slds-size_x-large,
+:host([data-render-mode='shadow'].slds-size_x-large) {
+    width: 40rem;
+}
+
+:host([data-render-mode='shadow']) .slds-size_xx-large,
+:host([data-render-mode='shadow'].slds-size_xx-large) {
+    width: 60rem;
+}
+
+:host([data-render-mode='shadow']) .slds-size_full,
+:host([data-render-mode='shadow'].slds-size_full) {
+    width: 100%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_1-of-1,
+:host([data-render-mode='shadow'].slds-size_1-of-1) {
+    width: 100%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_1-of-2,
+:host([data-render-mode='shadow'].slds-size_1-of-2) {
+    width: 50%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_2-of-2,
+:host([data-render-mode='shadow'].slds-size_2-of-2) {
+    width: 100%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_1-of-3,
+:host([data-render-mode='shadow'].slds-size_1-of-3) {
+    width: 33.3333333333%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_2-of-3,
+:host([data-render-mode='shadow'].slds-size_2-of-3) {
+    width: 66.6666666667%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_3-of-3,
+:host([data-render-mode='shadow'].slds-size_3-of-3) {
+    width: 100%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_1-of-4,
+:host([data-render-mode='shadow'].slds-size_1-of-4) {
+    width: 25%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_2-of-4,
+:host([data-render-mode='shadow'].slds-size_2-of-4) {
+    width: 50%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_3-of-4,
+:host([data-render-mode='shadow'].slds-size_3-of-4) {
+    width: 75%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_4-of-4,
+:host([data-render-mode='shadow'].slds-size_4-of-4) {
+    width: 100%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_1-of-5,
+:host([data-render-mode='shadow'].slds-size_1-of-5) {
+    width: 20%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_2-of-5,
+:host([data-render-mode='shadow'].slds-size_2-of-5) {
+    width: 40%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_3-of-5,
+:host([data-render-mode='shadow'].slds-size_3-of-5) {
+    width: 60%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_4-of-5,
+:host([data-render-mode='shadow'].slds-size_4-of-5) {
+    width: 80%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_5-of-5,
+:host([data-render-mode='shadow'].slds-size_5-of-5) {
+    width: 100%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_1-of-6,
+:host([data-render-mode='shadow'].slds-size_1-of-6) {
+    width: 16.6666666667%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_2-of-6,
+:host([data-render-mode='shadow'].slds-size_2-of-6) {
+    width: 33.3333333333%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_3-of-6,
+:host([data-render-mode='shadow'].slds-size_3-of-6) {
+    width: 50%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_4-of-6,
+:host([data-render-mode='shadow'].slds-size_4-of-6) {
+    width: 66.6666666667%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_5-of-6,
+:host([data-render-mode='shadow'].slds-size_5-of-6) {
+    width: 83.3333333333%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_6-of-6,
+:host([data-render-mode='shadow'].slds-size_6-of-6) {
+    width: 100%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_1-of-7,
+:host([data-render-mode='shadow'].slds-size_1-of-7) {
+    width: 14.2857142857%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_2-of-7,
+:host([data-render-mode='shadow'].slds-size_2-of-7) {
+    width: 28.5714285714%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_3-of-7,
+:host([data-render-mode='shadow'].slds-size_3-of-7) {
+    width: 42.8571428571%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_4-of-7,
+:host([data-render-mode='shadow'].slds-size_4-of-7) {
+    width: 57.1428571429%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_5-of-7,
+:host([data-render-mode='shadow'].slds-size_5-of-7) {
+    width: 71.4285714286%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_6-of-7,
+:host([data-render-mode='shadow'].slds-size_6-of-7) {
+    width: 85.7142857143%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_7-of-7,
+:host([data-render-mode='shadow'].slds-size_7-of-7) {
+    width: 100%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_1-of-8,
+:host([data-render-mode='shadow'].slds-size_1-of-8) {
+    width: 12.5%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_2-of-8,
+:host([data-render-mode='shadow'].slds-size_2-of-8) {
+    width: 25%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_3-of-8,
+:host([data-render-mode='shadow'].slds-size_3-of-8) {
+    width: 37.5%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_4-of-8,
+:host([data-render-mode='shadow'].slds-size_4-of-8) {
+    width: 50%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_5-of-8,
+:host([data-render-mode='shadow'].slds-size_5-of-8) {
+    width: 62.5%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_6-of-8,
+:host([data-render-mode='shadow'].slds-size_6-of-8) {
+    width: 75%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_7-of-8,
+:host([data-render-mode='shadow'].slds-size_7-of-8) {
+    width: 87.5%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_8-of-8,
+:host([data-render-mode='shadow'].slds-size_8-of-8) {
+    width: 100%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_1-of-12,
+:host([data-render-mode='shadow'].slds-size_1-of-12) {
+    width: 8.3333333333%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_2-of-12,
+:host([data-render-mode='shadow'].slds-size_2-of-12) {
+    width: 16.6666666667%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_3-of-12,
+:host([data-render-mode='shadow'].slds-size_3-of-12) {
+    width: 25%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_4-of-12,
+:host([data-render-mode='shadow'].slds-size_4-of-12) {
+    width: 33.3333333333%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_5-of-12,
+:host([data-render-mode='shadow'].slds-size_5-of-12) {
+    width: 41.6666666667%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_6-of-12,
+:host([data-render-mode='shadow'].slds-size_6-of-12) {
+    width: 50%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_7-of-12,
+:host([data-render-mode='shadow'].slds-size_7-of-12) {
+    width: 58.3333333333%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_8-of-12,
+:host([data-render-mode='shadow'].slds-size_8-of-12) {
+    width: 66.6666666667%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_9-of-12,
+:host([data-render-mode='shadow'].slds-size_9-of-12) {
+    width: 75%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_10-of-12,
+:host([data-render-mode='shadow'].slds-size_10-of-12) {
+    width: 83.3333333333%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_11-of-12,
+:host([data-render-mode='shadow'].slds-size_11-of-12) {
+    width: 91.6666666667%;
+}
+
+:host([data-render-mode='shadow']) .slds-size_12-of-12,
+:host([data-render-mode='shadow'].slds-size_12-of-12) {
+    width: 100%;
+}
+
+:host([data-render-mode='shadow']) .slds-order_1,
+:host([data-render-mode='shadow'].slds-order_1) {
+    order: 1;
+}
+
+:host([data-render-mode='shadow']) .slds-order_2,
+:host([data-render-mode='shadow'].slds-order_2) {
+    order: 2;
+}
+
+:host([data-render-mode='shadow']) .slds-order_3,
+:host([data-render-mode='shadow'].slds-order_3) {
+    order: 3;
+}
+
+:host([data-render-mode='shadow']) .slds-order_4,
+:host([data-render-mode='shadow'].slds-order_4) {
+    order: 4;
+}
+
+:host([data-render-mode='shadow']) .slds-order_5,
+:host([data-render-mode='shadow'].slds-order_5) {
+    order: 5;
+}
+
+:host([data-render-mode='shadow']) .slds-order_6,
+:host([data-render-mode='shadow'].slds-order_6) {
+    order: 6;
+}
+
+:host([data-render-mode='shadow']) .slds-order_7,
+:host([data-render-mode='shadow'].slds-order_7) {
+    order: 7;
+}
+
+:host([data-render-mode='shadow']) .slds-order_8,
+:host([data-render-mode='shadow'].slds-order_8) {
+    order: 8;
+}
+
+:host([data-render-mode='shadow']) .slds-order_9,
+:host([data-render-mode='shadow'].slds-order_9) {
+    order: 9;
+}
+
+:host([data-render-mode='shadow']) .slds-order_10,
+:host([data-render-mode='shadow'].slds-order_10) {
+    order: 10;
+}
+
+:host([data-render-mode='shadow']) .slds-order_11,
+:host([data-render-mode='shadow'].slds-order_11) {
+    order: 11;
+}
+
+:host([data-render-mode='shadow']) .slds-order_12,
+:host([data-render-mode='shadow'].slds-order_12) {
+    order: 12;
+}
+
+/* Size Small + Order */
+
+@media (min-width: 30em) {
+    :host([data-render-mode='shadow']) [class*='slds-small-size_'],
+    :host([data-render-mode='shadow'][class*='slds-small-size_']) {
+        flex: none;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_xxx-small,
+    :host([data-render-mode='shadow'].slds-small-size_xxx-small) {
+        width: 3rem;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_xx-small,
+    :host([data-render-mode='shadow'].slds-small-size_xx-small) {
+        width: 6rem;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_x-small,
+    :host([data-render-mode='shadow'].slds-small-size_x-small) {
+        width: 12rem;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_small,
+    :host([data-render-mode='shadow'].slds-small-size_small) {
+        width: 15rem;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_medium,
+    :host([data-render-mode='shadow'].slds-small-size_medium) {
+        width: 20rem;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_large,
+    :host([data-render-mode='shadow'].slds-small-size_large) {
+        width: 25rem;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_x-large,
+    :host([data-render-mode='shadow'].slds-small-size_x-large) {
+        width: 40rem;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_xx-large,
+    :host([data-render-mode='shadow'].slds-small-size_xx-large) {
+        width: 60rem;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_1-of-1,
+    :host([data-render-mode='shadow'].slds-small-size_1-of-1) {
+        width: 100%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_1-of-2,
+    :host([data-render-mode='shadow'].slds-small-size_1-of-2) {
+        width: 50%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_2-of-2,
+    :host([data-render-mode='shadow'].slds-small-size_2-of-2) {
+        width: 100%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_1-of-3,
+    :host([data-render-mode='shadow'].slds-small-size_1-of-3) {
+        width: 33.3333333333%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_2-of-3,
+    :host([data-render-mode='shadow'].slds-small-size_2-of-3) {
+        width: 66.6666666667%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_3-of-3,
+    :host([data-render-mode='shadow'].slds-small-size_3-of-3) {
+        width: 100%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_1-of-4,
+    :host([data-render-mode='shadow'].slds-small-size_1-of-4) {
+        width: 25%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_2-of-4,
+    :host([data-render-mode='shadow'].slds-small-size_2-of-4) {
+        width: 50%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_3-of-4,
+    :host([data-render-mode='shadow'].slds-small-size_3-of-4) {
+        width: 75%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_4-of-4,
+    :host([data-render-mode='shadow'].slds-small-size_4-of-4) {
+        width: 100%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_1-of-5,
+    :host([data-render-mode='shadow'].slds-small-size_1-of-5) {
+        width: 20%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_2-of-5,
+    :host([data-render-mode='shadow'].slds-small-size_2-of-5) {
+        width: 40%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_3-of-5,
+    :host([data-render-mode='shadow'].slds-small-size_3-of-5) {
+        width: 60%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_4-of-5,
+    :host([data-render-mode='shadow'].slds-small-size_4-of-5) {
+        width: 80%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_5-of-5,
+    :host([data-render-mode='shadow'].slds-small-size_5-of-5) {
+        width: 100%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_1-of-6,
+    :host([data-render-mode='shadow'].slds-small-size_1-of-6) {
+        width: 16.6666666667%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_2-of-6,
+    :host([data-render-mode='shadow'].slds-small-size_2-of-6) {
+        width: 33.3333333333%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_3-of-6,
+    :host([data-render-mode='shadow'].slds-small-size_3-of-6) {
+        width: 50%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_4-of-6,
+    :host([data-render-mode='shadow'].slds-small-size_4-of-6) {
+        width: 66.6666666667%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_5-of-6,
+    :host([data-render-mode='shadow'].slds-small-size_5-of-6) {
+        width: 83.3333333333%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_6-of-6,
+    :host([data-render-mode='shadow'].slds-small-size_6-of-6) {
+        width: 100%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_1-of-7,
+    :host([data-render-mode='shadow'].slds-small-size_1-of-7) {
+        width: 14.2857142857%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_2-of-7,
+    :host([data-render-mode='shadow'].slds-small-size_2-of-7) {
+        width: 28.5714285714%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_3-of-7,
+    :host([data-render-mode='shadow'].slds-small-size_3-of-7) {
+        width: 42.8571428571%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_4-of-7,
+    :host([data-render-mode='shadow'].slds-small-size_4-of-7) {
+        width: 57.1428571429%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_5-of-7,
+    :host([data-render-mode='shadow'].slds-small-size_5-of-7) {
+        width: 71.4285714286%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_6-of-7,
+    :host([data-render-mode='shadow'].slds-small-size_6-of-7) {
+        width: 85.7142857143%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_7-of-7,
+    :host([data-render-mode='shadow'].slds-small-size_7-of-7) {
+        width: 100%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_1-of-8,
+    :host([data-render-mode='shadow'].slds-small-size_1-of-8) {
+        width: 12.5%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_2-of-8,
+    :host([data-render-mode='shadow'].slds-small-size_2-of-8) {
+        width: 25%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_3-of-8,
+    :host([data-render-mode='shadow'].slds-small-size_3-of-8) {
+        width: 37.5%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_4-of-8,
+    :host([data-render-mode='shadow'].slds-small-size_4-of-8) {
+        width: 50%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_5-of-8,
+    :host([data-render-mode='shadow'].slds-small-size_5-of-8) {
+        width: 62.5%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_6-of-8,
+    :host([data-render-mode='shadow'].slds-small-size_6-of-8) {
+        width: 75%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_7-of-8,
+    :host([data-render-mode='shadow'].slds-small-size_7-of-8) {
+        width: 87.5%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_8-of-8,
+    :host([data-render-mode='shadow'].slds-small-size_8-of-8) {
+        width: 100%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_1-of-12,
+    :host([data-render-mode='shadow'].slds-small-size_1-of-12) {
+        width: 8.3333333333%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_2-of-12,
+    :host([data-render-mode='shadow'].slds-small-size_2-of-12) {
+        width: 16.6666666667%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_3-of-12,
+    :host([data-render-mode='shadow'].slds-small-size_3-of-12) {
+        width: 25%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_4-of-12,
+    :host([data-render-mode='shadow'].slds-small-size_4-of-12) {
+        width: 33.3333333333%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_5-of-12,
+    :host([data-render-mode='shadow'].slds-small-size_5-of-12) {
+        width: 41.6666666667%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_6-of-12,
+    :host([data-render-mode='shadow'].slds-small-size_6-of-12) {
+        width: 50%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_7-of-12,
+    :host([data-render-mode='shadow'].slds-small-size_7-of-12) {
+        width: 58.3333333333%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_8-of-12,
+    :host([data-render-mode='shadow'].slds-small-size_8-of-12) {
+        width: 66.6666666667%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_9-of-12,
+    :host([data-render-mode='shadow'].slds-small-size_9-of-12) {
+        width: 75%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_10-of-12,
+    :host([data-render-mode='shadow'].slds-small-size_10-of-12) {
+        width: 83.3333333333%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_11-of-12,
+    :host([data-render-mode='shadow'].slds-small-size_11-of-12) {
+        width: 91.6666666667%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-size_12-of-12,
+    :host([data-render-mode='shadow'].slds-small-size_12-of-12) {
+        width: 100%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-order_1,
+    :host([data-render-mode='shadow'].slds-small-order_1) {
+        order: 1;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-order_2,
+    :host([data-render-mode='shadow'].slds-small-order_2) {
+        order: 2;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-order_3,
+    :host([data-render-mode='shadow'].slds-small-order_3) {
+        order: 3;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-order_4,
+    :host([data-render-mode='shadow'].slds-small-order_4) {
+        order: 4;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-order_5,
+    :host([data-render-mode='shadow'].slds-small-order_5) {
+        order: 5;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-order_6,
+    :host([data-render-mode='shadow'].slds-small-order_6) {
+        order: 6;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-order_7,
+    :host([data-render-mode='shadow'].slds-small-order_7) {
+        order: 7;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-order_8,
+    :host([data-render-mode='shadow'].slds-small-order_8) {
+        order: 8;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-order_9,
+    :host([data-render-mode='shadow'].slds-small-order_9) {
+        order: 9;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-order_10,
+    :host([data-render-mode='shadow'].slds-small-order_10) {
+        order: 10;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-order_11,
+    :host([data-render-mode='shadow'].slds-small-order_11) {
+        order: 11;
+    }
+
+    :host([data-render-mode='shadow']) .slds-small-order_12,
+    :host([data-render-mode='shadow'].slds-small-order_12) {
+        order: 12;
+    }
+}
+
+/* Size Medium + Order */
+
+@media (min-width: 48em) {
+    :host([data-render-mode='shadow']) [class*='slds-medium-size_'],
+    :host([data-render-mode='shadow'][class*='slds-medium-size_']) {
+        flex: none;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_xxx-small,
+    :host([data-render-mode='shadow'].slds-medium-size_xxx-small) {
+        width: 3rem;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_xx-small,
+    :host([data-render-mode='shadow'].slds-medium-size_xx-small) {
+        width: 6rem;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_x-small,
+    :host([data-render-mode='shadow'].slds-medium-size_x-small) {
+        width: 12rem;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_small,
+    :host([data-render-mode='shadow'].slds-medium-size_small) {
+        width: 15rem;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_medium,
+    :host([data-render-mode='shadow'].slds-medium-size_medium) {
+        width: 20rem;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_large,
+    :host([data-render-mode='shadow'].slds-medium-size_large) {
+        width: 25rem;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_x-large,
+    :host([data-render-mode='shadow'].slds-medium-size_x-large) {
+        width: 40rem;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_xx-large,
+    :host([data-render-mode='shadow'].slds-medium-size_xx-large) {
+        width: 60rem;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_1-of-1,
+    :host([data-render-mode='shadow'].slds-medium-size_1-of-1) {
+        width: 100%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_1-of-2,
+    :host([data-render-mode='shadow'].slds-medium-size_1-of-2) {
+        width: 50%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_2-of-2,
+    :host([data-render-mode='shadow'].slds-medium-size_2-of-2) {
+        width: 100%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_1-of-3,
+    :host([data-render-mode='shadow'].slds-medium-size_1-of-3) {
+        width: 33.3333333333%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_2-of-3,
+    :host([data-render-mode='shadow'].slds-medium-size_2-of-3) {
+        width: 66.6666666667%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_3-of-3,
+    :host([data-render-mode='shadow'].slds-medium-size_3-of-3) {
+        width: 100%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_1-of-4,
+    :host([data-render-mode='shadow'].slds-medium-size_1-of-4) {
+        width: 25%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_2-of-4,
+    :host([data-render-mode='shadow'].slds-medium-size_2-of-4) {
+        width: 50%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_3-of-4,
+    :host([data-render-mode='shadow'].slds-medium-size_3-of-4) {
+        width: 75%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_4-of-4,
+    :host([data-render-mode='shadow'].slds-medium-size_4-of-4) {
+        width: 100%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_1-of-5,
+    :host([data-render-mode='shadow'].slds-medium-size_1-of-5) {
+        width: 20%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_2-of-5,
+    :host([data-render-mode='shadow'].slds-medium-size_2-of-5) {
+        width: 40%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_3-of-5,
+    :host([data-render-mode='shadow'].slds-medium-size_3-of-5) {
+        width: 60%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_4-of-5,
+    :host([data-render-mode='shadow'].slds-medium-size_4-of-5) {
+        width: 80%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_5-of-5,
+    :host([data-render-mode='shadow'].slds-medium-size_5-of-5) {
+        width: 100%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_1-of-6,
+    :host([data-render-mode='shadow'].slds-medium-size_1-of-6) {
+        width: 16.6666666667%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_2-of-6,
+    :host([data-render-mode='shadow'].slds-medium-size_2-of-6) {
+        width: 33.3333333333%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_3-of-6,
+    :host([data-render-mode='shadow'].slds-medium-size_3-of-6) {
+        width: 50%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_4-of-6,
+    :host([data-render-mode='shadow'].slds-medium-size_4-of-6) {
+        width: 66.6666666667%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_5-of-6,
+    :host([data-render-mode='shadow'].slds-medium-size_5-of-6) {
+        width: 83.3333333333%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_6-of-6,
+    :host([data-render-mode='shadow'].slds-medium-size_6-of-6) {
+        width: 100%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_1-of-7,
+    :host([data-render-mode='shadow'].slds-medium-size_1-of-7) {
+        width: 14.2857142857%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_2-of-7,
+    :host([data-render-mode='shadow'].slds-medium-size_2-of-7) {
+        width: 28.5714285714%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_3-of-7,
+    :host([data-render-mode='shadow'].slds-medium-size_3-of-7) {
+        width: 42.8571428571%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_4-of-7,
+    :host([data-render-mode='shadow'].slds-medium-size_4-of-7) {
+        width: 57.1428571429%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_5-of-7,
+    :host([data-render-mode='shadow'].slds-medium-size_5-of-7) {
+        width: 71.4285714286%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_6-of-7,
+    :host([data-render-mode='shadow'].slds-medium-size_6-of-7) {
+        width: 85.7142857143%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_7-of-7,
+    :host([data-render-mode='shadow'].slds-medium-size_7-of-7) {
+        width: 100%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_1-of-8,
+    :host([data-render-mode='shadow'].slds-medium-size_1-of-8) {
+        width: 12.5%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_2-of-8,
+    :host([data-render-mode='shadow'].slds-medium-size_2-of-8) {
+        width: 25%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_3-of-8,
+    :host([data-render-mode='shadow'].slds-medium-size_3-of-8) {
+        width: 37.5%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_4-of-8,
+    :host([data-render-mode='shadow'].slds-medium-size_4-of-8) {
+        width: 50%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_5-of-8,
+    :host([data-render-mode='shadow'].slds-medium-size_5-of-8) {
+        width: 62.5%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_6-of-8,
+    :host([data-render-mode='shadow'].slds-medium-size_6-of-8) {
+        width: 75%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_7-of-8,
+    :host([data-render-mode='shadow'].slds-medium-size_7-of-8) {
+        width: 87.5%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_8-of-8,
+    :host([data-render-mode='shadow'].slds-medium-size_8-of-8) {
+        width: 100%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_1-of-12,
+    :host([data-render-mode='shadow'].slds-medium-size_1-of-12) {
+        width: 8.3333333333%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_2-of-12,
+    :host([data-render-mode='shadow'].slds-medium-size_2-of-12) {
+        width: 16.6666666667%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_3-of-12,
+    :host([data-render-mode='shadow'].slds-medium-size_3-of-12) {
+        width: 25%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_4-of-12,
+    :host([data-render-mode='shadow'].slds-medium-size_4-of-12) {
+        width: 33.3333333333%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_5-of-12,
+    :host([data-render-mode='shadow'].slds-medium-size_5-of-12) {
+        width: 41.6666666667%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_6-of-12,
+    :host([data-render-mode='shadow'].slds-medium-size_6-of-12) {
+        width: 50%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_7-of-12,
+    :host([data-render-mode='shadow'].slds-medium-size_7-of-12) {
+        width: 58.3333333333%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_8-of-12,
+    :host([data-render-mode='shadow'].slds-medium-size_8-of-12) {
+        width: 66.6666666667%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_9-of-12,
+    :host([data-render-mode='shadow'].slds-medium-size_9-of-12) {
+        width: 75%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_10-of-12,
+    :host([data-render-mode='shadow'].slds-medium-size_10-of-12) {
+        width: 83.3333333333%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_11-of-12,
+    :host([data-render-mode='shadow'].slds-medium-size_11-of-12) {
+        width: 91.6666666667%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-size_12-of-12,
+    :host([data-render-mode='shadow'].slds-medium-size_12-of-12) {
+        width: 100%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-order_1,
+    :host([data-render-mode='shadow'].slds-medium-order_1) {
+        order: 1;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-order_2,
+    :host([data-render-mode='shadow'].slds-medium-order_2) {
+        order: 2;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-order_3,
+    :host([data-render-mode='shadow'].slds-medium-order_3) {
+        order: 3;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-order_4,
+    :host([data-render-mode='shadow'].slds-medium-order_4) {
+        order: 4;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-order_5,
+    :host([data-render-mode='shadow'].slds-medium-order_5) {
+        order: 5;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-order_6,
+    :host([data-render-mode='shadow'].slds-medium-order_6) {
+        order: 6;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-order_7,
+    :host([data-render-mode='shadow'].slds-medium-order_7) {
+        order: 7;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-order_8,
+    :host([data-render-mode='shadow'].slds-medium-order_8) {
+        order: 8;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-order_9,
+    :host([data-render-mode='shadow'].slds-medium-order_9) {
+        order: 9;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-order_10,
+    :host([data-render-mode='shadow'].slds-medium-order_10) {
+        order: 10;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-order_11,
+    :host([data-render-mode='shadow'].slds-medium-order_11) {
+        order: 11;
+    }
+
+    :host([data-render-mode='shadow']) .slds-medium-order_12,
+    :host([data-render-mode='shadow'].slds-medium-order_12) {
+        order: 12;
+    }
+}
+
+/* Size Large + Order */
+
+@media (min-width: 64em) {
+    :host([data-render-mode='shadow']) [class*='slds-large-size_'],
+    :host([data-render-mode='shadow'][class*='slds-large-size_']) {
+        flex: none;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_xxx-small,
+    :host([data-render-mode='shadow'].slds-large-size_xxx-small) {
+        width: 3rem;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_xx-small,
+    :host([data-render-mode='shadow'].slds-large-size_xx-small) {
+        width: 6rem;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_x-small,
+    :host([data-render-mode='shadow'].slds-large-size_x-small) {
+        width: 12rem;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_small,
+    :host([data-render-mode='shadow'].slds-large-size_small) {
+        width: 15rem;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_medium,
+    :host([data-render-mode='shadow'].slds-large-size_medium) {
+        width: 20rem;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_large,
+    :host([data-render-mode='shadow'].slds-large-size_large) {
+        width: 25rem;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_x-large,
+    :host([data-render-mode='shadow'].slds-large-size_x-large) {
+        width: 40rem;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_xx-large,
+    :host([data-render-mode='shadow'].slds-large-size_xx-large) {
+        width: 60rem;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_1-of-1,
+    :host([data-render-mode='shadow'].slds-large-size_1-of-1) {
+        width: 100%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_1-of-2,
+    :host([data-render-mode='shadow'].slds-large-size_1-of-2) {
+        width: 50%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_2-of-2,
+    :host([data-render-mode='shadow'].slds-large-size_2-of-2) {
+        width: 100%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_1-of-3,
+    :host([data-render-mode='shadow'].slds-large-size_1-of-3) {
+        width: 33.3333333333%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_2-of-3,
+    :host([data-render-mode='shadow'].slds-large-size_2-of-3) {
+        width: 66.6666666667%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_3-of-3,
+    :host([data-render-mode='shadow'].slds-large-size_3-of-3) {
+        width: 100%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_1-of-4,
+    :host([data-render-mode='shadow'].slds-large-size_1-of-4) {
+        width: 25%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_2-of-4,
+    :host([data-render-mode='shadow'].slds-large-size_2-of-4) {
+        width: 50%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_3-of-4,
+    :host([data-render-mode='shadow'].slds-large-size_3-of-4) {
+        width: 75%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_4-of-4,
+    :host([data-render-mode='shadow'].slds-large-size_4-of-4) {
+        width: 100%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_1-of-5,
+    :host([data-render-mode='shadow'].slds-large-size_1-of-5) {
+        width: 20%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_2-of-5,
+    :host([data-render-mode='shadow'].slds-large-size_2-of-5) {
+        width: 40%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_3-of-5,
+    :host([data-render-mode='shadow'].slds-large-size_3-of-5) {
+        width: 60%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_4-of-5,
+    :host([data-render-mode='shadow'].slds-large-size_4-of-5) {
+        width: 80%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_5-of-5,
+    :host([data-render-mode='shadow'].slds-large-size_5-of-5) {
+        width: 100%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_1-of-6,
+    :host([data-render-mode='shadow'].slds-large-size_1-of-6) {
+        width: 16.6666666667%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_2-of-6,
+    :host([data-render-mode='shadow'].slds-large-size_2-of-6) {
+        width: 33.3333333333%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_3-of-6,
+    :host([data-render-mode='shadow'].slds-large-size_3-of-6) {
+        width: 50%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_4-of-6,
+    :host([data-render-mode='shadow'].slds-large-size_4-of-6) {
+        width: 66.6666666667%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_5-of-6,
+    :host([data-render-mode='shadow'].slds-large-size_5-of-6) {
+        width: 83.3333333333%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_6-of-6,
+    :host([data-render-mode='shadow'].slds-large-size_6-of-6) {
+        width: 100%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_1-of-7,
+    :host([data-render-mode='shadow'].slds-large-size_1-of-7) {
+        width: 14.2857142857%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_2-of-7,
+    :host([data-render-mode='shadow'].slds-large-size_2-of-7) {
+        width: 28.5714285714%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_3-of-7,
+    :host([data-render-mode='shadow'].slds-large-size_3-of-7) {
+        width: 42.8571428571%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_4-of-7,
+    :host([data-render-mode='shadow'].slds-large-size_4-of-7) {
+        width: 57.1428571429%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_5-of-7,
+    :host([data-render-mode='shadow'].slds-large-size_5-of-7) {
+        width: 71.4285714286%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_6-of-7,
+    :host([data-render-mode='shadow'].slds-large-size_6-of-7) {
+        width: 85.7142857143%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_7-of-7,
+    :host([data-render-mode='shadow'].slds-large-size_7-of-7) {
+        width: 100%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_1-of-8,
+    :host([data-render-mode='shadow'].slds-large-size_1-of-8) {
+        width: 12.5%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_2-of-8,
+    :host([data-render-mode='shadow'].slds-large-size_2-of-8) {
+        width: 25%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_3-of-8,
+    :host([data-render-mode='shadow'].slds-large-size_3-of-8) {
+        width: 37.5%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_4-of-8,
+    :host([data-render-mode='shadow'].slds-large-size_4-of-8) {
+        width: 50%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_5-of-8,
+    :host([data-render-mode='shadow'].slds-large-size_5-of-8) {
+        width: 62.5%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_6-of-8,
+    :host([data-render-mode='shadow'].slds-large-size_6-of-8) {
+        width: 75%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_7-of-8,
+    :host([data-render-mode='shadow'].slds-large-size_7-of-8) {
+        width: 87.5%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_8-of-8,
+    :host([data-render-mode='shadow'].slds-large-size_8-of-8) {
+        width: 100%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_1-of-12,
+    :host([data-render-mode='shadow'].slds-large-size_1-of-12) {
+        width: 8.3333333333%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_2-of-12,
+    :host([data-render-mode='shadow'].slds-large-size_2-of-12) {
+        width: 16.6666666667%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_3-of-12,
+    :host([data-render-mode='shadow'].slds-large-size_3-of-12) {
+        width: 25%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_4-of-12,
+    :host([data-render-mode='shadow'].slds-large-size_4-of-12) {
+        width: 33.3333333333%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_5-of-12,
+    :host([data-render-mode='shadow'].slds-large-size_5-of-12) {
+        width: 41.6666666667%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_6-of-12,
+    :host([data-render-mode='shadow'].slds-large-size_6-of-12) {
+        width: 50%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_7-of-12,
+    :host([data-render-mode='shadow'].slds-large-size_7-of-12) {
+        width: 58.3333333333%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_8-of-12,
+    :host([data-render-mode='shadow'].slds-large-size_8-of-12) {
+        width: 66.6666666667%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_9-of-12,
+    :host([data-render-mode='shadow'].slds-large-size_9-of-12) {
+        width: 75%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_10-of-12,
+    :host([data-render-mode='shadow'].slds-large-size_10-of-12) {
+        width: 83.3333333333%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_11-of-12,
+    :host([data-render-mode='shadow'].slds-large-size_11-of-12) {
+        width: 91.6666666667%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-size_12-of-12,
+    :host([data-render-mode='shadow'].slds-large-size_12-of-12) {
+        width: 100%;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-order_1,
+    :host([data-render-mode='shadow'].slds-large-order_1) {
+        order: 1;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-order_2,
+    :host([data-render-mode='shadow'].slds-large-order_2) {
+        order: 2;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-order_3,
+    :host([data-render-mode='shadow'].slds-large-order_3) {
+        order: 3;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-order_4,
+    :host([data-render-mode='shadow'].slds-large-order_4) {
+        order: 4;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-order_5,
+    :host([data-render-mode='shadow'].slds-large-order_5) {
+        order: 5;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-order_6,
+    :host([data-render-mode='shadow'].slds-large-order_6) {
+        order: 6;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-order_7,
+    :host([data-render-mode='shadow'].slds-large-order_7) {
+        order: 7;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-order_8,
+    :host([data-render-mode='shadow'].slds-large-order_8) {
+        order: 8;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-order_9,
+    :host([data-render-mode='shadow'].slds-large-order_9) {
+        order: 9;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-order_10,
+    :host([data-render-mode='shadow'].slds-large-order_10) {
+        order: 10;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-order_11,
+    :host([data-render-mode='shadow'].slds-large-order_11) {
+        order: 11;
+    }
+
+    :host([data-render-mode='shadow']) .slds-large-order_12,
+    :host([data-render-mode='shadow'].slds-large-order_12) {
+        order: 12;
+    }
+}

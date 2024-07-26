@@ -1,0 +1,46 @@
+
+/* Copyright (c) 2015-present, Salesforce, Inc. All rights reserved
+Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+:host([data-render-mode="shadow"]) .slds-assistive-text {
+  position: absolute !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  text-transform: none !important;
+  white-space: nowrap !important;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-score {
+  display: inline-block;
+  width: 0.3125rem;
+  height: 0.3125rem;
+  position: relative;
+}
+
+:host([data-render-mode="shadow"]) [class*="slds-icon-score__"] {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+  will-change: opacity;
+  stroke-width: 1.125px;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-score__positive {
+  fill: #2e844a;
+  stroke: #2e844a;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-score__negative {
+  fill: transparent;
+  stroke: #ba0517;
+}
+
+:host([data-render-mode="shadow"]) [data-slds-state="positive"] .slds-icon-score__positive,:host([data-render-mode="shadow"]) 
+[data-slds-state="negative"] .slds-icon-score__negative {
+  opacity: 1;
+}

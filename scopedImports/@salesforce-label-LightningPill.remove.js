@@ -1,0 +1,1 @@
+export default 'Remove {0}';

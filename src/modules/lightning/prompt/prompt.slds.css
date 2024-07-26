@@ -1,0 +1,10 @@
+
+/**
+ * No content is needed in this file, but it's still required to avoid any breakage
+ * The styles for prompt are the same as the "input" styles but without the
+ * data-render-mode="shadow" selector so it will work in both native and synthetic shadow
+ * for use cases like Lightning Out where SLDS styles are not available
+ */
+div {
+  display: block;
+}

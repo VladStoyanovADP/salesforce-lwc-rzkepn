@@ -1,0 +1,51 @@
+<template>
+    <template if:false={isStandardVariant}>
+        <label for="checkbox" part="label-container" class="slds-checkbox__label">
+            <template if:true={required}>
+                <abbr class="slds-required" title={labelRequired}>*</abbr>
+            </template>
+            <span class={computedLabelClass}>{label}</span>
+        </label>
+        <lightning-helptext if:true={fieldLevelHelp} content={fieldLevelHelp} alternative-text={helptextAlternativeText}></lightning-helptext>
+    </template>
+    <div class="slds-form-element__control slds-grow">
+        <span part="input-checkbox" class={computedCheckboxClass}>
+            <template if:true={isStandardVariant}>
+                <template if:true={required}>
+                    <abbr class="slds-required" title={labelRequired}>*</abbr>
+                </template>
+            </template>
+            <input
+                type="checkbox"
+                part="checkbox"
+                id="checkbox"
+                aria-label={ariaLabel}
+                aria-keyshortcuts={ariaKeyShortcuts}
+                aria-disabled={ariaDisabled}
+                aria-roledescription={ariaRoleDescription}
+                aria-invalid={ariaInvalid}
+                accesskey={accessKey}
+                onblur={handleBlur}
+                onfocus={handleFocus}
+                onchange={handleChange}
+                onclick={handleClick}
+                name={name}
+                required={required}
+                readonly={readOnly}
+                disabled={disabled}>
+            <template if:false={isStandardVariant}>
+                <span part="indicator" class="slds-checkbox_faux"></span>
+            </template>
+            <template if:true={isStandardVariant}>
+                <label for="checkbox" part="label-container" class="slds-checkbox__label">
+                    <span part="indicator" class="slds-checkbox_faux"></span>
+                    <span part="label" class={computedLabelClass}>{label}</span>
+                </label>
+                <lightning-helptext if:true={fieldLevelHelp} content={fieldLevelHelp} alternative-text={helptextAlternativeText}></lightning-helptext>
+            </template>
+        </span>
+    </div>
+    <template if:true={helpMessage}>
+        <div id="help-message" class="slds-form-element__help" data-help-message part="help-text" role="status">{helpMessage}</div>
+    </template>
+</template>

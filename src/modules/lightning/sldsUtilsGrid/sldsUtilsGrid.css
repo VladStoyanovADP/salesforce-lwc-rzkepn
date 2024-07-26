@@ -1,0 +1,262 @@
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved
+Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+/**
+ * Notes:
+ * - Some of the selectors available in SLDS were not included here, because they are unused in LBC
+ * - :host() is needed for `layout` and `layout-item` because classes are applied to the host element.
+ */
+
+/* Base */
+
+:host([data-render-mode='shadow']) .slds-grid,
+:host([data-render-mode='shadow'].slds-grid) {
+    display: flex;
+}
+
+:host([data-render-mode='shadow']) .slds-grid_frame,
+:host([data-render-mode='shadow'].slds-grid_frame) {
+    min-width: 100vw;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+:host([data-render-mode='shadow']) .slds-grid_vertical,
+:host([data-render-mode='shadow'].slds-grid_vertical) {
+    flex-direction: column;
+}
+
+:host([data-render-mode='shadow']) .slds-grid_vertical-reverse,
+:host([data-render-mode='shadow'].slds-grid_vertical-reverse) {
+    flex-direction: column-reverse;
+}
+
+:host([data-render-mode='shadow']) .slds-grid_reverse,
+:host([data-render-mode='shadow'].slds-grid_reverse) {
+    flex-direction: row-reverse;
+}
+
+/* Flex */
+
+:host([data-render-mode='shadow']) .slds-wrap,
+:host([data-render-mode='shadow'].slds-wrap) {
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+/* No Wrap */
+
+:host([data-render-mode='shadow']) .slds-nowrap,
+:host([data-render-mode='shadow'].slds-nowrap) {
+    flex: 1 1 auto;
+    flex-wrap: nowrap;
+    align-items: stretch;
+}
+
+@media (min-width: 30em) {
+    /* This is deprecated, included for backward compatibility. use `slds-nowrap` instead */
+    :host([data-render-mode='shadow']) .slds-nowrap_small,
+    :host([data-render-mode='shadow'].slds-nowrap_small) {
+        flex: 1 1 auto;
+        flex-wrap: nowrap;
+        align-items: stretch;
+    }
+}
+
+@media (min-width: 48em) {
+    /* This is deprecated, included for backward compatibility. use `slds-nowrap` instead */
+    :host([data-render-mode='shadow']) .slds-nowrap_medium,
+    :host([data-render-mode='shadow'].slds-nowrap_medium) {
+        flex: 1 1 auto;
+        flex-wrap: nowrap;
+        align-items: stretch;
+    }
+}
+
+@media (min-width: 64em) {
+    /* This is deprecated, included for backward compatibility. use `slds-nowrap` instead */
+    :host([data-render-mode='shadow']) .slds-nowrap_large,
+    :host([data-render-mode='shadow'].slds-nowrap_large) {
+        flex: 1 1 auto;
+        flex-wrap: nowrap;
+        align-items: stretch;
+    }
+}
+
+/* Gutters */
+
+:host([data-render-mode='shadow']) .slds-gutters,
+:host([data-render-mode='shadow'].slds-gutters) {
+    margin-inline-end: (var(--slds-g-spacing-3, 0.75rem) * -1);
+    margin-inline-start: (var(--slds-g-spacing-3, 0.75rem) * -1);
+}
+
+:host([data-render-mode='shadow']) .slds-gutters .slds-col,
+:host([data-render-mode='shadow'].slds-gutters) .slds-col {
+    padding-right: var(--slds-g-spacing-3, 0.75rem);
+    padding-left: var(--slds-g-spacing-3, 0.75rem);
+}
+
+/* Col */
+
+:host([data-render-mode='shadow']) .slds-col,
+:host([data-render-mode='shadow'].slds-col),
+:host([data-render-mode='shadow']) [class*='slds-col_padded'],
+:host([data-render-mode='shadow'][class*='slds-col_padded']) {
+    flex: 1 1 auto;
+}
+
+:host([data-render-mode='shadow']) .slds-has-flexi-truncate,
+:host([data-render-mode='shadow'].slds-has-flexi-truncate) {
+    flex: 1 1 0%;
+    min-width: 0;
+}
+
+:host([data-render-mode='shadow']) .slds-no-flex,
+:host([data-render-mode='shadow'].slds-no-flex) {
+    flex: none;
+}
+
+:host([data-render-mode='shadow']) .slds-no-space,
+:host([data-render-mode='shadow'].slds-no-space) {
+    min-width: 0;
+}
+
+:host([data-render-mode='shadow']) .slds-grow,
+:host([data-render-mode='shadow'].slds-grow) {
+    flex-grow: 1;
+}
+
+:host([data-render-mode='shadow']) .slds-grow-none,
+:host([data-render-mode='shadow'].slds-grow-none) {
+    flex-grow: 0;
+}
+
+:host([data-render-mode='shadow']) .slds-shrink,
+:host([data-render-mode='shadow'].slds-shrink) {
+    flex-shrink: 1;
+}
+
+:host([data-render-mode='shadow']) .slds-shrink-none,
+:host([data-render-mode='shadow'].slds-shrink-none) {
+    flex-shrink: 0;
+}
+
+:host([data-render-mode='shadow']) .slds-grid_align-center .slds-col,
+:host([data-render-mode='shadow']) .slds-grid_align-space .slds-col,
+:host([data-render-mode='shadow']) .slds-grid_align-spread .slds-col,
+:host([data-render-mode='shadow']) .slds-grid_align-end .slds-col,
+:host([data-render-mode='shadow'].slds-grid_align-center) .slds-col,
+:host([data-render-mode='shadow'].slds-grid_align-space) .slds-col,
+:host([data-render-mode='shadow'].slds-grid_align-spread) .slds-col,
+:host([data-render-mode='shadow'].slds-grid_align-end) .slds-col {
+    flex-grow: 0;
+}
+
+/* Horizontal Alignment */
+
+:host([data-render-mode='shadow']) .slds-grid_align-center,
+:host([data-render-mode='shadow'].slds-grid_align-center) {
+    justify-content: center;
+}
+
+:host([data-render-mode='shadow']) .slds-grid_align-space,
+:host([data-render-mode='shadow'].slds-grid_align-space) {
+    justify-content: space-around;
+}
+
+:host([data-render-mode='shadow']) .slds-grid_align-spread,
+:host([data-render-mode='shadow'].slds-grid_align-spread) {
+    justify-content: space-between;
+}
+
+:host([data-render-mode='shadow']) .slds-grid_align-end,
+:host([data-render-mode='shadow'].slds-grid_align-end) {
+    justify-content: flex-end;
+}
+
+/* Vertical Alignment */
+
+:host([data-render-mode='shadow']) .slds-grid_vertical-align-start,
+:host([data-render-mode='shadow'].slds-grid_vertical-align-start) {
+    align-items: flex-start;
+    align-content: flex-start;
+}
+
+:host([data-render-mode='shadow']) .slds-grid_vertical-align-center,
+:host([data-render-mode='shadow'].slds-grid_vertical-align-center) {
+    align-items: center;
+    align-content: center;
+}
+
+:host([data-render-mode='shadow']) .slds-grid_vertical-align-end,
+:host([data-render-mode='shadow'].slds-grid_vertical-align-end) {
+    align-items: flex-end;
+    align-content: flex-end;
+}
+
+:host([data-render-mode='shadow']) .slds-grid_vertical-stretch,
+:host([data-render-mode='shadow'].slds-grid_vertical-stretch) {
+    align-items: stretch;
+    align-content: stretch;
+}
+
+/* Boundary */
+
+:host([data-render-mode='shadow']) .slds-grid_pull-padded,
+:host([data-render-mode='shadow'].slds-grid_pull-padded) {
+    margin-inline-end: (var(--slds-g-spacing-3, 0.75rem) * -1);
+    margin-inline-start: (var(--slds-g-spacing-3, 0.75rem) * -1);
+}
+
+:host([data-render-mode='shadow']) .slds-grid_pull-padded-medium,
+:host([data-render-mode='shadow'].slds-grid_pull-padded-medium) {
+    margin-inline-end: (var(--slds-g-spacing-4, 1rem) * -1);
+    margin-inline-start: (var(--slds-g-spacing-4, 1rem) * -1);
+}
+
+:host([data-render-mode='shadow']) .slds-grid_pull-padded-large,
+:host([data-render-mode='shadow'].slds-grid_pull-padded-large) {
+    margin-inline-end: (var(--slds-g-spacing-5, 1.5rem) * -1);
+    margin-inline-start: (var(--slds-g-spacing-5, 1.5rem) * -1);
+}
+
+:host([data-render-mode='shadow']) .slds-align-top,
+:host([data-render-mode='shadow'].slds-align-top) {
+    vertical-align: top;
+    align-self: flex-start;
+}
+
+:host([data-render-mode='shadow']) .slds-align-middle,
+:host([data-render-mode='shadow'].slds-align-middle) {
+    vertical-align: middle;
+    align-self: center;
+}
+
+:host([data-render-mode='shadow']) .slds-align-bottom,
+:host([data-render-mode='shadow'].slds-align-bottom) {
+    vertical-align: bottom;
+    align-self: flex-end;
+}
+
+/* Bump */
+
+:host([data-render-mode='shadow']) .slds-col_bump-top,
+:host([data-render-mode='shadow'].slds-col_bump-top) {
+    margin-top: auto;
+}
+
+:host([data-render-mode='shadow']) .slds-col_bump-right,
+:host([data-render-mode='shadow'].slds-col_bump-right) {
+    margin-inline-end: auto;
+}
+
+:host([data-render-mode='shadow']) .slds-col_bump-bottom,
+:host([data-render-mode='shadow'].slds-col_bump-bottom) {
+    margin-bottom: auto;
+}
+
+:host([data-render-mode='shadow']) .slds-col_bump-left,
+:host([data-render-mode='shadow'].slds-col_bump-left) {
+    margin-inline-start: auto;
+}

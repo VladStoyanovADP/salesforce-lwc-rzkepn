@@ -1,0 +1,42 @@
+
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved
+  Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+  :host([data-render-mode="shadow"]) [part='breadcrumbs'] {
+    /**
+     * Reassignments for parity with SLDS blueprint
+     * https://www.lightningdesignsystem.com/components/breadcrumbs/#Styling-Hooks-Overview
+     */
+     /* stylelint-disable */
+     --slds-c-breadcrumb-spacing-inlinestart: var(--slds-c-breadcrumbs-spacing-inline-start);
+     --slds-c-breadcrumb-spacing-inlineend: var(--slds-c-breadcrumbs-spacing-inline-end);
+     /* stylelint-enable */
+
+    flex-wrap: wrap;
+    align-items: flex-start;
+    display: flex;
+  }
+
+  :host([data-render-mode="shadow"]) [part='breadcrumbs'] ::slotted(*) {
+    position: relative;
+  }
+
+  /* Positions a '>' separator before breadcrumb */
+
+  :host([data-render-mode="shadow"]) [part='breadcrumbs'] ::slotted(:not(:first-child))::before {
+    content: '\003E';
+    position: absolute;
+    left: calc((var(--slds-g-spacing-2) * 0.5) * -1);
+  }
+
+  /* Don't include '>' separator before first breadcrumb */
+
+  :host([data-render-mode="shadow"]) [part='breadcrumbs'] ::slotted(:first-child)::before {
+    content: '';
+  }
+
+  /* Don't include spacing before first breadcrumb */
+
+  :host([data-render-mode="shadow"]) [part='breadcrumbs'] ::slotted(:first-child) {
+    --slds-c-breadcrumb-spacing-inlinestart: 0;
+  }

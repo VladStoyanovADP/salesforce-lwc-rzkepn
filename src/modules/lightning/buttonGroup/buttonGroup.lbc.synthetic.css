@@ -1,0 +1,3 @@
+:host:not([data-render-mode]) .fix_button-group-flexbox {
+    display: inline-flex;
+}

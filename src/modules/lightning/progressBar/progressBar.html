@@ -1,0 +1,14 @@
+<template>
+    <div class={computedClass}
+         part="progress-bar"
+         aria-valuemin="0"
+         aria-valuemax="100"
+         aria-valuenow={percentValue}
+         aria-busy={ariaBusy}
+         role="progressbar" 
+         aria-label={computeAriaLabel}>
+        <span class="slds-progress-bar__value" style={computedStyle}>
+            <span class="slds-assistive-text">{assistiveText}</span>
+        </span>
+    </div>
+</template>

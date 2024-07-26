@@ -1,0 +1,304 @@
+<template>
+     <span class={computedWrapperClass}>
+        <div class={computedCellDivClass} style={computedCssStyles}>
+
+            <!-- *************** PREFIX ICONS DO NOT ADD ANY TYPE BEFORE THIS *************** -->
+
+            <!-- tree toggle -->
+            <template if:true={hasTreeData}>
+                <lightning-primitive-treegrid-cell-toggle row-key-value={rowKeyValue}
+                                                          col-key-value={colKeyValue}
+                                                          display-value={displayValue}
+                                                          value={value}
+                                                          has-children={typeAttribute21}
+                                                          is-expanded={typeAttribute22}
+                                                          tabindex={internalTabIndex}
+                                                          data-navigation="enable">
+                </lightning-primitive-treegrid-cell-toggle>
+            </template>
+
+            <!-- left icon -->
+            <template if:true={hasLeftIcon}>
+                <lightning-icon icon-name={iconName} size="x-small" class="slds-m-right_x-small" alternative-text={iconAlternativeText}></lightning-icon>
+                {iconLabel}
+            </template>
+
+            <!-- *************** PREFIX ICONS END *************** -->
+
+            <!-- action -->
+            <template if:true={isAction}>
+                <lightning-primitive-cell-actions class={computedMarginClassWhenLeftIconExists} data-navigation="enable"
+                                                  data-action-triggers="enter,space"
+                                                  row-key-value={rowKeyValue}
+                                                  col-key-value={colKeyValue}
+                                                  tabindex={internalTabIndex}
+                                                  internal-tab-index={internalTabIndex}
+                                                  menu-alignment={typeAttribute0}
+                                                  row-actions={typeAttribute1}>
+                </lightning-primitive-cell-actions>
+            </template>
+
+            <!-- button -->
+            <template if:true={isButton}>
+                <lightning-primitive-cell-button class={computedMarginClassWhenLeftIconExists} data-navigation="enable"
+                                                 data-action-triggers="enter,space"
+                                                 row-key-value={rowKeyValue}
+                                                 col-key-value={colKeyValue}
+                                                 variant={typeAttribute0}
+                                                 label={typeAttribute1}
+                                                 icon-name={typeAttribute2}
+                                                 icon-position={typeAttribute3}
+                                                 disabled={typeAttribute4}
+                                                 button-name={typeAttribute5}
+                                                 button-class={typeAttribute6}
+                                                 button-title={typeAttribute7}
+                                                 tabindex={internalTabIndex}
+                                                 internal-tab-index={internalTabIndex}>
+                </lightning-primitive-cell-button>
+            </template>
+
+            <!-- button-icon-->
+            <template if:true={isButtonIcon}>
+                <lightning-primitive-cell-button class={computedMarginClassWhenLeftIconExists} data-navigation="enable"
+                                                 data-action-triggers="enter,space"
+                                                 type="button-icon"
+                                                 row-key-value={rowKeyValue}
+                                                 col-key-value={colKeyValue}
+                                                 variant={typeAttribute0}
+                                                 alternative-text={typeAttribute1}
+                                                 icon-name={typeAttribute2}
+                                                 icon-class={typeAttribute3}
+                                                 disabled={typeAttribute4}
+                                                 button-name={typeAttribute5}
+                                                 button-class={typeAttribute6}
+                                                 button-title={typeAttribute7}
+                                                 tabindex={internalTabIndex}
+                                                 internal-tab-index={internalTabIndex}>
+                </lightning-primitive-cell-button>
+            </template>
+
+            <!-- boolean -->
+            <template if:true={isBoolean}>
+                <template if:true={isChecked}>
+                    <lightning-primitive-icon
+                        size="x-small"
+                        icon-name="utility:check">
+                    </lightning-primitive-icon>
+                </template>
+                <span class="slds-assistive-text">{booleanCellAssistiveText}</span>
+            </template>
+
+            <!-- currency -->
+            <template if:true={isCurrency}>
+                <lightning-formatted-number class={computedMarginClassWhenLeftIconExists} value={value} format-style="currency"
+                                            currency-code={typeAttribute0}
+                                            currency-display-as={typeAttribute1}
+                                            minimum-integer-digits={typeAttribute2}
+                                            minimum-fraction-digits={typeAttribute3}
+                                            maximum-fraction-digits={typeAttribute4}
+                                            minimum-significant-digits={typeAttribute5}
+                                            maximum-significant-digits={typeAttribute6}>
+                </lightning-formatted-number>
+            </template>
+
+            <!-- custom type -->
+            <template if:true={isCustomType}>
+                <lightning-primitive-custom-cell
+                      lwc:ref="customCell"
+                      class={computedMarginClassWhenLeftIconExists}
+                      types={types}
+                      keyboard-mode={keyboardMode}
+                      column-type={columnType}
+                      column-sub-type={columnSubType}
+                      value={value}
+                      editable={editable}
+                      internal-tab-index={internalTabIndex}
+                      row-key-value={rowKeyValue}
+                      col-key-value={colKeyValue}
+                      wrap-text={wrapText}
+                      alignment={alignment}
+                      type-attribute-0={typeAttribute0}
+                      type-attribute-1={typeAttribute1}
+                      type-attribute-2={typeAttribute2}
+                      type-attribute-3={typeAttribute3}
+                      type-attribute-4={typeAttribute4}
+                      type-attribute-5={typeAttribute5}
+                      type-attribute-6={typeAttribute6}
+                      type-attribute-7={typeAttribute7}
+                      type-attribute-8={typeAttribute8}
+                      type-attribute-9={typeAttribute9}
+                      type-attribute-10={typeAttribute10}>
+                </lightning-primitive-custom-cell>
+            </template>
+
+            <!-- datetime -->
+            <template if:true={isDateTime}>
+                <lightning-formatted-date-time class={computedMarginClassWhenLeftIconExists}
+                                               value={dateValue}
+                                               day={typeAttribute0}
+                                               era={typeAttribute1}
+                                               hour={typeAttribute2}
+                                               hour12={typeAttribute3}
+                                               minute={typeAttribute4}
+                                               month={typeAttribute5}
+                                               second={typeAttribute6}
+                                               time-zone={typeAttribute7}
+                                               time-zone-name={typeAttribute8}
+                                               weekday={typeAttribute9}
+                                               year={typeAttribute10}>
+                </lightning-formatted-date-time>
+            </template>
+
+            <!-- datetime -->
+            <template if:true={isDateLocal}>
+                <lightning-formatted-date-time class={computedMarginClassWhenLeftIconExists}
+                                               value={value}
+                                               day={computedDateLocalDay}
+                                               month={computedDateLocalMonth}
+                                               year={computedDateLocalYear}
+                                               time-zone="UTC">
+                </lightning-formatted-date-time>
+            </template>
+
+            <!-- email -->
+            <template if:true={isEmail}>
+                 <lightning-formatted-email class={computedMarginClassWhenLeftIconExists}
+                                            data-navigation="enable"
+                                            data-action-triggers="enter"
+                                            value={value}
+                                            tabindex={internalTabIndex}>
+                 </lightning-formatted-email>
+            </template>
+
+            <!-- location -->
+            <template if:true={isLocation}>
+                <lightning-formatted-location class={computedMarginClassWhenLeftIconExists}
+                                              latitude={value.latitude}
+                                              longitude={value.longitude}>
+                </lightning-formatted-location>
+            </template>
+
+            <!-- number -->
+            <template if:true={isNumber}>
+                <lightning-formatted-number class={computedMarginClassWhenLeftIconExists}
+                                            value={value}
+                                            minimum-integer-digits={typeAttribute0}
+                                            minimum-fraction-digits={typeAttribute1}
+                                            maximum-fraction-digits={typeAttribute2}
+                                            minimum-significant-digits={typeAttribute3}
+                                            maximum-significant-digits={typeAttribute4}>
+                </lightning-formatted-number>
+            </template>
+
+            <!-- percent -->
+            <template if:true={isPercent}>
+                    <lightning-formatted-number class={computedMarginClassWhenLeftIconExists}
+                                                value={value} format-style="percent"
+                                                minimum-integer-digits={typeAttribute0}
+                                                minimum-fraction-digits={typeAttribute1}
+                                                maximum-fraction-digits={typeAttribute2}
+                                                minimum-significant-digits={typeAttribute3}
+                                                maximum-significant-digits={typeAttribute4}>
+                    </lightning-formatted-number>
+            </template>
+
+            <!-- phone -->
+            <template if:true={isPhone}>
+                <lightning-formatted-phone class={computedMarginClassWhenLeftIconExists}
+                                           data-navigation="enable"
+                                           data-action-triggers="enter"
+                                           value={value}
+                                           tabindex={internalTabIndex}>
+                </lightning-formatted-phone>
+            </template>
+
+            <!-- Reference (Lookup) -->
+            <template if:true={isReference}>
+                <lightning-formatted-lookup class={computedMarginClassWhenLeftIconExists}
+                                            data-navigation="enable"
+                                            data-action-triggers="enter"
+                                            record-id={value}
+                                            tabindex={internalTabIndex}
+                                            display-value={typeAttribute0}>
+                </lightning-formatted-lookup>
+            </template>
+
+            <!-- row number -->
+            <template if:true={isRowNumber}>
+                <template if:true={_rowHasError}>
+                    <lightning-primitive-datatable-tooltip
+                                                           data-navigation="enable"
+                                                           data-action-triggers="enter,space"
+                                                           class="slds-m-horizontal_xxx-small"
+                                                           size="xx-small"
+                                                           header={typeAttribute0.title}
+                                                           content={typeAttribute0.messages}
+                                                           variant='error'
+                                                           internal-tab-index={internalTabIndex}
+                                                           alternative-text={typeAttribute0.alternativeText}>
+
+                    </lightning-primitive-datatable-tooltip>
+                </template>
+                <span class="slds-row-number slds-text-body_small slds-text-color_weak" style={computedRowNumberStyle}></span>
+            </template>
+
+            <!-- text -->
+            <template if:true={isText}>
+                <lightning-base-formatted-text class={computedMarginClassWhenLeftIconExists}
+                                               value={value}
+                                               linkify={typeAttribute0}>
+                </lightning-base-formatted-text>
+            </template>
+
+            <!-- url -->
+            <template if:true={isUrl}>
+                <lightning-formatted-url class={computedMarginClassWhenLeftIconExists}
+                                         data-navigation="enable"
+                                         data-action-triggers="enter"
+                                         value={value}
+                                         tooltip={urlTooltip}
+                                         tabindex={internalTabIndex}
+                                         label={typeAttribute0}
+                                         target={urlTarget}>
+                </lightning-formatted-url>
+            </template>
+
+            <!-- *************** SUFFIX ICONS ADD ALL TYPES BEFORE THIS *************** -->
+            <template if:true={hasRightIcon}>
+                <lightning-icon icon-name={iconName} class="slds-m-left_x-small slds-m-right_x-small" size="x-small" alternative-text={iconAlternativeText}></lightning-icon>
+                {iconLabel}
+            </template>
+            <!-- *************** SUFFIX ICONS END *************** -->
+
+        </div>
+        <template if:true={isEditable}>
+            <button tabindex={internalTabIndex}
+                    class="slds-button slds-button_icon slds-cell-edit__button slds-m-left_x-small"
+                    data-navigation="enable"
+                    data-action-triggers="enter,space"
+                    data-action-edit="true"
+                    onclick={handleEditButtonClick}>
+                <lightning-primitive-icon
+                    icon-name="utility:edit"
+                    size="xx-small"
+                    svg-class="slds-button__icon slds-button__icon_hint slds-button__icon_lock slds-button__icon_small slds-button__icon_edit">
+                </lightning-primitive-icon>
+                <span class="slds-assistive-text">
+                    {editIconAssistiveText}
+                </span>
+            </button>
+        </template>
+        <!-- TODO: displayReadOnlyIcon is true only when the cell's "editable" property is false and its "displayReadOnlyIcon"
+        property is true. The markup in this template therefore cannot be rendered concurrently with the template above that checks
+        the editable property. -->
+        <template if:true={shouldDisplayReadOnlyIcon}>
+            <!-- TODO: Update the svg-classes once the SLDS team updates their read only icon design to not use classes that have the word 'button'
+            in them in cases when the cell is read only and hence no button is actually rendered -->
+            <lightning-primitive-icon
+                icon-name="utility:lock"
+                size="xx-small"
+                svg-class="slds-button__icon slds-button__icon_hint slds-button__icon_lock slds-button__icon_small">
+            </lightning-primitive-icon>
+        </template>
+    </span>
+</template>

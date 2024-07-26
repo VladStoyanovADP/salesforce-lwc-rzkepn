@@ -1,0 +1,204 @@
+
+  /* Horizontal listbox - used for pill container */
+   :host([data-render-mode="shadow"]) .slds-listbox_horizontal {
+     display: inline-flex;
+     flex-wrap: wrap;
+     align-items: center;
+   }
+   :host([data-render-mode="shadow"]) .slds-listbox_horizontal li {
+    display: flex;
+  }
+   :host([data-render-mode="shadow"]) .slds-listbox_horizontal li+li {
+     padding-inline-start: 0.125rem;
+   }
+   /* Vertical listbox */
+   :host([data-render-mode="shadow"]) .slds-listbox_vertical .slds-listbox__option:focus,:host([data-render-mode="shadow"]) 
+  .slds-listbox_vertical .slds-listbox__option:hover,:host([data-render-mode="shadow"]) 
+  .slds-listbox_vertical .slds-listbox__option.slds-has-focus {
+    background-color: var(--slds-g-color-surface-container-2);
+    text-decoration: none;
+  }
+   :host([data-render-mode="shadow"]) .slds-listbox_vertical .slds-listbox__option[aria-disabled="true"],:host([data-render-mode="shadow"]) 
+  .slds-listbox_vertical .slds-listbox__option[role="presentation"]:hover {
+    background-color: transparent;
+    cursor: default;
+  }
+   /* Modifies the listbox option if it contains an entity object */
+   :host([data-render-mode="shadow"]) .slds-listbox_vertical .slds-listbox__option_entity {
+    padding-block: var(--slds-g-spacing-1);
+    padding-inline: var(--slds-g-spacing-3);
+  }
+   /* Modifies the listbox option if it contains a plain object or string */
+   :host([data-render-mode="shadow"]) .slds-listbox_vertical .slds-listbox__option_plain {
+    padding-block: var(--slds-g-spacing-2);
+    padding-inline: var(--slds-g-spacing-3);
+  }
+   :host([data-render-mode="shadow"]) .slds-listbox_vertical .slds-listbox__option_term {
+    padding-block: var(--slds-g-spacing-2);
+    padding-inline: var(--slds-g-spacing-3);
+  }
+   /* Choosable option within listbox */
+   :host([data-render-mode="shadow"]) .slds-listbox__option:hover {
+    cursor: pointer;
+  }
+   :host([data-render-mode="shadow"]) .slds-listbox__option:focus {
+    outline: 0;
+  }
+   :host([data-render-mode="shadow"]) .slds-listbox__option[aria-disabled="true"] {
+    color: var(--slds-g-color-disabled-2);
+  }
+   /* ------------------------------- PULL OUT FOR COMBOBOX LISTBOX-OPTION ---------------------------------------------- */
+   /* the _vertical variations only apply to combobox's */
+   :host([data-render-mode="shadow"]) .slds-listbox_vertical .slds-listbox__option_entity .slds-media__figure {
+    margin-inline-end: var(--slds-g-spacing-2);
+  }
+   /* If the listbox option has metadata or secondary information that sits below its primary text */
+   :host([data-render-mode="shadow"]) .slds-listbox_vertical .slds-listbox__option_has-meta .slds-media__figure {
+    margin-block-start: var(--slds-g-spacing-1);
+  }
+   :host([data-render-mode="shadow"]) .slds-listbox__option .slds-truncate {
+    display: inline-block;
+    vertical-align: middle;
+  }
+   /* Header for choosable option within listbox */
+   :host([data-render-mode="shadow"]) .slds-listbox__option-header {
+    font-size: var(--slds-g-font-scale-neg-1);
+    font-weight: 700;
+  }
+   /* Container for listbox option icon */
+   :host([data-render-mode="shadow"]) .slds-listbox__option-icon {
+    width: var(--slds-g-sizing-7);
+    display: inline-flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    color: var(--slds-g-color-accent-2);
+  }
+   :host([data-render-mode="shadow"]) .slds-listbox__option[aria-disabled="true"] .slds-listbox__option-icon {
+     color: currentcolor;
+   }
+   /* The icon within a plain listbox that indicates if an option has been selected or not. */
+   :host([data-render-mode="shadow"]) .slds-listbox__icon-selected {
+    opacity: 0;
+    fill: var(--slds-g-color-accent-2);
+  }
+   /* Modifier that makes selected icon visible */
+   :host([data-render-mode="shadow"]) .slds-listbox__option.slds-is-selected .slds-listbox__icon-selected {
+    opacity: 1;
+  }
+   :host([data-render-mode="shadow"]) .slds-listbox__option.slds-is-selected .slds-listbox__option-icon {
+    color: var(--slds-g-color-accent-2);
+  }
+   /* The main text of an entity listbox */
+   :host([data-render-mode="shadow"]) .slds-listbox__option-text_entity {
+     max-width: 100%;
+     overflow: hidden;
+     text-overflow: ellipsis;
+     white-space: nowrap;
+     display: block;
+     margin-block-end: 0.125rem;
+   }
+   /* The metadata or secondary text of an entity listbox */
+   :host([data-render-mode="shadow"]) .slds-listbox__option-meta {
+    display: block;
+    margin-block-start: calc(var(--slds-g-spacing-1) * -1);
+    color: var(--slds-g-color-neutral-base-30);
+  }
+   :host([data-render-mode="shadow"]) .slds-listbox__option[aria-disabled="true"] .slds-listbox__option-meta {
+     color: currentcolor;
+   }
+   /* -------------------- END LISTBOX OPTION CSS --------------------------------------------- */
+   /* ---------------------PULL OUT FOR PILL CONTAINER ---------------------------------------- */
+   /* The container of pill selections found inside of a combobox group */
+   /* .slds-listbox_selection-group items need to be moved out to pill/pill container */
+   :host([data-render-mode="shadow"]) .slds-listbox_selection-group {
+     position: relative;
+     padding: 0;
+     padding-inline-end: calc(var(--slds-g-spacing-8) + var(--slds-g-spacing-3));
+     height: 1.875rem;
+     overflow: hidden;
+   }
+   /* Expanded state of a selection group */
+   :host([data-render-mode="shadow"]) .slds-listbox_selection-group.slds-is-expanded {
+    height: auto;
+    padding: 0;
+  }
+   :host([data-render-mode="shadow"]) .slds-listbox_selection-group .slds-listbox {
+     padding-block-start: 0;
+     padding-block-end: 0.125rem;
+     padding-inline: 0;
+   }
+   :host([data-render-mode="shadow"]) .slds-listbox_selection-group .slds-listbox-item {
+     padding-block-start: 0.125rem;
+     padding-block-end: 0;
+     padding-inline: 0.125rem;
+   }
+   /* Toggle button to show all of the pill selections */
+   :host([data-render-mode="shadow"]) .slds-listbox_selection-group .slds-listbox-toggle {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: var(--slds-g-spacing-2);
+  }
+   :host([data-render-mode="shadow"]) .slds-listbox_selection-group .slds-listbox-toggle .slds-button {
+    line-height: 1;
+  }
+   /* Media Object classes need to be pulled out for reusability */
+   :host([data-render-mode="shadow"]) .slds-media {
+    display: flex;
+    align-items: flex-start;
+  }
+   :host([data-render-mode="shadow"]) .slds-media__figure {
+    flex-shrink: 0;
+    margin-inline-end: var(--slds-g-spacing-3);
+  }
+   :host([data-render-mode="shadow"]) .slds-media__figure_fixed-width {
+    min-width: var(--slds-g-sizing-10);
+  }
+   :host([data-render-mode="shadow"]) .slds-media__body {
+    flex: 1;
+    min-width: 0;
+  }
+   :host([data-render-mode="shadow"]) .slds-media__body,:host([data-render-mode="shadow"]) 
+  .slds-media__body> :last-child {
+    margin-block-end: 0;
+  }
+   :host([data-render-mode="shadow"]) .slds-media-body-iefix {
+    flex-shrink: 0;
+    flex-basis: auto;
+  }
+   :host([data-render-mode="shadow"]) .slds-media_small .slds-media__figure {
+    margin-inline-end: var(--slds-g-spacing-1);
+  }
+   :host([data-render-mode="shadow"]) .slds-media_small .slds-media__figure_reverse {
+    margin-inline-start: var(--slds-g-spacing-1);
+  }
+   :host([data-render-mode="shadow"]) .slds-media_large .slds-media__figure {
+    margin-inline-end: var(--slds-g-spacing-5);
+  }
+   :host([data-render-mode="shadow"]) .slds-media_large .slds-media__figure_reverse {
+    margin-inline-start: var(--slds-g-spacing-5);
+  }
+   :host([data-render-mode="shadow"]) .slds-media_inline .slds-media__body {
+    flex: 0 1 auto;
+  }
+   :host([data-render-mode="shadow"]) .slds-media_center {
+    align-items: center;
+  }
+   :host([data-render-mode="shadow"]) .slds-media__figure_reverse {
+    margin-block: 0;
+    margin-inline-start: var(--slds-g-spacing-3);
+    margin-inline-end: 0;
+  }
+   @media (width <= 48em) {
+
+    :host([data-render-mode="shadow"]) .slds-media_responsive {
+      display: block;
+    }
+
+     :host([data-render-mode="shadow"]) .slds-media_responsive .slds-media__figure {
+       margin-block: 0;
+       margin-inline-start: var(--slds-g-spacing-3);
+       margin-inline-end: 0;
+     }
+   }

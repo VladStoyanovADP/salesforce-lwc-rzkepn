@@ -1,0 +1,1 @@
+export default 'Press delete or backspace to remove {0}, press enter to navigate';

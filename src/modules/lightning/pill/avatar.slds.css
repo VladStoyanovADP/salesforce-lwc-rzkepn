@@ -1,0 +1,100 @@
+
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved
+  Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+  :host([data-render-mode="shadow"]) .slds-assistive-text {
+    position: absolute !important;
+    margin: -1px !important;
+    border: 0 !important;
+    padding: 0 !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+    text-transform: none !important;
+    white-space: nowrap !important;
+  }
+
+  :host([data-render-mode="shadow"]) [part='avatar'] {
+    width: var(--slds-c-avatar-sizing, var(--slds-g-sizing-9));
+    height: var(--slds-c-avatar-sizing, var(--slds-g-sizing-9));
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: var(--slds-c-avatar-radius-border, var(--slds-g-radius-border-2));
+    line-height: var(--slds-g-font-lineheight-1);
+    font-size: var(--slds-g-font-scale-neg-1);
+    color: var(--slds-c-avatar-text-color, var(--slds-g-color-on-accent-1));
+  }
+
+  :host([data-render-mode="shadow"][size='x-small']) [part='avatar'] {
+    width: var(--slds-g-sizing-6);
+    height: var(--slds-g-sizing-6);
+    font-size: var(--slds-g-font-scale-neg-4);
+    --slds-c-icon-sizing: var(--slds-g-sizing-6);
+  }
+
+  :host([data-render-mode="shadow"][size='small']) [part='avatar'] {
+    width: var(--slds-g-sizing-7);
+    height: var(--slds-g-sizing-7);
+    font-size: var(--slds-g-font-scale-neg-4);
+    --slds-c-icon-sizing: var(--slds-g-sizing-7);
+  }
+
+  :host([data-render-mode="shadow"][size='medium']) [part='avatar'] {
+    width: var(--slds-g-sizing-9);
+    height: var(--slds-g-sizing-9);
+    font-size: var(--slds-g-font-scale-neg-1);
+    --slds-c-icon-sizing: var(--slds-g-sizing-9);
+  }
+
+  :host([data-render-mode="shadow"][size='large']) [part='avatar'] {
+    width: var(--slds-g-sizing-10);
+    height: var(--slds-g-sizing-10);
+    font-size: var(--slds-g-font-scale-1);
+    line-height: var(--slds-g-font-lineheight-2);
+    --slds-c-icon-sizing: var(--slds-g-sizing-10);
+  }
+
+  :host([data-render-mode="shadow"][variant='circle']) [part='avatar'] {
+    border-radius: calc(var(--slds-g-radius-border-circle) / 2);
+  }
+
+  :host([data-render-mode="shadow"].slds-avatar_empty) [part='avatar'] {
+    border: var(--slds-g-sizing-border-1) dashed var(--slds-g-color-neutral-base-90);
+  }
+
+  :host([data-render-mode="shadow"]) lightning-icon {
+    display: flex;
+    justify-content: center;
+  }
+
+  :host([data-render-mode="shadow"]) .slds-avatar__initials {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    margin: auto;
+    color: var(--slds-c-avatar-initials-text-color);
+    height: 100%;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 80%);
+    background-color: var(--slds-g-color-accent-container-2);
+  }
+
+  :host([data-render-mode="shadow"]) .slds-avatar__initials:hover {
+    color: var(--slds-c-avatar-initials-text-color-hover, var(--slds-g-color-neutral-base-100));
+  }
+
+  :host([data-render-mode="shadow"]) .slds-avatar__initials[title] {
+    cursor: default;
+    text-decoration: none;
+  }
+
+  /* inverse is not currently supported by LBC */
+
+  :host([data-render-mode="shadow"]) .slds-avatar__initials_inverse {
+    --slds-c-avatar-text-color: var(--slds-c-avatar-inverse-text-color, var(--slds-g-color-neutral-base-30));
+
+    background-color: var(--slds-g-color-neutral-base-95);
+    text-shadow: none;
+  }

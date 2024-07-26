@@ -1,0 +1,14 @@
+
+  /* all SLDS styles for inputAddress are present in:
+     - form-element.css, sldsUtilsSizing.css, and input-text.css
+    no need for redundant styles
+  */
+
+  /* required due to :not causing issues with the slds build system
+     'label-hidden' is required here for Native shadow styling sync with Synthetic
+  */
+
+  :host([data-render-mode="shadow"][variant='label-inline']),:host([data-render-mode="shadow"][variant='label-hidden']),:host([data-render-mode="shadow"][variant='label-stacked']) {
+    padding: 0 var(--slds-g-spacing-1);
+    margin-block-end: var(--slds-g-spacing-2);
+  }

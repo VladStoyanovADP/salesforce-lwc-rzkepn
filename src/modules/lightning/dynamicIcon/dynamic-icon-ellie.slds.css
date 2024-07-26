@@ -1,0 +1,180 @@
+
+/* Copyright (c) 2015-present, Salesforce, Inc. All rights reserved
+Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+:host([data-render-mode="shadow"]) .slds-assistive-text {
+  position: absolute !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  text-transform: none !important;
+  white-space: nowrap !important;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-ellie {
+  width: calc(14rem / 16);
+  height: calc(14rem / 16);
+  display: inline-block;
+  overflow: hidden;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-ellie.slds-is-animated {
+  will-change: transform;
+  animation: slds-icon-ellie-pop 0.3s ease-in 2s 1 both;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-ellie.slds-is-animated svg {
+  will-change: transform;
+  animation: slds-icon-ellie 1.2s steps(20) 2.3s 2 alternate;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-ellie.slds-is-paused,:host([data-render-mode="shadow"]) 
+.slds-icon-ellie.slds-is-paused svg {
+  animation-play-state: paused;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-ellie svg {
+  width: 17.5rem;
+  vertical-align: top;
+  color: #0d9dda;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-ellie circle:nth-child(2n + 1) {
+  fill: currentcolor;
+  stroke: currentcolor;
+  stroke-width: 4px;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-ellie circle:nth-child(2n) {
+  fill: white;
+  stroke: white;
+  stroke-width: 1px;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-ellie circle:nth-child(1),:host([data-render-mode="shadow"]) 
+.slds-icon-ellie circle:nth-last-child(2) {
+  stroke-width: 4px;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-ellie circle:nth-child(2),:host([data-render-mode="shadow"]) 
+.slds-icon-ellie circle:nth-last-child(1) {
+  stroke-width: 1px;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-ellie circle:nth-child(3),:host([data-render-mode="shadow"]) 
+.slds-icon-ellie circle:nth-last-child(4) {
+  stroke-width: 3.95px;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-ellie circle:nth-child(4),:host([data-render-mode="shadow"]) 
+.slds-icon-ellie circle:nth-last-child(3) {
+  stroke-width: 1.2px;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-ellie circle:nth-child(5),:host([data-render-mode="shadow"]) 
+.slds-icon-ellie circle:nth-last-child(6) {
+  stroke-width: 3.85px;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-ellie circle:nth-child(6),:host([data-render-mode="shadow"]) 
+.slds-icon-ellie circle:nth-last-child(5) {
+  stroke-width: 1.4px;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-ellie circle:nth-child(7),:host([data-render-mode="shadow"]) 
+.slds-icon-ellie circle:nth-last-child(8) {
+  stroke-width: 3.6px;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-ellie circle:nth-child(8),:host([data-render-mode="shadow"]) 
+.slds-icon-ellie circle:nth-last-child(7) {
+  stroke-width: 1.7px;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-ellie circle:nth-child(9),:host([data-render-mode="shadow"]) 
+.slds-icon-ellie circle:nth-last-child(10) {
+  stroke-width: 3.3px;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-ellie circle:nth-child(10),:host([data-render-mode="shadow"]) 
+.slds-icon-ellie circle:nth-last-child(9) {
+  stroke-width: 2px;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-ellie circle:nth-child(11),:host([data-render-mode="shadow"]) 
+.slds-icon-ellie circle:nth-last-child(12) {
+  stroke-width: 3.2px;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-ellie circle:nth-child(12),:host([data-render-mode="shadow"]) 
+.slds-icon-ellie circle:nth-last-child(11) {
+  stroke-width: 2.4px;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-ellie circle:nth-child(13),:host([data-render-mode="shadow"]) 
+.slds-icon-ellie circle:nth-last-child(14) {
+  stroke-width: 3.15px;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-ellie circle:nth-child(14),:host([data-render-mode="shadow"]) 
+.slds-icon-ellie circle:nth-last-child(13) {
+  stroke-width: 2.8px;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-ellie circle:nth-child(15),:host([data-render-mode="shadow"]) 
+.slds-icon-ellie circle:nth-last-child(16) {
+  stroke-width: 3.1px;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-ellie circle:nth-child(16),:host([data-render-mode="shadow"]) 
+.slds-icon-ellie circle:nth-last-child(15) {
+  stroke-width: 3.25px;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-ellie circle:nth-child(17),:host([data-render-mode="shadow"]) 
+.slds-icon-ellie circle:nth-last-child(18) {
+  stroke-width: 3.05px;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-ellie circle:nth-child(18),:host([data-render-mode="shadow"]) 
+.slds-icon-ellie circle:nth-last-child(17) {
+  stroke-width: 3.7px;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-ellie circle:nth-child(19),:host([data-render-mode="shadow"]) 
+.slds-icon-ellie circle:nth-last-child(20) {
+  stroke-width: 3px;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-ellie circle:nth-child(20),:host([data-render-mode="shadow"]) 
+.slds-icon-ellie circle:nth-last-child(19) {
+  stroke-width: 4px;
+}
+
+@keyframes slds-icon-ellie-pop {
+  0% {
+    transform: scale(0.2);
+  }
+
+  70% {
+    transform: scale(1.1);
+  }
+
+  90% {
+    transform: scale(0.7);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes slds-icon-ellie {
+  to {
+    transform: translateX(-17.5rem);
+  }
+}

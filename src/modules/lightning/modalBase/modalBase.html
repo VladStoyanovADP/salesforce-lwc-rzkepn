@@ -1,0 +1,58 @@
+<template>
+    <div
+        class={modalBackdropCssClasses}
+        part="modal-backdrop"
+        role="presentation"
+        data-backdrop
+    ></div>
+    <lightning-focus-trap>
+        <section
+            role="dialog"
+            tabindex="-1"
+            aria-modal="true"
+            class={modalCssClasses}
+            part="modal"
+            onkeydown={handleModalKeyDown}
+            onprivatemodalheaderregister={handleHeaderRegister}
+            onprivatemodalbodyregister={handleBodyRegister}
+            onprivatemodalfooterregister={handleFooterRegister}
+            onprivateclose={handlePrivateClose}
+            onprivatedisableclosebutton={handlePrivateDisableCloseButton}
+            onfocusin={handleModalBaseFocusin}
+            onprivatelightningmodallastfocus={handleLastFocusedElem}
+            data-modal
+        >
+            <template if:true={showAriaDescribedBy}>
+                <span
+                    id="modal-description"
+                    class="slds-assistive-text"
+                    data-aria-description
+                >{description}</span>
+            </template>
+            <template if:true={showAriaLiveMessage}>
+                <span
+                    aria-live="polite"
+                    role="status"
+                    class="slds-assistive-text"
+                    data-aria-live-message
+                >{ariaLiveMessage}</span>
+            </template>
+            <div
+                class="slds-modal__container"
+                data-container
+            >
+                <lightning-button-icon
+                    class={computedCloseButtonCssClass}
+                    icon-name="utility:close"
+                    variant={computedCloseButtonVariant}
+                    alternative-text={closeButtonAltText}
+                    onclick={handleCloseClick}
+                    size="large"
+                    disabled={disableCloseButton}
+                    data-close-button
+                ></lightning-button-icon>
+                <div data-slot lwc:dom="manual"></div>
+            </div>
+        </section>
+    </lightning-focus-trap>
+</template>

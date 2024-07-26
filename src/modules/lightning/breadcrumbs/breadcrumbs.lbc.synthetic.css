@@ -1,0 +1,7 @@
+:host {
+    display: block;
+}
+
+div.slds-breadcrumb {
+    list-style: none;
+}

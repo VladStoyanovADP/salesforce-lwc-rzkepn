@@ -1,0 +1,7 @@
+<template>
+    <!-- We add an internal component here so that we can garner access to a full LWC component including access to a JS file. -->
+    <!-- This is common if a custom component needs some kind of wiring up. -->
+    <!-- We pass tabindex down as we don't want this component to be shown as accessible in the dom, but we want children of it to be -->
+    <!-- We set data-navigation here as this component has children that are navigable -->
+    <datatable-simple-component-nested internal-tab-index={internalTabIndex} data-navigation="enable"></datatable-simple-component-nested>
+</template>

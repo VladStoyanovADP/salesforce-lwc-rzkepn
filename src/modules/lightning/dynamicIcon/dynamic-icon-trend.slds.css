@@ -1,0 +1,116 @@
+
+/* Copyright (c) 2015-present, Salesforce, Inc. All rights reserved
+Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+  :host([data-render-mode="shadow"]) {
+    /* stylelint-disable sds-stylelint-plugin/styling-hooks-pattern */
+
+    /* Circle's cirumference, r=7.375 * pi * 2 */
+    --_icon-trend-circumference: 46.3385px;
+
+    /* Arrow path length */
+    --_icon-trend-arrow-length: 20.15px;
+
+    /* HACK: Trick minifiers so they don't minify 0px to 0,
+        which breaks the animation in Edge */
+    --_icon-trend-zero: 0.1px;
+
+    /* HACK: a 1px stroke sitting on a pixel grid line (here: the arrow)
+        doesn't get aliased well on non-retina displays,
+        so we bump up the stroke-width to force a better anti-aliasing
+        which improves rendering at small size */
+    --_icon-trend-one: 1.125px;
+
+    --_duration-slowly: 0.4s;
+    /* stylelint-enable sds-stylelint-plugin/styling-hooks-pattern */
+  }
+
+  :host([data-render-mode="shadow"]) .slds-assistive-text {
+    position: absolute !important;
+    margin: -1px !important;
+    border: 0 !important;
+    padding: 0 !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+    text-transform: none !important;
+    white-space: nowrap !important;
+  }
+
+  :host([data-render-mode="shadow"]) .slds-icon-trend {
+    width: 1rem;
+    height: 1rem;
+    display: inline-block;
+  }
+
+  :host([data-render-mode="shadow"]) .slds-icon-trend.slds-is-animated .slds-icon-trend__arrow {
+    /* stylelint-disable sds-stylelint-plugin/styling-hooks-pattern */
+    animation: slds-icon-trend-arrow calc(var(--_duration-slowly) * 2) var(--_duration-slowly) ease-in-out both;
+    /* stylelint-enable sds-stylelint-plugin/styling-hooks-pattern */
+  }
+
+  :host([data-render-mode="shadow"]) .slds-icon-trend.slds-is-animated .slds-icon-trend__circle {
+    /* stylelint-disable sds-stylelint-plugin/styling-hooks-pattern */
+    animation: slds-icon-trend-circle calc(var(--_duration-slowly) * 2) ease-in-out both;
+    /* stylelint-enable sds-stylelint-plugin/styling-hooks-pattern */
+  }
+
+  :host([data-render-mode="shadow"]) .slds-icon-trend.slds-is-paused .slds-icon-trend__arrow,:host([data-render-mode="shadow"]) 
+  .slds-icon-trend.slds-is-paused .slds-icon-trend__circle {
+    animation-play-state: paused;
+  }
+
+  :host([data-render-mode="shadow"]) .slds-icon-trend[data-slds-trend="down"] {
+    color: #ba0517;
+    transform: rotate(45deg);
+  }
+
+  :host([data-render-mode="shadow"]) .slds-icon-trend[data-slds-trend="neutral"] {
+    color: #939393;
+  }
+
+  :host([data-render-mode="shadow"]) .slds-icon-trend[data-slds-trend="up"] {
+    color: #2e844a;
+    transform: rotate(-45deg);
+  }
+
+  :host([data-render-mode="shadow"]) .slds-icon-trend__arrow,:host([data-render-mode="shadow"]) 
+  .slds-icon-trend__circle {
+    stroke: currentcolor;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    /* stylelint-disable sds-stylelint-plugin/styling-hooks-pattern */
+    stroke-width: var(--_icon-trend-one);
+    /* stylelint-enable sds-stylelint-plugin/styling-hooks-pattern */
+  }
+
+  :host([data-render-mode="shadow"]) .slds-icon-trend__arrow {
+    /* stylelint-disable sds-stylelint-plugin/styling-hooks-pattern */
+    stroke-dashoffset: var(--_icon-trend-zero);
+    stroke-dasharray: calc(var(--_icon-trend-arrow-length) * 2 - var(--_icon-trend-one));
+    /* stylelint-enable sds-stylelint-plugin/styling-hooks-pattern */
+  }
+
+  :host([data-render-mode="shadow"]) .slds-icon-trend__circle {
+    /* stylelint-disable sds-stylelint-plugin/styling-hooks-pattern */
+    stroke-dasharray: calc(var(--_icon-trend-circumference) - 4px), var(--_icon-trend-circumference);
+    /* stylelint-enable sds-stylelint-plugin/styling-hooks-pattern */
+  }
+
+  @keyframes slds-icon-trend-arrow {
+    from {
+      /* stylelint-disable sds-stylelint-plugin/styling-hooks-pattern */
+      stroke-dashoffset: calc(var(--_icon-trend-arrow-length) * 2);
+      /* stylelint-enable sds-stylelint-plugin/styling-hooks-pattern */
+    }
+  }
+
+  @keyframes slds-icon-trend-circle {
+    from {
+      /* stylelint-disable sds-stylelint-plugin/styling-hooks-pattern */
+      stroke-dasharray: var(--_icon-trend-zero), var(--_icon-trend-circumference);
+      /* stylelint-enable sds-stylelint-plugin/styling-hooks-pattern */
+    }
+  }

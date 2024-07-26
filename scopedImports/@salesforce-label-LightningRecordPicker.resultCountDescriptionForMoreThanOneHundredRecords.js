@@ -1,0 +1,1 @@
+export default 'Showing first 100 results for "{0}"';

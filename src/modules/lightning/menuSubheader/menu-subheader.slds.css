@@ -1,0 +1,21 @@
+
+/* Copyright (c) 2015-present, Salesforce, Inc. All rights reserved
+  Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+  :host([data-render-mode="shadow"]) .slds-dropdown__header {
+    font-size: var(--slds-g-font-size-base);
+    font-weight: var(--slds-g-font-weight-7);
+    padding-block: var(--slds-g-spacing-2);
+    padding-inline: var(--slds-g-spacing-3);
+  }
+
+  /**
+   * @TODO: refactor when utility is available
+   */
+
+  :host([data-render-mode="shadow"]) .slds-truncate {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }

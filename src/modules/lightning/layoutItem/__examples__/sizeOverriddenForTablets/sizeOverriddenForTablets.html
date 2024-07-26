@@ -1,0 +1,19 @@
+<template>
+        <p>Layout with items having default size 6 and and size set to 3 for medium. The medium size is used for devices like tablets and wider than tablets, such as desktop monitors. The default size is used for devices narrower than tablets, such as smart phones. For more information about device sizes, see the <a href="https://lightningdesignsystem.com/utilities/grid/" target="_blank">Lightning Design System website</a>.</p>
+    <div class="slds-box slds-p-around_none slds-m-top_x-small slds-m-bottom_medium slds-m-horizontal_none">
+        <lightning-layout multiple-rows>
+            <lightning-layout-item size="6" medium-device-size="3" padding="around-small">
+                <div class="custom-box slds-box slds-p-around_medium slds-text-align_center">1</div>
+            </lightning-layout-item>
+            <lightning-layout-item size="6" medium-device-size="3" padding="around-small">
+                <div class="custom-box slds-box slds-p-around_medium slds-text-align_center">2</div>
+            </lightning-layout-item>
+            <lightning-layout-item size="6" medium-device-size="3" padding="around-small">
+                <div class="custom-box slds-box slds-p-around_medium slds-text-align_center">3</div>
+            </lightning-layout-item>
+            <lightning-layout-item size="6" medium-device-size="3" padding="around-small">
+                <div class="custom-box slds-box slds-p-around_medium slds-text-align_center">4</div>
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+</template>

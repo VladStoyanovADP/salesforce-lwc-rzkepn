@@ -1,0 +1,206 @@
+
+  :host([data-render-mode="shadow"]) [part="card"] {
+    /**
+     * Reassignments for parity with SLDS blueprint
+     * https://www.lightningdesignsystem.com/components/breadcrumbs/#Styling-Hooks-Overview
+     */
+     /* stylelint-disable */
+     --slds-c-card-spacing-blockstart: var(--slds-c-card-spacing-block-start);
+     --slds-c-card-spacing-blockend: var(--slds-c-card-spacing-block-end);
+     --slds-c-card-spacing-inlinestart: var(--slds-c-card-spacing-inline-start);
+     --slds-c-card-spacing-inlineend: var(--slds-c-card-spacing-inline-end);
+     --slds-c-card-header-spacing-blockstart: var(--slds-c-card-header-spacing-block-start);
+     --slds-c-card-header-spacing-blockend: var(--slds-c-card-header-spacing-block-end);
+     --slds-c-card-header-spacing-inlinestart: var(--slds-c-card-header-spacing-inline-start);
+     --slds-c-card-header-spacing-inlineend: var(--slds-c-card-header-spacing-inline-end);
+     --slds-c-card-body-spacing-blockstart: var(--slds-c-card-body-spacing-block-start);
+     --slds-c-card-body-spacing-blockend: var(--slds-c-card-body-spacing-block-end);
+     --slds-c-card-body-spacing-inlinestart: var(--slds-c-card-body-spacing-inline-start);
+     --slds-c-card-body-spacing-inlineend: var(--slds-c-card-body-spacing-inline-end);
+     --slds-c-card-footer-spacing-blockstart: var(--slds-c-card-footer-spacing-block-start);
+     --slds-c-card-footer-spacing-blockend: var(--slds-c-card-footer-spacing-block-end);
+     --slds-c-card-footer-spacing-inlinestart: var(--slds-c-card-footer-spacing-inline-start);
+     --slds-c-card-footer-spacing-inlineend: var(--slds-c-card-footer-spacing-inline-end);
+     /* stylelint-enable */
+
+
+    position: relative;
+    /* stylelint-disable */
+    padding-block-start:
+      var(--slds-c-card-spacing-blockstart, 0);
+    padding-block-end:
+      var(--slds-c-card-spacing-blockend 0);
+    padding-inline-start:
+      var(--slds-c-card-spacing-inlinestart, 0);
+    padding-inline-end:
+      var(--slds-c-card-spacing-inlineend, 0);
+    /* stylelint-enable */
+    background:
+      var(--slds-c-card-color-background,
+        var(--slds-g-color-surface-container-1));
+    border-width:
+      var(--slds-c-card-sizing-border,
+        var(--slds-g-sizing-border-1));
+    border-color:
+      var(--slds-c-card-color-border,
+        var(--slds-g-color-border-base-1,
+          var(--slds-g-color-border-1)));
+    border-radius:
+      var(--slds-c-card-radius-border,
+        var(--slds-g-radius-border-2));
+    box-shadow:
+      var(--slds-c-card-shadow,
+        0 2px 2px 0 var(--slds-g-shadow-2));
+    color: var(--slds-c-card-text-color);
+    border-style: solid;
+    background-clip: padding-box;
+  }
+
+  :host([data-render-mode="shadow"]) [part='header'] {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-areas: 'icon title actions';
+    align-items: center;
+
+    /* Padding */
+    /* stylelint-disable */
+    padding-block-start:
+      var(--slds-c-card-header-spacing-blockstart,
+          var(--slds-g-spacing-3));
+    padding-block-end:
+      var(--slds-c-card-header-spacing-blockend, 0);
+    padding-inline-start:
+      var(--slds-c-card-header-spacing-inlinestart,
+          var(--slds-g-spacing-4));
+    padding-inline-end:
+      var(--slds-c-card-header-spacing-inlineend,
+          var(--slds-g-spacing-4));
+
+    /* Margin */
+    margin-block-end: var(--slds-c-card-header-spacing-blockend,
+        var(--slds-g-spacing-3));
+    /* stylelint-enable */
+
+    /**
+     * These become reassignments once base headings get hooks.
+     * See [part='header'] h2 rule block for more info.
+     */
+    font-size: var(--slds-c-card-heading-font-size);
+    font-weight: var(--slds-g-font-weight-bold,
+        var(--slds-g-font-weight-bold));
+    line-height: var(--slds-g-font-lineheight-2);
+  }
+
+  /*
+* Header's grid layout areas
+*
+* The header sections utilize grid areas and 'part' apis to allow the header's
+* layout be modular (grid-area) and explicitly customized (part).
+*/
+
+  :host([data-render-mode="shadow"]) [part="icon"] {
+    grid-area: icon;
+    line-height: 0;
+  }
+
+  :host([data-render-mode="shadow"]) [part="title"] {
+    grid-area: title;
+  }
+
+  :host([data-render-mode="shadow"]) [part="actions"] {
+    grid-area: actions;
+  }
+
+  /**
+* This would be a reassignment in :host if styling hooks existed for headings.
+* Until that exists, we have to do a hard reset here. This can be removed once
+* headings get hooks.
+*
+* :host { --slds-g-heading-font-size: var(--slds-c-card-heading-font-size); }
+*/
+
+  :host([data-render-mode="shadow"]) [part="title"] h2 {
+    font-weight: var(--slds-c-card-heading-font-weight, var(--slds-g-font-weight-7));
+    font-size: inherit;
+  }
+
+  /**
+* Recreating truncation explicitly here so the behavior is consistent with
+* current SLDS.
+*
+* @TODO: Evaluate if this should be a utility or something similar.
+*/
+
+  :host([data-render-mode="shadow"]) [part="title"] span {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  :host([data-render-mode="shadow"]) [part="body"] {
+    /* stylelint-disable */
+    margin-block-start:
+      var(--slds-c-card-body-spacing-blockstart);
+    margin-block-end:
+      var(--slds-c-card-body-spacing-blockend);
+    padding-inline-start:
+      var(--slds-c-card-body-spacing-inlinestart);
+    padding-inline-end:
+      var(--slds-c-card-body-spacing-inlineend);
+    --slds-c-card-color-border: transparent;
+    --slds-c-card-shadow: none;
+  }
+
+  :host([data-render-mode="shadow"]) [part='footer'] {
+    padding-block-start:
+      var(--slds-c-card-footer-spacing-blockstart,
+          var(--slds-g-spacing-3));
+    padding-block-end:
+      var(--slds-c-card-footer-spacing-blockend,
+          var(--slds-g-spacing-3));
+    padding-inline-start:
+      var(--slds-c-card-footer-spacing-inlinestart,
+          var(--slds-g-spacing-4));
+    padding-inline-end:
+      var(--slds-c-card-footer-spacing-inlineend,
+          var(--slds-g-spacing-4));
+    border-top-width:
+
+      var(--slds-c-card-footer-sizing-border,
+        var(--slds-g-sizing-border-1));
+    border-top-color:
+      var(--slds-c-card-footer-color-border,
+        var(--slds-g-color-border-base-1,
+          var(--slds-g-color-border-1)));
+
+    border-top-style: solid;
+    text-align: var(--slds-c-card-footer-text-align, center);
+    justify-content: center;
+    /* stylelint-enable */
+    font-size: var(--slds-c-card-footer-font-size,
+        var(--slds-g-font-scale-neg-2));
+  }
+
+  :host([data-render-mode="shadow"]) .slds-card__body:empty,:host([data-render-mode="shadow"]) 
+  .slds-card__footer:empty {
+    display: none;
+  }
+
+  /* Note: Refactor the below. Utility classes that should be removed once utility implementation is completed. */
+
+  :host([data-render-mode="shadow"]) .slds-media__figure {
+    flex-shrink: 0;
+    margin-inline-end: var(--slds-g-spacing-3);
+  }
+
+  :host([data-render-mode="shadow"]) .slds-text-heading_small {
+    font-size: var(--slds-g-font-size-base);
+    line-height: var(--slds-g-font-lineheight-2);
+  }
+
+  :host([data-render-mode="shadow"]) .slds-truncate {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }

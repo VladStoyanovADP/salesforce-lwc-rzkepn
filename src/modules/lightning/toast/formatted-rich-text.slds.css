@@ -1,0 +1,228 @@
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) {
+  line-height: var(--slds-g-font-lineheight);
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: manual;
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) h1 {
+  font-size: var(--slds-g-font-scale-1);
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) h2 {
+  font-size: var(--slds-g-font-scale-neg-1);
+  font-weight: var(--slds-g-font-weight-7);
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) h3 {
+  font-size: var(--slds-g-font-scale-neg-1);
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) h4 {
+  font-size: var(--slds-g-font-scale-neg-3);
+  font-weight: var(--slds-g-font-weight-7);
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) h5 {
+  font-size: var(--slds-g-font-scale-neg-3);
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) h6 {
+  font-size: var(--slds-g-font-scale-neg-4);
+  font-weight: var(--slds-g-font-weight-7);
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) h1,:host([data-render-mode="shadow"].slds-rich-text-editor__output) h2,:host([data-render-mode="shadow"].slds-rich-text-editor__output) h3,:host([data-render-mode="shadow"].slds-rich-text-editor__output) h4,:host([data-render-mode="shadow"].slds-rich-text-editor__output) h5,:host([data-render-mode="shadow"].slds-rich-text-editor__output) h6,:host([data-render-mode="shadow"].slds-rich-text-editor__output) ul,:host([data-render-mode="shadow"].slds-rich-text-editor__output) ol,:host([data-render-mode="shadow"].slds-rich-text-editor__output) dl,:host([data-render-mode="shadow"].slds-rich-text-editor__output) img {
+  margin-block-end: var(--slds-g-spacing-3);
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) blockquote {
+  margin: var(--slds-g-spacing-6) var(--slds-g-spacing-5);
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) ins {
+  color: var(--slds-g-color-success-base-50, var(--slds-g-color-success-base-50));
+  text-decoration: underline;
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) del {
+  color: var(--slds-g-color-error-base-30, var(--slds-g-color-error-base-50));
+  text-decoration: line-through;
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) ul {
+  margin-inline-start: var(--slds-g-spacing-5);
+  list-style: disc;
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) ul ul {
+  list-style: circle;
+  margin-block-end: 0;
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) ul ul ul {
+  list-style: square;
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) ul ul ul ul {
+  list-style: disc;
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) ul ul ul ul ul {
+  list-style: circle;
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) ul ol {
+  margin-inline-start: var(--slds-g-spacing-5);
+  list-style: decimal;
+  margin-block-end: 0;
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) ol {
+  margin-inline-start: var(--slds-g-spacing-5);
+  list-style: decimal;
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) ol ol {
+  list-style: lower-alpha;
+  margin-block-end: 0;
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) ol ol ol {
+  list-style: lower-roman;
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) ol ol ol ol {
+  list-style: decimal;
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) ol ol ol ol ol {
+  list-style: lower-alpha;
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) ol ul {
+  margin-inline-start: var(--slds-g-spacing-5);
+  list-style: disc;
+  margin-block-end: 0;
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) dd {
+  margin-inline-start: var(--slds-g-spacing-7);
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) abbr[title],:host([data-render-mode="shadow"].slds-rich-text-editor__output) acronym[title] {
+  border-bottom: var(--slds-g-sizing-border-1) dotted;
+  cursor: help;
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) table {
+  overflow-wrap: normal;
+  word-wrap: normal;
+  word-break: normal;
+  width: auto;
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) table caption {
+  text-align: center;
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) th,:host([data-render-mode="shadow"].slds-rich-text-editor__output) td {
+  padding: var(--slds-g-spacing-2);
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) .sans-serif {
+  font-family: sans-serif;
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) .courier {
+  font-family: courier;
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) .verdana {
+  font-family: verdana;
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) .tahoma {
+  font-family: tahoma;
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) .garamond {
+  font-family: garamond;
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) .serif {
+  font-family: serif;
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) .ql-indent-1:not(.ql-direction-rtl) {
+  padding-inline-start: var(--slds-g-spacing-8);
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) .ql-indent-1.ql-direction-rtl.ql-align-right {
+  padding-inline-end: var(--slds-g-spacing-8);
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) .ql-indent-2:not(.ql-direction-rtl) {
+  padding-inline-start: calc(var(--slds-g-spacing-8) * 2);
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) .ql-indent-2.ql-direction-rtl.ql-align-right {
+  padding-inline-end: calc(var(--slds-g-spacing-8) * 2);
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) .ql-indent-3:not(.ql-direction-rtl) {
+  padding-inline-start: calc(var(--slds-g-spacing-8) * 3);
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) .ql-indent-3.ql-direction-rtl.ql-align-right {
+  padding-inline-end: calc(var(--slds-g-spacing-8) * 3);
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) .ql-indent-4:not(.ql-direction-rtl) {
+  padding-inline-start: calc(var(--slds-g-spacing-8) * 4);
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) .ql-indent-4.ql-direction-rtl.ql-align-right {
+  padding-inline-end: calc(var(--slds-g-spacing-8) * 4);
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) .ql-indent-5:not(.ql-direction-rtl) {
+  padding-inline-start: calc(var(--slds-g-spacing-8) * 5);
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) .ql-indent-5.ql-direction-rtl.ql-align-right {
+  padding-inline-end: calc(var(--slds-g-spacing-8) * 5);
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) .ql-indent-6:not(.ql-direction-rtl) {
+  padding-inline-start: calc(var(--slds-g-spacing-8) * 6);
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) .ql-indent-6.ql-direction-rtl.ql-align-right {
+  padding-inline-end: calc(var(--slds-g-spacing-8) * 6);
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) .ql-indent-7:not(.ql-direction-rtl) {
+  padding-inline-start: calc(var(--slds-g-spacing-8) * 7);
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) .ql-indent-7.ql-direction-rtl.ql-align-right {
+  padding-inline-end: calc(var(--slds-g-spacing-8) * 7);
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) .ql-indent-8:not(.ql-direction-rtl) {
+  padding-inline-start: calc(var(--slds-g-spacing-8) * 8);
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) .ql-indent-8.ql-direction-rtl.ql-align-right {
+  padding-inline-end: calc(var(--slds-g-spacing-8) * 8);
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) .ql-indent-9:not(.ql-direction-rtl) {
+  padding-inline-start: calc(var(--slds-g-spacing-8) * 9);
+}
+
+:host([data-render-mode="shadow"].slds-rich-text-editor__output) .ql-indent-9.ql-direction-rtl.ql-align-right {
+  padding-inline-end: calc(var(--slds-g-spacing-8) * 9);
+}

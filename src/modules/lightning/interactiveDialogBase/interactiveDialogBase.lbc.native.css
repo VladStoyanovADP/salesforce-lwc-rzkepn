@@ -1,0 +1,8 @@
+@import 'lightning/sldsCommon';
+@import './button.slds.css';
+@import './modal-base.slds.css';
+@import './modal-header.slds.css';
+@import './modal-body.slds.css';
+@import './modal-footer.slds.css';
+@import './interactive-dialog-base.slds.css';
+@import 'lightning/sldsUtilsThemes';

@@ -1,0 +1,64 @@
+<template>
+    <div lwc:ref="child" class={computedClass} style={columnStyles}>
+
+        <!-- Header Content -->
+        <span class="slds-th__action" style={thActionStyles}>
+            <template if:true={def.iconName}>
+                <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                    <lightning-icon icon-name={def.iconName} size="x-small" class="slds-icon_container slds-m-right_xx-small" alternative-text={def.label} title={def.label}></lightning-icon>
+                    <template if:false={def.hideLabel} class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                        <span class={getHeaderLabelClass} style={getHeaderLabelStyle}>{def.label}</span>
+                    </template>
+                </div>
+            </template>
+            <template if:false={def.iconName}>
+                <span if:true={def.label}
+                    class={getHeaderLabelClass}
+                    style={getHeaderLabelStyle}
+                    title={def.label}>
+                    {def.label}
+                </span>
+                <span class="slds-truncate" if:false={def.label} title={def.ariaLabel}></span>
+            </template>
+
+            <!-- Header Actions -->
+            <template if:true={hasActions}>
+                <template if:true={def.label}>
+                    <lightning-primitive-header-actions
+                        column-header={def.label}
+                        col-key-value={def.colKeyValue}
+                        actions={actions}
+                        tabindex={internalTabIndex}
+                        data-navigation="enable"
+                    ></lightning-primitive-header-actions>
+                </template>
+                <template if:false={def.label}>
+                    <lightning-primitive-header-actions
+                        column-header={def.ariaLabel}
+                        col-key-value={def.colKeyValue}
+                        actions={actions}
+                        tabindex={internalTabIndex}
+                        data-navigation="enable"
+                    ></lightning-primitive-header-actions>
+                </template>
+            </template>
+
+            <!-- Resize Handler -->
+            <template if:true={isResizable}>
+                <lightning-primitive-resize-handler
+                     value={columnWidth}
+                     min-width={def.minWidth}
+                     max-width={def.maxWidth}
+                     internal-tab-index={internalTabIndex}
+                     label={def.label}
+                     tabindex={internalTabIndex}
+                     col-index={colIndex}
+                     class="slds-resizable"
+                     data-navigation="enable"
+                     is-last-col={def.isLastCol}
+                     step={resizeStep}>
+                </lightning-primitive-resize-handler>
+            </template>
+        </span>
+    </div>
+</template>

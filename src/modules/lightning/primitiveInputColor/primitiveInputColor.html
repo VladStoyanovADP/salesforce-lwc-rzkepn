@@ -1,0 +1,53 @@
+<template>
+    <div class="slds-color-picker" part="color-picker">
+        <div class="slds-form-element slds-color-picker__summary">
+            <template if:false={hasExternalLabel}>
+                <label class={computedColorLabelClass} for="color">
+                    <template if:true={required}>
+                        <abbr class="slds-required" title={required}>*</abbr>
+                    </template>
+                    {label}
+                </label>
+                <lightning-helptext if:true={fieldLevelHelp} content={fieldLevelHelp} alternative-text={helptextAlternativeText}></lightning-helptext>
+            </template>
+            <div class="slds-form-element__control" part="input-text">
+                <lightning-primitive-colorpicker-button
+                    value={value}
+                    disabled={disabled}
+                    onblur={handleBlur}
+                    onfocus={handleFocus}
+                    onchange={handleColorChange}
+                    aria-disabled={ariaDisabled}>
+                </lightning-primitive-colorpicker-button>
+                <!--
+                    Using <lightning-input type="text"> here would duplicate the label
+                    and change the input id/class, but we want to use the input-text and
+                    input-container parts since most of the CSS still applies here
+                -->
+                <div class="slds-color-picker__summary-input" part="input-container">
+                    <input type="text" id="color" class="slds-input"
+                        part="input"
+                        name={name}
+                        autocomplete={autocomplete}
+                        accesskey={accessKey}
+                        aria-label={ariaLabel}
+                        aria-invalid={ariaInvalid}
+                        aria-keyshortcuts={ariaKeyShortcuts}
+                        aria-disabled={ariaDisabled}
+                        disabled={disabled}
+                        minlength="4"
+                        maxlength="7"
+                        placeholder={placeholder}
+                        pattern={pattern}
+                        onblur={handleBlur}
+                        onfocus={handleFocus}
+                        onchange={handleChange}
+                        oninput={handleInput}>
+                </div>
+            </div>
+        </div>
+    </div>
+    <template if:true={helpMessage}>
+        <div id="help-message" class="slds-form-element__help" data-help-message part="help-text" role="status">{helpMessage}</div>
+    </template>
+</template>

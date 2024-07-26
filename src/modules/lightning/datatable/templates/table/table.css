@@ -1,0 +1,38 @@
+.slds-table_header-fixed_container::before {
+    width: 0;
+}
+
+.slds-table_header-fixed_container > .slds-scrollable_y::before {
+    width: 100%;
+    border-bottom: 1px solid var(--lwc-colorGray5, #dddbda);
+    content: '';
+    display: block;
+}
+
+.slds-table[role='grid'][data-render-mode-inline='true'] > tbody {
+    contain: strict;
+    content-visibility: auto;
+}
+
+.slds-table[role='grid'][data-render-mode-inline='true'] > tbody > tr {
+    contain-intrinsic-height: auto 29px;
+}
+
+/* Inline styles from formattedNumber.css and formattedPhone.css */
+.slds-table[role='grid'][data-render-mode-inline='true']
+    > tbody
+    > tr
+    > td
+    > span
+    > div
+    > span[data-inline-type='formatted-number']:dir(rtl),
+.slds-table[role='grid'][data-render-mode-inline='true']
+    > tbody
+    > tr
+    > td
+    > span
+    > div
+    > a[data-inline-type='formatted-phone']:dir(rtl) {
+    direction: ltr;
+    unicode-bidi: embed;
+}

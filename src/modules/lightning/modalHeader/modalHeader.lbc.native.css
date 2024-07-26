@@ -1,0 +1,3 @@
+@import 'lightning/sldsCommon';
+@import './modal-header.slds.css';
+@import 'lightning/sldsUtilsHyphenation';

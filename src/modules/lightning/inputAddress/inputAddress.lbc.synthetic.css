@@ -1,0 +1,4 @@
+/* present in inputAddress.css, before NS migration */
+:host {
+    display: block;
+}

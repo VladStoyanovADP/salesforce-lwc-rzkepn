@@ -1,0 +1,46 @@
+
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved
+  Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+:host([data-render-mode="shadow"]) .slds-assistive-text {
+  position: absolute !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  text-transform: none !important;
+  white-space: nowrap !important;
+}
+
+/* ToDo: swap out for Utility classes */
+
+:host([data-render-mode="shadow"]) .slds-m-left_x-small {
+    margin-inline-start: var(--slds-g-spacing-2);
+  }
+
+:host([data-render-mode="shadow"]) .slds-color-picker__selector {
+    margin-block-start: var(--slds-g-spacing-2);
+  }
+
+:host([data-render-mode="shadow"]) .slds-color-picker__selector.slds-popover {
+    width: 14rem;
+  }
+
+:host([data-render-mode="shadow"]) .slds-color-picker__selector-footer {
+    display: flex;
+  }
+
+:host([data-render-mode="shadow"]) .slds-color-picker__selector-footer lightning-button {
+    width: 100%;
+  }
+
+:host([data-render-mode="shadow"]) .slds-is-absolute {
+    position: absolute;
+  }
+
+:host([data-render-mode="shadow"]) .slds-show {
+    display: block;
+  }

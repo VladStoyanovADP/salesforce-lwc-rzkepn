@@ -1,0 +1,30 @@
+<template>
+    <div class={computedClass} title={title}>
+        <template lwc:if={headingLabel}>
+            <div
+                role="heading"
+                aria-level={headingLevel}
+                class={computedHeadingClass}
+                id="tabset-heading"
+                onprivatetablinkregister={handleTabLinkRegister}
+            >{headingLabel}</div>
+            <lightning-tab-bar
+                exportparts="tab-bar, tab-item"
+                variant={variant}
+                onselect={handleTabSelected}
+                aria-labelledby="tabset-heading"
+                onprivatetablinkregister={handleTabLinkRegister}
+            ></lightning-tab-bar>
+        </template>
+        <template lwc:else>
+            <lightning-tab-bar
+                exportparts="tab-bar, tab-item"
+                variant={variant}
+                onselect={handleTabSelected}
+                aria-label={defaultAriaLabel}
+                onprivatetablinkregister={handleTabLinkRegister}
+            ></lightning-tab-bar>
+        </template>
+        <slot></slot>
+    </div>
+</template>

@@ -1,0 +1,30 @@
+<template>
+    <span part="pill">
+        <template if:true={_hasMedia}>
+            <span class="slds-pill__icon_container">
+                <slot></slot>
+            </span>
+        </template>
+        <a
+            class="slds-pill__action"
+            href={href}
+            onclick={handleClick}
+            title={label}
+            onfocus={handleFocus}
+            onblur={handleBlur}
+        >
+            <span class="slds-pill__label">{label}</span>
+        </a>
+        <lightning-button-icon
+            icon-name="utility:close"
+            class="slds-pill__remove"
+            exportparts="button-icon, icon"
+            variant="bare"
+            onclick={handleRemoveClick}
+            title={computedPillRemoveLabel}
+            onfocus={handleFocus}
+            onblur={handleBlur}
+            alternative-text={computedPillRemoveLabel}>
+        </lightning-button-icon>
+    </span>
+</template>

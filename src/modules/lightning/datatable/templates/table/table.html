@@ -1,0 +1,1094 @@
+<template>
+    <slot onslotchange={handleCustomTypesChange} name="customdatatypes"></slot>
+    <!-- aria-live region to announce the keyboard navigation mode -->
+    <span aria-live="polite">
+        <span data-keyboard-mode="navigation" class={computedAriaLiveClassForNavMode}>{i18n.ariaLiveNavigationMode}</span>
+        <span data-keyboard-mode="action" class={computedAriaLiveClassForActionMode}>{i18n.ariaLiveActionMode}</span>
+    </span>
+    <div lwc:ref="widthObserver" lwc:dom="manual" class="dt-width-observer" style="width: 100%; height: 0px;"></div>
+    <div lwc:ref="outerContainer" class="dt-outer-container" style="height: 100%; position: relative;">
+        <!-- Inline Edit Panel -->
+        <lightning-primitive-datatable-iedit-panel
+            data-iedit-panel="true"
+            visible={state.inlineEdit.isPanelVisible}
+            row-key-value={state.inlineEdit.rowKeyValue}
+            col-key-value={state.inlineEdit.colKeyValue}
+            edited-value={state.inlineEdit.editedValue}
+            column-def={state.inlineEdit.columnDef}
+            is-mass-edit-enabled={state.inlineEdit.massEditEnabled}
+            number-of-selected-rows={state.inlineEdit.massEditSelectedRows}
+            resolved-type-attributes={state.inlineEdit.resolvedTypeAttributes}
+            onieditfinished={handleInlineEditFinish}
+            onmasscheckboxchange={handleMassCheckboxChange}>
+        </lightning-primitive-datatable-iedit-panel>
+        <!-- Table Container -->
+        <div lwc:ref="scrollerX" class={computedTableContainerClass} onscroll={handleHorizontalScroll} style={computedScrollerXStyle}>
+            <div lwc:ref="scrollerY" class="slds-scrollable_y" onscroll={handleVerticalScroll} style={computedScrollerYStyle}>
+                <!-- Table -->
+                <table lwc:ref="tableElement"
+                    class={computedTableClass}
+                    role={computedTableRole}
+                    style={computedTableStyle}
+                    onkeydown={handleTableKeydown}
+                    onclick={handleTableCellClick}
+                    onfocusin={handleTableFocusIn}
+                    onfocusout={handleTableFocusOut}
+                    aria-label={ariaLabel}
+                    aria-labelledby={ariaLabelledBy}
+                    aria-describedby={ariaDescribedBy}
+                    data-num-rows={data.length}
+                    data-num-selected-rows={selectedRows.length}
+                    data-last-rendered-row={_lastRenderedRow}>
+                    <template if:false={hasValidKeyField}>
+                        <!-- empty since keyField wasn't provided TODO: Why is this here? Test and remove! -->
+                    </template>
+                    <template if:true={hasValidKeyField}>
+                        <thead data-rowgroup-header>
+                            <!-- Column Header Row -->
+                            <tr class="slds-line-height_reset"
+                                role="row"
+                                data-row-key-value="HEADER"
+                                onprivateresizestart={handleResizeStart}
+                                onprivateresizeend={handleResizeEnd}>
+                                <template for:each={state.columns} for:item="def" for:index="colIndex">
+                                    <!-- Column Header -->
+                                    <th style={def.style}
+                                        role="columnheader"
+                                        scope="col"
+                                        tabindex={def.tabIndex}
+                                        aria-label={def.ariaLabel}
+                                        aria-sort={def.sortAriaLabel}
+                                        data-col-key-value={def.colKeyValue}
+                                        key={def.colKeyValue}>
+
+                                        <template if:true={def.fixedWidth}>
+                                            <!-- Fixed Width Columns: Non-resizable -->
+                                            <lightning-primitive-header-factory
+                                                style={def.style}
+                                                def={def}
+                                                dt-context-id={_datatableId}
+                                                header-height={_headerHeight}
+                                                key={def.colKeyValue}
+                                                row-key-value="HEADER"
+                                                col-key-value={def.colKeyValue}
+                                                col-index={colIndex}
+                                                has-focus={def.hasFocus}
+                                                actions={def.actions}
+                                                sortable={def.sortable}
+                                                sorted={def.sorted}
+                                                sorted-direction={def.sortedDirection}
+                                                column-width={def.columnWidth}
+                                                show-checkbox={showSelectAllCheckbox}
+                                                hide-header={hideTableHeader}
+                                                onprivatecolumnheaderid={handleCheckboxHeaderId}
+                                                wrap-table-header={wrapTableHeader}
+                                                wrap-text-max-lines={state.wrapTextMaxLines}>
+                                            </lightning-primitive-header-factory>
+                                        </template>
+                                        <template if:false={def.fixedWidth}>
+                                            <!-- Resizable Columns (Non-Fixed-Width) -->
+                                            <lightning-primitive-header-factory
+                                                style={def.style}
+                                                def={def}
+                                                dt-context-id={_datatableId}
+                                                key={def.colKeyValue}
+                                                row-key-value="HEADER"
+                                                col-key-value={def.colKeyValue}
+                                                col-index={colIndex}
+                                                has-focus={def.hasFocus}
+                                                header-height={_headerHeight}
+                                                actions={def.actions}
+                                                sortable={def.sortable}
+                                                sorted={def.sorted}
+                                                sorted-direction={def.sortedDirection}
+                                                column-width={def.columnWidth}
+                                                resizable={hasResizebleColumns}
+                                                resizestep={widthsData.resizeStep}
+                                                hide-header={hideTableHeader}
+                                                onprivatecolumnheaderid={handleCheckboxHeaderId}
+                                                wrap-table-header={wrapTableHeader}
+                                                wrap-text-max-lines={state.wrapTextMaxLines}>
+                                            </lightning-primitive-header-factory>
+                                        </template>
+                                    </th>
+                                </template>
+                            </tr>
+                        </thead>
+                        <tbody data-rowgroup-body style={computedTbodyStyle}>
+                            <template for:each={renderedRows} for:item="row" for:index="rowIndex">
+                                <!-- Data Rows -->
+                                <tr class={row.classnames}
+                                    role="row"
+                                    onkeydown={handleKeydownOnDataRow}
+                                    onprivatelookupitempicked={handlePrivateLookupItemPicked}
+                                    key={row.key}
+                                    data-row-key-value={row.key}
+                                    aria-selected={row.ariaSelected}
+                                    aria-level={row.level}
+                                    aria-expanded={row.isExpanded}
+                                    aria-setsize={row.setSize}
+                                    aria-posinset={row.posInSet}
+                                    tabindex={row.tabIndex}
+                                    data-row-number={row.rowNumber}>
+                                    <template for:each={row.cells} for:item="cell">
+                                        <template if:true={cell.isCheckbox}>
+                                            <!-- Checkbox Cell -->
+                                            <td class={cell.class}
+                                                role="gridcell"
+                                                tabindex={cell.tabIndex}
+                                                data-label={cell.dataLabel}
+                                                data-col-key-value={cell.colKeyValue}
+                                                data-cell-value={cell.value}
+                                                key={cell.colKeyValue}>
+                                                <!-- Fast Path -->
+                                                <template if:true={cell.isInlined}>
+                                                    <span
+                                                        class="slds-checkbox"
+                                                        data-inline-type="primitive-cell-checkbox"
+                                                        onclick={handleInlinedCheckboxContainerClick}
+                                                        onmousedown={handleInlinedCheckboxContainerMouseDown}>
+                                                        <input type="checkbox"
+                                                            name={cell.checkboxName}
+                                                            id={cell.checkboxId}
+                                                            checked={row.isSelected}
+                                                            disabled={row.isDisabled}
+                                                            data-action-triggers="space"
+                                                            data-navigation="enable"
+                                                            tabindex={cell.internalTabIndex}
+                                                            onclick={handleInlinedCheckboxClick}>
+                                                        <label
+                                                            id={cell.checkboxLabelId}
+                                                            class="slds-checkbox__label"
+                                                            for={cell.checkboxId}>
+                                                            <span class="slds-checkbox_faux"></span>
+                                                            <span class="slds-form-element__label slds-assistive-text">
+                                                                {cell.checkboxSelectItemAssistiveText}
+                                                            </span>
+                                                        </label>
+                                                    </span>
+                                                </template>
+                                                <!-- Slow Path -->
+                                                <template if:false={cell.isInlined}>
+                                                    <lightning-primitive-cell-checkbox
+                                                        dt-context-id={_datatableId}
+                                                        has-focus={cell.hasFocus}
+                                                        data-label={cell.dataLabel}
+                                                        key={cell.key}
+                                                        row-key-value={row.key}
+                                                        col-key-value={cell.colKeyValue}
+                                                        row-index={rowIndex}
+                                                        type={row.inputType}
+                                                        is-selected={row.isSelected}
+                                                        is-disabled={row.isDisabled}
+                                                        column-header-id={computedCheckboxColumnHeaderId}>
+                                                    </lightning-primitive-cell-checkbox>
+                                                </template>
+                                            </td>
+                                        </template>
+                                        <template if:true={cell.isDataTypeScope}>
+                                            <!-- Row Header Cell -->
+                                            <th class={cell.class}
+                                                role="rowheader"
+                                                style={cell.style}
+                                                aria-selected={cell.ariaSelected}
+                                                aria-readonly={cell.ariaReadOnly}
+                                                scope="row"
+                                                tabindex={cell.tabIndex}
+                                                data-label={cell.dataLabel}
+                                                data-col-key-value={cell.colKeyValue}
+                                                data-cell-value={cell.value}
+                                                key={cell.colKeyValue}
+                                                aria-describedby={cell.describedBy}>
+                                                    <!-- Fast Path -->
+                                                    <template if:true={cell.isInlined}>
+                                                        <template if:true={cell.isCustomBareLayout}>
+                                                            <div class={cell.computedCellDivClass} style={cell.computedCellDivStyle}>
+                                                                <!-- custom type with bare layout -->
+                                                                <lightning-primitive-custom-cell
+                                                                    types={_privateTypes}
+                                                                    row-key-value={row.key}
+                                                                    col-key-value={cell.colKeyValue}
+                                                                    alignment={cell.alignment}
+                                                                    column-type={cell.columnType}
+                                                                    column-sub-type={cell.columnSubType}
+                                                                    editable={cell.editable}
+                                                                    internal-tab-index={cell.internalTabIndex}
+                                                                    keyboard-mode={cell.keyboardMode}
+                                                                    value={cell.value}
+                                                                    wrap-text={cell.wrapText}
+                                                                    type-attribute-0={cell.typeAttribute0}
+                                                                    type-attribute-1={cell.typeAttribute1}
+                                                                    type-attribute-2={cell.typeAttribute2}
+                                                                    type-attribute-3={cell.typeAttribute3}
+                                                                    type-attribute-4={cell.typeAttribute4}
+                                                                    type-attribute-5={cell.typeAttribute5}
+                                                                    type-attribute-6={cell.typeAttribute6}
+                                                                    type-attribute-7={cell.typeAttribute7}
+                                                                    type-attribute-8={cell.typeAttribute8}
+                                                                    type-attribute-9={cell.typeAttribute9}
+                                                                    type-attribute-10={cell.typeAttribute10}>
+                                                                </lightning-primitive-custom-cell>
+                                                            </div>
+                                                        </template>
+                                                        <template if:false={cell.isCustomBareLayout}>
+                                                            <span class={cell.computedWrapperClass} data-cell-type={cell.columnType}>
+                                                                <div class={cell.computedCellDivClass} style={cell.computedCellDivStyle}>
+                                                                    <!-- *************** PREFIX ICONS DO NOT ADD ANY TYPE BEFORE THIS *************** -->
+
+                                                                    <!-- tree toggle -->
+                                                                    <template if:true={cell.hasTreeData}>
+                                                                        <lightning-primitive-treegrid-cell-toggle
+                                                                            data-navigation="enable"
+                                                                            row-key-value={row.key}
+                                                                            col-key-value={cell.colKeyValue}
+                                                                            display-value={cell.displayValue}
+                                                                            value={cell.value}
+                                                                            has-children={cell.typeAttribute21}
+                                                                            is-expanded={cell.typeAttribute22}>
+                                                                        </lightning-primitive-treegrid-cell-toggle>
+                                                                    </template>
+
+                                                                    <!-- left icon -->
+                                                                    <template if:true={cell.hasLeftIcon}>
+                                                                        <lightning-icon
+                                                                            icon-name={cell.iconName}
+                                                                            size="x-small"
+                                                                            class="slds-m-right_x-small"
+                                                                            alternative-text={cell.iconAlternativeText}
+                                                                        ></lightning-icon>
+                                                                        {cell.iconLabel}
+                                                                    </template>
+
+                                                                    <!-- *************** PREFIX ICONS END *************** -->
+
+                                                                    <!-- boolean -->
+                                                                    <template if:true={cell.isBoolean}>
+                                                                        <template if:true={cell.isChecked}>
+                                                                            <!-- Caution: Modify generate-inlined-icons script before changing comments -->
+                                                                            <!-- START utility:check -->
+                                                                            <template lwc:if={cell.isRTL}>
+                                                                                <svg class="slds-icon slds-icon-text-default slds-icon_x-small" focusable="false" data-key="check" aria-hidden="true" viewBox="0 0 520 520" part="icon">
+                                                                                    <g>
+                                                                             <path d="M191 425L26 259c-6-6-6-16 0-22l22-22c6-6 16-6 22 0l124 125a10 10 0 0015 0L452 95c6-6 16-6 22 0l22 22c6 6 6 16 0 22L213 425c-6 7-16 7-22 0z"></path>
+                                                                            </g>
+                                                                                </svg>
+                                                                            </template>
+                                                                            <template lwc:else>
+                                                                                <svg class="slds-icon slds-icon-text-default slds-icon_x-small" focusable="false" data-key="check" aria-hidden="true" viewBox="0 0 520 520" part="icon">
+                                                                                    <g>
+                                                                             <path d="M191 425L26 259c-6-6-6-16 0-22l22-22c6-6 16-6 22 0l124 125a10 10 0 0015 0L452 95c6-6 16-6 22 0l22 22c6 6 6 16 0 22L213 425c-6 7-16 7-22 0z"></path>
+                                                                            </g>
+                                                                                </svg>
+                                                                            </template>
+                                                                            <!-- END utility:check -->
+                                                                        </template>
+                                                                        <span class="slds-assistive-text">{cell.booleanCellAssistiveText}</span>
+                                                                    </template>
+
+                                                                    <!-- currency -->
+                                                                    <template if:true={cell.isCurrency}>
+                                                                        <span
+                                                                            class={cell.computedMarginClassWhenLeftIconExists}
+                                                                            data-inline-type="formatted-number">
+                                                                            {cell.currencyValue}
+                                                                        </span>
+                                                                    </template>
+
+                                                                    <!-- custom type with standard layout -->
+                                                                    <template if:true={cell.isCustomStandardLayout}>
+                                                                        <lightning-primitive-custom-cell
+                                                                            class={cell.computedMarginClassWhenLeftIconExists}
+                                                                            types={_privateTypes}
+                                                                            row-key-value={row.key}
+                                                                            col-key-value={cell.colKeyValue}
+                                                                            alignment={cell.alignment}
+                                                                            column-type={cell.columnType}
+                                                                            column-sub-type={cell.columnSubType}
+                                                                            editable={cell.editable}
+                                                                            internal-tab-index={cell.internalTabIndex}
+                                                                            keyboard-mode={cell.keyboardMode}
+                                                                            value={cell.value}
+                                                                            wrap-text={cell.wrapText}
+                                                                            type-attribute-0={cell.typeAttribute0}
+                                                                            type-attribute-1={cell.typeAttribute1}
+                                                                            type-attribute-2={cell.typeAttribute2}
+                                                                            type-attribute-3={cell.typeAttribute3}
+                                                                            type-attribute-4={cell.typeAttribute4}
+                                                                            type-attribute-5={cell.typeAttribute5}
+                                                                            type-attribute-6={cell.typeAttribute6}
+                                                                            type-attribute-7={cell.typeAttribute7}
+                                                                            type-attribute-8={cell.typeAttribute8}
+                                                                            type-attribute-9={cell.typeAttribute9}
+                                                                            type-attribute-10={cell.typeAttribute10}>
+                                                                        </lightning-primitive-custom-cell>
+                                                                    </template>
+
+                                                                    <!-- date local -->
+                                                                    <template if:true={cell.isDateLocal}>
+                                                                        <span
+                                                                            class={cell.computedMarginClassWhenLeftIconExists}
+                                                                            data-inline-type="formatted-date-time">
+                                                                            {cell.dateLocalValue}
+                                                                        </span>
+                                                                    </template>
+
+                                                                    <!-- date time -->
+                                                                    <template if:true={cell.isDateTime}>
+                                                                        <span
+                                                                            class={cell.computedMarginClassWhenLeftIconExists}
+                                                                            data-inline-type="formatted-date-time">
+                                                                            {cell.dateTimeValue}
+                                                                        </span>
+                                                                    </template>
+
+                                                                    <!-- email -->
+                                                                    <template if:true={cell.isEmail}>
+                                                                        <template if:true={cell.showEmailLink}>
+                                                                            <a
+                                                                                class={cell.computedMarginClassWhenLeftIconExists}
+                                                                                data-action-triggers="enter"
+                                                                                data-navigation="enable"
+                                                                                href={cell.emailLink}
+                                                                                tabindex={cell.internalTabIndex}>
+                                                                                <template if:false={cell.emailIconHidden}>
+                                                                                    <!-- Caution: Modify generate-inlined-icons script before changing comments -->
+                                                                                    <!-- START utility:email -->
+                                                                                    <template lwc:if={cell.isRTL}>
+                                                                                        <svg class="slds-icon slds-icon-text-default slds-icon_x-small" focusable="false" data-key="email" aria-hidden="true" viewBox="0 0 520 520" part="icon">
+                                                                                            <g>
+                                                                                     <path d="M249 301c6 6 15 6 21 0L496 91c4-8 3-21-13-21L36 71c-12 0-22 11-13 21zm251-128c0-10-12-16-20-9L303 327c-12 11-27 17-43 17s-31-6-43-16L41 164c-8-7-20-2-20 9-1-3-1 227-1 227a40 40 0 0040 40h400a40 40 0 0040-40z"></path>
+                                                                                    </g>
+                                                                                        </svg>
+                                                                                    </template>
+                                                                                    <template lwc:else>
+                                                                                        <svg class="slds-icon slds-icon-text-default slds-icon_x-small" focusable="false" data-key="email" aria-hidden="true" viewBox="0 0 520 520" part="icon">
+                                                                                            <g>
+                                                                                     <path d="M249 301c6 6 15 6 21 0L496 91c4-8 3-21-13-21L36 71c-12 0-22 11-13 21zm251-128c0-10-12-16-20-9L303 327c-12 11-27 17-43 17s-31-6-43-16L41 164c-8-7-20-2-20 9-1-3-1 227-1 227a40 40 0 0040 40h400a40 40 0 0040-40z"></path>
+                                                                                    </g>
+                                                                                        </svg>
+                                                                                    </template>
+                                                                                    <!-- END utility:email -->
+                                                                                <span class="slds-assistive-text">{cell.emailIconAssistiveText}</span>
+                                                                                </template> {cell.emailLabel}
+                                                                            </a>
+                                                                        </template>
+                                                                    </template>
+
+                                                                    <!-- location -->
+                                                                    <template if:true={cell.isLocation}>
+                                                                        <template if:true={cell.hasLeftIcon}>
+                                                                            <span class={cell.computedMarginClassWhenLeftIconExists}>{cell.locationValue}</span>
+                                                                        </template>
+                                                                        <template if:false={cell.hasLeftIcon}>
+                                                                            {cell.locationValue}
+                                                                        </template>
+                                                                    </template>
+
+                                                                    <!-- number -->
+                                                                    <template if:true={cell.isNumber}>
+                                                                        <span
+                                                                            data-inline-type="formatted-number"
+                                                                            class={cell.computedMarginClassWhenLeftIconExists}>
+                                                                            {cell.numberValue}
+                                                                        </span>
+                                                                    </template>
+
+                                                                    <!-- percent -->
+                                                                    <template if:true={cell.isPercent}>
+                                                                        <span
+                                                                            class={cell.computedMarginClassWhenLeftIconExists}
+                                                                            data-inline-type="formatted-number">
+                                                                            {cell.percentValue}
+                                                                        </span>
+                                                                    </template>
+
+                                                                    <!-- phone -->
+                                                                    <template if:true={cell.isPhone}>
+                                                                        <template if:true={cell.showPhoneLink}>
+                                                                            <a
+                                                                                class={cell.computedMarginClassWhenLeftIconExists}
+                                                                                data-action-triggers="enter"
+                                                                                data-inline-type="formatted-phone"
+                                                                                data-navigation="enable"
+                                                                                href={cell.phoneLink}
+                                                                                tabindex={cell.internalTabIndex}>
+                                                                                {cell.phoneLabel}
+                                                                            </a>
+                                                                        </template>
+                                                                    </template>
+
+                                                                    <!-- lookup (reference) -->
+                                                                    <template if:true={cell.isLookup}>
+                                                                        <template if:true={cell.lookupIsNavigable}>
+                                                                            <a
+                                                                                class={cell.computedMarginClassWhenLeftIconExists}
+                                                                                data-action-triggers="enter"
+                                                                                data-inline-type="formatted-lookup"
+                                                                                data-navigation="enable"
+                                                                                href={cell.lookupLink}
+                                                                                tabindex={cell.internalTabIndex}
+                                                                                onclick={cell.handleLookupAnchorClick}>
+                                                                                {cell.lookupValue}
+                                                                            </a>
+                                                                        </template>
+                                                                        <template if:false={cell.lookupIsNavigable}>
+                                                                            <span
+                                                                                class={cell.computedMarginClassWhenLeftIconExists}
+                                                                                data-inline-type="formatted-lookup"
+                                                                                data-navigation="enable"
+                                                                                data-action-triggers="enter">
+                                                                                {cell.lookupValue}
+                                                                            </span>
+                                                                        </template>
+                                                                    </template>
+
+                                                                    <!-- row number -->
+                                                                    <template if:true={cell.isRowNumber}>
+                                                                        <template if:true={cell.rowHasError}>
+                                                                            <lightning-primitive-datatable-tooltip
+                                                                                class="slds-m-horizontal_xxx-small"
+                                                                                data-navigation="enable"
+                                                                                data-action-triggers="enter,space"
+                                                                                size="xx-small"
+                                                                                header={cell.typeAttribute0.title}
+                                                                                content={cell.typeAttribute0.messages}
+                                                                                variant='error'
+                                                                                internal-tab-index={cell.internalTabIndex}
+                                                                                alternative-text={cell.typeAttribute0.alternativeText}>
+                                                                            </lightning-primitive-datatable-tooltip>
+                                                                        </template>
+                                                                        <span class="slds-row-number slds-text-body_small slds-text-color_weak" style={cell.computedRowNumberStyle}></span>
+                                                                    </template>
+
+                                                                    <!-- text -->
+                                                                    <template if:true={cell.isText}>
+                                                                        <template if:false={cell.shouldFormatText}>
+                                                                            <template if:true={cell.ignoreRTL}>
+                                                                                <span dir="ltr" class={cell.computedMarginClassWhenLeftIconExists}>{cell.textValue}</span>
+                                                                            </template>
+                                                                            <template if:false={cell.ignoreRTL}>
+                                                                                <template if:true={cell.hasLeftIcon}>
+                                                                                    <span class={cell.computedMarginClassWhenLeftIconExists}>{cell.textValue}</span>
+                                                                                </template>
+                                                                                <template if:false={cell.hasLeftIcon}>
+                                                                                    {cell.textValue}
+                                                                                </template>
+                                                                            </template>
+                                                                        </template>
+                                                                        <template if:true={cell.shouldFormatText}>
+                                                                            <span class={cell.computedMarginClassWhenLeftIconExists}>
+                                                                                <template for:each={cell.textParts} for:item="part">
+                                                                                    <template if:true={part.isLink}>
+                                                                                        <a key={part.key} target='_blank' href={part.href} rel="noopener">{part.value}</a>
+                                                                                    </template>
+                                                                                    <template if:true={part.isText}>
+                                                                                        {part.value}
+                                                                                    </template>
+                                                                                </template>
+                                                                            </span>
+                                                                        </template>
+                                                                    </template>
+
+                                                                    <!-- url -->
+                                                                    <template if:true={cell.isURL}>
+                                                                        <template if:true={cell.showUrlLink}>
+                                                                            <a
+                                                                                class={cell.computedMarginClassWhenLeftIconExists}
+                                                                                data-action-triggers="enter"
+                                                                                data-inline-type="formatted-url"
+                                                                                data-navigation="enable"
+                                                                                href={cell.urlLink}
+                                                                                tabindex={cell.internalTabIndex}
+                                                                                target={cell.urlTarget}
+                                                                                title={cell.urlTooltip}
+                                                                                onclick={cell.handleUrlAnchorClick}>
+                                                                                {cell.urlLabel}
+                                                                            </a>
+                                                                        </template>
+                                                                    </template>
+
+                                                                    <!-- *************** SUFFIX ICONS ADD ALL TYPES BEFORE THIS *************** -->
+
+                                                                    <template if:true={cell.hasRightIcon}>
+                                                                        <lightning-icon
+                                                                            icon-name={cell.iconName}
+                                                                            class="slds-m-left_x-small slds-m-right_x-small"
+                                                                            size="x-small"
+                                                                            alternative-text={cell.iconAlternativeText}></lightning-icon>
+                                                                        {cell.iconLabel}
+                                                                    </template>
+
+                                                                    <!-- *************** SUFFIX ICONS END *************** -->
+
+                                                                </div>
+                                                                <template if:true={cell.isEditable}>
+                                                                    <button class="slds-button slds-button_icon slds-cell-edit__button slds-m-left_x-small"
+                                                                            aria-labelledby={cell.editLabelId}
+                                                                            data-action-edit="true"
+                                                                            data-action-triggers="enter,space"
+                                                                            data-navigation="enable"
+                                                                            tabindex={cell.internalTabIndex}
+                                                                            onclick={handleInlinedEditButtonClick}>
+                                                                        <!-- Caution: Modify generate-inlined-icons script before changing comments -->
+                                                                        <!-- START utility:edit -->
+                                                                        <template lwc:if={cell.isRTL}>
+                                                                            <svg class="slds-button__icon slds-button__icon_hint slds-button__icon_lock slds-button__icon_edit slds-icon slds-icon-text-default slds-icon_xx-small" focusable="false" data-key="edit" aria-hidden="true" viewBox="0 0 520 520" part="icon">
+                                                                                <g>
+                                                                         <path d="M95 334l89 89c4 4 10 4 14 0l222-223c4-4 4-10 0-14l-88-88a10 10 0 00-14 0L95 321c-4 4-4 10 0 13zM361 57a10 10 0 000 14l88 88c4 4 10 4 14 0l25-25a38 38 0 000-55l-47-47a40 40 0 00-57 0zM21 482c-2 10 7 19 17 17l109-26c4-1 7-3 9-5l2-2c2-2 3-9-1-13l-90-90c-4-4-11-3-13-1l-2 2a20 20 0 00-5 9z"></path>
+                                                                        </g>
+                                                                            </svg>
+                                                                        </template>
+                                                                        <template lwc:else>
+                                                                            <svg class="slds-button__icon slds-button__icon_hint slds-button__icon_lock slds-button__icon_edit slds-icon slds-icon-text-default slds-icon_xx-small" focusable="false" data-key="edit" aria-hidden="true" viewBox="0 0 520 520" part="icon">
+                                                                                <g>
+                                                                         <path d="M95 334l89 89c4 4 10 4 14 0l222-223c4-4 4-10 0-14l-88-88a10 10 0 00-14 0L95 321c-4 4-4 10 0 13zM361 57a10 10 0 000 14l88 88c4 4 10 4 14 0l25-25a38 38 0 000-55l-47-47a40 40 0 00-57 0zM21 482c-2 10 7 19 17 17l109-26c4-1 7-3 9-5l2-2c2-2 3-9-1-13l-90-90c-4-4-11-3-13-1l-2 2a20 20 0 00-5 9z"></path>
+                                                                        </g>
+                                                                            </svg>
+                                                                        </template>
+                                                                        <!-- END utility:edit -->
+                                                                        <span hidden id={cell.editLabelId}>
+                                                                            {cell.editIconAssistiveText}
+                                                                        </span>
+                                                                    </button>
+                                                                </template>
+                                                                <!-- TODO: displayReadOnlyIcon is true only when the cell's "editable" property is false and its "displayReadOnlyIcon"
+                                                                property is true. The markup in this template therefore cannot be rendered concurrently with the template above that checks
+                                                                the editable property. -->
+                                                                <template if:true={cell.shouldDisplayReadOnlyIcon}>
+                                                                    <!-- TODO: Update the svg-classes once the SLDS team updates their read only icon design to not use classes that have the word 'button'
+                                                                    in them in cases when the cell is read only and hence no button is actually rendered -->
+                                                                    <!-- Caution: Modify generate-inlined-icons script before changing comments -->
+                                                                    <!-- START utility:lock -->
+                                                                    <template lwc:if={cell.isRTL}>
+                                                                        <svg class="slds-button__icon slds-button__icon_hint slds-button__icon_lock slds-button__icon_edit slds-icon slds-icon-text-default slds-icon_xx-small" focusable="false" data-key="lock" aria-hidden="true" viewBox="0 0 520 520" part="icon">
+                                                                            <g>
+                                                                     <path d="M110 190h40c6 0 10-3 10-9v-1A100 100 0 01267 80c53 4 93 50 93 104v-3c0 6 4 9 10 9h40c6 0 10-3 10-9v-1A160 160 0 00252 20c-85 4-150 76-152 161 1 5 5 9 10 9zm-10-9v4zm360 89a40 40 0 00-40-40H100a40 40 0 00-40 40v190a40 40 0 0040 40h320a40 40 0 0040-40zM306 427c2 6-3 13-10 13h-73c-7 0-11-6-10-13l18-60a48 48 0 01-21-48 50 50 0 0139-38c32-6 60 17 60 47 0 16-8 31-21 39z"></path>
+                                                                    </g>
+                                                                        </svg>
+                                                                    </template>
+                                                                    <template lwc:else>
+                                                                        <svg class="slds-button__icon slds-button__icon_hint slds-button__icon_lock slds-button__icon_edit slds-icon slds-icon-text-default slds-icon_xx-small" focusable="false" data-key="lock" aria-hidden="true" viewBox="0 0 520 520" part="icon">
+                                                                            <g>
+                                                                     <path d="M110 190h40c6 0 10-3 10-9v-1A100 100 0 01267 80c53 4 93 50 93 104v-3c0 6 4 9 10 9h40c6 0 10-3 10-9v-1A160 160 0 00252 20c-85 4-150 76-152 161 1 5 5 9 10 9zm-10-9v4zm360 89a40 40 0 00-40-40H100a40 40 0 00-40 40v190a40 40 0 0040 40h320a40 40 0 0040-40zM306 427c2 6-3 13-10 13h-73c-7 0-11-6-10-13l18-60a48 48 0 01-21-48 50 50 0 0139-38c32-6 60 17 60 47 0 16-8 31-21 39z"></path>
+                                                                    </g>
+                                                                        </svg>
+                                                                    </template>
+                                                                    <!-- END utility:lock -->
+                                                                </template>
+                                                            </span>
+                                                        </template>
+                                                    </template>
+                                                    <!-- Slow Path -->
+                                                    <template if:false={cell.isInlined}>
+                                                        <lightning-primitive-cell-factory
+                                                            types={_privateTypes}
+                                                            aria-selected={cell.ariaSelected}
+                                                            data-label={cell.dataLabel}
+                                                            alignment={cell.alignment}
+                                                            has-error={cell.hasError}
+                                                            has-focus={cell.hasFocus}
+                                                            column-label={cell.dataLabel}
+                                                            column-type={cell.columnType}
+                                                            column-sub-type={cell.columnSubType}
+                                                            wrap-text={cell.wrapText}
+                                                            wrap-text-max-lines={cell.wrapTextMaxLines}
+                                                            key={cell.columnType}
+                                                            row-key-value={row.key}
+                                                            col-key-value={cell.colKeyValue}
+                                                            value={cell.value}
+                                                            display-value={cell.displayValue}
+                                                            icon-name={cell.iconName}
+                                                            icon-label={cell.iconLabel}
+                                                            icon-position={cell.iconPosition}
+                                                            icon-alternative-text={cell.iconAlternativeText}
+                                                            editable={cell.editable}
+                                                            display-read-only-icon={cell.displayReadOnlyIcon}
+                                                            type-attribute-0={cell.typeAttribute0}
+                                                            type-attribute-1={cell.typeAttribute1}
+                                                            type-attribute-2={cell.typeAttribute2}
+                                                            type-attribute-3={cell.typeAttribute3}
+                                                            type-attribute-4={cell.typeAttribute4}
+                                                            type-attribute-5={cell.typeAttribute5}
+                                                            type-attribute-6={cell.typeAttribute6}
+                                                            type-attribute-7={cell.typeAttribute7}
+                                                            type-attribute-8={cell.typeAttribute8}
+                                                            type-attribute-9={cell.typeAttribute9}
+                                                            type-attribute-10={cell.typeAttribute10}
+                                                            type-attribute-21={cell.typeAttribute21}
+                                                            type-attribute-22={cell.typeAttribute22}>
+                                                        </lightning-primitive-cell-factory>
+                                                    </template>
+                                                <template if:true={cell.describedBy}>
+                                                    <span id={cell.describedBy} class="slds-hide">Unsaved</span>
+                                                </template>
+                                            </th>
+                                        </template>
+                                        <template if:true={cell.isDataType}>
+                                            <!-- Non-Header Cells (Regular Data Cells) -->
+                                            <td class={cell.class}
+                                                role="gridcell"
+                                                style={cell.style}
+                                                aria-selected={cell.ariaSelected}
+                                                aria-readonly={cell.ariaReadOnly}
+                                                tabindex={cell.tabIndex}
+                                                data-label={cell.dataLabel}
+                                                data-col-key-value={cell.colKeyValue}
+                                                data-cell-value={cell.value}
+                                                aria-describedby={cell.describedBy}
+                                                key={cell.colKeyValue}>
+                                                <!-- Fast Path -->
+                                                <template if:true={cell.isInlined}>
+                                                    <template if:true={cell.isCustomBareLayout}>
+                                                        <div class={cell.computedCellDivClass} style={cell.computedCellDivStyle}>
+                                                            <!-- custom type with bare layout -->
+                                                            <lightning-primitive-custom-cell
+                                                                types={_privateTypes}
+                                                                row-key-value={row.key}
+                                                                col-key-value={cell.colKeyValue}
+                                                                alignment={cell.alignment}
+                                                                column-type={cell.columnType}
+                                                                column-sub-type={cell.columnSubType}
+                                                                editable={cell.editable}
+                                                                internal-tab-index={cell.internalTabIndex}
+                                                                keyboard-mode={cell.keyboardMode}
+                                                                value={cell.value}
+                                                                wrap-text={cell.wrapText}
+                                                                type-attribute-0={cell.typeAttribute0}
+                                                                type-attribute-1={cell.typeAttribute1}
+                                                                type-attribute-2={cell.typeAttribute2}
+                                                                type-attribute-3={cell.typeAttribute3}
+                                                                type-attribute-4={cell.typeAttribute4}
+                                                                type-attribute-5={cell.typeAttribute5}
+                                                                type-attribute-6={cell.typeAttribute6}
+                                                                type-attribute-7={cell.typeAttribute7}
+                                                                type-attribute-8={cell.typeAttribute8}
+                                                                type-attribute-9={cell.typeAttribute9}
+                                                                type-attribute-10={cell.typeAttribute10}>
+                                                            </lightning-primitive-custom-cell>
+                                                        </div>
+                                                    </template>
+                                                    <template if:false={cell.isCustomBareLayout}>
+                                                        <span class={cell.computedWrapperClass} data-cell-type={cell.columnType}>
+                                                            <div class={cell.computedCellDivClass} style={cell.computedCellDivStyle}>
+                                                                <!-- *************** PREFIX ICONS DO NOT ADD ANY TYPE BEFORE THIS *************** -->
+
+                                                                <!-- tree toggle -->
+                                                                <template if:true={cell.hasTreeData}>
+                                                                    <lightning-primitive-treegrid-cell-toggle
+                                                                        data-navigation="enable"
+                                                                        row-key-value={row.key}
+                                                                        col-key-value={cell.colKeyValue}
+                                                                        display-value={cell.displayValue}
+                                                                        value={cell.value}
+                                                                        has-children={cell.typeAttribute21}
+                                                                        is-expanded={cell.typeAttribute22}>
+                                                                    </lightning-primitive-treegrid-cell-toggle>
+                                                                </template>
+
+                                                                <!-- left icon -->
+                                                                <template if:true={cell.hasLeftIcon}>
+                                                                    <lightning-icon
+                                                                        icon-name={cell.iconName}
+                                                                        size="x-small"
+                                                                        class="slds-m-right_x-small"
+                                                                        alternative-text={cell.iconAlternativeText}
+                                                                    ></lightning-icon>
+                                                                    {cell.iconLabel}
+                                                                </template>
+
+                                                                <!-- *************** PREFIX ICONS END *************** -->
+
+                                                                <!-- boolean -->
+                                                                <template if:true={cell.isBoolean}>
+                                                                    <template if:true={cell.isChecked}>
+                                                                        <!-- Caution: Modify generate-inlined-icons script before changing comments -->
+                                                                        <!-- START utility:check -->
+                                                                        <template lwc:if={cell.isRTL}>
+                                                                            <svg class="slds-icon slds-icon-text-default slds-icon_x-small" focusable="false" data-key="check" aria-hidden="true" viewBox="0 0 520 520" part="icon">
+                                                                                <g>
+                                                                         <path d="M191 425L26 259c-6-6-6-16 0-22l22-22c6-6 16-6 22 0l124 125a10 10 0 0015 0L452 95c6-6 16-6 22 0l22 22c6 6 6 16 0 22L213 425c-6 7-16 7-22 0z"></path>
+                                                                        </g>
+                                                                            </svg>
+                                                                        </template>
+                                                                        <template lwc:else>
+                                                                            <svg class="slds-icon slds-icon-text-default slds-icon_x-small" focusable="false" data-key="check" aria-hidden="true" viewBox="0 0 520 520" part="icon">
+                                                                                <g>
+                                                                         <path d="M191 425L26 259c-6-6-6-16 0-22l22-22c6-6 16-6 22 0l124 125a10 10 0 0015 0L452 95c6-6 16-6 22 0l22 22c6 6 6 16 0 22L213 425c-6 7-16 7-22 0z"></path>
+                                                                        </g>
+                                                                            </svg>
+                                                                        </template>
+                                                                        <!-- END utility:check -->
+                                                                    </template>
+                                                                    <span class="slds-assistive-text">{cell.booleanCellAssistiveText}</span>
+                                                                </template>
+
+                                                                <!-- currency -->
+                                                                <template if:true={cell.isCurrency}>
+                                                                    <span
+                                                                        class={cell.computedMarginClassWhenLeftIconExists}
+                                                                        data-inline-type="formatted-number">
+                                                                        {cell.currencyValue}
+                                                                    </span>
+                                                                </template>
+
+                                                                <!-- custom type with standard layout -->
+                                                                <template if:true={cell.isCustomStandardLayout}>
+                                                                    <lightning-primitive-custom-cell
+                                                                        class={cell.computedMarginClassWhenLeftIconExists}
+                                                                        types={_privateTypes}
+                                                                        row-key-value={row.key}
+                                                                        col-key-value={cell.colKeyValue}
+                                                                        alignment={cell.alignment}
+                                                                        column-type={cell.columnType}
+                                                                        column-sub-type={cell.columnSubType}
+                                                                        editable={cell.editable}
+                                                                        internal-tab-index={cell.internalTabIndex}
+                                                                        keyboard-mode={cell.keyboardMode}
+                                                                        value={cell.value}
+                                                                        wrap-text={cell.wrapText}
+                                                                        type-attribute-0={cell.typeAttribute0}
+                                                                        type-attribute-1={cell.typeAttribute1}
+                                                                        type-attribute-2={cell.typeAttribute2}
+                                                                        type-attribute-3={cell.typeAttribute3}
+                                                                        type-attribute-4={cell.typeAttribute4}
+                                                                        type-attribute-5={cell.typeAttribute5}
+                                                                        type-attribute-6={cell.typeAttribute6}
+                                                                        type-attribute-7={cell.typeAttribute7}
+                                                                        type-attribute-8={cell.typeAttribute8}
+                                                                        type-attribute-9={cell.typeAttribute9}
+                                                                        type-attribute-10={cell.typeAttribute10}>
+                                                                    </lightning-primitive-custom-cell>
+                                                                </template>
+
+                                                                <!-- date local -->
+                                                                <template if:true={cell.isDateLocal}>
+                                                                    <span
+                                                                        class={cell.computedMarginClassWhenLeftIconExists}
+                                                                        data-inline-type="formatted-date-time">
+                                                                        {cell.dateLocalValue}
+                                                                    </span>
+                                                                </template>
+
+                                                                <!-- date time -->
+                                                                <template if:true={cell.isDateTime}>
+                                                                    <span
+                                                                        class={cell.computedMarginClassWhenLeftIconExists}
+                                                                        data-inline-type="formatted-date-time">
+                                                                        {cell.dateTimeValue}
+                                                                    </span>
+                                                                </template>
+
+                                                                <!-- email -->
+                                                                <template if:true={cell.isEmail}>
+                                                                    <template if:true={cell.showEmailLink}>
+                                                                        <a
+                                                                            class={cell.computedMarginClassWhenLeftIconExists}
+                                                                            data-action-triggers="enter"
+                                                                            data-navigation="enable"
+                                                                            href={cell.emailLink}
+                                                                            tabindex={cell.internalTabIndex}>
+                                                                            <template if:false={cell.emailIconHidden}>
+                                                                                <!-- Caution: Modify generate-inlined-icons script before changing comments -->
+                                                                                <!-- START utility:email -->
+                                                                                <template lwc:if={cell.isRTL}>
+                                                                                    <svg class="slds-icon slds-icon-text-default slds-icon_x-small" focusable="false" data-key="email" aria-hidden="true" viewBox="0 0 520 520" part="icon">
+                                                                                        <g>
+                                                                                 <path d="M249 301c6 6 15 6 21 0L496 91c4-8 3-21-13-21L36 71c-12 0-22 11-13 21zm251-128c0-10-12-16-20-9L303 327c-12 11-27 17-43 17s-31-6-43-16L41 164c-8-7-20-2-20 9-1-3-1 227-1 227a40 40 0 0040 40h400a40 40 0 0040-40z"></path>
+                                                                                </g>
+                                                                                    </svg>
+                                                                                </template>
+                                                                                <template lwc:else>
+                                                                                    <svg class="slds-icon slds-icon-text-default slds-icon_x-small" focusable="false" data-key="email" aria-hidden="true" viewBox="0 0 520 520" part="icon">
+                                                                                        <g>
+                                                                                 <path d="M249 301c6 6 15 6 21 0L496 91c4-8 3-21-13-21L36 71c-12 0-22 11-13 21zm251-128c0-10-12-16-20-9L303 327c-12 11-27 17-43 17s-31-6-43-16L41 164c-8-7-20-2-20 9-1-3-1 227-1 227a40 40 0 0040 40h400a40 40 0 0040-40z"></path>
+                                                                                </g>
+                                                                                    </svg>
+                                                                                </template>
+                                                                                <!-- END utility:email -->
+                                                                                <span class="slds-assistive-text">{cell.emailIconAssistiveText}</span>
+                                                                            </template> {cell.emailLabel}
+                                                                        </a>
+                                                                    </template>
+                                                                </template>
+
+                                                                <!-- location -->
+                                                                <template if:true={cell.isLocation}>
+                                                                    <template if:true={cell.hasLeftIcon}>
+                                                                        <span class={cell.computedMarginClassWhenLeftIconExists}>{cell.locationValue}</span>
+                                                                    </template>
+                                                                    <template if:false={cell.hasLeftIcon}>
+                                                                        {cell.locationValue}
+                                                                    </template>
+                                                                </template>
+
+                                                                <!-- number -->
+                                                                <template if:true={cell.isNumber}>
+                                                                    <span
+                                                                        data-inline-type="formatted-number"
+                                                                        class={cell.computedMarginClassWhenLeftIconExists}>
+                                                                        {cell.numberValue}
+                                                                    </span>
+                                                                </template>
+
+                                                                <!-- percent -->
+                                                                <template if:true={cell.isPercent}>
+                                                                    <span
+                                                                        class={cell.computedMarginClassWhenLeftIconExists}
+                                                                        data-inline-type="formatted-number">
+                                                                        {cell.percentValue}
+                                                                    </span>
+                                                                </template>
+
+                                                                <!-- phone -->
+                                                                <template if:true={cell.isPhone}>
+                                                                    <template if:true={cell.showPhoneLink}>
+                                                                        <a
+                                                                            class={cell.computedMarginClassWhenLeftIconExists}
+                                                                            data-action-triggers="enter"
+                                                                            data-inline-type="formatted-phone"
+                                                                            data-navigation="enable"
+                                                                            href={cell.phoneLink}
+                                                                            tabindex={cell.internalTabIndex}>
+                                                                            {cell.phoneLabel}
+                                                                        </a>
+                                                                    </template>
+                                                                </template>
+
+                                                                <!-- lookup (reference) -->
+                                                                <template if:true={cell.isLookup}>
+                                                                    <template if:true={cell.lookupIsNavigable}>
+                                                                        <a
+                                                                            class={cell.computedMarginClassWhenLeftIconExists}
+                                                                            data-action-triggers="enter"
+                                                                            data-inline-type="formatted-lookup"
+                                                                            data-navigation="enable"
+                                                                            href={cell.lookupLink}
+                                                                            tabindex={cell.internalTabIndex}
+                                                                            onclick={cell.handleLookupAnchorClick}>
+                                                                            {cell.lookupValue}
+                                                                        </a>
+                                                                    </template>
+                                                                    <template if:false={cell.lookupIsNavigable}>
+                                                                        <span
+                                                                            class={cell.computedMarginClassWhenLeftIconExists}
+                                                                            data-inline-type="formatted-lookup"
+                                                                            data-navigation="enable"
+                                                                            data-action-triggers="enter">
+                                                                            {cell.lookupValue}
+                                                                        </span>
+                                                                    </template>
+                                                                </template>
+
+                                                                <!-- row number -->
+                                                                <template if:true={cell.isRowNumber}>
+                                                                    <template if:true={cell.rowHasError}>
+                                                                        <lightning-primitive-datatable-tooltip
+                                                                            class="slds-m-horizontal_xxx-small"
+                                                                            data-navigation="enable"
+                                                                            data-action-triggers="enter,space"
+                                                                            size="xx-small"
+                                                                            header={cell.typeAttribute0.title}
+                                                                            content={cell.typeAttribute0.messages}
+                                                                            variant='error'
+                                                                            internal-tab-index={cell.internalTabIndex}
+                                                                            alternative-text={cell.typeAttribute0.alternativeText}>
+                                                                        </lightning-primitive-datatable-tooltip>
+                                                                    </template>
+                                                                    <span
+                                                                        class="slds-row-number slds-text-body_small slds-text-color_weak"
+                                                                        style={cell.computedRowNumberStyle}>
+                                                                    </span>
+                                                                </template>
+
+                                                                <!-- text -->
+                                                                <template if:true={cell.isText}>
+                                                                    <template if:false={cell.shouldFormatText}>
+                                                                        <template if:true={cell.ignoreRTL}>
+                                                                            <span dir="ltr" class={cell.computedMarginClassWhenLeftIconExists}>{cell.textValue}</span>
+                                                                        </template>
+                                                                        <template if:false={cell.ignoreRTL}>
+                                                                            <template if:true={cell.hasLeftIcon}>
+                                                                                <span class={cell.computedMarginClassWhenLeftIconExists}>{cell.textValue}</span>
+                                                                            </template>
+                                                                            <template if:false={cell.hasLeftIcon}>
+                                                                                {cell.textValue}
+                                                                            </template>
+                                                                        </template>
+                                                                    </template>
+                                                                    <template if:true={cell.shouldFormatText}>
+                                                                        <span class={cell.computedMarginClassWhenLeftIconExists}>
+                                                                            <template for:each={cell.textParts} for:item="part">
+                                                                                <template if:true={part.isLink}>
+                                                                                    <a key={part.key} target='_blank' href={part.href} rel="noopener">{part.value}</a>
+                                                                                </template>
+                                                                                <template if:true={part.isText}>
+                                                                                    {part.value}
+                                                                                </template>
+                                                                            </template>
+                                                                        </span>
+                                                                    </template>
+                                                                </template>
+
+                                                                <!-- url -->
+                                                                <template if:true={cell.isURL}>
+                                                                    <template if:true={cell.showUrlLink}>
+                                                                        <a
+                                                                            class={cell.computedMarginClassWhenLeftIconExists}
+                                                                            data-action-triggers="enter"
+                                                                            data-inline-type="formatted-url"
+                                                                            data-navigation="enable"
+                                                                            href={cell.urlLink}
+                                                                            tabindex={cell.internalTabIndex}
+                                                                            target={cell.urlTarget}
+                                                                            title={cell.urlTooltip}
+                                                                            onclick={cell.handleUrlAnchorClick}>
+                                                                            {cell.urlLabel}
+                                                                        </a>
+                                                                    </template>
+                                                                </template>
+
+                                                                <!-- *************** SUFFIX ICONS ADD ALL TYPES BEFORE THIS *************** -->
+
+                                                                <template if:true={cell.hasRightIcon}>
+                                                                    <lightning-icon
+                                                                        icon-name={cell.iconName}
+                                                                        class="slds-m-left_x-small slds-m-right_x-small"
+                                                                        size="x-small"
+                                                                        alternative-text={cell.iconAlternativeText}></lightning-icon>
+                                                                    {cell.iconLabel}
+                                                                </template>
+
+                                                                <!-- *************** SUFFIX ICONS END *************** -->
+
+                                                            </div>
+                                                            <template if:true={cell.isEditable}>
+                                                                <button class="slds-button slds-button_icon slds-cell-edit__button slds-m-left_x-small"
+                                                                        aria-labelledby={cell.editLabelId}
+                                                                        data-action-edit="true"
+                                                                        data-action-triggers="enter,space"
+                                                                        data-navigation="enable"
+                                                                        tabindex={cell.internalTabIndex}
+                                                                        onclick={handleInlinedEditButtonClick}>
+                                                                    <!-- Caution: Modify generate-inlined-icons script before changing comments -->
+                                                                    <!-- START utility:edit -->
+                                                                    <template lwc:if={cell.isRTL}>
+                                                                        <svg class="slds-button__icon slds-button__icon_hint slds-button__icon_lock slds-button__icon_edit slds-icon slds-icon-text-default slds-icon_xx-small" focusable="false" data-key="edit" aria-hidden="true" viewBox="0 0 520 520" part="icon">
+                                                                            <g>
+                                                                     <path d="M95 334l89 89c4 4 10 4 14 0l222-223c4-4 4-10 0-14l-88-88a10 10 0 00-14 0L95 321c-4 4-4 10 0 13zM361 57a10 10 0 000 14l88 88c4 4 10 4 14 0l25-25a38 38 0 000-55l-47-47a40 40 0 00-57 0zM21 482c-2 10 7 19 17 17l109-26c4-1 7-3 9-5l2-2c2-2 3-9-1-13l-90-90c-4-4-11-3-13-1l-2 2a20 20 0 00-5 9z"></path>
+                                                                    </g>
+                                                                        </svg>
+                                                                    </template>
+                                                                    <template lwc:else>
+                                                                        <svg class="slds-button__icon slds-button__icon_hint slds-button__icon_lock slds-button__icon_edit slds-icon slds-icon-text-default slds-icon_xx-small" focusable="false" data-key="edit" aria-hidden="true" viewBox="0 0 520 520" part="icon">
+                                                                            <g>
+                                                                     <path d="M95 334l89 89c4 4 10 4 14 0l222-223c4-4 4-10 0-14l-88-88a10 10 0 00-14 0L95 321c-4 4-4 10 0 13zM361 57a10 10 0 000 14l88 88c4 4 10 4 14 0l25-25a38 38 0 000-55l-47-47a40 40 0 00-57 0zM21 482c-2 10 7 19 17 17l109-26c4-1 7-3 9-5l2-2c2-2 3-9-1-13l-90-90c-4-4-11-3-13-1l-2 2a20 20 0 00-5 9z"></path>
+                                                                    </g>
+                                                                        </svg>
+                                                                    </template>
+                                                                    <!-- END utility:edit -->
+                                                                    <span hidden id={cell.editLabelId}>
+                                                                        {cell.editIconAssistiveText}
+                                                                    </span>
+                                                                </button>
+                                                            </template>
+                                                            <!-- TODO: displayReadOnlyIcon is true only when the cell's "editable" property is false and its "displayReadOnlyIcon"
+                                                            property is true. The markup in this template therefore cannot be rendered concurrently with the template above that checks
+                                                            the editable property. -->
+                                                            <template if:true={cell.shouldDisplayReadOnlyIcon}>
+                                                                <!-- TODO: Update the svg-classes once the SLDS team updates their read only icon design to not use classes that have the word 'button'
+                                                                in them in cases when the cell is read only and hence no button is actually rendered -->
+                                                                <!-- Caution: Modify generate-inlined-icons script before changing comments -->
+                                                                <!-- START utility:lock -->
+                                                                <template lwc:if={cell.isRTL}>
+                                                                    <svg class="slds-button__icon slds-button__icon_hint slds-button__icon_lock slds-button__icon_edit slds-icon slds-icon-text-default slds-icon_xx-small" focusable="false" data-key="lock" aria-hidden="true" viewBox="0 0 520 520" part="icon">
+                                                                        <g>
+                                                                 <path d="M110 190h40c6 0 10-3 10-9v-1A100 100 0 01267 80c53 4 93 50 93 104v-3c0 6 4 9 10 9h40c6 0 10-3 10-9v-1A160 160 0 00252 20c-85 4-150 76-152 161 1 5 5 9 10 9zm-10-9v4zm360 89a40 40 0 00-40-40H100a40 40 0 00-40 40v190a40 40 0 0040 40h320a40 40 0 0040-40zM306 427c2 6-3 13-10 13h-73c-7 0-11-6-10-13l18-60a48 48 0 01-21-48 50 50 0 0139-38c32-6 60 17 60 47 0 16-8 31-21 39z"></path>
+                                                                </g>
+                                                                    </svg>
+                                                                </template>
+                                                                <template lwc:else>
+                                                                    <svg class="slds-button__icon slds-button__icon_hint slds-button__icon_lock slds-button__icon_edit slds-icon slds-icon-text-default slds-icon_xx-small" focusable="false" data-key="lock" aria-hidden="true" viewBox="0 0 520 520" part="icon">
+                                                                        <g>
+                                                                 <path d="M110 190h40c6 0 10-3 10-9v-1A100 100 0 01267 80c53 4 93 50 93 104v-3c0 6 4 9 10 9h40c6 0 10-3 10-9v-1A160 160 0 00252 20c-85 4-150 76-152 161 1 5 5 9 10 9zm-10-9v4zm360 89a40 40 0 00-40-40H100a40 40 0 00-40 40v190a40 40 0 0040 40h320a40 40 0 0040-40zM306 427c2 6-3 13-10 13h-73c-7 0-11-6-10-13l18-60a48 48 0 01-21-48 50 50 0 0139-38c32-6 60 17 60 47 0 16-8 31-21 39z"></path>
+                                                                </g>
+                                                                    </svg>
+                                                                </template>
+                                                                <!-- END utility:lock -->
+                                                            </template>
+                                                        </span>
+                                                    </template>
+                                                </template>
+                                                <!-- Slow Path -->
+                                                <template if:false={cell.isInlined}>
+                                                    <lightning-primitive-cell-factory
+                                                        types={_privateTypes}
+                                                        aria-selected={cell.ariaSelected}
+                                                        data-label={cell.dataLabel}
+                                                        alignment={cell.alignment}
+                                                        has-error={cell.hasError}
+                                                        has-focus={cell.hasFocus}
+                                                        column-label={cell.dataLabel}
+                                                        column-type={cell.columnType}
+                                                        column-sub-type={cell.columnSubType}
+                                                        wrap-text={cell.wrapText}
+                                                        wrap-text-max-lines={cell.wrapTextMaxLines}
+                                                        key={cell.columnType}
+                                                        row-key-value={row.key}
+                                                        col-key-value={cell.colKeyValue}
+                                                        value={cell.value}
+                                                        display-value={cell.displayValue}
+                                                        icon-name={cell.iconName}
+                                                        icon-label={cell.iconLabel}
+                                                        icon-position={cell.iconPosition}
+                                                        icon-alternative-text={cell.iconAlternativeText}
+                                                        editable={cell.editable}
+                                                        display-read-only-icon={cell.displayReadOnlyIcon}
+                                                        type-attribute-0={cell.typeAttribute0}
+                                                        type-attribute-1={cell.typeAttribute1}
+                                                        type-attribute-2={cell.typeAttribute2}
+                                                        type-attribute-3={cell.typeAttribute3}
+                                                        type-attribute-4={cell.typeAttribute4}
+                                                        type-attribute-5={cell.typeAttribute5}
+                                                        type-attribute-6={cell.typeAttribute6}
+                                                        type-attribute-7={cell.typeAttribute7}
+                                                        type-attribute-8={cell.typeAttribute8}
+                                                        type-attribute-9={cell.typeAttribute9}
+                                                        type-attribute-10={cell.typeAttribute10}
+                                                        type-attribute-21={cell.typeAttribute21}
+                                                        type-attribute-22={cell.typeAttribute22}>
+                                                    </lightning-primitive-cell-factory>
+                                                </template>
+                                                <template if:true={cell.describedBy}>
+                                                    <span id={cell.describedBy} class="slds-hide">Unsaved</span>
+                                                </template>
+                                            </td>
+                                        </template>
+                                    </template>
+                                </tr>
+                            </template>
+                            <!-- Loading Indicator -->
+                            <template if:true={isLoading}>
+                                <tr>
+                                    <td colspan={state.columns.length} class="slds-is-relative">
+                                        <lightning-primitive-datatable-loading-indicator></lightning-primitive-datatable-loading-indicator>
+                                    </td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </template>
+                </table>
+            </div>
+        </div>
+        <!-- Status Bar:
+            Displays a bar at the bottom with Save and Cancel buttons
+            when inline edit is complete. Also shows errors if present.
+        -->
+        <template if:true={showStatusBar}>
+            <lightning-primitive-datatable-status-bar
+                error={tableError}
+                onprivatesave={handleInlineEditSave}
+                onprivatecancel={handleInlineEditCancel}
+            ></lightning-primitive-datatable-status-bar>
+        </template>
+    </div>
+</template>

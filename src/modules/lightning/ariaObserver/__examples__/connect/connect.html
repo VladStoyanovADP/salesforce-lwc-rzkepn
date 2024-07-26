@@ -1,0 +1,19 @@
+<template>
+    <div>
+        <label id="foo">Foo</label>
+    </div>
+    <div>
+        <label id="bar">Bar</label>
+    </div>
+    <div>
+        <label id="hello">Hello</label>
+    </div>
+    <div>
+        <label id="world">World</label>
+    </div>
+    <div>
+        <ariaobserver-connect-child aria-labelledby={connectIds}></ariaobserver-connect-child>
+        <div>Current Id: {connectIds}</div>
+        <div><button onclick={handleUpdateIds}>Update Ids to 'foo bar hello world'</button></div>
+    </div>
+</template>

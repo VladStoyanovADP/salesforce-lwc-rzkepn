@@ -1,0 +1,121 @@
+
+/* Copyright (c) 2015-present, Salesforce, Inc. All rights reserved
+Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+  :host([data-render-mode="shadow"]) {
+    /* stylelint-disable sds-stylelint-plugin/styling-hooks-pattern */
+    --_strength-offset-delay: 1s;
+    /* stylelint-enable sds-stylelint-plugin/styling-hooks-pattern */
+  }
+
+  :host([data-render-mode="shadow"]) .slds-assistive-text {
+    position: absolute !important;
+    margin: -1px !important;
+    border: 0 !important;
+    padding: 0 !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+    text-transform: none !important;
+    white-space: nowrap !important;
+  }
+
+  :host([data-render-mode="shadow"]) .slds-icon-strength {
+    width: 1.6875rem;
+    height: 0.4375rem;
+    display: inline-block;
+  }
+
+  :host([data-render-mode="shadow"]) .slds-icon-strength circle {
+    stroke-width: 0.95px;
+    fill: transparent;
+    stroke: #939393;
+    transition: fill 0.4s ease-in-out, stroke 0.4s ease-in-out;
+    will-change: fill, stroke;
+  }
+
+  :host([data-render-mode="shadow"]) .slds-icon-strength[data-slds-strength="1"] circle:nth-child(1),:host([data-render-mode="shadow"]) 
+  .slds-icon-strength[data-slds-strength="2"] circle:nth-child(1),:host([data-render-mode="shadow"]) 
+  .slds-icon-strength[data-slds-strength="2"] circle:nth-child(2),:host([data-render-mode="shadow"]) 
+  .slds-icon-strength[data-slds-strength="3"] circle:nth-child(1),:host([data-render-mode="shadow"]) 
+  .slds-icon-strength[data-slds-strength="3"] circle:nth-child(2),:host([data-render-mode="shadow"]) 
+  .slds-icon-strength[data-slds-strength="3"] circle:nth-child(3) {
+    fill: #2e844a;
+    stroke: #2e844a;
+  }
+
+  :host([data-render-mode="shadow"]) .slds-icon-strength[data-slds-strength="-1"] circle:nth-child(1),:host([data-render-mode="shadow"]) 
+  .slds-icon-strength[data-slds-strength="-2"] circle:nth-child(1),:host([data-render-mode="shadow"]) 
+  .slds-icon-strength[data-slds-strength="-2"] circle:nth-child(2),:host([data-render-mode="shadow"]) 
+  .slds-icon-strength[data-slds-strength="-3"] circle:nth-child(1),:host([data-render-mode="shadow"]) 
+  .slds-icon-strength[data-slds-strength="-3"] circle:nth-child(2),:host([data-render-mode="shadow"]) 
+  .slds-icon-strength[data-slds-strength="-3"] circle:nth-child(3) {
+    fill: #fddde3;
+    stroke: #ba0517;
+  }
+
+  :host([data-render-mode="shadow"]) .slds-icon-strength.slds-is-animated circle {
+    /* stylelint-disable sds-stylelint-plugin/styling-hooks-pattern */
+    animation: slds-icon-strength-positive-load 0.4s var(--_strength-offset-delay) ease-in-out alternate both paused;
+    /* stylelint-enable sds-stylelint-plugin/styling-hooks-pattern */
+  }
+
+  :host([data-render-mode="shadow"]) .slds-icon-strength.slds-is-animated circle:nth-child(2) {
+    /* stylelint-disable sds-stylelint-plugin/styling-hooks-pattern */
+    animation-delay: calc(var(--_strength-offset-delay) + 0.4s);
+    /* stylelint-enable sds-stylelint-plugin/styling-hooks-pattern */
+  }
+
+  :host([data-render-mode="shadow"]) .slds-icon-strength.slds-is-animated circle:nth-child(3) {
+    /* stylelint-disable sds-stylelint-plugin/styling-hooks-pattern */
+    animation-delay: calc(var(--_strength-offset-delay) + 0.8s);
+    /* stylelint-enable sds-stylelint-plugin/styling-hooks-pattern */
+  }
+
+  :host([data-render-mode="shadow"]) .slds-icon-strength.slds-is-animated[data-slds-strength^="-"] circle {
+    animation-name: slds-icon-strength-negative-load;
+  }
+
+  :host([data-render-mode="shadow"]) .slds-icon-strength.slds-is-animated[data-slds-strength="-1"] circle:nth-child(1),:host([data-render-mode="shadow"]) 
+  .slds-icon-strength.slds-is-animated[data-slds-strength="-2"] circle:nth-child(1),:host([data-render-mode="shadow"]) 
+  .slds-icon-strength.slds-is-animated[data-slds-strength="-2"] circle:nth-child(2),:host([data-render-mode="shadow"]) 
+  .slds-icon-strength.slds-is-animated[data-slds-strength="-3"] circle:nth-child(1),:host([data-render-mode="shadow"]) 
+  .slds-icon-strength.slds-is-animated[data-slds-strength="-3"] circle:nth-child(2),:host([data-render-mode="shadow"]) 
+  .slds-icon-strength.slds-is-animated[data-slds-strength="-3"] circle:nth-child(3),:host([data-render-mode="shadow"]) 
+  .slds-icon-strength.slds-is-animated[data-slds-strength="1"] circle:nth-child(1),:host([data-render-mode="shadow"]) 
+  .slds-icon-strength.slds-is-animated[data-slds-strength="2"] circle:nth-child(1),:host([data-render-mode="shadow"]) 
+  .slds-icon-strength.slds-is-animated[data-slds-strength="2"] circle:nth-child(2),:host([data-render-mode="shadow"]) 
+  .slds-icon-strength.slds-is-animated[data-slds-strength="3"] circle:nth-child(1),:host([data-render-mode="shadow"]) 
+  .slds-icon-strength.slds-is-animated[data-slds-strength="3"] circle:nth-child(2),:host([data-render-mode="shadow"]) 
+  .slds-icon-strength.slds-is-animated[data-slds-strength="3"] circle:nth-child(3) {
+    animation-play-state: running;
+  }
+
+  :host([data-render-mode="shadow"]) .slds-icon-strength.slds-is-paused circle {
+    animation-play-state: paused !important;
+  }
+
+  @keyframes slds-icon-strength-positive-load {
+    0% {
+      fill: transparent;
+      stroke: #939393;
+    }
+
+    100% {
+      fill: #2e844a;
+      stroke: #2e844a;
+    }
+  }
+
+  @keyframes slds-icon-strength-negative-load {
+    0% {
+      fill: transparent;
+      stroke: #939393;
+    }
+
+    100% {
+      fill: #fddde3;
+      stroke: #ba0517;
+    }
+  }

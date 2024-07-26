@@ -1,0 +1,25 @@
+<template>
+    <button class={computedButtonClass}
+            disabled={disabled}
+            name={name}
+            title={computedTitle}
+            accesskey={accessKey}
+            type={normalizedType}
+            value={value}
+            onfocus={handleFocus}
+            onblur={handleBlur}
+            aria-label={ariaLabel}
+            aria-expanded={computedAriaExpanded}
+            aria-live={computedAriaLive}
+            aria-atomic={computedAriaAtomic}
+            aria-haspopup={computedAriaHasPopup}
+            part="button button-icon"
+            tabindex={tabIndex}>
+
+        <lightning-primitive-icon icon-name={iconName} svg-class={computedIconClass} variant="bare" exportparts="icon"></lightning-primitive-icon>
+
+        <template if:true={alternativeText}>
+            <span class="slds-assistive-text">{alternativeText}</span>
+        </template>
+    </button>
+</template>

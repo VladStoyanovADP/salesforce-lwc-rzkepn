@@ -1,0 +1,14 @@
+<template>
+    <lightning-button
+        label="Change text wrapping max lines"
+        class="changeTextWrappingMaxLines"
+        onclick={changeTextWrappingMaxLines}>
+    </lightning-button>
+    <lightning-datatable
+        key-field="id"
+        columns={columns}
+        data={data}
+        hide-checkbox-column
+        wrap-text-max-lines={wrapTextMaxLines}>
+    </lightning-datatable>
+</template>

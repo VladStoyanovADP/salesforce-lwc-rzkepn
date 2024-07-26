@@ -1,0 +1,165 @@
+<template>
+    <lightning-modal-header label={heading}>
+        <p>Utilize <a href="https://www.lightningdesignsystem.com/components/form-element/#Horizontal" target="_blank">SLDS form element horizontal variant</a></p>
+    </lightning-modal-header>
+    <lightning-modal-body>
+        <div class="slds-form" role="list">
+            <div class="slds-form__row">
+                <div class="slds-form__item" role="listitem">
+                    <lightning-textarea
+                        id="form-element-id-01"
+                        label="Descriptive Label 1"
+                        value=""
+                        placeholder="Placeholder text…"
+                        variant="label-inline"
+                        required
+                    ></lightning-textarea>
+                </div>
+                <div class="slds-form__item" role="listitem">
+                    <lightning-textarea
+                        id="form-element-id-02"
+                        label="Descriptive Label 2"
+                        value=""
+                        placeholder="Placeholder text…"
+                        variant="label-inline"
+                        required
+                    ></lightning-textarea>
+                </div>
+            </div>
+            <div class="slds-form__row">
+                <div class="slds-form__item" role="listitem">
+                    <lightning-input
+                        id="form-element-id-03"
+                        label="Descriptive Label 3"
+                        value=""
+                        placeholder="Placeholder text…"
+                        variant="label-inline"
+                        required
+                    ></lightning-input>
+                </div>
+                <div class="slds-form__item" role="listitem">
+                    <lightning-input
+                        id="form-element-id-04"
+                        label="Descriptive Label 4"
+                        value=""
+                        placeholder="Placeholder text…"
+                        variant="label-inline"
+                        required
+                    ></lightning-input>
+                </div>
+            </div>
+            <div class="slds-form__row">
+                <div class="slds-form__item" role="listitem">
+                    <lightning-input
+                        id="form-element-id-05"
+                        label="Descriptive Label 5"
+                        value=""
+                        placeholder="Placeholder text…"
+                        variant="label-inline"
+                    ></lightning-input>
+                </div>
+                <div class="slds-form__item" role="listitem">
+                    <lightning-input
+                        id="form-element-id-06"
+                        label="Descriptive Label 6"
+                        value=""
+                        placeholder="Placeholder text…"
+                        variant="label-inline"
+                    ></lightning-input>
+                </div>
+            </div>
+            <div class="slds-form__row">
+                <div class="slds-form__item" role="listitem">
+                    <lightning-input
+                        id="form-element-id-07"
+                        label="Descriptive Label 7"
+                        value=""
+                        placeholder="Placeholder text…"
+                        variant="label-inline"
+                    ></lightning-input>
+                </div>
+                <div class="slds-form__item" role="listitem">
+                    <lightning-input
+                        id="form-element-id-08"
+                        label="Descriptive Label 8"
+                        value=""
+                        placeholder="Placeholder text…"
+                        variant="label-inline"
+                    ></lightning-input>
+                </div>
+            </div>
+            <div class="slds-form__row">
+                <div class="slds-form__item" role="listitem">
+                    <lightning-input
+                        id="form-element-id-09"
+                        label="Descriptive Label 9"
+                        value=""
+                        placeholder="Placeholder text…"
+                        variant="label-inline"
+                    ></lightning-input>
+                </div>
+                <div class="slds-form__item" role="listitem">
+                    <lightning-input
+                        id="form-element-id-10"
+                        label="Descriptive Label 10"
+                        value=""
+                        placeholder="Placeholder text…"
+                        variant="label-inline"
+                    ></lightning-input>
+                </div>
+            </div>
+        </div>
+    </lightning-modal-body>
+    <lightning-modal-footer>
+        <div id="all-footer">
+            <template for:each={options} for:item="option">
+                <template if:true={option.triggerCancel}>
+                    <lightning-button
+                        key={option.id}
+                        label={option.label}
+                        class="slds-button"
+                        data-focus={option.focusName}
+                        variant={option.variant}
+                        onclick={handleButtonCancel}
+                        data-id={option.id}
+                        disabled={disableClose}
+                    ></lightning-button>
+                </template>
+                <template if:true={option.triggerSecondModal}>
+                    <lightning-button
+                        key={option.id}
+                        label={option.label}
+                        class="slds-button"
+                        data-focus={option.focusName}
+                        variant={option.variant}
+                        onclick={handleButtonOpenSecondModal}
+                        data-id={option.id}
+                    ></lightning-button>
+                </template>
+                <template if:true={option.toggleDisableClose}>
+                    <lightning-button
+                        key={option.id}
+                        label={computedDisableCloseLabel}
+                        class="slds-button"
+                        data-focus={option.focusName}
+                        variant={option.variant}
+                        onclick={handleButtonToggleDisableButton}
+                        data-id={option.id}
+                    ></lightning-button>
+                </template>
+                <template if:true={option.triggerSubmit}>
+                    <lightning-button
+                        key={option.id}
+                        label={option.label}
+                        class="slds-button"
+                        data-focus={option.focusName}
+                        variant={option.variant}
+                        onclick={handleButtonSubmit}
+                        data-id={option.id}
+                        disabled={disableClose}
+                    ></lightning-button>
+                </template>
+            </template>
+        </div>
+    </lightning-modal-footer>
+</template>

@@ -1,0 +1,122 @@
+
+/* Copyright (c) 2015-present, Salesforce, Inc. All rights reserved
+Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+    :host([data-render-mode="shadow"]) .slds-accordion__list-item {
+        border-top-width: var(--slds-c-accordionsection-sizing-border, var(--slds-g-sizing-border-1));
+        border-top-style: solid;
+        border-top-color: var(--slds-c-accordionsection-color-border,  var(--slds-g-color-border-1));
+    }
+
+    :host([data-render-mode="shadow"]) [part="accordion-section"] {
+        padding-block-start: var(--slds-c-accordionsection-spacing-blockstart, var(--slds-g-spacing-3));
+        padding-block-end: var(--slds-c-accordionsection-spacing-blockend, var(--slds-g-spacing-3));
+        padding-inline-end: var(--slds-c-accordionsection-spacing-inlineend, var(--slds-g-spacing-3));
+        padding-inline-start: var(--slds-c-accordionsection-spacing-inlinestart, var(--slds-g-spacing-3));
+    }
+
+    :host([data-render-mode="shadow"]) .slds-accordion__summary {
+        display: flex;
+        margin-block-start: calc(var(--slds-c-accordionsection-spacing-blockstart,
+        var(--slds-g-sizing-4)) * -1);
+        margin-block-end: calc(var(--slds-c-accordionsection-spacing-blockend,
+        var(--slds-g-sizing-4)) * -1);
+        margin-inline-start: calc(var(--slds-c-accordionsection-spacing-inlinestart,
+        var(--slds-g-sizing-4)) * -1);
+        margin-inline-end: calc(var(--slds-c-accordionsection-spacing-inlineend,
+        var(--slds-g-sizing-4) * -1));
+        padding-block-start: var(--slds-c-accordionsection-spacing-blockstart, var(--slds-g-sizing-4));
+        padding-block-end: var(--slds-c-accordionsection-spacing-blockend, var(--slds-g-sizing-4));
+        padding-inline-end: var(--slds-c-accordionsection-spacing-inlineend, var(--slds-g-sizing-4));
+        padding-inline-start: var(--slds-c-accordionsection-spacing-inlinestart, var(--slds-g-sizing-4));
+        /* stylelint-disable sds-stylelint-plugin/styling-hooks-pattern */
+        background-color: var(--slds-c-accordion-summary-color-background, transparent);
+    }
+
+    :host([data-render-mode="shadow"]) .slds-accordion__summary-heading {
+        --slds-c-icon-color-foreground-default: var(--slds-c-accordion-heading-color, var(--slds-g-color-on-surface-3));
+
+        display: flex;
+        flex-grow: 1;
+        min-width: 0;
+        color: var(--slds-c-accordion-heading-color, var(--slds-g-color-on-surface-3));
+        font-size: var(--slds-c-accordion-heading-font-size, 1em);
+        line-height: var(--slds-c-accordion-heading-font-lineheight, var(--slds-g-font-lineheight-2));
+    }
+
+    :host([data-render-mode="shadow"]) .slds-accordion__summary-heading .slds-button:focus {
+        text-decoration: underline;
+        box-shadow: none;
+    }
+
+    /* Note:
+    Currently button is being hard coded so using
+    [part="button"] to style button.
+    However this should be changed to lightning-button::part(button) once hard coded button gets refactored to lightning-button */
+
+    :host([data-render-mode="shadow"]) [part="button"] {
+        display: inline-flex;
+        flex-grow: 1;
+        align-items: center;
+        justify-content: start;
+        min-width: 0;
+        margin-block-start: calc(
+          var(--slds-c-accordionsection-spacing-blockstart, var(--slds-g-sizing-4)) * -1);
+        margin-block-end: calc(
+        var(--slds-c-accordionsection-spacing-blockend,
+        var(--slds-g-sizing-4)) * -1);
+        margin-inline-end: calc(
+          var(--slds-c-accordionsection-spacing-inlineend,
+          var(--slds-g-sizing-4)) * -1);
+        margin-inline-start: calc(
+          var(--slds-c-accordionsection-spacing-inlinestart,
+          var(--slds-g-sizing-4)) * -1);
+        padding-block-start: var(--slds-c-accordionsection-spacing-blockstart, var(--slds-g-sizing-4));
+        padding-block-end: var(--slds-c-accordionsection-spacing-blockend, var(--slds-g-sizing-4));
+        padding-inline-end: var(--slds-c-accordionsection-spacing-inlineend, var(--slds-g-sizing-4));
+        padding-inline-start: var(--slds-c-accordionsection-spacing-inlinestart, var(--slds-g-sizing-4));
+    }
+
+    /* Note:
+    Should be changed to lightning-button::part(button)
+    if button can be refactored to slds-button
+    */
+
+    :host([data-render-mode="shadow"]) [part="button"]:hover,:host([data-render-mode="shadow"]) 
+    [part="button"]:focus {
+        --slds-c-icon-color-foreground-default: var(--slds-c-accordion-heading-color-hover, var(--slds-g-color-brand-base-30));
+
+        color: var(--slds-c-accordion-heading-color-hover, var(--slds-g-color-brand-base-30));
+        /* stylelint-enable sds-stylelint-plugin/styling-hooks-pattern */
+    }
+
+    /* Note:
+    Media query will need to be worked out properly
+    and be replaced with utility classes */
+
+    @media (width >= 64.0625em) {
+        :host([data-render-mode="shadow"]) .slds-accordion__summary-content {
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+
+    :host([data-render-mode="shadow"]) .slds-accordion__content {
+        overflow: hidden;
+        visibility: hidden;
+        opacity: 0;
+        height: 0;
+    }
+
+    :host([data-render-mode="shadow"]) .slds-is-open > .slds-accordion__summary {
+        margin-block-end: 0;
+    }
+
+    :host([data-render-mode="shadow"]) .slds-is-open > .slds-accordion__content {
+        overflow: visible;
+        visibility: visible;
+        opacity: 1;
+        height: auto;
+    }

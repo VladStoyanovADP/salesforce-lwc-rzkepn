@@ -1,0 +1,27 @@
+<template>
+    <div class="slds-form-element__control">
+        <span class="slds-radio">
+            <input type="radio" id="radio"
+                aria-keyshortcuts={ariaKeyShortcuts}
+                aria-disabled={ariaDisabled}
+                aria-roledescription={ariaRoleDescription}
+                aria-invalid={ariaInvalid}
+                accesskey={accessKey}
+                onblur={handleBlur}
+                onfocus={handleFocus}
+                onchange={handleChange}
+                name={name}
+                required={required}
+                readonly={readOnly}
+                disabled={disabled}
+                aria-label={ariaLabel}>
+            <label for="radio" class="slds-radio__label">
+                <span class="slds-radio_faux"></span>
+                <span class={computedLabelClass}>{label}</span>
+            </label>
+        </span>
+    </div>
+    <template if:true={helpMessage}>
+        <div id="help-message" class="slds-form-element__help" data-help-message part="help-text" role="status">{helpMessage}</div>
+    </template>
+</template>

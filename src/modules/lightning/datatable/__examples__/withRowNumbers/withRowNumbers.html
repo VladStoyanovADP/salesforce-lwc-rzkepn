@@ -1,0 +1,18 @@
+<template>
+    <div style="height: 300px;">
+        <lightning-datatable
+                key-field="id"
+                data={data}
+                show-row-number-column
+                row-number-offset={rowOffset}
+                hide-checkbox-column
+                columns={columns}>
+        </lightning-datatable>
+    </div>
+    <div class="slds-m-around--medium">
+        <lightning-button
+                label="Increase row offset"
+                onclick={increaseRowOffset}>
+        </lightning-button>
+    </div>
+</template>

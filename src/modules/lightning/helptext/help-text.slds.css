@@ -1,0 +1,13 @@
+
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved
+  Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+  :host([data-render-mode="shadow"]) [part='help-text'] {
+  /**
+    * The extra wrapper div creates a new formatting context which messes up
+    * our consistent height and vertical alignment. We don't want this element
+    * to inherit any styling so we pass through to the contents. This element
+    * is for setting Styling Hooks only.
+    */
+    display: contents;
+  }

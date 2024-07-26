@@ -1,0 +1,21 @@
+<template>
+    <p>Max row selection value: {maxRowSelection}</p>
+    <lightning-button
+        label="Increase max row selection"
+        class="increaseMaxRowSelection"
+        onclick={increaseMaxRowSelection}>
+    </lightning-button>
+    <lightning-button
+        label="Decrease max row selection"
+        class="decreaseMaxRowSelection"
+        onclick={decreaseMaxRowSelection}>
+    </lightning-button>
+    <lightning-datatable
+        key-field="id"
+        columns={columns}
+        data={data}
+        selected-rows={selectedRows}
+        row-number-offset="0"
+        max-row-selection={maxRowSelection}>
+    </lightning-datatable>
+</template>

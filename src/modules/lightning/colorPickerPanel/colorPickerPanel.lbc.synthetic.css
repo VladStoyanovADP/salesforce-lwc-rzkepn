@@ -1,0 +1,8 @@
+/* Fix for footer button centering issue, for details see: W-11543875
+ *
+ * :host:not([data-render-mode]) - specifies that this style will only be applied in synthetic shadow mode
+ */
+
+:host:not([data-render-mode]) .fix-slds-color-picker__selector-footer > lightning-button {
+    flex: 1;
+ }

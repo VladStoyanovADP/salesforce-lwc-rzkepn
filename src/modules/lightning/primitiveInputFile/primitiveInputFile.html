@@ -1,0 +1,49 @@
+<template>
+    <span id="form-label" class={labelClass} data-form-label>
+        <template if:true={required}>
+            <abbr class="slds-required" title={i18n.required}>*</abbr>
+        </template>
+        {label}
+    </span>
+    <div class="slds-form-element__control">
+        <div class="slds-file-selector slds-file-selector_files" ondrop={handleDropFiles} part="file-selector">
+            <lightning-primitive-file-droppable-zone multiple={multiple} disabled={disabled}>
+                <input type="file" id="input-file"
+                    aria-label={ariaLabel}
+                    aria-keyshortcuts={ariaKeyShortcuts}
+                    aria-disabled={ariaDisabled}
+                    aria-roledescription={ariaRoleDescription}
+                    aria-invalid={ariaInvalid}
+                    accesskey={accessKey}
+                    class="slds-file-selector__input slds-assistive-text"
+                    onblur={handleBlur}
+                    onfocus={handleFocus}
+                    onclick={handleFileClick}
+                    onchange={handleChange}
+                    accept={accept}
+                    multiple={multiple}
+                    name={name}
+                    required={required}
+                    readonly={readOnly}
+                    disabled={disabled}
+                    part="input">
+                <label id="file-selector-label" data-file-selector-label for="input-file" aria-hidden="true"
+                    class="slds-file-selector__body">
+                    <!-- chose to use this span over a lightning-button to match the SLDS blueprint. this uses the part=button to
+                    get the styles from lightning-button to this span -->
+                    <span class="slds-file-selector__button slds-button slds-button_neutral" part="button">
+                        <lightning-primitive-icon icon-name="utility:upload" variant="bare" svg-class="slds-button__icon slds-button__icon_left">
+                        </lightning-primitive-icon>
+                        {i18n.inputFileButtonLabel}
+                    </span>
+                    <span class="slds-file-selector__text slds-medium-show">
+                        {i18n.inputFileBodyText}
+                    </span>
+                </label>
+            </lightning-primitive-file-droppable-zone>
+        </div>
+    </div>
+    <template if:true={_helpMessage}>
+        <div id="help-message" class="slds-form-element__help" data-help-message part="help-text" role="status">{_helpMessage}</div>
+    </template>
+</template>

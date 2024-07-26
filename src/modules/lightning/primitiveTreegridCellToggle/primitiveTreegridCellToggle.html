@@ -1,0 +1,13 @@
+<template>
+    <button lwc:ref="button" type="button" class={computedButtonClass} tabindex={buttonTabIndex} title={buttonTitle} onclick={handleChevronClick}>
+        <lightning-primitive-icon
+            icon-name="utility:chevronright"
+            variant="bare"
+            svg-class="slds-button__icon slds-button__icon_small">
+        </lightning-primitive-icon>
+        <span class="slds-assistive-text">
+             {buttonTitle}
+         </span>
+    </button>
+</template>
+

@@ -1,0 +1,16 @@
+<template>
+    <lightning-button label="Click to show a popup" onclick={openPopup}></lightning-button>
+
+    <lightning-popup aria-describedby="popup-body">
+        <div class="slds-popover">
+            <div id="popup-body" class="slds-popover__body">
+                <lightning-input label="An input"></lightning-input>
+                <div class="slds-m-top_small">
+                    <lightning-button variant="brand" label="Save" onclick={handleSave}></lightning-button>
+                    <lightning-button variant="brand" label="Cancel" onclick={handleCancel}></lightning-button>
+                </div>
+            </div>
+        </div>
+    </lightning-popup>
+
+</template>

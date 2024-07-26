@@ -1,0 +1,9 @@
+@import 'lightning/sldsCommon';
+@import './toast.slds.css';
+@import './icon.slds.css';
+@import './button-icon.slds.css';
+@import './formatted-rich-text.slds.css';
+@import 'lightning/sldsUtilsThemes';
+@import 'lightning/sldsUtilsMargin';
+@import 'lightning/sldsUtilsPosition';
+@import 'lightning/sldsUtilsGrid';

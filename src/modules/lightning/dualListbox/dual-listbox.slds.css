@@ -1,0 +1,196 @@
+
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved
+  Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+  :host([data-render-mode="shadow"]) .slds-assistive-text {
+    position: absolute !important;
+    margin: -1px !important;
+    border: 0 !important;
+    padding: 0 !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+    text-transform: none !important;
+    white-space: nowrap !important;
+  }
+
+  /* Initializes a dueling picklist */
+
+  :host([data-render-mode="shadow"]) .slds-dueling-list {
+    display: flex;
+    clear: left;
+  }
+
+  /* Handles the layout of the dueling picklist */
+
+  :host([data-render-mode="shadow"]) .slds-dueling-list__column {
+    display: inline-flex;
+    flex-direction: column;
+  }
+
+  :host([data-render-mode="shadow"]) .slds-dueling-list__column > lightning-button-icon {
+    margin-block: var(--slds-g-spacing-4);
+    margin-inline: var(--slds-g-spacing-1);
+  }
+
+  :host([data-render-mode="shadow"]) .slds-dueling-list__column > lightning-button-icon:first-of-type {
+    margin-block-start: var(--slds-g-spacing-5);
+  }
+
+  /* Changes the layout of the dueling picklist to be responsive */
+
+  :host([data-render-mode="shadow"]) .slds-dueling-list__column_responsive {
+    flex: 1 1 15rem;
+    flex-wrap: wrap;
+    overflow: hidden;
+    min-width: calc(var(--slds-g-sizing-9) * 3);
+  }
+
+  :host([data-render-mode="shadow"]) .slds-dueling-list__column_responsive .slds-dueling-list__options {
+    width: auto;
+    max-width: 100%;
+  }
+
+  /* Bounding visual container for listbox of options */
+
+  :host([data-render-mode="shadow"]) .slds-dueling-list__options {
+    border: var(--slds-g-sizing-border-1) solid var(--slds-g-color-border-1);
+    border-radius: var(--slds-g-radius-border-2);
+    padding-block: var(--slds-g-spacing-1);
+    padding-inline: 0;
+    width: var(--slds-g-sizing-14);
+    height: var(--slds-g-sizing-14);
+    background-color: var(--slds-g-color-surface-container-1);
+    overflow: auto;
+  }
+
+  /* Selected/dragging state of a listbox option, not currently supported by lbc */
+
+  :host([data-render-mode="shadow"]) .slds-dueling-list__options [aria-selected='true'] {
+    background-color: var(--slds-g-color-accent-container-2);
+    color: var(--slds-g-color-on-accent-1);
+  }
+
+  :host([data-render-mode="shadow"]) .slds-dueling-list__options [aria-selected='true']:hover,:host([data-render-mode="shadow"]) 
+  .slds-dueling-list__options [aria-selected='true']:focus {
+    background: var(--slds-g-color-accent-container-3);
+    color: var(--slds-g-color-on-accent-1);
+  }
+
+  :host([data-render-mode="shadow"]) .slds-dueling-list__options .slds-is-grabbed {
+    transform: rotate(3deg);
+  }
+
+  /* Disabled state of a picklist option */
+
+  :host([data-render-mode="shadow"]) .slds-dueling-list__options.slds-is-disabled {
+    background-color: var(--slds-g-color-disabled-container-1);
+    border-color: var(--slds-g-color-border-disabled-1);
+    color: var(--slds-g-color-on-disabled-1);
+  }
+
+  :host([data-render-mode="shadow"]) .slds-dueling-list__options.slds-is-disabled:hover {
+    cursor: not-allowed;
+  }
+
+  :host([data-render-mode="shadow"]) .slds-dueling-list__options.slds-is-disabled .slds-listbox__option:hover {
+    cursor: not-allowed;
+    background-color: transparent;
+  }
+
+  :host([data-render-mode="shadow"]) .slds-dueling-list__options.slds-is-disabled .slds-listbox__option:focus {
+    background-color: transparent;
+  }
+
+  :host([data-render-mode="shadow"][variant='label-inline']) {
+    margin-block-end: var(--slds-g-spacing-2);
+    width: 100%;
+    flex-basis: 100%;
+    padding: var(--slds-g-spacing-1);
+  }
+
+  :host([data-render-mode="shadow"][variant='label-inline']).slds-form-element {
+    padding: 0;
+    margin-block-end: 0;
+  }
+
+  :host([data-render-mode="shadow"][variant='label-inline']) .slds-form-element__help {
+    margin-inline-start: 33%;
+  }
+
+  /* ----------------------------------------------------------------------------------------------- */
+
+  /* Media Object classes need to be pulled out for reusability  */
+
+  :host([data-render-mode="shadow"]) .slds-media {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  :host([data-render-mode="shadow"]) .slds-media__figure {
+    flex-shrink: 0;
+    margin-inline-end: var(--slds-g-spacing-3);
+  }
+
+  :host([data-render-mode="shadow"]) .slds-media__figure_fixed-width {
+    min-width: var(--slds-g-sizing-10);
+  }
+
+  :host([data-render-mode="shadow"]) .slds-media__body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  :host([data-render-mode="shadow"]) .slds-media__body,:host([data-render-mode="shadow"]) 
+  .slds-media__body> :last-child {
+    margin-block-end: 0;
+  }
+
+  :host([data-render-mode="shadow"]) .slds-media-body-iefix {
+    flex-shrink: 0;
+    flex-basis: auto;
+  }
+
+  :host([data-render-mode="shadow"]) .slds-media_small .slds-media__figure {
+    margin-inline-end: var(--slds-g-spacing-1);
+  }
+
+  :host([data-render-mode="shadow"]) .slds-media_small .slds-media__figure_reverse {
+    margin-inline-start: var(--slds-g-spacing-1);
+  }
+
+  :host([data-render-mode="shadow"]) .slds-media_large .slds-media__figure {
+    margin-inline-end: var(--slds-g-spacing-5);
+  }
+
+  :host([data-render-mode="shadow"]) .slds-media_large .slds-media__figure_reverse {
+    margin-inline-start: var(--slds-g-spacing-5);
+  }
+
+  :host([data-render-mode="shadow"]) .slds-media_inline .slds-media__body {
+    flex: 0 1 auto;
+  }
+
+  :host([data-render-mode="shadow"]) .slds-media_center {
+    align-items: center;
+  }
+
+  :host([data-render-mode="shadow"]) .slds-media__figure_reverse {
+    margin-block: 0;
+    margin-inline-start: var(--slds-g-spacing-3);
+    margin-inline-end: 0;
+  }
+
+  @media (width <= 48em) {
+
+    :host([data-render-mode="shadow"]) .slds-media_responsive {
+      display: block;
+    }
+
+    :host([data-render-mode="shadow"]) .slds-media_responsive .slds-media__figure {
+      margin-block: 0;
+      margin-inline-start: var(--slds-g-spacing-3);
+      margin-inline-end: 0;
+    }
+  }

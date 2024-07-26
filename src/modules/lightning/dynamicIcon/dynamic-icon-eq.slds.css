@@ -1,0 +1,63 @@
+
+/* Copyright (c) 2015-present, Salesforce, Inc. All rights reserved
+Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+:host([data-render-mode="shadow"]) .slds-assistive-text {
+  position: absolute !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  text-transform: none !important;
+  white-space: nowrap !important;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-eq {
+  position: relative;
+  width: calc(14rem / 16);
+  height: calc(14rem / 16);
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-eq.slds-is-animated .slds-icon-eq__bar {
+  animation: slds-icon-eq 0.25s ease-in-out infinite alternate;
+  will-change: transform;
+  height: 0.1875rem;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-eq.slds-is-animated .slds-icon-eq__bar:nth-of-type(2) {
+  animation-duration: 0.65s;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-eq.slds-is-animated .slds-icon-eq__bar:nth-of-type(3) {
+  animation-duration: 0.35s;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-eq__bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: calc(4rem / 16);
+  height: 0.5625rem;
+  background: #0176d3;
+  transform: scaleY(1);
+  transform-origin: bottom;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-eq__bar:nth-of-type(2) {
+  left: calc(5rem / 16);
+  height: 0.875rem;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-eq__bar:nth-of-type(3) {
+  left: calc(10rem / 16);
+  height: 0.75rem;
+}
+
+@keyframes slds-icon-eq {
+  to {
+    transform: scaleY(4.6667);
+  }
+}

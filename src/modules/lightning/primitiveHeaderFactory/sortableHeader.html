@@ -1,0 +1,81 @@
+<template>
+    <!-- Header Content -->
+    <span lwc:ref="child" class={computedClass} tabindex={internalTabIndex} style={columnStyles}>
+
+        <a href="javascript:void(0);"
+           class={computedSortClass}
+           role={headerRole}
+           tabindex={internalTabIndex}
+           data-navigation="enable"
+           onclick={handleSortingClick}
+           style={columnStyles}
+           data-action-triggers="enter">
+
+            <span class="slds-assistive-text">{i18n.sort}</span>
+
+            <!-- Icon to display to the left/start of the header text -->
+            <template if:true={def.iconName}>
+                <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                    <lightning-icon icon-name={def.iconName} size="x-small" class="slds-icon_container slds-m-right_xx-small" alternative-text={def.label} title={def.label}></lightning-icon>
+                    <template if:false={def.hideLabel} class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                        <span class={getHeaderLabelClass} style={getHeaderLabelStyle}>{def.label}</span>
+                    </template>
+
+                    <!-- Arrow Icon - Rotates based on sorting direction -->
+                    <lightning-primitive-icon
+                         class="slds-icon_container"
+                         svg-class="slds-icon slds-icon-text-default slds-is-sortable__icon"
+                         icon-name="utility:arrowdown"
+                         size="x-small">
+                    </lightning-primitive-icon>
+                </div>
+            </template>
+            <template if:false={def.iconName}>
+                <span
+                    class={getHeaderLabelClass}
+                    style={getHeaderLabelStyle}
+                    title={def.label}>
+                    {def.label}
+                </span>
+                <!-- Arrow Icon - Rotates based on sorting direction -->
+                    <lightning-primitive-icon
+                         class="slds-icon_container"
+                         svg-class="slds-icon slds-icon-text-default slds-is-sortable__icon"
+                         icon-name="utility:arrowdown"
+                         size="x-small">
+                    </lightning-primitive-icon>
+            </template>
+        </a>
+
+        <!-- Aria Live Region to announce sorting order -->
+        <span class="slds-assistive-text" aria-live="polite" aria-atomic="true">{sortedOrderLabel}</span>
+
+        <!-- Header Actions -->
+        <template if:true={hasActions}>
+            <lightning-primitive-header-actions
+                column-header={def.label}
+                col-key-value={def.colKeyValue}
+                actions={actions}
+                tabindex={internalTabIndex}
+                data-navigation="enable">
+            </lightning-primitive-header-actions>
+        </template>
+
+        <!-- Resize Handler -->
+        <template if:true={isResizable}>
+            <lightning-primitive-resize-handler
+                 value={columnWidth}
+                 min-width={def.minWidth}
+                 max-width={def.maxWidth}
+                 internal-tab-index={internalTabIndex}
+                 label={def.label}
+                 tabindex={internalTabIndex}
+                 col-index={colIndex}
+                 class="slds-resizable"
+                 data-navigation="enable"
+                 is-last-col={def.isLastCol}
+                 step={resizeStep}>
+            </lightning-primitive-resize-handler>
+        </template>
+    </span>
+</template>

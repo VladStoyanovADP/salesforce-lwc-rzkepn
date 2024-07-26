@@ -1,0 +1,15 @@
+<template>
+    <lightning-modal-header label={header}></lightning-modal-header>
+    <lightning-modal-body>
+        <p>{body}</p>
+        <ul>
+            <template for:each={options} for:item="option">
+                <li key={option.id}>
+                    <button onclick={handleOptionClick} data-id={option.id}>
+                        {option.label}
+                    </button>
+                </li>
+            </template>
+        </ul>
+    </lightning-modal-body>
+</template>

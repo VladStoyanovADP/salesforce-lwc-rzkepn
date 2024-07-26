@@ -1,0 +1,8 @@
+<template>
+    <template if:true={showLink}>
+        <a if:false={disabled} href={link} tabindex={tabIndex}>
+            {formattedPhoneNumber}
+        </a>
+        <span if:true={disabled}>{formattedPhoneNumber}</span>
+    </template>
+</template>

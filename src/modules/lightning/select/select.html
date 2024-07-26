@@ -1,0 +1,42 @@
+<template>
+    <label class={computedLabelClass} for="select" part="select-label">
+        <template if:true={required}>
+            <abbr class="slds-required" title={i18n.required}>*</abbr>
+        </template>
+        {label}
+    </label>
+    <lightning-helptext content={fieldLevelHelp} if:true={fieldLevelHelp} alternative-text={helptextAlternativeText}></lightning-helptext>
+
+    <div class="slds-form-element__control">
+        <div class="slds-select_container">
+            <select
+                autocomplete={autocomplete}
+                class="slds-select"
+                disabled={disabled}
+                id="select"
+                multiple={multiple}
+                name={name}
+                onblur={handleBlur}
+                onchange={handleChange}
+                onfocus={handleFocus}
+                required={required}
+                accesskey={accessKey}
+                size={size}
+                aria-invalid={computedAriaInvalid}
+                part="select">
+                <template for:each={options} for:item="option">
+                    <template if:true={option.disabled}>
+                        <option disabled key={option.value} value={option.value}>{option.label}</option>
+                    </template>
+                    <template if:false={option.disabled}>
+                        <option key={option.value} value={option.value}>{option.label}</option>
+                    </template>
+                </template>
+            </select>
+        </div>
+    </div>
+
+    <template if:true={_helpMessage}>
+        <div aria-live="assertive" class="slds-form-element__help" data-help-message id="help-message">{_helpMessage}</div>
+    </template>
+</template>

@@ -1,0 +1,23 @@
+
+    /* To Do:
+        Currently the code below will not work as our script to add data-render-mode into our css will break the css selector.
+        We had to add a temporary fix in interop/accordion/accordion.css that
+        does the exact same thing to have the styles applied.
+        Once our script is fixed (should be addressed in W-12439890) remove the duplicated code found in accordion.css (interop)
+    */
+
+    /* Removes first child border top */
+
+    :host([data-render-mode="shadow"]) ::slotted(lightning-accordion-section:first-child) {
+        --slds-c-accordionsection-sizing-border: 0;
+    }
+
+    :host([data-render-mode="shadow"]) [part="accordion"] {
+        /* Note: The following styling hooks are remapped from accordion-section for usability reason.
+        Users will have an option to use spacing styling hooks from both accordion and accordion-section making it
+        easier to use our styling hook based on our internal styling hook naming rules */
+        --slds-c-accordionsection-spacing-blockstart: var(--slds-c-accordion-spacing-blockstart);
+        --slds-c-accordionsection-spacing-blockend: var(--slds-c-accordion-spacing-blockend);
+        --slds-c-accordionsection-spacing-inlineend: var(--slds-c-accordion-spacing-inlineend);
+        --slds-c-accordionsection-spacing-inlinestart: var(--slds-c-accordion-spacing-inlinestart);
+    }

@@ -1,0 +1,69 @@
+<template>
+    <div class="slds-m-bottom_medium">
+        <lightning-slider
+            onchange={sliderChange}
+            value={sliderValue}
+            label="Value"
+        ></lightning-slider>
+        <lightning-input
+            type="toggle"
+            label="Direction"
+            name="direction"
+            checked
+            onchange={directionChange}
+            message-toggle-active="Fill"
+            message-toggle-inactive="Drain"
+        ></lightning-input>
+    </div>
+
+    <div class="slds-m-bottom_small">
+        <span class="slds-m-right_small">
+            variant: base
+        </span>
+        <lightning-progress-ring
+            value={sliderValue}
+            direction={direction}
+            variant="base"
+        ></lightning-progress-ring>
+    </div>
+    <div class="slds-m-bottom_small">
+        <span class="slds-m-right_small">
+            variant: base-autocomplete
+        </span>
+        <lightning-progress-ring
+            value={sliderValue}
+            direction={direction}
+            variant="base-autocomplete"
+        ></lightning-progress-ring>
+    </div>
+    <div class="slds-m-bottom_small">
+        <span class="slds-m-right_small">
+            variant: active-step
+        </span>
+        <lightning-progress-ring
+            value={sliderValue}
+            direction={direction}
+            variant="active-step"
+        ></lightning-progress-ring>
+    </div>
+    <div class="slds-m-bottom_small">
+        <span class="slds-m-right_small">
+            variant: warning
+        </span>
+        <lightning-progress-ring
+            value={sliderValue}
+            direction={direction}
+            variant="warning"
+        ></lightning-progress-ring>
+    </div>
+    <div class="slds-m-bottom_small">
+        <span class="slds-m-right_small">
+            variant: expired
+        </span>
+        <lightning-progress-ring
+            value={sliderValue}
+            direction={direction}
+            variant="expired"
+        ></lightning-progress-ring>
+    </div>
+</template>

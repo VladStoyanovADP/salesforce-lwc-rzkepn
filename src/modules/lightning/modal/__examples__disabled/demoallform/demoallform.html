@@ -1,0 +1,220 @@
+<template>
+    <lightning-modal-header label={heading}>
+        <p>Update your contact information by completing the form below.</p>
+    </lightning-modal-header>
+    <lightning-modal-body>
+        <div class="slds-form" role="list">
+            <div class="slds-form__row">
+                <div class="slds-form__item" role="listitem">
+                    <div class="slds-form-element slds-form-element_stacked">
+                        <lightning-input
+                            onchange={handleTextInput}
+                            type="text"
+                            name="assignedTo"
+                            label="Assigned To"
+                            required
+                        ></lightning-input>
+                    </div>
+                </div>
+                <div class="slds-form__item" role="listitem">
+                    <div class="slds-form-element slds-form-element_stacked">
+                        <lightning-input
+                            onchange={handleTextInput}
+                            type="text"
+                            name="teamName"
+                            label="Team Name"
+                            required
+                        ></lightning-input>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-form__row">
+                <div class="slds-form__item" role="listitem">
+                    <div class="slds-form-element slds-form-element_stacked">
+                        <lightning-input
+                            type="toggle"
+                            label="Security Assessment Required?"
+                            name="input3"
+                            checked
+                            disabled
+                        ></lightning-input>
+                    </div>
+                </div>
+                <div class="slds-form__item" role="listitem">
+                    <div class="slds-form-element slds-form-element_stacked">
+                        <lightning-combobox
+                            name="progress"
+                            label="Status"
+                            value={statusValue}
+                            placeholder="Select Progress"
+                            options={statusOptions}
+                            onchange={handleChangeStatus}
+                        ></lightning-combobox>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-form__row">
+                <div class="slds-form__item" role="listitem">
+                    <div class="slds-form-element slds-form-element_stacked">
+                        <lightning-input
+                            onchange={handleTextInput}
+                            type="text"
+                            name="personalSettings"
+                            label="Personalization Settings"
+                        ></lightning-input>
+                    </div>
+                </div>
+                <div class="slds-form__item" role="listitem">
+                    <div class="slds-form-element slds-form-element_stacked">
+                        <lightning-input
+                            onchange={handleTextInput}
+                            type="number"
+                            name="slaSerialNum"
+                            label="SLA Serial Number"
+                        ></lightning-input>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-form__row">
+                <div class="slds-form__item" role="listitem">
+                    <div class="slds-form-element slds-form-element_stacked">
+                        <lightning-input
+                            onchange={handleDateInput}
+                            type="date"
+                            name="slaExpireDate"
+                            label="SLA Expiration Date"
+                        ></lightning-input>
+                    </div>
+                </div>
+                <div class="slds-form__item" role="listitem">
+                    <div class="slds-form-element slds-form-element_stacked">
+                        <lightning-input
+                            onchange={handleTimeInput}
+                            type="time"
+                            name="slaExpireTime"
+                            label="SLA Expiration Time"
+                        ></lightning-input>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-form__row">
+                <div class="slds-form__item" role="listitem">
+                    <div class="slds-form-element slds-form-element_stacked">
+                        <lightning-input
+                            onchange={handleTextInput}
+                            type="text"
+                            name="location"
+                            label="Location"
+                        ></lightning-input>
+                    </div>
+                </div>
+                <div class="slds-form__item" role="listitem">
+                    <div class="slds-form-element slds-form-element_stacked">
+                        <lightning-input
+                            onchange={handleTextInput}
+                            type="text"
+                            name="selectedLangs"
+                            label="Selected Languages"
+                        ></lightning-input>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-form__row">
+                <div class="slds-form__item" role="listitem">
+                    <div class="slds-form-element slds-form-element_stacked">
+                        <lightning-input-address
+                            address-label="Billing Address"
+                            street-label="Street"
+                            city-label="City"
+                            country-label="Country"
+                            province-label="Province"
+                            postal-code-label="PostalCode"
+                            street={addressBilling.street}
+                            city={addressBilling.city}
+                            country={addressBilling.country}
+                            province={addressBilling.province}
+                            postal-code={addressBilling.postalCode}
+                            country-options={getCountryOptsBilling}
+                            province-options={getProvinceOptsBilling}
+                            onchange={handleChangeBilling}
+                            field-level-help="Enter your billing address.  Where your credit card statements are sent."
+                        ></lightning-input-address>
+                    </div>
+                </div>
+                <div class="slds-form__item" role="listitem">
+                    <div class="slds-form-element slds-form-element_stacked">
+                        <lightning-input-address
+                            address-label="Shipping Address"
+                            street-label="Street"
+                            city-label="City"
+                            country-label="Country"
+                            province-label="Province"
+                            postal-code-label="PostalCode"
+                            street={addressShipping.street}
+                            city={addressShipping.city}
+                            country={addressShipping.country}
+                            province={addressShipping.province}
+                            postal-code={addressShipping.postalCode}
+                            field-level-help="Enter your shipping address. Where you receive packages."
+                            country-options={getCountryOptsShipping}
+                            province-options={getProvinceOptsShipping}
+                            onchange={handleChangeShipping}
+                        ></lightning-input-address>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </lightning-modal-body>
+    <lightning-modal-footer>
+        <div id="all-footer">
+            <template for:each={options} for:item="option">
+                <template if:true={option.triggerCancel}>
+                    <lightning-button
+                        key={option.id}
+                        label={option.label}
+                        class="slds-button"
+                        data-focus={option.focusName}
+                        variant={option.variant}
+                        onclick={handleButtonCancel}
+                        data-id={option.id}
+                        disabled={disableClose}
+                    ></lightning-button>
+                </template>
+                <template if:true={option.triggerSecondModal}>
+                    <lightning-button
+                        key={option.id}
+                        label={option.label}
+                        class="slds-button"
+                        data-focus={option.focusName}
+                        variant={option.variant}
+                        onclick={handleButtonOpenSecondModal}
+                        data-id={option.id}
+                    ></lightning-button>
+                </template>
+                <template if:true={option.toggleDisableClose}>
+                    <lightning-button
+                        key={option.id}
+                        label={computedDisableCloseLabel}
+                        class="slds-button"
+                        data-focus={option.focusName}
+                        variant={option.variant}
+                        onclick={handleButtonToggleDisableButton}
+                        data-id={option.id}
+                    ></lightning-button>
+                </template>
+                <template if:true={option.triggerSubmit}>
+                    <lightning-button
+                        key={option.id}
+                        label={option.label}
+                        class="slds-button"
+                        data-focus={option.focusName}
+                        variant={option.variant}
+                        onclick={handleButtonSubmit}
+                        data-id={option.id}
+                        disabled={disableClose}
+                    ></lightning-button>
+                </template>
+            </template>
+        </div>
+    </lightning-modal-footer>
+</template>

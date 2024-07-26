@@ -1,0 +1,25 @@
+<template>
+    <span class="slds-radio">
+        <input lwc:ref="input"
+               type="radio"
+               name={computedOptionName}
+               id="primitive-checkbox-radio-id"
+               tabindex={internalTabIndex}
+               data-navigation="enable"
+               data-action-triggers="space"
+               onclick={handleRadioClick}
+               aria-labelledby={ariaLabelledBy}
+               disabled={isDisabled}
+               onkeydown={handleRadioKeyDown}
+               checked={isSelected}>
+        <label lwc:ref="label"
+            id={labelId}
+            class="slds-radio__label"
+            for="primitive-checkbox-radio-id">
+            <span class="slds-radio_faux"></span>
+            <span class="slds-form-element__label slds-assistive-text">
+                {selectItemAssistiveText}
+            </span>
+        </label>
+    </span>
+</template>

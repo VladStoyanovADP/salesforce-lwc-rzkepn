@@ -1,0 +1,3 @@
+.slds-button_icon:not(.slds-button_icon-small, .slds-button_icon-x-small, .slds-button_icon-xx-small) {
+    height: var(--slds-c-buttonicon-sizing-height, 2rem);
+}

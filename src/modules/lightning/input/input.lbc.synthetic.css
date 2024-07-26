@@ -1,0 +1,9 @@
+:host {
+    display: block;
+}
+
+input[type="tel"]:dir(rtl) {
+    direction: ltr;
+    text-align: right;
+    unicode-bidi: embed;
+}

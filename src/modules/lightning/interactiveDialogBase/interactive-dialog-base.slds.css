@@ -1,0 +1,49 @@
+
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved
+  Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+.slds-modal_prompt {
+  --slds-c-modalheader-sizing-border: 0;
+  --slds-c-modalfooter-sizing-border: 0;
+}
+
+.slds-modal_prompt .slds-modal__close {
+  display: none;
+}
+
+.slds-modal_prompt .slds-modal__content {
+  padding-block: var(--slds-g-spacing-4);
+  padding-inline: var(--slds-g-spacing-6);
+}
+
+.slds-modal_prompt .slds-modal__footer {
+  text-align: center;
+}
+
+[part='button'].slds-button_brand {
+  --slds-c-button-neutral-color-background:
+    var(--slds-g-color-accent-container-1);
+  --slds-c-button-neutral-color-background-hover: 
+    var(--slds-g-color-accent-container-2);
+  --slds-c-button-neutral-color-background-focus: 
+    var(--slds-g-color-accent-container-2);
+  --slds-c-button-neutral-color-background-active:
+    var(--slds-g-color-accent-container-2);
+
+  --slds-c-button-neutral-color-border:
+    var(--slds-g-color-border-accent-1);
+  --slds-c-button-neutral-color-border-hover:
+    var(--slds-g-color-border-accent-2);
+  --slds-c-button-neutral-color-border-focus: 
+    var(--slds-g-color-border-accent-2);
+  --slds-c-button-neutral-color-border-active: 
+    var(--slds-g-color-border-accent-2);
+
+  /* Important is required due to css  
+   * specificity.
+   * This will always fall lose specificity to * button.css as it doesn't have 
+   * [data-render-mode]
+   * 
+  */
+  --sds-c-button-text-color:  var(--slds-g-color-on-accent-1) !important; 
+}

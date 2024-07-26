@@ -1,0 +1,18 @@
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved
+Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+:host([data-render-mode="shadow"]) .slds-is-static {
+    position: static;
+}
+
+:host([data-render-mode="shadow"]) .slds-is-relative {
+    position: relative;
+}
+
+:host([data-render-mode="shadow"]) .slds-is-fixed {
+    position: fixed;
+}
+
+:host([data-render-mode="shadow"]) .slds-is-absolute {
+    position: absolute;
+}

@@ -1,0 +1,18 @@
+<template>
+    <div part="input-text">
+        <label
+            class="slds-form-element__label slds-no-flex"
+            for="input"
+            part="label"
+        >
+            {message}
+        </label>
+        <div class="slds-form-element__control slds-grow" part="input-container">
+            <input
+                class="slds-input"
+                id="input"
+                part="input"
+                value={defaultValue} />
+        </div>
+    </div>
+</template>

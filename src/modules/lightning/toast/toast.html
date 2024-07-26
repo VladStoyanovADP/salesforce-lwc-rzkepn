@@ -1,0 +1,70 @@
+<template>
+    <lightning-focus-trap>
+        <div class="slds-notify_container slds-is-relative" part="toast">
+            <div class={toastClass}
+                role="status"
+                onanimationend={handleAnimationEnd}
+                onfocusin={handleFocusIn}
+                onfocusout={handleFocusOut}>
+                <div class="slds-list--inline"
+                    data-content
+                    tabindex="0">
+                    <template if:true={isSmallerBrowserWidth}>
+                        <span class="slds-assistive-text">
+                            {iconAlternativeText}
+                        </span>
+                    </template>
+                    <template if:false={isSmallerBrowserWidth}>
+                        <lightning-icon
+                            class="slds-m-right_small slds-no-flex slds-align-top"
+                            icon-name={iconName}
+                            size="small"
+                            variant="inverse"
+                            alternative-text={iconAlternativeText}>
+                        </lightning-icon>
+                    </template>
+                    <div class="slds-notify__content">
+                        <h2 class="slds-text-heading_small">
+                            <slot>
+                                <template if:true={hasLabelLink}>
+                                    <lightning-formatted-rich-text
+                                        value={label}>
+                                    </lightning-formatted-rich-text>
+                                </template>
+                                <template if:false={hasLabelLink}>
+                                    {label}
+                                </template>
+                            </slot>
+                        </h2>
+                        <template if:false={isSmallerBrowserWidth}>
+                            <slot name="message">
+                                <template if:true={hasMessageLink}>
+                                    <lightning-formatted-rich-text
+                                        value={message}>
+                                    </lightning-formatted-rich-text>
+                                </template>
+                                <template if:false={hasMessageLink}>
+                                    {message}
+                                </template>
+                            </slot>
+                        </template>
+                        <template if:true={assistiveText}>
+                            <span class="slds-assistive-text">
+                                {assistiveText}
+                            </span>
+                        </template>
+                    </div>
+                    <div class={closeIconContainerClass}>
+                        <lightning-button-icon
+                            onclick={handleCloseClick}
+                            icon-name="utility:close"
+                            size={closeIconSize}
+                            variant="bare-inverse"
+                            title={closeButtonTitleText}>
+                        </lightning-button-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </lightning-focus-trap>
+</template>

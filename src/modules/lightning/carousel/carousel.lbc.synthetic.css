@@ -1,0 +1,7 @@
+slot {
+    /* W-6709264: Workaround for IE11/Edge to prevent slot items from stacking vertically. */
+    display: flex;
+
+    /* W-7665481: Workaround for above when space is limited in other browsers. */
+    max-width: 100%;
+}

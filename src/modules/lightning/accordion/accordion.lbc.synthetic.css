@@ -1,0 +1,13 @@
+:host {
+    display: block;
+    list-style: none;
+}
+
+/* To Do:
+   Remove the code below as it is a duplicate once data-render-mode fix (W-12439890) for ::slotted is in.
+*/
+/* Removes first child border top */
+::slotted(lightning-accordion-section:first-child) {
+    --slds-c-accordionsection-sizing-border: 0;
+}
+

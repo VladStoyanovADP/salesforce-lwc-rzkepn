@@ -1,0 +1,25 @@
+
+.slds-inline-logo {
+    height: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* This is hiding the caret of the input for the read-only combobox, should be moved to SLDS. */
+input[aria-readonly='true'] {
+    caret-color: transparent;
+}
+
+/* TODO: This is a temporary fix to prevent a bug with sldsCommon.css bleeding into synthetic */
+button:disabled,
+[type='button']:disabled {
+    cursor: not-allowed;
+}
+
+/* W-14210059 - the input height automatically increases with font size
+ * to about 1.2em, but not the button. However, changing the line-height
+ * of the button will increase the height accordingly
+ */
+.fix-slds-input_faux {
+    line-height: max(1.875rem, calc(1.2em - 2px));
+}

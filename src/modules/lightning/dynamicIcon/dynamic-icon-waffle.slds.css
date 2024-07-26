@@ -1,0 +1,177 @@
+
+/* Copyright (c) 2015-present, Salesforce, Inc. All rights reserved
+Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+:host([data-render-mode="shadow"]) .slds-assistive-text {
+  position: absolute !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  text-transform: none !important;
+  white-space: nowrap !important;
+}
+
+/* needed to reset button styles as a result of button neutral vs base parity issue */
+
+:host([data-render-mode="shadow"]) .slds-icon-waffle_container {
+  border: 0;
+  outline: 0;
+  padding: 0;
+  background: transparent;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-waffle_container:hover [class*='slds-r'],:host([data-render-mode="shadow"]) 
+.slds-icon-waffle_container:focus [class*='slds-r'] {
+  animation: slds-icon-waffle-throb 2 200ms alternate;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-waffle_container:hover .slds-r1,:host([data-render-mode="shadow"]) 
+.slds-icon-waffle_container:hover .slds-r2,:host([data-render-mode="shadow"]) 
+.slds-icon-waffle_container:hover .slds-r3,:host([data-render-mode="shadow"]) 
+.slds-icon-waffle_container:focus .slds-r1,:host([data-render-mode="shadow"]) 
+.slds-icon-waffle_container:focus .slds-r2,:host([data-render-mode="shadow"]) 
+.slds-icon-waffle_container:focus .slds-r3 {
+  background-color: #418fde;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-waffle_container:hover .slds-r4,:host([data-render-mode="shadow"]) 
+.slds-icon-waffle_container:hover .slds-r5,:host([data-render-mode="shadow"]) 
+.slds-icon-waffle_container:hover .slds-r7,:host([data-render-mode="shadow"]) 
+.slds-icon-waffle_container:focus .slds-r4,:host([data-render-mode="shadow"]) 
+.slds-icon-waffle_container:focus .slds-r5,:host([data-render-mode="shadow"]) 
+.slds-icon-waffle_container:focus .slds-r7 {
+  background-color: #ed8b00;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-waffle_container:hover .slds-r6,:host([data-render-mode="shadow"]) 
+.slds-icon-waffle_container:hover .slds-r8,:host([data-render-mode="shadow"]) 
+.slds-icon-waffle_container:hover .slds-r9,:host([data-render-mode="shadow"]) 
+.slds-icon-waffle_container:focus .slds-r6,:host([data-render-mode="shadow"]) 
+.slds-icon-waffle_container:focus .slds-r8,:host([data-render-mode="shadow"]) 
+.slds-icon-waffle_container:focus .slds-r9 {
+  background-color: #ffb60f;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-waffle_container:hover .slds-r2,:host([data-render-mode="shadow"]) 
+.slds-icon-waffle_container:hover .slds-r4,:host([data-render-mode="shadow"]) 
+.slds-icon-waffle_container:focus .slds-r2,:host([data-render-mode="shadow"]) 
+.slds-icon-waffle_container:focus .slds-r4 {
+  transition-delay: 50ms;
+  animation-delay: 50ms;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-waffle_container:hover .slds-r3,:host([data-render-mode="shadow"]) 
+.slds-icon-waffle_container:hover .slds-r5,:host([data-render-mode="shadow"]) 
+.slds-icon-waffle_container:hover .slds-r7,:host([data-render-mode="shadow"]) 
+.slds-icon-waffle_container:focus .slds-r3,:host([data-render-mode="shadow"]) 
+.slds-icon-waffle_container:focus .slds-r5,:host([data-render-mode="shadow"]) 
+.slds-icon-waffle_container:focus .slds-r7 {
+  transition-delay: 100ms;
+  animation-delay: 100ms;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-waffle_container:hover .slds-r6,:host([data-render-mode="shadow"]) 
+.slds-icon-waffle_container:hover .slds-r8,:host([data-render-mode="shadow"]) 
+.slds-icon-waffle_container:focus .slds-r6,:host([data-render-mode="shadow"]) 
+.slds-icon-waffle_container:focus .slds-r8 {
+  transition-delay: 150ms;
+  animation-delay: 150ms;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-waffle_container:hover .slds-r9,:host([data-render-mode="shadow"]) 
+.slds-icon-waffle_container:focus .slds-r9 {
+  transition-delay: 200ms;
+  animation-delay: 200ms;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-waffle {
+  width: 1.3125rem;
+  height: 1.3125rem;
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-waffle [class*='slds-r'] {
+  width: 0.3125rem;
+  height: 0.3125rem;
+  background-color: #747474;
+  display: inline-block;
+  position: absolute;
+  border-radius: 50%;
+  transition: background-color 100ms;
+  transform-origin: 50% 50%;
+  will-change: scale, background-color;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-waffle .slds-r1 {
+  top: 0;
+  left: 0;
+  transition-delay: 200ms;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-waffle .slds-r2 {
+  top: 0;
+  left: 0.5rem;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-waffle .slds-r3 {
+  top: 0;
+  right: 0;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-waffle .slds-r4 {
+  top: 0.5rem;
+  left: 0;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-waffle .slds-r5 {
+  top: 0.5rem;
+  left: 0.5rem;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-waffle .slds-r6 {
+  top: 0.5rem;
+  right: 0;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-waffle .slds-r7 {
+  bottom: 0;
+  left: 0;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-waffle .slds-r8 {
+  bottom: 0;
+  left: 0.5rem;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-waffle .slds-r9 {
+  bottom: 0;
+  right: 0;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-waffle .slds-r2,:host([data-render-mode="shadow"]) 
+.slds-icon-waffle .slds-r4 {
+  transition-delay: 150ms;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-waffle .slds-r3,:host([data-render-mode="shadow"]) 
+.slds-icon-waffle .slds-r5,:host([data-render-mode="shadow"]) 
+.slds-icon-waffle .slds-r7 {
+  transition-delay: 100ms;
+}
+
+:host([data-render-mode="shadow"]) .slds-icon-waffle .slds-r6,:host([data-render-mode="shadow"]) 
+.slds-icon-waffle .slds-r8 {
+  transition-delay: 50ms;
+}
+
+@keyframes slds-icon-waffle-throb {
+  to {
+    transform: scale(1.5);
+  }
+}

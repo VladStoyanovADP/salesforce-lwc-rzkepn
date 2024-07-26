@@ -1,0 +1,7 @@
+@import './modalBody.lbc.native.css';
+
+/* Styles required for Multi-Column Sorting Modal in datatable */
+:host(.modal_headerless)  .slds-modal__content_headless {
+    border-top-right-radius: unset;
+    border-top-left-radius: unset;
+}

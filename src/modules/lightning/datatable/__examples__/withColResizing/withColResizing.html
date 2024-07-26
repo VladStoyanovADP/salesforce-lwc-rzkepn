@@ -1,0 +1,47 @@
+<template>
+    <p>Datatable with resize-column disabled</p>
+    <lightning-datatable
+        key-field="id"
+        data={data}
+        columns={columns}
+        resize-column-disabled>
+    </lightning-datatable>
+
+    <p>Datatable with min and max column widths. Resize step: {resizeStep} </p>
+    <lightning-button
+        label="Increase resize step"
+        class="increaseResizeStep"
+        onclick={increaseResizeStep}>
+    </lightning-button>
+    <lightning-button
+        label="Decrease resize step"
+        class="decreaseResizeStep"
+        onclick={decreaseResizeStep}>
+    </lightning-button>
+    <lightning-datatable
+        key-field="id"
+        data={data}
+        columns={columns}
+        min-column-width="100"
+        max-column-width="300"
+        resize-step={resizeStep}>
+    </lightning-datatable>
+
+    <p>Datatable with column-widths-mode='{mode}'</p>
+    <lightning-button
+        label="Change Widths Mode"
+        class="changeWidthsMode"
+        onclick={changeWidthsMode}>
+    </lightning-button>
+    <lightning-button
+        label="Add Column"
+        column="addColumn"
+        onclick={addColumn}>
+    </lightning-button>
+    <lightning-datatable
+        key-field="id"
+        data={data}
+        columns={columns}
+        column-widths-mode={mode}>
+    </lightning-datatable>
+</template>

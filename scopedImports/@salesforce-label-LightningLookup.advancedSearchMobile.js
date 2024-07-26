@@ -1,0 +1,1 @@
+export default 'Show more results for "{0}"';

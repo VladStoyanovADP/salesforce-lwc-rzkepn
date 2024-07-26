@@ -1,0 +1,60 @@
+
+  :host([data-render-mode="shadow"]) [part="file-selector"] {
+    display: inline-flex;
+  }
+
+  :host([data-render-mode="shadow"]) .slds-file-selector__dropzone {
+    padding: calc(var(--slds-g-spacing-1) / 2);
+    border: var(--slds-g-sizing-border-1) dashed var(--slds-g-color-border-base-4, var(--slds-g-color-border-2));
+    border-radius: var(--slds-g-radius-border-2);
+  }
+
+  :host([data-render-mode="shadow"]) .slds-has-drag-over {
+    outline: 0;
+    border-color: var(--slds-g-color-brand-base-60, var(--slds-g-color-border-accent-2));
+    box-shadow: 0 0 var(--slds-g-sizing-border-3) var(--slds-g-color-accent-2);
+    border-style: solid;
+  }
+
+  :host([data-render-mode="shadow"]) [part='input']:focus ~ .slds-file-selector__body > .slds-file-selector__button {
+    box-shadow: 0 0 var(--slds-g-sizing-border-3) var(--slds-g-color-accent-2);
+
+  }
+
+  :host([data-render-mode="shadow"]) [part='input'][disabled] ~ .slds-file-selector__body {
+    color: var(--slds-g-color-disabled-1);
+  }
+
+  :host([data-render-mode="shadow"]) [part='input'][disabled] ~ .slds-file-selector__body > .slds-file-selector__button {
+    background: var(--slds-s-input-color-background-disabled, var(--slds-g-color-disabled-container-1));
+    border-color: var(--slds-g-color-border-disabled-1);
+    color: var(--slds-g-color-on-disabled-2);
+    pointer-events: none;
+  }
+
+  :host([data-render-mode="shadow"]) [part='input'][disabled] ~ .slds-file-selector__body > .slds-file-selector__body-icon {
+    fill: currentcolor;
+  }
+
+  :host([data-render-mode="shadow"]) .slds-file-selector_files .slds-file-selector__body  {
+    display: flex;
+    align-items: center;
+  }
+
+  :host([data-render-mode="shadow"]) .slds-file-selector_files .slds-file-selector__text {
+    margin-left: var(--slds-g-spacing-2);
+    margin-right: var(--slds-g-spacing-3);
+  }
+
+  :host([data-render-mode="shadow"]) .slds-file-selector__button {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* TODO: Replace this with utility classes when available */
+
+  @media (width <= 768px) {
+    :host([data-render-mode="shadow"]) .slds-medium-show {
+      display: none;
+    }
+  }

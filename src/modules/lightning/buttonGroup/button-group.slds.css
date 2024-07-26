@@ -1,0 +1,47 @@
+
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved
+  Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+:host([data-render-mode="shadow"]) [part='button-group'] {
+  display: inline-flex;
+
+  /**
+    * Kill border radius, rebuild it below depending on position.
+    */
+    --slds-c-button-radius-border: 0;
+}
+
+/* Nudge buttons over to remove double border effect */
+
+:host([data-render-mode="shadow"]) [part='button-group'] ::slotted(:not(:first-child)) {
+  margin-inline-start: calc(-1 * var(--slds-g-sizing-border-1));
+}
+
+/**
+  * First child in group
+  */
+
+:host([data-render-mode="shadow"]) [part='button-group'] ::slotted(:first-child) {
+  --slds-c-button-radius-border-startstart: var(--slds-g-radius-border-2);
+  --slds-c-button-radius-border-endstart: var(--slds-g-radius-border-2);
+}
+
+/**
+  * Last child in group
+  */
+
+:host([data-render-mode="shadow"]) [part='button-group'] ::slotted(:last-child) {
+  --slds-c-button-radius-border-startend: var(--slds-g-radius-border-2);
+  --slds-c-button-radius-border-endend: var(--slds-g-radius-border-2);
+}
+
+/**
+  * Focused child in group
+  *
+  * Adds stacking context so the focus shadow is visible
+  */
+
+:host([data-render-mode="shadow"]) [part='button-group'] ::slotted(:focus) {
+  position: relative;
+  z-index: 1;
+}

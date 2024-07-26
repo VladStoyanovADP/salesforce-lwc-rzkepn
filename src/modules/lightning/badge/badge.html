@@ -1,0 +1,19 @@
+<template>
+    <span part="badge" exportparts="icon">
+        <template if:false={isIconBeforeLabel}>
+            {label}
+        </template>
+
+        <template if:true={iconName}>
+            <span class={computedClass}>
+                <span class="slds-icon_container slds-current-color" title={iconAlternativeText}>
+                    <lightning-primitive-icon icon-name={iconName} size="xx-small"></lightning-primitive-icon>
+                </span>
+            </span>
+        </template>
+
+        <template if:true={isIconBeforeLabel}>
+            {label}
+        </template>
+    </span>
+</template>

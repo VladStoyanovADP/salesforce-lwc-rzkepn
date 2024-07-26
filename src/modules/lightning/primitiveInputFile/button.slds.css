@@ -1,0 +1,515 @@
+/*******************************************
+* Imported dependency from @salesforce-ux/sds-primitives/src/sds/button/button.css
+*******************************************/
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved
+Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+/**
+ * Normalize box-sizing
+ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/**
+ * Base button styles
+ */
+:host([data-render-mode="shadow"]) [part~='button'] {
+  display: inline-flex;
+  gap: var(--sds-c-button-spacing-gap, var(--sds-s-button-spacing-gap));
+  background: var(--sds-c-button-color-background, var(--sds-s-button-color-background));
+  color: var(--sds-c-button-text-color, var(--sds-s-button-color));
+  font-weight: var(--sds-c-button-font-weight, var(--sds-s-button-font-weight));
+  font-size: var(--sds-c-button-font-size, var(--sds-s-button-font-size, inherit));
+  line-height: var(--sds-c-button-font-lineheight);
+  height: var(--sds-c-button-sizing-height);
+  width: var(--sds-c-button-sizing-width);
+  padding-inline-start: var(
+    --sds-c-button-spacing-inlinestart,
+    var(
+      --sds-c-button-spacing-inline,
+      var(--sds-c-button-spacing, var(--sds-s-button-spacing-inline, var(--sds-s-button-spacing)))
+    )
+  );
+  padding-inline-end: var(
+    --sds-c-button-spacing-inlineend,
+    var(
+      --sds-c-button-spacing-inline,
+      var(--sds-c-button-spacing, var(--sds-s-button-spacing-inline, var(--sds-s-button-spacing)))
+    )
+  );
+  padding-block-start: var(
+    --sds-c-button-spacing-blockstart,
+    var(
+      --sds-c-button-spacing-block,
+      var(--sds-c-button-spacing, var(--sds-s-button-spacing-block, var(--sds-s-button-spacing)))
+    )
+  );
+  padding-block-end: var(
+    --sds-c-button-spacing-blockend,
+    var(
+      --sds-c-button-spacing-block,
+      var(--sds-c-button-spacing, var(--sds-s-button-spacing-block, var(--sds-s-button-spacing)))
+    )
+  );
+  border-width: var(--sds-c-button-sizing-border, var(--sds-s-button-sizing-border, 1px));
+  border-style: solid;
+  border-color: var(--sds-c-button-color-border, var(--sds-s-button-color-border, currentColor));
+  border-start-start-radius: var(
+    --sds-c-button-radius-border-startstart,
+    var(
+      --sds-c-button-radius-border,
+      var(--sds-s-button-radius-border-startstart, var(--sds-s-button-radius-border))
+    )
+  );
+  border-start-end-radius: var(
+    --sds-c-button-radius-border-startend,
+    var(
+      --sds-c-button-radius-border,
+      var(--sds-s-button-radius-border-startend, var(--sds-s-button-radius-border))
+    )
+  );
+  border-end-start-radius: var(
+    --sds-c-button-radius-border-endstart,
+    var(
+      --sds-c-button-radius-border,
+      var(--sds-s-button-radius-border-endstart, var(--sds-s-button-radius-border))
+    )
+  );
+  border-end-end-radius: var(
+    --sds-c-button-radius-border-endend,
+    var(
+      --sds-c-button-radius-border,
+      var(--sds-s-button-radius-border-endend, var(--sds-s-button-radius-border))
+    )
+  );
+  box-shadow: var(--sds-c-button-shadow, var(--sds-s-button-shadow));
+  text-decoration: var(--sds-c-button-font-decoration);
+  white-space: normal;
+  user-select: none;
+  align-items: center;
+  justify-content: center;
+  appearance: none;
+}
+/**
+ * Hover button styles
+ *
+ * Fallback order: Hover > Base
+ */
+:host([data-render-mode="shadow"]) [part~='button']:hover {
+  --sds-c-button-text-color: var(--sds-c-button-text-color-hover, var(--sds-s-button-color-hover, revert));
+  --sds-c-button-color-background: var(
+    --sds-c-button-color-background-hover,
+    var(--sds-s-button-color-background-hover, revert)
+  );
+  --sds-c-button-color-border: var(
+    --sds-c-button-color-border-hover,
+    var(--sds-s-button-color-border-hover, revert)
+  );
+  --sds-c-button-shadow: var(--sds-c-button-shadow-hover, var(--sds-s-button-shadow-hover, revert));
+
+  cursor: pointer;
+}
+/**
+ * Focus button styles
+ *
+ * Fallback order: Focus > Hover > Base
+ */
+:host([data-render-mode="shadow"]) [part~='button']:focus {
+  --sds-c-button-color-background: var(
+    --sds-c-button-color-background-focus,
+    var(--sds-s-button-color-background-focus, revert)
+  );
+  --sds-c-button-color-border: var(
+    --sds-c-button-color-border-focus,
+    var(--sds-s-button-color-border-focus, revert)
+  );
+  --sds-c-button-text-color: var(--sds-c-button-text-color-focus, var(--sds-s-button-color-focus, revert));
+  --sds-c-button-shadow: var(--sds-c-button-shadow-focus, var(--sds-s-button-shadow-focus, revert));
+
+  outline: 0;
+}
+/**
+ * Active button styles
+ *
+ * Fallback order: Active > Focus > Base
+ *
+ * @TODO: keep this order (no hover) so active has feedback or go all out?
+ */
+:host([data-render-mode="shadow"]) [part~='button']:active {
+  --sds-c-button-text-color: var(--sds-c-button-text-color-active, var(--sds-s-button-color-active, revert));
+  --sds-c-button-color-background: var(
+    --sds-c-button-color-background-active,
+    var(--sds-s-button-color-background-active, revert)
+  );
+  --sds-c-button-color-border: var(
+    --sds-c-button-color-border-active,
+    var(--sds-s-button-color-border-active, revert)
+  );
+  --sds-c-button-shadow: var(--sds-c-button-shadow-active, var(--sds-s-button-shadow-active, revert));
+}
+/**
+ * Disabled button styles
+ */
+:host([data-render-mode="shadow"]) [part~='button']:disabled {
+  --sds-c-button-text-color: var(--sds-c-button-text-color-disabled);
+  --sds-c-button-color-background: var(--sds-c-button-color-background-disabled);
+  --sds-c-button-color-border: var(--sds-c-button-color-border-disabled);
+  --sds-c-button-shadow: var(--sds-c-button-shadow-disabled);
+
+  pointer-events: none;
+}
+:host([data-render-mode="shadow"]) [part~='button']:disabled * {
+  pointer-events: none;
+}
+:host([data-render-mode="shadow"]) [part='button'][aria-pressed='true'] {
+  --sds-c-button-color-background: var(--sds-c-button-color-background-pressed, revert);
+  --sds-c-button-color-border: var(--sds-c-button-color-border-pressed, revert);
+  --sds-c-button-text-color: var(--sds-c-button-text-color-pressed, revert);
+  --sds-c-button-shadow: var(--sds-c-button-shadow-pressed, revert);
+}
+/**
+  * LBC default is the 'neutral' variant.
+  *
+  * We retain the 'neutral' variant in the hook names for interoperability
+  * with SLDS light DOM blueprints which do explicitly define a 'neutral'
+  * variant which is not the default.
+  *
+  * See 'base' variant below.
+  *
+  */
+:host([data-render-mode="shadow"]) [part~='button'] {
+  /* Element spacing, display flex set by SDS button */
+  gap: var(--slds-g-spacing-2);
+
+  /* slds-icon mapping */
+  --slds-c-icon-sizing-border: 0;
+  --slds-c-icon-sizing: 0.875rem;
+  --slds-c-icon-color-foreground: currentcolor;
+
+
+  --sds-c-button-font-lineheight: var(
+    --slds-c-button-neutral-font-lineheight,
+    var(--slds-s-button-font-lineheight, 1.875rem)
+  );
+  --sds-c-button-spacing-inline: var(
+    --slds-c-button-neutral-spacing-inline,
+    var(--slds-s-button-spacing-inline, var(--slds-g-spacing-4));
+  );
+  --sds-c-button-spacing-block: var(--slds-c-button-neutral-spacing-block);
+
+  /**
+    * A note about fallbacks on the default variant:
+    *
+    * We cannot use --sds-c-button-* as fallbacks because the sds-button's state
+    * hooks are tied to a selector with higher specificity. In the default variant,
+    * attempting to use the previous state's hook as a fallback will fail because
+    * it picks up on sds-button's state hooks instead and creates an infinite loop
+    * which ultimately breaks styling.
+    *
+    * This is another use-case for removing the opinion of state selectors in SDS.
+    *
+    * So in the default variant below, you'll see many repeated fallback values.
+    *
+    * In all other variants, it is ok to use the previous state as a fallback value.
+    */
+
+
+  /* Border radius - shared */
+  --sds-c-button-radius-border-startstart: var(
+    --slds-c-button-radius-border-startstart,
+    var(
+      --slds-c-button-radius-border,
+      var(--slds-s-button-radius-border-startstart, var(--slds-s-button-radius-border))
+    )
+  );
+
+  --sds-c-button-radius-border-endstart: var(
+    --slds-c-button-radius-border-endstart,
+    var(
+      --slds-c-button-radius-border,
+      var(--slds-s-button-radius-border-endstart, var(--slds-s-button-radius-border))
+    )
+  );
+
+  --sds-c-button-radius-border-startend: var(
+    --slds-c-button-radius-border-startend,
+    var(
+      --slds-c-button-radius-border,
+      var(--slds-s-button-radius-border-startend, var(--slds-s-button-radius-border))
+    )
+  );
+
+  --sds-c-button-radius-border-endend: var(
+    --slds-c-button-radius-border-endend,
+    var(
+      --slds-c-button-radius-border,
+      var(--slds-s-button-radius-border-endend, var(--slds-s-button-radius-border))
+    )
+  );
+
+  /* Background color */
+  --sds-c-button-color-background: var(
+    --slds-c-button-neutral-color-background,
+    var(--slds-g-color-surface-container-1)
+  );
+  --sds-c-button-color-background-hover: var(
+    --slds-c-button-neutral-color-background-hover,
+    var(--slds-g-color-surface-container-2)
+  );
+  --sds-c-button-color-background-focus: var(--slds-c-button-neutral-color-background-focus, var(--slds-g-color-surface-container-2));
+  --sds-c-button-color-background-active: var(
+    --slds-c-button-neutral-color-background-active,
+    var(--slds-g-color-surface-container-2)
+  );
+
+  /* Border color */
+  --sds-c-button-color-border: var(--slds-c-button-neutral-color-border, var(--slds-g-color-border-2));
+  --sds-c-button-color-border-hover: var(
+    --slds-c-button-neutral-color-border-hover,
+    var(--slds-g-color-border-2)
+  );
+  --sds-c-button-color-border-focus: var(
+    --slds-c-button-neutral-color-border-focus,
+    var(--slds-g-color-border-2)
+  );
+  --sds-c-button-color-border-active: var(
+    --slds-c-button-neutral-color-border-active,
+    var(--slds-g-color-border-2)
+  );
+
+  /* Text color */
+  --sds-c-button-text-color: var(--slds-c-button-neutral-text-color, var(--slds-g-color-accent-2));
+  --sds-c-button-text-color-hover: var(--slds-c-button-neutral-text-color-hover, var(--slds-s-button-color-hover, var(--slds-g-color-accent-3)));
+  --sds-c-button-text-color-focus: var(--slds-c-button-neutral-text-color-focus, var(--slds-g-color-accent-3));
+  --sds-c-button-text-color-active: var(
+    --slds-c-button-neutral-text-color-active,
+    var(--slds-g-color-accent-3)
+  );
+
+  /* Shadow */
+  --sds-c-button-shadow: var(--slds-c-button-neutral-shadow);
+  --sds-c-button-shadow-focus: var(--slds-c-button-neutral-shadow-focus);
+}
+/* Overriding primitiveBaseButton */
+:host([data-render-mode="shadow"]) [part~='button']:disabled {
+   --sds-c-button-color-border-disabled: var(--slds-g-color-border-disabled-1);
+   --sds-c-button-text-color-disabled: var(--slds-g-color-on-disabled-1);
+   --sds-c-button-color-background-disabled: var(--slds-g-color-disabled-container-1);
+
+   /** 
+    * Needed to override 
+    * `pointer-event: none` coming from sds
+    * that prevent tooltip from showing
+   */
+   pointer-events: auto;
+   cursor: default;
+}
+/**
+  * A note about fallbacks on the default variant:
+  *
+  * We cannot use --sds-c-button-* as fallbacks because the sds-button's state
+  * hooks are tied to a selector with higher specificity. In the default variant,
+  * attempting to use the previous state's hook as a fallback will fail because
+  * it picks up on sds-button's state hooks instead and creates an infinite loop
+  * which ultimately breaks styling.
+  *
+  * This is another use-case for removing the opinion of state selectors in SDS.
+  *
+  * So in the default variant below, you'll see many repeated fallback values.
+  *
+  * In all other variants, it is ok to use the previous state as a fallback value.
+*/
+:host([data-render-mode="shadow"][variant='brand']) [part~='button'] {
+  --slds-c-button-neutral-color-background: var(
+    --slds-c-button-brand-color-background,
+    var(--slds-g-color-accent-container-1)
+  );
+  --slds-c-button-neutral-color-background-hover: var(
+    --slds-c-button-brand-color-background-hover,
+    var(--slds-g-color-accent-container-2)
+  );
+  --slds-c-button-neutral-color-background-focus: var(
+    --slds-c-button-brand-color-background-focus,
+    var(--slds-g-color-accent-container-2)
+  );
+  --slds-c-button-neutral-color-background-active: var(
+    --slds-c-button-brand-color-background-active,
+    var(--slds-g-color-accent-container-2)
+  );
+
+  --slds-c-button-neutral-color-border: var(
+    --slds-c-button-brand-color-border,
+    var(--slds-g-color-border-accent-1)
+  );
+  --slds-c-button-neutral-color-border-hover: var(
+    --slds-c-button-brand-color-border-hover,
+    var(--slds-g-color-border-accent-2)
+  );
+  --slds-c-button-neutral-color-border-focus: var(
+    --slds-c-button-brand-color-border-focus,
+    var(--slds-g-color-border-accent-2)
+  );
+  --slds-c-button-neutral-color-border-active: var(
+    --slds-c-button-brand-color-border-active,
+    var(--slds-g-color-border-accent-2)
+  );
+
+  /* Since the text color is white for all states, bypassing inheritence and setting the color value from SDS */
+  --sds-c-button-text-color: var(--slds-c-button-brand-text-color, var(--slds-g-color-on-accent-1));
+}
+:host([data-render-mode="shadow"][variant='brand-outline']) [part~='button'] {
+  --slds-c-button-neutral-color-border: var(--slds-g-color-border-accent-2);
+  --slds-c-button-neutral-color-border-hover: var(--slds-g-color-border-accent-2);
+  --slds-c-button-neutral-color-border-focus: var(--slds-g-color-border-accent-2);
+  --slds-c-button-neutral-color-border-active: var(--slds-g-color-border-accent-2);
+}
+:host([data-render-mode="shadow"][variant='inverse']) [part~='button'] {
+  --slds-c-button-neutral-color-background: transparent;
+  --slds-c-button-neutral-color-background-hover: var(--slds-g-color-surface-container-2);
+  --slds-c-button-neutral-color-background-focus: var(--slds-g-color-surface-container-2);
+  --slds-c-button-neutral-color-background-active: var(--slds-g-color-surface-container-2);
+  --slds-c-button-neutral-color-border: var(--slds-g-color-neutral-base-100);
+  --slds-c-button-neutral-color-border-hover: var(--slds-g-color-neutral-base-100);
+  --slds-c-button-neutral-color-border-focus: var(--slds-g-color-neutral-base-100);
+  --slds-c-button-neutral-color-border-active: var(--slds-g-color-neutral-base-100);
+  --slds-c-button-neutral-text-color: var(--slds-g-color-on-accent-1);
+  --slds-c-button-neutral-text-color-hover: var(--slds-g-color-accent-2);
+  --slds-c-button-neutral-text-color-active: var(--slds-g-color-accent-2);
+}
+:host([data-render-mode="shadow"][variant='inverse']) [part~='button']:disabled {
+  --sds-c-button-color-background: transparent;
+  --sds-c-button-color-border: var(--slds-g-color-border-disabled-2);
+  --sds-c-button-text-color: var(--slds-g-color-disabled-2);
+}
+:host([data-render-mode="shadow"][variant='destructive']) [part~='button'] {
+  --slds-c-button-neutral-color-background: var(--slds-g-color-error-container-1);
+  --slds-c-button-neutral-color-background-hover: var(--slds-g-color-error-container-2);
+  --slds-c-button-neutral-color-background-focus: var(--slds-g-color-error-container-2);
+  --slds-c-button-neutral-color-background-active: var(--slds-g-color-error-container-2);
+  --slds-c-button-neutral-color-border: var(--slds-g-color-border-error-1);
+  --slds-c-button-neutral-color-border-hover: var(--slds-g-color-border-error-2);
+  --slds-c-button-neutral-color-border-focus: var(--slds-g-color-border-error-2);
+  --slds-c-button-neutral-color-border-active: var(--slds-g-color-border-error-2);
+
+  /* Since the text color is white for all states, bypassing inheritence and setting the color value from SDS */
+  --sds-c-button-text-color: var(--slds-g-color-on-error-1);
+}
+:host([data-render-mode="shadow"][variant='success']) [part~='button'] {
+  --slds-c-button-neutral-color-background: var(--slds-g-color-success-container-1);
+  --slds-c-button-neutral-color-background-hover: var(--slds-g-color-success-container-2);
+  --slds-c-button-neutral-color-background-focus: var(--slds-g-color-success-container-2);
+  --slds-c-button-neutral-color-background-active: var(--slds-g-color-success-container-2);
+  --slds-c-button-neutral-color-border: var(--slds-g-color-border-success-1);
+  --slds-c-button-neutral-color-border-hover: var(--slds-g-color-border-success-2);
+  --slds-c-button-neutral-color-border-focus: var(--slds-g-color-border-success-2);
+  --slds-c-button-neutral-color-border-active: var(--slds-g-color-border-success-2);
+  --slds-c-button-neutral-text-color: var(--slds-g-color-on-success-1);
+  --slds-c-button-neutral-text-color-hover: var(--slds-g-color-on-success-1);
+  --slds-c-button-neutral-text-color-focus: var(--slds-g-color-on-success-1);
+  --slds-c-button-neutral-text-color-active: var(--slds-g-color-on-success-1);
+}
+:host([data-render-mode="shadow"][variant='destructive-text']) [part~='button'] {
+  --slds-c-button-neutral-text-color: var(--slds-g-color-error-1);
+  --slds-c-button-neutral-text-color-hover: var(--slds-g-color-error-1);
+  --slds-c-button-neutral-text-color-focus: var(--slds-g-color-error-1);
+  --slds-c-button-neutral-text-color-active: var(--slds-g-color-error-1);
+  --slds-c-button-neutral-color-border-hover: var(--slds-c-button-neutral-color-border, var(--slds-g-color-border-1));
+  --slds-c-button-neutral-color-border-focus: var(--slds-c-button-neutral-color-border, var(--slds-g-color-border-1));
+  --slds-c-button-neutral-color-border-active: var(--slds-c-button-neutral-color-border, var(--slds-g-color-border-1));
+}
+:host([data-render-mode="shadow"][variant='brand']) [part~='button']:disabled,:host([data-render-mode="shadow"][variant='success']) [part~='button']:disabled,:host([data-render-mode="shadow"][variant='destructive']) [part~='button']:disabled {
+  --sds-c-button-color-background: var(--slds-g-color-disabled-container-2);
+  --sds-c-button-color-border: var(--slds-g-color-border-disabled-1);
+  --sds-c-button-text-color: var(--slds-g-color-on-disabled-2);
+}
+/**
+   * 'base' variant is not the default in LBC. It is the default in the light
+   * DOM version of SLDS.
+   *
+   * So even though this is a non-default variant in this context, the hooks
+   * for this variant are written as the default for interoperability with
+   * SLDS light DOM.
+   *
+   * E.g. --slds-c-button-color-background
+*/
+/**
+  * text variant is for button-stateful
+*/
+:host([data-render-mode="shadow"][variant='base']) [part~='button'],:host([data-render-mode="shadow"][variant='text']) [part~='button']{
+  --sds-c-button-spacing-inline: 0;
+  --slds-c-button-neutral-text-color: var(--slds-g-color-accent-2);
+  --slds-c-button-neutral-color-border: transparent;
+  --slds-c-button-neutral-color-border-hover: transparent;
+  --slds-c-button-neutral-color-border-focus: transparent;
+  --slds-c-button-neutral-color-border-active: var(--slds-g-color-border-accent-2);
+  --slds-c-button-neutral-color-background: transparent;
+  --slds-c-button-neutral-color-background-hover: transparent;
+  --slds-c-button-neutral-color-background-focus: transparent;
+  --slds-c-button-neutral-color-background-active: transparent;
+}
+:host([data-render-mode="shadow"][variant='base']) [part~='button']:disabled,:host([data-render-mode="shadow"][variant='text']) [part~='button']:disabled {
+  --sds-c-button-color-background: transparent;
+  --sds-c-button-color-border: transparent;
+}
+:host([data-render-mode="shadow"][stretch]) [part~='button'] {
+  --sds-c-button-sizing-width: 100%;
+
+  justify-content: center;
+}
+/**
+   * Center button on all variants except 'base', and 'text'
+   *
+   * This addresses the issue of customers relying on preexisting x-axis centering
+   * when they arbitrarily change the width of the button without the stretch variant.
+   *
+   * Ref
+   * - https://github.com/salesforce-ux/design-system-internal/pull/4344
+   * - https://github.com/salesforce-ux/design-system-internal/pull/4949
+   */
+:host([data-render-mode="shadow"][variant='brand']) [part~='button'],:host([data-render-mode="shadow"][variant='brand-outline']) [part~='button'],:host([data-render-mode="shadow"][variant='inverse']) [part~='button'],:host([data-render-mode="shadow"][variant='success']) [part~='button'],:host([data-render-mode="shadow"][variant='destructive']) [part~='button'],:host([data-render-mode="shadow"][variant='destructive-text']) [part~='button'] {
+  justify-content: center;
+}
+/**
+   * Represents inner spacing around icon for icon-position="left", when present
+   */
+:host([data-render-mode="shadow"]) [part~='start'] {
+  display: inline-flex;
+  padding-inline-end: 0;
+}
+/**
+   * Represents inner spacing around icon for icon-position="right", when present
+   */
+:host([data-render-mode="shadow"]) [part~='end'] {
+  display: inline-flex;
+  padding-inline-start: 0;
+
+}
+/**
+ * A temporarily baked-in utility class until SLDS gets a proper utility package.
+ *
+ * This is a hybrid patch between synthetic and native shadow. The ideal final
+ * outcome is the removal of this class and replacing the class with the SLDS
+ * utility package solution.
+ */
+:host([data-render-mode="shadow"]) .slds-assistive-text {
+  position: absolute !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  text-transform: none !important;
+  white-space: nowrap !important;
+}
+:host([data-render-mode="shadow"]) .slds-button_reset {
+  font-size: inherit;
+  color: inherit;
+  line-height: inherit;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  text-align: inherit;
+}

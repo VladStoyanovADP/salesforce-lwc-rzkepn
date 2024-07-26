@@ -1,0 +1,16 @@
+<template>
+    <template if:false={shouldFormat}>
+        <template if:true={ignoreRTL}>
+            <span dir="ltr">{normalizedValue}</span>
+        </template>
+        <template if:false={ignoreRTL}>{normalizedValue}</template>
+    </template>
+    <template if:true={shouldFormat} for:each={formattedParts} for:item="part">
+        <template if:true={part.isLink}>
+            <a key={part.key} target='_blank' href={part.href} rel="noopener">{part.value}</a>
+        </template>
+        <template if:true={part.isText}>
+            {part.value}
+        </template>
+    </template>
+</template>
