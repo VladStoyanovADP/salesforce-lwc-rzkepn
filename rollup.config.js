@@ -2,6 +2,7 @@ import lwcRollupPlugin from '@lwc/rollup-plugin';
 import replace from '@rollup/plugin-replace';
 import serve from 'rollup-plugin-serve';
 import livereload from 'rollup-plugin-livereload';
+import copy from 'rollup-plugin-copy';
 
 const __ENV__ = process.env.NODE_ENV ?? 'development';
 
@@ -18,6 +19,11 @@ export default (args) => {
             replace({
                 'process.env.NODE_ENV': JSON.stringify(__ENV__),
                 preventAssignment: true,
+            }),
+            copy({
+                targets: [
+                    { src: 'index.html', dest: 'dist' }
+                ]
             }),
             lwcRollupPlugin({
                 modules: [
@@ -1881,7 +1887,7 @@ export default (args) => {
             args.watch &&
                 serve({
                     open: false,
-                    port: 3000,
+                    port: 3001,
                 }),
             args.watch && livereload('dist'),
         ],
