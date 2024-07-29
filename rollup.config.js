@@ -23,10 +23,7 @@ export default {
       preventAssignment: true,
     }),
     copy({
-      targets: [
-        { src: "src/index.html", dest: "dist" },
-        { src: "src/resources/**/*", dest: "dist/resources" },
-      ],
+      targets: [{ src: "index.html", dest: "dist" }],
     }),
     isProduction && terser(),
     // args.watch &&
